@@ -13,6 +13,7 @@ class Survey : Codable{
     var date: Int64 = 0
     var responded: Bool = false
     var title: String = ""
-    var text: String = ""
+    var headerText: String = ""
+    var footerText: String = ""
     var questions = [Question]()
 }
