@@ -28,13 +28,24 @@ class SurveyViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         header = storyboard.instantiateViewController(withIdentifier: "header") as! HeaderViewController
         header?.setListener(listener: self)
+        
         likertScale = storyboard.instantiateViewController(withIdentifier: "likertScale") as! LikertScaleViewController
         likertScale?.setListener(listener: self)
+        
         fillInTheBlank = storyboard.instantiateViewController(withIdentifier: "fillInTheBlank") as! FillInTheBlankViewController
+        fillInTheBlank?.setListener(listener: self)
+        
         multipleChoice = storyboard.instantiateViewController(withIdentifier: "multipleChoice") as! MultipleChoiceViewController
+        multipleChoice?.setListener(listener: self)
+        
         singleMultipleAnswers = storyboard.instantiateViewController(withIdentifier: "singleMultipleAnswer") as! SingleMultipleAnswersViewController
+        singleMultipleAnswers?.setListener(listener: self)
+        
         openEndedTextResponses = storyboard.instantiateViewController(withIdentifier: "openEndedTextResponses") as! OpenEndedTextResponsesViewController
+        openEndedTextResponses?.setListener(listener: self)
+        
         footer = storyboard.instantiateViewController(withIdentifier: "footer") as! FooterViewController
+        footer?.setListener(listener: self)
         
         showPage(newPage: Type.header.rawValue)
     }
@@ -152,10 +163,12 @@ extension SurveyViewController: QuestionListener{
     
     func closeSurvey() {
         print("closeSurvey")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func sendInSurvey() {
         print("sendInSurvey")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func nextQuestion(current: Question) {
