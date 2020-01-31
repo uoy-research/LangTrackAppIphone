@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mBB-qP-pDl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,431 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gq6-ZU-Q20">
+                                <rect key="frame" x="171" y="433" width="72" height="30"/>
+                                <state key="normal" title="testButton"/>
+                                <connections>
+                                    <action selector="testButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NuQ-ko-CCb"/>
+                                    <segue destination="Kcv-33-fJp" kind="show" identifier="survey" id="LhC-7w-rkk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gq6-ZU-Q20" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5qW-iZ-FXp"/>
+                            <constraint firstItem="gq6-ZU-Q20" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="onT-uw-gdp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="K0z-u1-3Vb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
+        </scene>
+        <!--Survey View Controller-->
+        <scene sceneID="o6J-g2-O2Z">
+            <objects>
+                <viewController id="Kcv-33-fJp" customClass="SurveyViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o5n-ZH-6CP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-HE-VdW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="f1X-al-Rjn" firstAttribute="bottom" secondItem="ZMD-HE-VdW" secondAttribute="bottom" id="6CP-fq-WvV"/>
+                            <constraint firstItem="ZMD-HE-VdW" firstAttribute="top" secondItem="f1X-al-Rjn" secondAttribute="top" id="TzN-5E-h63"/>
+                            <constraint firstItem="ZMD-HE-VdW" firstAttribute="leading" secondItem="f1X-al-Rjn" secondAttribute="leading" id="Zfn-u8-y9X"/>
+                            <constraint firstItem="f1X-al-Rjn" firstAttribute="trailing" secondItem="ZMD-HE-VdW" secondAttribute="trailing" id="kce-Qh-bb2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f1X-al-Rjn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ijt-l0-9x2"/>
+                    <connections>
+                        <outlet property="surveyContainer" destination="ZMD-HE-VdW" id="kih-3Z-aUw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Snv-sy-dn1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872" y="130"/>
+        </scene>
+        <!--Header View Controller-->
+        <scene sceneID="ZdL-uf-VDu">
+            <objects>
+                <viewController storyboardIdentifier="header" id="e8B-9R-lhf" customClass="HeaderViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c4K-QU-rQz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kD-xM-3PX">
+                                <rect key="frame" x="179" y="437.5" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0Q-Wm-Cyc">
+                                <rect key="frame" x="50" y="782" width="41" height="30"/>
+                                <state key="normal" title="Stäng"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="e8B-9R-lhf" eventType="touchUpInside" id="eVB-AU-pwf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOs-aw-GyH">
+                                <rect key="frame" x="324" y="782" width="40" height="30"/>
+                                <state key="normal" title="Nästa"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="e8B-9R-lhf" eventType="touchUpInside" id="sgJ-dh-fml"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2kD-xM-3PX" firstAttribute="centerY" secondItem="c4K-QU-rQz" secondAttribute="centerY" id="PVP-5r-dTc"/>
+                            <constraint firstItem="zOg-0M-7lc" firstAttribute="trailing" secondItem="NOs-aw-GyH" secondAttribute="trailing" constant="50" id="Pbx-EU-kfH"/>
+                            <constraint firstItem="zOg-0M-7lc" firstAttribute="bottom" secondItem="O0Q-Wm-Cyc" secondAttribute="bottom" constant="50" id="ZBR-zV-1db"/>
+                            <constraint firstItem="O0Q-Wm-Cyc" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" constant="50" id="di7-9X-GHC"/>
+                            <constraint firstItem="zOg-0M-7lc" firstAttribute="bottom" secondItem="NOs-aw-GyH" secondAttribute="bottom" constant="50" id="gDq-Lf-g0P"/>
+                            <constraint firstItem="2kD-xM-3PX" firstAttribute="centerX" secondItem="c4K-QU-rQz" secondAttribute="centerX" id="wVh-Nj-ABm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zOg-0M-7lc"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="closeButton" destination="O0Q-Wm-Cyc" id="dFW-qE-XbS"/>
+                        <outlet property="nextButton" destination="NOs-aw-GyH" id="1Yg-XN-gvG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SwI-QW-o0t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="-573"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="x8m-P2-EUH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mBB-qP-pDl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NQ0-y6-xT6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="IIT-ma-PZn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lxo-LG-Gcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+        <!--Likert Scale View Controller-->
+        <scene sceneID="4cg-jv-cMr">
+            <objects>
+                <viewController storyboardIdentifier="likertScale" id="mSc-aZ-iwR" customClass="LikertScaleViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rks-7S-Wuo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likert scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIR-57-dKU">
+                                <rect key="frame" x="163.5" y="437.5" width="87.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhZ-CS-Oxl">
+                                <rect key="frame" x="50" y="782" width="82" height="30"/>
+                                <state key="normal" title="Föregående"/>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="ybn-K2-c6j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-k7-bAJ">
+                                <rect key="frame" x="324" y="782" width="40" height="30"/>
+                                <state key="normal" title="Nästa"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="HSG-hJ-jbS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tIR-57-dKU" firstAttribute="centerY" secondItem="Rks-7S-Wuo" secondAttribute="centerY" id="IqC-JY-WV5"/>
+                            <constraint firstItem="rhZ-CS-Oxl" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="50" id="NOI-Iz-woL"/>
+                            <constraint firstItem="tIR-57-dKU" firstAttribute="centerX" secondItem="Rks-7S-Wuo" secondAttribute="centerX" id="Q6a-YP-bCY"/>
+                            <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="eNh-k7-bAJ" secondAttribute="trailing" constant="50" id="Sbg-fw-6Lq"/>
+                            <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="eNh-k7-bAJ" secondAttribute="bottom" constant="50" id="b7b-wI-Bbg"/>
+                            <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="rhZ-CS-Oxl" secondAttribute="bottom" constant="50" id="iWP-It-4Ak"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="boz-eb-vSf"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="nextButton" destination="eNh-k7-bAJ" id="6it-Lp-5Me"/>
+                        <outlet property="previousButton" destination="rhZ-CS-Oxl" id="i4O-l3-EWM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bC8-p3-4Oi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3383" y="-573"/>
+        </scene>
+        <!--Fill In The Blank View Controller-->
+        <scene sceneID="4ef-d5-P13">
+            <objects>
+                <viewController storyboardIdentifier="fillInTheBlank" id="ODZ-MA-LZW" customClass="FillInTheBlankViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jsJ-Bj-Uu3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in the blank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuL-5K-jag">
+                                <rect key="frame" x="150" y="437.5" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv8-aK-s2C">
+                                <rect key="frame" x="50" y="782" width="82" height="30"/>
+                                <state key="normal" title="Föregående"/>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="ODZ-MA-LZW" eventType="touchUpInside" id="EUq-L5-s2Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpw-J1-1Gs">
+                                <rect key="frame" x="324" y="782" width="40" height="30"/>
+                                <state key="normal" title="Nästa"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="ODZ-MA-LZW" eventType="touchUpInside" id="OhK-yQ-OIA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fv8-aK-s2C" firstAttribute="leading" secondItem="lGy-fB-c6B" secondAttribute="leading" constant="50" id="EAI-Z3-2Rb"/>
+                            <constraint firstItem="VuL-5K-jag" firstAttribute="centerX" secondItem="jsJ-Bj-Uu3" secondAttribute="centerX" id="L5x-BO-Nt3"/>
+                            <constraint firstItem="lGy-fB-c6B" firstAttribute="bottom" secondItem="fv8-aK-s2C" secondAttribute="bottom" constant="50" id="Mh5-RT-1ND"/>
+                            <constraint firstItem="VuL-5K-jag" firstAttribute="centerY" secondItem="jsJ-Bj-Uu3" secondAttribute="centerY" id="aNc-P1-2m4"/>
+                            <constraint firstItem="lGy-fB-c6B" firstAttribute="trailing" secondItem="Kpw-J1-1Gs" secondAttribute="trailing" constant="50" id="e9h-u1-KpU"/>
+                            <constraint firstItem="lGy-fB-c6B" firstAttribute="bottom" secondItem="Kpw-J1-1Gs" secondAttribute="bottom" constant="50" id="zYl-lg-TY2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lGy-fB-c6B"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="nextButton" destination="Kpw-J1-1Gs" id="WaB-Un-Wr4"/>
+                        <outlet property="previousButton" destination="fv8-aK-s2C" id="PEU-xq-Xvu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xkm-zj-4DB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="130"/>
+        </scene>
+        <!--Multiple Choice View Controller-->
+        <scene sceneID="l6z-rE-eiD">
+            <objects>
+                <viewController storyboardIdentifier="multipleChoice" id="Isb-tK-m6n" customClass="MultipleChoiceViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9cY-MS-ltF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDl-n1-kT6">
+                                <rect key="frame" x="149" y="437.5" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-8H-6e5">
+                                <rect key="frame" x="50" y="782" width="82" height="30"/>
+                                <state key="normal" title="Föregående"/>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="DAO-uI-B04"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-LP-7JH">
+                                <rect key="frame" x="324" y="782" width="40" height="30"/>
+                                <state key="normal" title="Nästa"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="dTA-Mo-NEt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CGK-hn-4ba" firstAttribute="bottom" secondItem="1s7-LP-7JH" secondAttribute="bottom" constant="50" id="4Ig-dP-n4r"/>
+                            <constraint firstItem="CGK-hn-4ba" firstAttribute="trailing" secondItem="1s7-LP-7JH" secondAttribute="trailing" constant="50" id="6J1-Ut-gw1"/>
+                            <constraint firstItem="RDl-n1-kT6" firstAttribute="centerX" secondItem="9cY-MS-ltF" secondAttribute="centerX" id="GdY-QF-fGq"/>
+                            <constraint firstItem="AjW-8H-6e5" firstAttribute="leading" secondItem="CGK-hn-4ba" secondAttribute="leading" constant="50" id="GgO-GY-AG5"/>
+                            <constraint firstItem="CGK-hn-4ba" firstAttribute="bottom" secondItem="AjW-8H-6e5" secondAttribute="bottom" constant="50" id="TZS-Gy-Aq3"/>
+                            <constraint firstItem="RDl-n1-kT6" firstAttribute="centerY" secondItem="9cY-MS-ltF" secondAttribute="centerY" id="h7t-dv-dYd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CGK-hn-4ba"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="nextButton" destination="1s7-LP-7JH" id="wsM-8X-ime"/>
+                        <outlet property="previousButton" destination="AjW-8H-6e5" id="1Ef-ZO-tO0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5R-Ht-iwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3383" y="130"/>
+        </scene>
+        <!--Single Multiple Answers View Controller-->
+        <scene sceneID="1xk-kS-92j">
+            <objects>
+                <viewController storyboardIdentifier="singleMultipleAnswer" id="zVO-vs-pXH" customClass="SingleMultipleAnswersViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bf2-Ff-Jqp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Single multiple answers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgK-XM-cFq">
+                                <rect key="frame" x="117.5" y="437.5" width="179.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHw-YL-1Oc">
+                                <rect key="frame" x="50" y="782" width="82" height="30"/>
+                                <state key="normal" title="Föregående"/>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="zVO-vs-pXH" eventType="touchUpInside" id="fjM-HZ-kA5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxy-Zg-DwB">
+                                <rect key="frame" x="324" y="782" width="40" height="30"/>
+                                <state key="normal" title="Nästa"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="zVO-vs-pXH" eventType="touchUpInside" id="oHn-eC-QI6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KHw-YL-1Oc" firstAttribute="leading" secondItem="btn-ss-aiV" secondAttribute="leading" constant="50" id="1wR-aI-9bp"/>
+                            <constraint firstItem="dgK-XM-cFq" firstAttribute="centerY" secondItem="Bf2-Ff-Jqp" secondAttribute="centerY" id="HE8-NG-zQb"/>
+                            <constraint firstItem="btn-ss-aiV" firstAttribute="bottom" secondItem="Yxy-Zg-DwB" secondAttribute="bottom" constant="50" id="XDT-E0-qby"/>
+                            <constraint firstItem="btn-ss-aiV" firstAttribute="bottom" secondItem="KHw-YL-1Oc" secondAttribute="bottom" constant="50" id="bdR-M0-G1D"/>
+                            <constraint firstItem="dgK-XM-cFq" firstAttribute="centerX" secondItem="Bf2-Ff-Jqp" secondAttribute="centerX" id="qF8-iA-mI8"/>
+                            <constraint firstItem="btn-ss-aiV" firstAttribute="trailing" secondItem="Yxy-Zg-DwB" secondAttribute="trailing" constant="50" id="y8d-nU-vca"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="btn-ss-aiV"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="nextButton" destination="Yxy-Zg-DwB" id="9Ut-lZ-MpG"/>
+                        <outlet property="previousButton" destination="KHw-YL-1Oc" id="Iq1-sG-WAo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81v-Xk-pRD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="844"/>
+        </scene>
+        <!--Open Ended Text Responses View Controller-->
+        <scene sceneID="f4F-8P-Bau">
+            <objects>
+                <viewController storyboardIdentifier="openEndedTextResponses" id="8qP-bg-Ndh" customClass="OpenEndedTextResponsesViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GHZ-4p-kij">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open ended text responses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-Qu-1QF">
+                                <rect key="frame" x="101.5" y="437.5" width="211.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7x-B8-pvH">
+                                <rect key="frame" x="324" y="782" width="40" height="30"/>
+                                <state key="normal" title="Nästa"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="8qP-bg-Ndh" eventType="touchUpInside" id="5Yi-bj-3zJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s14-UN-bn1">
+                                <rect key="frame" x="50" y="782" width="82" height="30"/>
+                                <state key="normal" title="Föregående"/>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="8qP-bg-Ndh" eventType="touchUpInside" id="KWk-tn-RLk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="s14-UN-bn1" firstAttribute="leading" secondItem="LyV-br-oGQ" secondAttribute="leading" constant="50" id="8Ao-zL-Yy9"/>
+                            <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="w7x-B8-pvH" secondAttribute="bottom" constant="50" id="AOj-8Z-sAH"/>
+                            <constraint firstItem="mtT-Qu-1QF" firstAttribute="centerY" secondItem="GHZ-4p-kij" secondAttribute="centerY" id="Lhc-pi-rj1"/>
+                            <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="s14-UN-bn1" secondAttribute="bottom" constant="50" id="WDj-Xj-kMr"/>
+                            <constraint firstAttribute="trailing" secondItem="w7x-B8-pvH" secondAttribute="trailing" constant="50" id="eV2-5F-yRF"/>
+                            <constraint firstItem="mtT-Qu-1QF" firstAttribute="centerX" secondItem="GHZ-4p-kij" secondAttribute="centerX" id="tVV-Uq-Heo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LyV-br-oGQ"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="nextButton" destination="w7x-B8-pvH" id="nGn-WQ-lQ9"/>
+                        <outlet property="previousButton" destination="s14-UN-bn1" id="IyG-aB-HCI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PkR-vr-bc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3381" y="843"/>
+        </scene>
+        <!--Footer View Controller-->
+        <scene sceneID="RhP-fG-d4Y">
+            <objects>
+                <viewController storyboardIdentifier="footer" id="Se6-vn-mhF" customClass="FooterViewController" customModule="LangTrackApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NNk-LE-5hZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Footer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-gS-j3w">
+                                <rect key="frame" x="182" y="437.5" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oj-ko-O5g">
+                                <rect key="frame" x="50" y="782" width="82" height="30"/>
+                                <state key="normal" title="Föregående"/>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="Se6-vn-mhF" eventType="touchUpInside" id="H6a-CY-rnv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePr-KY-St8">
+                                <rect key="frame" x="303" y="782" width="61" height="30"/>
+                                <state key="normal" title="Skicka in"/>
+                                <connections>
+                                    <action selector="sendInButtonPressed:" destination="Se6-vn-mhF" eventType="touchUpInside" id="qrr-9V-JD0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ycy-gS-j3w" firstAttribute="centerX" secondItem="NNk-LE-5hZ" secondAttribute="centerX" id="PST-4n-eM5"/>
+                            <constraint firstItem="8Oj-ko-O5g" firstAttribute="leading" secondItem="7Mb-z1-8mL" secondAttribute="leading" constant="50" id="XwQ-PH-srW"/>
+                            <constraint firstItem="Ycy-gS-j3w" firstAttribute="centerY" secondItem="NNk-LE-5hZ" secondAttribute="centerY" id="esj-oV-tlN"/>
+                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="8Oj-ko-O5g" secondAttribute="bottom" constant="50" id="jhN-te-XGa"/>
+                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="ePr-KY-St8" secondAttribute="bottom" constant="50" id="vIr-85-oZ4"/>
+                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="trailing" secondItem="ePr-KY-St8" secondAttribute="trailing" constant="50" id="zVi-xV-7pi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Mb-z1-8mL"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="previousButton" destination="8Oj-ko-O5g" id="oGr-r7-A27"/>
+                        <outlet property="sendInButton" destination="ePr-KY-St8" id="nVA-VL-rib"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7E1-gz-oSy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="1545"/>
         </scene>
     </scenes>
 </document>

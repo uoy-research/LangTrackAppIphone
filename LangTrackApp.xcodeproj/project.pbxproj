@@ -15,6 +15,18 @@
 		F156587D23E2DD7600EC2796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F156587B23E2DD7600EC2796 /* LaunchScreen.storyboard */; };
 		F156588823E2DD7600EC2796 /* LangTrackAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156588723E2DD7600EC2796 /* LangTrackAppTests.swift */; };
 		F156589323E2DD7600EC2796 /* LangTrackAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156589223E2DD7600EC2796 /* LangTrackAppUITests.swift */; };
+		F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658A123E33D1400EC2796 /* SurveyViewController.swift */; };
+		F15658A523E33DA100EC2796 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658A423E33DA100EC2796 /* HeaderViewController.swift */; };
+		F15658A723E33DD100EC2796 /* LikertScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658A623E33DD100EC2796 /* LikertScaleViewController.swift */; };
+		F15658A923E33DE500EC2796 /* FillInTheBlankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658A823E33DE500EC2796 /* FillInTheBlankViewController.swift */; };
+		F15658AB23E33DF900EC2796 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658AA23E33DF900EC2796 /* MultipleChoiceViewController.swift */; };
+		F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658AC23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift */; };
+		F15658AF23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658AE23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift */; };
+		F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658B023E3418B00EC2796 /* FooterViewController.swift */; };
+		F178752323E4160E003D16D1 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752223E4160E003D16D1 /* Type.swift */; };
+		F178752523E41639003D16D1 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752423E41639003D16D1 /* Survey.swift */; };
+		F178752723E41654003D16D1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752623E41654003D16D1 /* Question.swift */; };
+		F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752923E41C30003D16D1 /* QuestionListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +61,18 @@
 		F156588E23E2DD7600EC2796 /* LangTrackAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LangTrackAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F156589223E2DD7600EC2796 /* LangTrackAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangTrackAppUITests.swift; sourceTree = "<group>"; };
 		F156589423E2DD7600EC2796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F15658A123E33D1400EC2796 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		F15658A423E33DA100EC2796 /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
+		F15658A623E33DD100EC2796 /* LikertScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikertScaleViewController.swift; sourceTree = "<group>"; };
+		F15658A823E33DE500EC2796 /* FillInTheBlankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInTheBlankViewController.swift; sourceTree = "<group>"; };
+		F15658AA23E33DF900EC2796 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
+		F15658AC23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMultipleAnswersViewController.swift; sourceTree = "<group>"; };
+		F15658AE23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEndedTextResponsesViewController.swift; sourceTree = "<group>"; };
+		F15658B023E3418B00EC2796 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
+		F178752223E4160E003D16D1 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		F178752423E41639003D16D1 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		F178752623E41654003D16D1 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		F178752923E41C30003D16D1 /* QuestionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +123,11 @@
 		F156586F23E2DD7500EC2796 /* LangTrackApp */ = {
 			isa = PBXGroup;
 			children = (
+				F178752823E41C16003D16D1 /* Protocols */,
+				F178752123E415FA003D16D1 /* Models */,
+				F15658A023E33CE200EC2796 /* ViewControllers */,
 				F156587023E2DD7500EC2796 /* AppDelegate.swift */,
 				F156587223E2DD7500EC2796 /* SceneDelegate.swift */,
-				F156587423E2DD7500EC2796 /* ViewController.swift */,
 				F156587623E2DD7500EC2796 /* Main.storyboard */,
 				F156587923E2DD7600EC2796 /* Assets.xcassets */,
 				F156587B23E2DD7600EC2796 /* LaunchScreen.storyboard */,
@@ -126,6 +152,48 @@
 				F156589423E2DD7600EC2796 /* Info.plist */,
 			);
 			path = LangTrackAppUITests;
+			sourceTree = "<group>";
+		};
+		F15658A023E33CE200EC2796 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F15658A323E33D7100EC2796 /* QuestionsViewControllers */,
+				F156587423E2DD7500EC2796 /* ViewController.swift */,
+				F15658A123E33D1400EC2796 /* SurveyViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F15658A323E33D7100EC2796 /* QuestionsViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F15658A423E33DA100EC2796 /* HeaderViewController.swift */,
+				F15658A623E33DD100EC2796 /* LikertScaleViewController.swift */,
+				F15658A823E33DE500EC2796 /* FillInTheBlankViewController.swift */,
+				F15658AA23E33DF900EC2796 /* MultipleChoiceViewController.swift */,
+				F15658AC23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift */,
+				F15658AE23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift */,
+				F15658B023E3418B00EC2796 /* FooterViewController.swift */,
+			);
+			path = QuestionsViewControllers;
+			sourceTree = "<group>";
+		};
+		F178752123E415FA003D16D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F178752223E4160E003D16D1 /* Type.swift */,
+				F178752423E41639003D16D1 /* Survey.swift */,
+				F178752623E41654003D16D1 /* Question.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F178752823E41C16003D16D1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F178752923E41C30003D16D1 /* QuestionListener.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +327,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F178752523E41639003D16D1 /* Survey.swift in Sources */,
 				F156587523E2DD7500EC2796 /* ViewController.swift in Sources */,
 				F156587123E2DD7500EC2796 /* AppDelegate.swift in Sources */,
+				F15658A523E33DA100EC2796 /* HeaderViewController.swift in Sources */,
+				F15658AF23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift in Sources */,
+				F178752723E41654003D16D1 /* Question.swift in Sources */,
+				F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */,
+				F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */,
+				F15658A723E33DD100EC2796 /* LikertScaleViewController.swift in Sources */,
+				F15658A923E33DE500EC2796 /* FillInTheBlankViewController.swift in Sources */,
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
+				F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */,
+				F15658AB23E33DF900EC2796 /* MultipleChoiceViewController.swift in Sources */,
+				F178752323E4160E003D16D1 /* Type.swift in Sources */,
+				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
