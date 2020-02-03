@@ -8,6 +8,9 @@
 // test1@humlablu.com
 // 123456
 
+// deltagare1a2b3c@humlablu.com
+// 123456
+
 import UIKit
 import Firebase
 
@@ -17,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var theTableView: UITableView!
     
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableviewContainer: UIView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var userView: UIView!
@@ -26,7 +30,6 @@ class ViewController: UIViewController {
     
     var surveyList = [Survey]()
     var selectedSurvey: Survey?
-    var authHandle : AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,20 +61,25 @@ class ViewController: UIViewController {
         surveyList.append(TestSurvey.getTempSurvey(number: "8", responded: true))
         theTableView.reloadData()
         
-        authHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("auth addStateDidChangeListener email: \(auth.currentUser?.email ?? "nil")")
-        }
-        Auth.auth().signIn(withEmail: "test1@humlablu.com", password: "123456") { (result, error) in
-            print("auth signIn: \(result.debugDescription)")
-        }
+        
+        
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        Auth.auth().removeStateDidChangeListener(authHandle!)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if Auth.auth().currentUser == nil {
+            performSegue(withIdentifier: "login", sender: nil)
+        }else{
+            var username = Auth.auth().currentUser?.email
+            username!.until("@")
+            userNameLabel.text = "Inloggad som \(username!)"
+        }
     }
     @IBAction func logOutButtonPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()
+            performSegue(withIdentifier: "login", sender: nil)
+            //TODO: Töm listor osv
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
         }
