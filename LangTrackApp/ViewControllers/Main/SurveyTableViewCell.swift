@@ -19,8 +19,9 @@ class SurveyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         surveyUnansweredIndicator.layer.cornerRadius = 10
         surveyUnansweredIndicator.layer.borderWidth = 0.5
-        surveyBackground.layer.borderWidth = 1
+        surveyBackground.layer.borderWidth = 1.5
         surveyBackground.layer.cornerRadius = 8
+        surveyBackground.layer.borderColor = UIColor.init(named: "lta_blue")?.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
