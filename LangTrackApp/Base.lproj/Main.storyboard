@@ -168,6 +168,9 @@
                                                 <state key="normal" title="Logga ut">
                                                     <color key="titleColor" name="lta_grey"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="logOutButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CPS-TO-MsG"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -250,6 +253,7 @@
                         <outlet property="aboutButton" destination="aRs-1L-MRM" id="K6v-g5-bkx"/>
                         <outlet property="contactButton" destination="08I-cq-KAw" id="25o-Ce-4DS"/>
                         <outlet property="instructionsButton" destination="6lC-ET-jEQ" id="D8O-lz-lgD"/>
+                        <outlet property="logOutButton" destination="x1r-f7-cB3" id="oGu-Kg-VvK"/>
                         <outlet property="tableviewContainer" destination="mVm-aI-omc" id="N8u-6k-uYQ"/>
                         <outlet property="theTableView" destination="TeJ-kA-god" id="C1o-Yd-pC1"/>
                         <outlet property="titleView" destination="cqG-kI-Nee" id="Jlc-qa-RSc"/>
@@ -670,7 +674,7 @@
             <color red="0.42352941176470588" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lta_light_grey">
-            <color red="0.89999996423721318" green="0.89999996423721318" blue="0.89999996423721318" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89999997615814209" green="0.89999997615814209" blue="0.89999997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

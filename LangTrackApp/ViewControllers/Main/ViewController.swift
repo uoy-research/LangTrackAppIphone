@@ -5,11 +5,15 @@
 //  Created by Stephan Björck on 2020-01-30.
 //  Copyright © 2020 Stephan Björck. All rights reserved.
 //
+// test1@humlablu.com
+// 123456
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var theTableView: UITableView!
     
@@ -22,6 +26,7 @@ class ViewController: UIViewController {
     
     var surveyList = [Survey]()
     var selectedSurvey: Survey?
+    var authHandle : AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +57,26 @@ class ViewController: UIViewController {
         surveyList.append(TestSurvey.getTempSurvey(number: "7", responded: true))
         surveyList.append(TestSurvey.getTempSurvey(number: "8", responded: true))
         theTableView.reloadData()
+        
+        authHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("auth addStateDidChangeListener email: \(auth.currentUser?.email ?? "nil")")
+        }
+        Auth.auth().signIn(withEmail: "test1@humlablu.com", password: "123456") { (result, error) in
+            print("auth signIn: \(result.debugDescription)")
+        }
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(authHandle!)
+    }
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
