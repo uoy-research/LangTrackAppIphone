@@ -5,14 +5,22 @@
 //  Created by Stephan Björck on 2020-01-30.
 //  Copyright © 2020 Stephan Björck. All rights reserved.
 //
+// test1@humlablu.com
+// 123456
+
+// deltagare1a2b3c@humlablu.com
+// 123456
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var theTableView: UITableView!
     
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableviewContainer: UIView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var userView: UIView!
@@ -52,8 +60,31 @@ class ViewController: UIViewController {
         surveyList.append(TestSurvey.getTempSurvey(number: "7", responded: true))
         surveyList.append(TestSurvey.getTempSurvey(number: "8", responded: true))
         theTableView.reloadData()
+        
+        
+        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if Auth.auth().currentUser == nil {
+            performSegue(withIdentifier: "login", sender: nil)
+        }else{
+            var username = Auth.auth().currentUser?.email
+            username!.until("@")
+            userNameLabel.text = "Inloggad som \(username!)"
+        }
+    }
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            performSegue(withIdentifier: "login", sender: nil)
+            //TODO: Töm listor osv
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{

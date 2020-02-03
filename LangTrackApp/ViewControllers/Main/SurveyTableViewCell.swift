@@ -34,7 +34,7 @@ class SurveyTableViewCell: UITableViewCell {
         surveyTitle.text = survey.title
         surveyDate.text = DateParser.displayString(for: Date(timeIntervalSince1970: TimeInterval(survey.date)))
         if (survey.responded) {
-            surveyUnansweredIndicator.backgroundColor = UIColor.clear
+            surveyUnansweredIndicator.isHidden = true
         }else{
             surveyUnansweredIndicator.backgroundColor = UIColor.red
         }
