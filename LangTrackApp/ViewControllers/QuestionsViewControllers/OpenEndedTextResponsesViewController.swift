@@ -12,17 +12,18 @@ class OpenEndedTextResponsesViewController: UIViewController {
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var tempLabel: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // temp
-        theQuestion.index = 5
-        theQuestion.previous = 4
-        theQuestion.next = 6
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        tempLabel.text = theQuestion.text
     }
     
     func setListener(listener: QuestionListener) {

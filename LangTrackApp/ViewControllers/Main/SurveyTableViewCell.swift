@@ -36,6 +36,7 @@ class SurveyTableViewCell: UITableViewCell {
         if (survey.responded) {
             surveyUnansweredIndicator.isHidden = true
         }else{
+            surveyUnansweredIndicator.isHidden = false
             surveyUnansweredIndicator.backgroundColor = UIColor.red
         }
     }

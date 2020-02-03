@@ -10,6 +10,7 @@ import UIKit
 
 class LikertScaleViewController: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var tempLabel: UILabel!
     
     @IBOutlet weak var nextButton: UIButton!
     
@@ -18,11 +19,11 @@ class LikertScaleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // temp
-        theQuestion.index = 1
-        theQuestion.previous = 0
-        theQuestion.next = 2
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        tempLabel.text = theQuestion.text
     }
     
     func setListener(listener: QuestionListener) {

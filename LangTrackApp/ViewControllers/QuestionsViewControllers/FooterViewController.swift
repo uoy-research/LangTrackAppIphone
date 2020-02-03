@@ -12,16 +12,18 @@ class FooterViewController: UIViewController {
 
     @IBOutlet weak var sendInButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var tempLabel: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // temp
-        theQuestion.index = 6
-        theQuestion.previous = 5
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        tempLabel.text = theQuestion.text
     }
     
     func setListener(listener: QuestionListener) {

@@ -11,17 +11,18 @@ import UIKit
 class HeaderViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var tempLabel: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        // temp
-        theQuestion.index = 0
-        theQuestion.next = 1
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        tempLabel.text = theQuestion.text
     }
     
     func setListener(listener: QuestionListener) {

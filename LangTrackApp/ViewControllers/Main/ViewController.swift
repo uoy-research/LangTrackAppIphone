@@ -54,11 +54,8 @@ class ViewController: UIViewController {
         surveyList.append(TestSurvey.getTempSurvey(number: "1", responded: false))
         surveyList.append(TestSurvey.getTempSurvey(number: "2", responded: true))
         surveyList.append(TestSurvey.getTempSurvey(number: "3", responded: true))
-        surveyList.append(TestSurvey.getTempSurvey(number: "4", responded: true))
-        surveyList.append(TestSurvey.getTempSurvey(number: "5", responded: true))
-        surveyList.append(TestSurvey.getTempSurvey(number: "6", responded: true))
-        surveyList.append(TestSurvey.getTempSurvey(number: "7", responded: true))
-        surveyList.append(TestSurvey.getTempSurvey(number: "8", responded: true))
+        surveyList.append(TestSurvey.getTempSurveyWithOneQuestion(number: "med en fråga", responded: false))
+        surveyList.append(TestSurvey.getTempSurveyWithThreeMixedQuestion(number: "med tre frågor", responded: true))
         theTableView.reloadData()
         
         
@@ -108,6 +105,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         selectedSurvey = surveyList[indexPath.row]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "surveyContainer") as! SurveyViewController
+        newViewController.theSurvey = surveyList[indexPath.row]
         newViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(newViewController, animated: true)
     }

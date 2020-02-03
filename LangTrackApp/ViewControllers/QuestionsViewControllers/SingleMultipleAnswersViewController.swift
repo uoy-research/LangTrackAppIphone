@@ -12,17 +12,18 @@ class SingleMultipleAnswersViewController: UIViewController {
 
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var tempLabel: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // temp
-        theQuestion.index = 4
-        theQuestion.previous = 3
-        theQuestion.next = 5
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        tempLabel.text = theQuestion.text
     }
     
     func setListener(listener: QuestionListener) {
