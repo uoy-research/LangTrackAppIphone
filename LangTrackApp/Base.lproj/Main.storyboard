@@ -151,16 +151,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrW-Kx-1IQ">
-                                        <rect key="frame" x="5" y="126" width="404" height="71"/>
+                                        <rect key="frame" x="5" y="126" width="404" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="deltagare12345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXK-1I-QVM">
-                                                <rect key="frame" x="15" y="35" width="121.5" height="21"/>
+                                                <rect key="frame" x="15" y="30" width="121.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                 <color key="textColor" name="lta_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1r-f7-cB3">
-                                                <rect key="frame" x="337" y="32.5" width="57" height="26"/>
+                                                <rect key="frame" x="337" y="27.5" width="57" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="ARw-bz-6If"/>
                                                 </constraints>
@@ -175,38 +175,38 @@
                                             <constraint firstAttribute="trailing" secondItem="x1r-f7-cB3" secondAttribute="trailing" constant="10" id="JNP-9L-nEW"/>
                                             <constraint firstAttribute="bottom" secondItem="fXK-1I-QVM" secondAttribute="bottom" constant="15" id="Tbd-0K-ajA"/>
                                             <constraint firstItem="fXK-1I-QVM" firstAttribute="leading" secondItem="HrW-Kx-1IQ" secondAttribute="leading" constant="15" id="abp-Pv-Q1d"/>
-                                            <constraint firstItem="fXK-1I-QVM" firstAttribute="top" secondItem="HrW-Kx-1IQ" secondAttribute="top" constant="35" id="miB-EK-u65"/>
+                                            <constraint firstItem="fXK-1I-QVM" firstAttribute="top" secondItem="HrW-Kx-1IQ" secondAttribute="top" constant="30" id="miB-EK-u65"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRs-1L-MRM">
-                                        <rect key="frame" x="12" y="207" width="120" height="40"/>
+                                        <rect key="frame" x="12" y="202" width="120" height="45"/>
                                         <color key="backgroundColor" name="lta_blue"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="eEZ-AT-sP2"/>
+                                            <constraint firstAttribute="height" constant="45" id="eEZ-AT-sP2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="Om">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08I-cq-KAw">
-                                        <rect key="frame" x="282" y="207" width="120" height="40"/>
+                                        <rect key="frame" x="282" y="202" width="120" height="45"/>
                                         <color key="backgroundColor" name="lta_blue"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Boj-RV-oc8"/>
+                                            <constraint firstAttribute="height" constant="45" id="Boj-RV-oc8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="Kontakt">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lC-ET-jEQ">
-                                        <rect key="frame" x="147" y="207" width="120" height="40"/>
+                                        <rect key="frame" x="147" y="202" width="120" height="45"/>
                                         <color key="backgroundColor" name="lta_blue"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="JFI-TW-6KM"/>
+                                            <constraint firstAttribute="height" constant="45" id="JFI-TW-6KM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <state key="normal" title="Instruktioner">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
