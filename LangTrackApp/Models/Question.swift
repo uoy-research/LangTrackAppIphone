@@ -9,7 +9,7 @@
 import Foundation
 
 class Question : Codable {
-    var type: Int = 99
+    var type: String = Type.header.rawValue
     var id: String = ""
     var previous: Int = 0
     var index: Int = 0

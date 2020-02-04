@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum Type: Int,  Codable {
-    case header = 0
-    case likertScales = 1
-    case fillInTheBlank = 2
-    case multipleChoice = 3
-    case singleMultipleAnswers = 4
-    case openEndedTextResponses = 5
-    case footer = 6
+enum Type: String,  Codable {
+    case header = "header"
+    case likertScales = "likert"
+    case fillInTheBlank = "blanks"
+    case multipleChoice = "multiple"
+    case singleMultipleAnswers = "single"
+    case openEndedTextResponses = "open"
+    case footer = "footer"
 }

@@ -13,6 +13,7 @@ class SurveyViewController: UIViewController {
     
     var theSurvey: Survey? = nil
     var currentPage = Question()
+    var theUser: User?
     
     var header: HeaderViewController?
     var likertScale: LikertScaleViewController?
@@ -26,25 +27,26 @@ class SurveyViewController: UIViewController {
         super.viewDidLoad()
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        header = storyboard.instantiateViewController(withIdentifier: "header") as! HeaderViewController
+        header = storyboard.instantiateViewController(withIdentifier: "header") as? HeaderViewController
         header?.setListener(listener: self)
+        header?.theUser = self.theUser
         
-        likertScale = storyboard.instantiateViewController(withIdentifier: "likertScale") as! LikertScaleViewController
+        likertScale = storyboard.instantiateViewController(withIdentifier: "likertScale") as? LikertScaleViewController
         likertScale?.setListener(listener: self)
         
-        fillInTheBlank = storyboard.instantiateViewController(withIdentifier: "fillInTheBlank") as! FillInTheBlankViewController
+        fillInTheBlank = storyboard.instantiateViewController(withIdentifier: "fillInTheBlank") as? FillInTheBlankViewController
         fillInTheBlank?.setListener(listener: self)
         
-        multipleChoice = storyboard.instantiateViewController(withIdentifier: "multipleChoice") as! MultipleChoiceViewController
+        multipleChoice = storyboard.instantiateViewController(withIdentifier: "multipleChoice") as? MultipleChoiceViewController
         multipleChoice?.setListener(listener: self)
         
-        singleMultipleAnswers = storyboard.instantiateViewController(withIdentifier: "singleMultipleAnswer") as! SingleMultipleAnswersViewController
+        singleMultipleAnswers = storyboard.instantiateViewController(withIdentifier: "singleMultipleAnswer") as? SingleMultipleAnswersViewController
         singleMultipleAnswers?.setListener(listener: self)
         
-        openEndedTextResponses = storyboard.instantiateViewController(withIdentifier: "openEndedTextResponses") as! OpenEndedTextResponsesViewController
+        openEndedTextResponses = storyboard.instantiateViewController(withIdentifier: "openEndedTextResponses") as? OpenEndedTextResponsesViewController
         openEndedTextResponses?.setListener(listener: self)
         
-        footer = storyboard.instantiateViewController(withIdentifier: "footer") as! FooterViewController
+        footer = storyboard.instantiateViewController(withIdentifier: "footer") as? FooterViewController
         footer?.setListener(listener: self)
         
         if theSurvey?.questions.first != nil{
@@ -178,12 +180,14 @@ extension SurveyViewController: QuestionListener{
     
     func closeSurvey() {
         print("closeSurvey")
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func sendInSurvey() {
         print("sendInSurvey")
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func nextQuestion(current: Question) {

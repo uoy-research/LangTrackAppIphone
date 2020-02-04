@@ -11,8 +11,14 @@ import UIKit
 class HeaderViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var lu_inageView: UIImageView!
     
+    @IBOutlet weak var greetingsLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var theUser: User?
     var listener: QuestionListener?
     var theQuestion = Question()
     
@@ -22,7 +28,7 @@ class HeaderViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        tempLabel.text = theQuestion.text
+        userNameLabel.text = "Inloggad som\n\(theUser?.userName ?? "noName")"
     }
     
     func setListener(listener: QuestionListener) {
