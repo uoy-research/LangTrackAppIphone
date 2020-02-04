@@ -11,6 +11,9 @@
 // deltagare1a2b3c@humlablu.com
 // 123456
 
+//TDO: Hämta telefonens tidszoon och spara i settings för appen
+// skicka med token från firebase i header /refreshtoken
+
 import UIKit
 import Firebase
 
@@ -30,6 +33,7 @@ class ViewController: UIViewController {
     
     var surveyList = [Survey]()
     var selectedSurvey: Survey?
+    var theUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,25 +67,55 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
         }else{
             var username = Auth.auth().currentUser?.email
+            print("Auth.auth().currentUser?: \(Auth.auth().currentUser?.refreshToken ?? "no tyoken" )")
             username!.until("@")
-            userNameLabel.text = "Inloggad som \(username!)"
+            self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
+            userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
         }
     }
     @IBAction func logOutButtonPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-            performSegue(withIdentifier: "login", sender: nil)
-            //TODO: Töm listor osv
-        } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
+        if firebaseAuth.currentUser != nil{
+            var username = firebaseAuth.currentUser?.email
+            username!.until("@")
+            DispatchQueue.main.async {
+                let popup = UIAlertController(title: "Logga ut", message: "Vill du logga ut?\n\(username ?? "")", preferredStyle: .alert)
+                popup.addAction(UIAlertAction(title: "Logga ut", style: .destructive, handler:{alert -> Void in
+                    do {
+                        try firebaseAuth.signOut()
+                        self.performSegue(withIdentifier: "login", sender: nil)
+                        //TODO: Töm listor osv
+                        self.userNameLabel.text = ""
+                    } catch let signOutError as NSError {
+                        print ("Error signing out: %@", signOutError)
+                    }
+                }))
+                popup.addAction(UIAlertAction(title: "Avbryt", style: .cancel, handler: nil))
+                
+                self.present(popup, animated: true, completion: nil)
+            }
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "survey"{
+            let dest = segue.destination as! SurveyViewController
+            dest.modalPresentationStyle = .fullScreen
+            dest.theSurvey = selectedSurvey
+            dest.theUser = self.theUser
+        }else if segue.identifier == "login"{
+            let dest = segue.destination as! LoginViewController
+            dest.modalPresentationStyle = .fullScreen
+        }
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
@@ -103,10 +137,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSurvey = surveyList[indexPath.row]
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        performSegue(withIdentifier: "survey", sender: nil)
+        /*let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "surveyContainer") as! SurveyViewController
         newViewController.theSurvey = surveyList[indexPath.row]
         newViewController.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(newViewController, animated: true)
+        self.navigationController?.pushViewController(newViewController, animated: true)*/
     }
 }

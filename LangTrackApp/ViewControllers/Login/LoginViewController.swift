@@ -77,7 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             Auth.auth().signIn(withEmail: userEmail, password: password!) { (result, error) in
                 if error == nil{
-                    print("auth signIn: \(result.debugDescription)")
+                    print("auth signIn: \(result?.debugDescription)")
                 }else{
                     self.activityIndicator.stopAnimating()
                     print("auth signIn ERROR: \(error?.localizedDescription ?? "")")
@@ -101,7 +101,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func close(){
         self.activityIndicator.stopAnimating()
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func helpButtonPressed(_ sender: Any) {
         DispatchQueue.main.async {
