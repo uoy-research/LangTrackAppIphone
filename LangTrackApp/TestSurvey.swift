@@ -101,8 +101,6 @@ class TestSurvey {
         let tempSurvey = Survey()
         tempSurvey.questions = tempQuestionList
         tempSurvey.date = Int64(Date().timeIntervalSince1970)
-        tempSurvey.footerText = ""
-        tempSurvey.headerText = ""
         tempSurvey.responded = responded
         tempSurvey.title = "Testsurvey \(number)"
 
@@ -151,8 +149,6 @@ class TestSurvey {
         let tempSurvey = Survey()
         tempSurvey.questions = tempQuestionList
         tempSurvey.date = Int64(Date().timeIntervalSince1970)
-        tempSurvey.footerText = ""
-        tempSurvey.headerText = ""
         tempSurvey.responded = responded
         tempSurvey.title = "Testsurvey \(number)"
 
@@ -225,8 +221,6 @@ class TestSurvey {
         let tempSurvey = Survey()
         tempSurvey.questions = tempQuestionList
         tempSurvey.date = Int64(Date().timeIntervalSince1970)
-        tempSurvey.footerText = ""
-        tempSurvey.headerText = ""
         tempSurvey.responded = responded
         tempSurvey.title = "Testsurvey \(number)"
 

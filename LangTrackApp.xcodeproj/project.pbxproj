@@ -17,6 +17,7 @@
 		F10B84B923E47A71003CAC76 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B84B823E47A71003CAC76 /* DateParser.swift */; };
 		F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
+		F1532DB023EABA4D00171355 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* JsonHelper.swift */; };
 		F156587123E2DD7500EC2796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156587023E2DD7500EC2796 /* AppDelegate.swift */; };
 		F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156587223E2DD7500EC2796 /* SceneDelegate.swift */; };
 		F156587523E2DD7500EC2796 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156587423E2DD7500EC2796 /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 		F10B84B823E47A71003CAC76 /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTableViewCell.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1532DAF23EABA4D00171355 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		F156586D23E2DD7500EC2796 /* LangTrackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LangTrackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F156587023E2DD7500EC2796 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F156587223E2DD7500EC2796 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				F10B84B823E47A71003CAC76 /* DateParser.swift */,
+				F1532DAF23EABA4D00171355 /* JsonHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				F178752523E41639003D16D1 /* Survey.swift in Sources */,
 				F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */,
 				F156587523E2DD7500EC2796 /* ViewController.swift in Sources */,
+				F1532DB023EABA4D00171355 /* JsonHelper.swift in Sources */,
 				F156587123E2DD7500EC2796 /* AppDelegate.swift in Sources */,
 				F10136E723E8372300B36CF0 /* LoginViewController.swift in Sources */,
 				F15658A523E33DA100EC2796 /* HeaderViewController.swift in Sources */,

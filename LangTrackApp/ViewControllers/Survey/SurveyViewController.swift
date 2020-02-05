@@ -49,6 +49,9 @@ class SurveyViewController: UIViewController {
         footer = storyboard.instantiateViewController(withIdentifier: "footer") as? FooterViewController
         footer?.setListener(listener: self)
         
+        //to convert to json
+        //print(theSurvey!.convertToString!)
+        
         if theSurvey?.questions.first != nil{
             showPage(newPage: theSurvey!.questions.first!)
         }
