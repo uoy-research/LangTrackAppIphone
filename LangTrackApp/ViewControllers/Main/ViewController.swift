@@ -49,6 +49,7 @@ class ViewController: UIViewController {
     var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
+    var latestFetchMilli: Int64 = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,24 +78,26 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
         }else{
             // the user is logged in
-            if let token = Auth.auth().currentUser?.refreshToken{
-                JsonHelper.getJson(token: token) { (surveys) in
-                    if surveys != nil{
-                        DispatchQueue.main.async {
-                            self.surveyList = surveys!
-                            self.theTableView.reloadData()
+            // if less than 5 min ago - dont fetch
+            if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
+                if let token = Auth.auth().currentUser?.refreshToken{
+                    print("Fetching new surveys")
+                    JsonHelper.getSurveys(token: token) { (surveys) in
+                        if surveys != nil{
+                            DispatchQueue.main.async {
+                                self.surveyList = surveys!
+                                self.theTableView.reloadData()
+                            }
                         }
                     }
                 }
+                latestFetchMilli = Date().millisecondsSince1970
             }
             var username = Auth.auth().currentUser?.email
             username!.until("@")
@@ -139,6 +142,8 @@ class ViewController: UIViewController {
     }
 }
 
+//MARK:- Tableview extension
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,8 +162,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("you selected \(indexPath.row)")
         selectedSurvey = surveyList[indexPath.row]
-        performSegue(withIdentifier: "survey", sender: nil)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "survey", sender: nil)
+        }
         /*let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "surveyContainer") as! SurveyViewController
         newViewController.theSurvey = surveyList[indexPath.row]
