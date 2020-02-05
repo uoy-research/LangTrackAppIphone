@@ -10,31 +10,49 @@ import Foundation
 
 
 struct JsonHelper {
-    static func getJson(completionhandler: @escaping (_ result: [Survey]?) -> Void){
-        let request = NSMutableURLRequest(url: URL(string: "https://www.dropbox.com/s/0iubma625aax6vg/survey_json.txt?dl=1")!)//sista nollan ska ändras till etta!!!
+    
+    //sista nollan ska ändras till etta vid hämtning från dropbox
+    static let theUrl = "https://www.dropbox.com/s/0iubma625aax6vg/survey_json.txt?dl=1"
+    
+    static func getSurveys(token: String, completionhandler: @escaping (_ result: [Survey]?) -> Void){
+        
+        let request = NSMutableURLRequest(url: URL(string: theUrl)!)
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(token, forHTTPHeaderField: "token")
+
         let session = URLSession.shared
         request.httpMethod = "GET"
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             if(error != nil){
-                print("AJDÅ DET GICK FEL")
+                print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
                 completionhandler(nil)
                 return
             }
-            do {
-                do {
-                    // Decode data to object
-                    
-                    let jsonDecoder = JSONDecoder()
-                    let theSurvey = try jsonDecoder.decode([Survey].self, from: data!)
-                    completionhandler(theSurvey)
+            /*do {
+                // Read all HTTP Response Headers
+                if let response = response as? HTTPURLResponse {
+                    print("All headers: \(response.allHeaderFields)")
+                    // Read a specific HTTP Response Header by name
+                    print("Specific header: \(response.value(forHTTPHeaderField: "Content-Type") ?? " header not found")")
                 }
-                catch {
-                    print("ERROR call")
-                    completionhandler(nil)
-                }
-            }
+            }*/
+            completionhandler(parseJson(data: data!))
         })
         task.resume()
+    }
+    
+    
+    private static func parseJson(data: Data) -> [Survey]?{
+        // Decode data to object
+        var returnValue: [Survey]?
+        do {
+            returnValue = try JSONDecoder().decode([Survey].self, from: data)
+        } catch {
+            print("Error took place\(error.localizedDescription).")
+        }
+        return returnValue
     }
 }
