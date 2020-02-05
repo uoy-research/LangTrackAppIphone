@@ -16,10 +16,10 @@
  
 */
 /*TODO:
- Hämta telefonens tidszoon och spara i settings för appen
+ *Hämta telefonens tidszoon och spara i settings för appen
  skicka med token från firebase i header /refreshtoken
- skapa survey som Json och läs in som objekt
- lägga json fil någonstans och hämta med http GET
+ *skapa survey som Json och läs in som objekt
+ *lägga json fil någonstans och hämta med http GET
  FIXA iTunes connect!!!!!
  Koppla push och hantera i appen
  
@@ -74,6 +74,7 @@ class ViewController: UIViewController {
         print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
         print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,19 +85,21 @@ class ViewController: UIViewController {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
         }else{
+            // the user is logged in
+            if let token = Auth.auth().currentUser?.refreshToken{
+                JsonHelper.getJson(token: token) { (surveys) in
+                    if surveys != nil{
+                        DispatchQueue.main.async {
+                            self.surveyList = surveys!
+                            self.theTableView.reloadData()
+                        }
+                    }
+                }
+            }
             var username = Auth.auth().currentUser?.email
-            print("Auth.auth().currentUser?.refreshToken: \(Auth.auth().currentUser?.refreshToken ?? "no tyoken" )")
             username!.until("@")
             self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
             userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
-        }
-        JsonHelper.getJson { (surveys) in
-            if surveys != nil{
-                DispatchQueue.main.async {
-                    self.surveyList = surveys!
-                    self.theTableView.reloadData()
-                }
-            }
         }
     }
     @IBAction func logOutButtonPressed(_ sender: Any) {
