@@ -10,9 +10,21 @@
 
 // deltagare1a2b3c@humlablu.com
 // 123456
-
-//TDO: Hämta telefonens tidszoon och spara i settings för appen
-// skicka med token från firebase i header /refreshtoken
+/*
+ När användaren öppnar appen - GET surveys
+ fixa och visa svarade/osvarade/utgångna/ osv i listan
+ 
+*/
+/*TODO:
+ Hämta telefonens tidszoon och spara i settings för appen
+ skicka med token från firebase i header /refreshtoken
+ skapa survey som Json och läs in som objekt
+ lägga json fil någonstans och hämta med http GET
+ FIXA iTunes connect!!!!!
+ Koppla push och hantera i appen
+ 
+ länk till filen på dropbox: https://www.dropbox.com/s/6ordf3pkyvtb5cu/survey_json.txt?dl=0
+*/
 
 import UIKit
 import Firebase
@@ -34,6 +46,9 @@ class ViewController: UIViewController {
     var surveyList = [Survey]()
     var selectedSurvey: Survey?
     var theUser: User?
+    var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+    var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
+    var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,14 +70,9 @@ class ViewController: UIViewController {
         contactButton.layer.borderWidth = 0.35
         contactButton.layer.borderColor = UIColor.lightGray.cgColor
         
-        surveyList.append(TestSurvey.getTempSurvey(number: "1", responded: false))
-        surveyList.append(TestSurvey.getTempSurvey(number: "2", responded: true))
-        surveyList.append(TestSurvey.getTempSurvey(number: "3", responded: true))
-        surveyList.append(TestSurvey.getTempSurveyWithOneQuestion(number: "med en fråga", responded: false))
-        surveyList.append(TestSurvey.getTempSurveyWithThreeMixedQuestion(number: "med tre frågor", responded: true))
-        theTableView.reloadData()
-        
-        
+        print("secondsFromGMT: \(secondsFromGMT)")
+        print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
+        print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
         
     }
     
@@ -75,10 +85,18 @@ class ViewController: UIViewController {
             performSegue(withIdentifier: "login", sender: nil)
         }else{
             var username = Auth.auth().currentUser?.email
-            print("Auth.auth().currentUser?: \(Auth.auth().currentUser?.refreshToken ?? "no tyoken" )")
+            print("Auth.auth().currentUser?.refreshToken: \(Auth.auth().currentUser?.refreshToken ?? "no tyoken" )")
             username!.until("@")
             self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
             userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
+        }
+        JsonHelper.getJson { (surveys) in
+            if surveys != nil{
+                DispatchQueue.main.async {
+                    self.surveyList = surveys!
+                    self.theTableView.reloadData()
+                }
+            }
         }
     }
     @IBAction func logOutButtonPressed(_ sender: Any) {
