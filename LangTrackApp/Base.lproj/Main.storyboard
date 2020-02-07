@@ -529,6 +529,130 @@
                                     <action selector="nextButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="HSG-hJ-jbS"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-pR-6wd">
+                                <rect key="frame" x="20" y="217" width="374" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-Q9-2b4" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="5" width="69" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                <color key="value" name="lta_blue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                <color key="value" name="lta_gold"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="h5E-kC-su0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liH-Vh-sj5" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                        <rect key="frame" x="79" y="5" width="68.5" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                <color key="value" name="lta_blue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                <color key="value" name="lta_gold"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="Kgh-7s-Stq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-s2-IIn" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                        <rect key="frame" x="152.5" y="5" width="69" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                <color key="value" name="lta_blue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                <color key="value" name="lta_gold"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="QuV-lu-1dO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE6-XY-EwL" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                        <rect key="frame" x="226.5" y="5" width="68.5" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                <color key="value" name="lta_blue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                <color key="value" name="lta_gold"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="hcO-Nh-bpo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqY-w5-jmK" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                        <rect key="frame" x="300" y="5" width="69" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                <color key="value" name="lta_blue"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                <color key="value" name="lta_gold"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="wkG-Vm-obZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="liH-Vh-sj5" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="6fG-tD-8dr"/>
+                                    <constraint firstItem="hE6-XY-EwL" firstAttribute="leading" secondItem="4aK-s2-IIn" secondAttribute="trailing" constant="5" id="Ao6-0r-ROE"/>
+                                    <constraint firstItem="DqY-w5-jmK" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="BBO-GP-4O7"/>
+                                    <constraint firstItem="v2D-Q9-2b4" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="BwX-5z-tPL"/>
+                                    <constraint firstItem="hE6-XY-EwL" firstAttribute="width" secondItem="4aK-s2-IIn" secondAttribute="width" id="GRj-UD-NjU"/>
+                                    <constraint firstAttribute="bottom" secondItem="v2D-Q9-2b4" secondAttribute="bottom" constant="5" id="HaZ-pi-BdI"/>
+                                    <constraint firstItem="4aK-s2-IIn" firstAttribute="leading" secondItem="liH-Vh-sj5" secondAttribute="trailing" constant="5" id="Heb-uE-BId"/>
+                                    <constraint firstItem="4aK-s2-IIn" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="K19-Ko-ft0"/>
+                                    <constraint firstItem="v2D-Q9-2b4" firstAttribute="leading" secondItem="F2X-pR-6wd" secondAttribute="leading" constant="5" id="Lih-U2-TEk"/>
+                                    <constraint firstItem="DqY-w5-jmK" firstAttribute="leading" secondItem="hE6-XY-EwL" secondAttribute="trailing" constant="5" id="Tyx-yj-vFv"/>
+                                    <constraint firstItem="liH-Vh-sj5" firstAttribute="width" secondItem="v2D-Q9-2b4" secondAttribute="width" id="dYN-Qg-E55"/>
+                                    <constraint firstAttribute="trailing" secondItem="DqY-w5-jmK" secondAttribute="trailing" constant="5" id="eGy-TD-VEh"/>
+                                    <constraint firstItem="4aK-s2-IIn" firstAttribute="width" secondItem="liH-Vh-sj5" secondAttribute="width" id="kMt-g4-78x"/>
+                                    <constraint firstItem="liH-Vh-sj5" firstAttribute="leading" secondItem="v2D-Q9-2b4" secondAttribute="trailing" constant="5" id="mhy-QX-ONK"/>
+                                    <constraint firstItem="hE6-XY-EwL" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="uck-zp-QGY"/>
+                                    <constraint firstItem="DqY-w5-jmK" firstAttribute="width" secondItem="hE6-XY-EwL" secondAttribute="width" id="z7H-0y-afB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -536,7 +660,10 @@
                             <constraint firstItem="rhZ-CS-Oxl" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="50" id="NOI-Iz-woL"/>
                             <constraint firstItem="tIR-57-dKU" firstAttribute="centerX" secondItem="Rks-7S-Wuo" secondAttribute="centerX" id="Q6a-YP-bCY"/>
                             <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="eNh-k7-bAJ" secondAttribute="trailing" constant="50" id="Sbg-fw-6Lq"/>
+                            <constraint firstItem="F2X-pR-6wd" firstAttribute="top" secondItem="boz-eb-vSf" secondAttribute="top" constant="173" id="Ud8-A8-oJy"/>
+                            <constraint firstItem="F2X-pR-6wd" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="20" id="WoB-pq-GB6"/>
                             <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="eNh-k7-bAJ" secondAttribute="bottom" constant="50" id="b7b-wI-Bbg"/>
+                            <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="F2X-pR-6wd" secondAttribute="trailing" constant="20" id="bD8-LV-eyh"/>
                             <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="tIR-57-dKU" secondAttribute="trailing" constant="20" id="diN-YP-637"/>
                             <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="rhZ-CS-Oxl" secondAttribute="bottom" constant="50" id="iWP-It-4Ak"/>
                             <constraint firstItem="tIR-57-dKU" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="20" id="kcD-tE-q8V"/>
@@ -547,12 +674,17 @@
                     <connections>
                         <outlet property="nextButton" destination="eNh-k7-bAJ" id="6it-Lp-5Me"/>
                         <outlet property="previousButton" destination="rhZ-CS-Oxl" id="i4O-l3-EWM"/>
+                        <outlet property="radioButton1" destination="v2D-Q9-2b4" id="orP-ax-hst"/>
+                        <outlet property="radioButton2" destination="liH-Vh-sj5" id="fp3-4C-ZtT"/>
+                        <outlet property="radioButton3" destination="4aK-s2-IIn" id="bzc-ny-nix"/>
+                        <outlet property="radioButton4" destination="hE6-XY-EwL" id="MpM-LJ-9wV"/>
+                        <outlet property="radioButton5" destination="DqY-w5-jmK" id="etF-dl-f3p"/>
                         <outlet property="tempLabel" destination="tIR-57-dKU" id="TZP-ba-kXl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC8-p3-4Oi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3383" y="-573"/>
+            <point key="canvasLocation" x="3382.608695652174" y="-573.21428571428567"/>
         </scene>
         <!--Fill In The Blank View Controller-->
         <scene sceneID="4ef-d5-P13">
@@ -864,6 +996,9 @@
         <image name="lundsuniversitet_logo" width="118" height="118"/>
         <namedColor name="lta_blue">
             <color red="0.31764705882352939" green="0.39215686274509803" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lta_gold">
+            <color red="0.72941176470588232" green="0.62745098039215685" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lta_grey">
             <color red="0.42352941176470588" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

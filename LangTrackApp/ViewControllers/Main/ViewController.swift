@@ -14,6 +14,7 @@
  När användaren öppnar appen - GET surveys
  fixa och visa svarade/osvarade/utgångna/ osv i listan
  
+ info: testsurvey från dropbox med 7 questions är ca 2000 bytes
 */
 /*TODO:
  *Hämta telefonens tidszoon och spara i settings för appen
@@ -24,7 +25,9 @@
  Koppla push och hantera i appen
  
  länk till filen på dropbox: https://www.dropbox.com/s/6ordf3pkyvtb5cu/survey_json.txt?dl=0
-*/
+ survey = enkät
+ answer = enkätsvar
+ */
 
 import UIKit
 import Firebase
