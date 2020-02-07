@@ -400,81 +400,94 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0Q-Wm-Cyc">
-                                <rect key="frame" x="50" y="772" width="52" height="40"/>
+                                <rect key="frame" x="50" y="812" width="52" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NHC-32-ts2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Stäng"/>
+                                <state key="normal" title="Stäng">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="closeButtonPressed:" destination="e8B-9R-lhf" eventType="touchUpInside" id="eVB-AU-pwf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOs-aw-GyH">
-                                <rect key="frame" x="311" y="772" width="53" height="40"/>
+                                <rect key="frame" x="311" y="812" width="53" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cR5-so-f72"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Starta"/>
+                                <state key="normal" title="Starta">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="e8B-9R-lhf" eventType="touchUpInside" id="sgJ-dh-fml"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lundsuniversitet_logo" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-we-GbX">
-                                <rect key="frame" x="107" y="94" width="200" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFb-i8-VWF">
+                                <rect key="frame" x="0.0" y="170" width="414" height="421.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lundsuniversitet_logo" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-we-GbX">
+                                        <rect key="frame" x="107" y="20" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="Dd9-7I-9FI"/>
+                                            <constraint firstAttribute="width" constant="200" id="GGq-Ec-AaU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" namn" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-fj-Yty">
+                                        <rect key="frame" x="10" y="302" width="394" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu är det dags att svara på frågor om din språkinlärning!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMh-uF-qgT">
+                                        <rect key="frame" x="20" y="353.5" width="374" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanistlaboratoriet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjz-Uh-RzL">
+                                        <rect key="frame" x="10" y="210" width="394" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="lta_blue"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE LANG-TRACK-APP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMn-W7-MNn">
+                                        <rect key="frame" x="10" y="248" width="394" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Dd9-7I-9FI"/>
-                                    <constraint firstAttribute="width" constant="200" id="GGq-Ec-AaU"/>
+                                    <constraint firstItem="Zaf-fj-Yty" firstAttribute="leading" secondItem="AFb-i8-VWF" secondAttribute="leading" constant="10" id="14g-a2-h8P"/>
+                                    <constraint firstItem="AMn-W7-MNn" firstAttribute="leading" secondItem="AFb-i8-VWF" secondAttribute="leading" constant="10" id="9jj-iD-8O6"/>
+                                    <constraint firstAttribute="trailing" secondItem="OMh-uF-qgT" secondAttribute="trailing" constant="20" id="CXg-vB-WQc"/>
+                                    <constraint firstItem="Zaf-fj-Yty" firstAttribute="top" secondItem="AMn-W7-MNn" secondAttribute="bottom" constant="30" id="HvY-uH-7Lt"/>
+                                    <constraint firstItem="AMn-W7-MNn" firstAttribute="top" secondItem="Tjz-Uh-RzL" secondAttribute="bottom" constant="20" id="Kfd-7y-fIh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tjz-Uh-RzL" secondAttribute="trailing" constant="10" id="Omj-Bd-6bp"/>
+                                    <constraint firstItem="Tjz-Uh-RzL" firstAttribute="leading" secondItem="AFb-i8-VWF" secondAttribute="leading" constant="10" id="c9c-Ky-J5U"/>
+                                    <constraint firstItem="OMh-uF-qgT" firstAttribute="top" secondItem="Zaf-fj-Yty" secondAttribute="bottom" constant="30" id="cBl-bX-2rQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="AMn-W7-MNn" secondAttribute="trailing" constant="10" id="hos-vU-vlx"/>
+                                    <constraint firstItem="Tjz-Uh-RzL" firstAttribute="top" secondItem="DcM-we-GbX" secondAttribute="bottom" constant="-10" id="hxm-xX-6LT"/>
+                                    <constraint firstItem="DcM-we-GbX" firstAttribute="top" secondItem="AFb-i8-VWF" secondAttribute="top" constant="20" symbolic="YES" id="kQ3-it-H0j"/>
+                                    <constraint firstItem="DcM-we-GbX" firstAttribute="centerX" secondItem="AFb-i8-VWF" secondAttribute="centerX" id="sdy-xg-gqh"/>
+                                    <constraint firstItem="OMh-uF-qgT" firstAttribute="leading" secondItem="AFb-i8-VWF" secondAttribute="leading" constant="20" id="v5H-5N-GqG"/>
+                                    <constraint firstAttribute="bottom" secondItem="OMh-uF-qgT" secondAttribute="bottom" constant="20" symbolic="YES" id="yVc-MA-PVi"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zaf-fj-Yty" secondAttribute="trailing" constant="10" id="zxQ-Xq-Njx"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE LANG-TRACK-APP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMn-W7-MNn">
-                                <rect key="frame" x="10" y="314" width="394" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanistlaboratoriet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjz-Uh-RzL">
-                                <rect key="frame" x="10" y="348" width="394" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zaf-fj-Yty">
-                                <rect key="frame" x="10" y="402.5" width="394" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu är det dags att svara på frågor om din språkinlärning!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMh-uF-qgT">
-                                <rect key="frame" x="30" y="454" width="354" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Tjz-Uh-RzL" firstAttribute="centerX" secondItem="c4K-QU-rQz" secondAttribute="centerX" id="7LA-2U-fPH"/>
-                            <constraint firstItem="AMn-W7-MNn" firstAttribute="top" secondItem="DcM-we-GbX" secondAttribute="bottom" constant="20" id="8MY-LN-OH1"/>
-                            <constraint firstItem="Tjz-Uh-RzL" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" constant="10" id="Dkg-Mb-Hns"/>
+                            <constraint firstItem="AFb-i8-VWF" firstAttribute="centerY" secondItem="c4K-QU-rQz" secondAttribute="centerY" multiplier="0.85" id="9A4-72-6fw"/>
+                            <constraint firstItem="AFb-i8-VWF" firstAttribute="trailing" secondItem="zOg-0M-7lc" secondAttribute="trailing" id="C3z-6B-llF"/>
                             <constraint firstItem="zOg-0M-7lc" firstAttribute="trailing" secondItem="NOs-aw-GyH" secondAttribute="trailing" constant="50" id="Pbx-EU-kfH"/>
-                            <constraint firstItem="Tjz-Uh-RzL" firstAttribute="top" secondItem="AMn-W7-MNn" secondAttribute="bottom" constant="10" id="TIj-px-BND"/>
-                            <constraint firstItem="zOg-0M-7lc" firstAttribute="trailing" secondItem="Zaf-fj-Yty" secondAttribute="trailing" constant="10" id="UKt-zG-Qzo"/>
-                            <constraint firstItem="AMn-W7-MNn" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" constant="10" id="WfJ-1Q-68Q"/>
-                            <constraint firstItem="Zaf-fj-Yty" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" constant="10" id="Wwq-M2-Oya"/>
-                            <constraint firstItem="zOg-0M-7lc" firstAttribute="bottom" secondItem="O0Q-Wm-Cyc" secondAttribute="bottom" constant="50" id="ZBR-zV-1db"/>
-                            <constraint firstItem="zOg-0M-7lc" firstAttribute="trailing" secondItem="Tjz-Uh-RzL" secondAttribute="trailing" constant="10" id="b8N-nN-2jc"/>
-                            <constraint firstItem="DcM-we-GbX" firstAttribute="centerX" secondItem="c4K-QU-rQz" secondAttribute="centerX" id="ba8-g3-ovx"/>
+                            <constraint firstItem="zOg-0M-7lc" firstAttribute="bottom" secondItem="O0Q-Wm-Cyc" secondAttribute="bottom" constant="10" id="ZBR-zV-1db"/>
+                            <constraint firstItem="AFb-i8-VWF" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" id="c7Q-vu-hOM"/>
                             <constraint firstItem="O0Q-Wm-Cyc" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" constant="50" id="di7-9X-GHC"/>
-                            <constraint firstItem="OMh-uF-qgT" firstAttribute="top" secondItem="Zaf-fj-Yty" secondAttribute="bottom" constant="30" id="ehI-fd-p2w"/>
-                            <constraint firstItem="zOg-0M-7lc" firstAttribute="bottom" secondItem="NOs-aw-GyH" secondAttribute="bottom" constant="50" id="gDq-Lf-g0P"/>
-                            <constraint firstItem="Zaf-fj-Yty" firstAttribute="top" secondItem="Tjz-Uh-RzL" secondAttribute="bottom" constant="35" id="hVK-5C-eIe"/>
-                            <constraint firstItem="zOg-0M-7lc" firstAttribute="trailing" secondItem="OMh-uF-qgT" secondAttribute="trailing" constant="30" id="hX9-Aq-BWV"/>
-                            <constraint firstItem="zOg-0M-7lc" firstAttribute="trailing" secondItem="AMn-W7-MNn" secondAttribute="trailing" constant="10" id="iBq-Yc-ky7"/>
-                            <constraint firstItem="AMn-W7-MNn" firstAttribute="centerX" secondItem="c4K-QU-rQz" secondAttribute="centerX" id="lKa-3g-quo"/>
-                            <constraint firstItem="OMh-uF-qgT" firstAttribute="leading" secondItem="zOg-0M-7lc" secondAttribute="leading" constant="30" id="skP-7c-kbj"/>
-                            <constraint firstItem="DcM-we-GbX" firstAttribute="top" secondItem="zOg-0M-7lc" secondAttribute="top" constant="50" id="zXf-J4-gpc"/>
+                            <constraint firstItem="zOg-0M-7lc" firstAttribute="bottom" secondItem="NOs-aw-GyH" secondAttribute="bottom" constant="10" id="gDq-Lf-g0P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zOg-0M-7lc"/>
                     </view>
@@ -491,7 +504,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwI-QW-o0t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2631.8840579710145" y="-573.21428571428567"/>
+            <point key="canvasLocation" x="2630.434782608696" y="-573.21428571428567"/>
         </scene>
         <!--Likert Scale View Controller-->
         <scene sceneID="4cg-jv-cMr">
@@ -501,177 +514,255 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likert scale" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIR-57-dKU">
-                                <rect key="frame" x="20" y="438" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhZ-CS-Oxl">
-                                <rect key="frame" x="50" y="772" width="104" height="40"/>
+                                <rect key="frame" x="50" y="812" width="104" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BTC-EV-TYg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Föregående"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="ybn-K2-c6j"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-k7-bAJ">
-                                <rect key="frame" x="313" y="772" width="51" height="40"/>
+                                <rect key="frame" x="313" y="812" width="51" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FxI-5b-ipb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nästa"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="HSG-hJ-jbS"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-pR-6wd">
-                                <rect key="frame" x="20" y="217" width="374" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sV0-5B-e51">
+                                <rect key="frame" x="0.0" y="262" width="414" height="282"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-Q9-2b4" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="69" height="30"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
-                                                <color key="value" name="lta_blue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
-                                                <color key="value" name="lta_gold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="h5E-kC-su0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liH-Vh-sj5" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
-                                        <rect key="frame" x="79" y="5" width="68.5" height="30"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
-                                                <color key="value" name="lta_blue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
-                                                <color key="value" name="lta_gold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="Kgh-7s-Stq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-s2-IIn" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
-                                        <rect key="frame" x="152.5" y="5" width="69" height="30"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
-                                                <color key="value" name="lta_blue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
-                                                <color key="value" name="lta_gold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="QuV-lu-1dO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE6-XY-EwL" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
-                                        <rect key="frame" x="226.5" y="5" width="68.5" height="30"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
-                                                <color key="value" name="lta_blue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
-                                                <color key="value" name="lta_gold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="hcO-Nh-bpo"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqY-w5-jmK" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
-                                        <rect key="frame" x="300" y="5" width="69" height="30"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
-                                                <color key="value" name="lta_blue"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
-                                                <color key="value" name="lta_gold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="wkG-Vm-obZ"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMd-0B-AqQ">
+                                        <rect key="frame" x="30" y="97" width="354" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likert scale" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIR-57-dKU">
+                                        <rect key="frame" x="30" y="166.5" width="354" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-pR-6wd">
+                                        <rect key="frame" x="10" y="215.5" width="394" height="66.5"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-Q9-2b4" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                                <rect key="frame" x="5" y="5" width="73" height="30"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                        <color key="value" name="lta_blue"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                        <color key="value" name="lta_light_grey"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="h5E-kC-su0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liH-Vh-sj5" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                                <rect key="frame" x="83" y="5" width="72.5" height="30"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                        <color key="value" name="lta_blue"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                        <color key="value" name="lta_light_grey"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="Kgh-7s-Stq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-s2-IIn" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                                <rect key="frame" x="160.5" y="5" width="73" height="30"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                        <color key="value" name="lta_blue"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                        <color key="value" name="lta_light_grey"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="QuV-lu-1dO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE6-XY-EwL" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                                <rect key="frame" x="238.5" y="5" width="72.5" height="30"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                        <color key="value" name="lta_blue"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                        <color key="value" name="lta_light_grey"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="hcO-Nh-bpo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqY-w5-jmK" customClass="LikertRadioButton" customModule="LangTrackApp" customModuleProvider="target">
+                                                <rect key="frame" x="316" y="5" width="73" height="30"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                                        <color key="value" name="lta_blue"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="innerCircleCircleColor">
+                                                        <color key="value" name="lta_light_grey"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="outerCircleLineWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="innerCircleGap">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likertButtonPressed:" destination="mSc-aZ-iwR" eventType="touchUpInside" id="wkG-Vm-obZ"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F66-Cc-zBV">
+                                                <rect key="frame" x="5" y="40" width="73" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIx-tQ-7LP">
+                                                <rect key="frame" x="83" y="40" width="72.5" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKY-KD-z7c">
+                                                <rect key="frame" x="160.5" y="40" width="73" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbZ-nB-WXU">
+                                                <rect key="frame" x="238.5" y="40" width="72.5" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqU-Kp-ygx">
+                                                <rect key="frame" x="316" y="40" width="73" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rKY-KD-z7c" firstAttribute="width" secondItem="ZIx-tQ-7LP" secondAttribute="width" id="1Hu-0e-2BS"/>
+                                            <constraint firstItem="iqU-Kp-ygx" firstAttribute="width" secondItem="JbZ-nB-WXU" secondAttribute="width" id="2RJ-NA-tQi"/>
+                                            <constraint firstItem="iqU-Kp-ygx" firstAttribute="top" secondItem="hE6-XY-EwL" secondAttribute="bottom" constant="5" id="66v-5D-r1b"/>
+                                            <constraint firstItem="liH-Vh-sj5" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="6fG-tD-8dr"/>
+                                            <constraint firstItem="hE6-XY-EwL" firstAttribute="leading" secondItem="4aK-s2-IIn" secondAttribute="trailing" constant="5" id="Ao6-0r-ROE"/>
+                                            <constraint firstItem="DqY-w5-jmK" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="BBO-GP-4O7"/>
+                                            <constraint firstItem="rKY-KD-z7c" firstAttribute="top" secondItem="liH-Vh-sj5" secondAttribute="bottom" constant="5" id="Bf5-1h-k1T"/>
+                                            <constraint firstItem="v2D-Q9-2b4" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="BwX-5z-tPL"/>
+                                            <constraint firstItem="ZIx-tQ-7LP" firstAttribute="leading" secondItem="F66-Cc-zBV" secondAttribute="trailing" constant="5" id="GOR-9N-2DF"/>
+                                            <constraint firstItem="hE6-XY-EwL" firstAttribute="width" secondItem="4aK-s2-IIn" secondAttribute="width" id="GRj-UD-NjU"/>
+                                            <constraint firstItem="4aK-s2-IIn" firstAttribute="leading" secondItem="liH-Vh-sj5" secondAttribute="trailing" constant="5" id="Heb-uE-BId"/>
+                                            <constraint firstItem="4aK-s2-IIn" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="K19-Ko-ft0"/>
+                                            <constraint firstItem="v2D-Q9-2b4" firstAttribute="leading" secondItem="F2X-pR-6wd" secondAttribute="leading" constant="5" id="Lih-U2-TEk"/>
+                                            <constraint firstItem="JbZ-nB-WXU" firstAttribute="width" secondItem="rKY-KD-z7c" secondAttribute="width" id="Ncy-d7-r0O"/>
+                                            <constraint firstItem="JbZ-nB-WXU" firstAttribute="leading" secondItem="rKY-KD-z7c" secondAttribute="trailing" constant="5" id="Q4c-0C-EO1"/>
+                                            <constraint firstItem="DqY-w5-jmK" firstAttribute="leading" secondItem="hE6-XY-EwL" secondAttribute="trailing" constant="5" id="Tyx-yj-vFv"/>
+                                            <constraint firstAttribute="bottom" secondItem="F66-Cc-zBV" secondAttribute="bottom" constant="5" id="XUz-d6-o1N"/>
+                                            <constraint firstItem="ZIx-tQ-7LP" firstAttribute="width" secondItem="F66-Cc-zBV" secondAttribute="width" id="Z9m-fO-UJr"/>
+                                            <constraint firstItem="ZIx-tQ-7LP" firstAttribute="top" secondItem="liH-Vh-sj5" secondAttribute="bottom" constant="5" id="ZNi-0L-8Sv"/>
+                                            <constraint firstItem="JbZ-nB-WXU" firstAttribute="top" secondItem="4aK-s2-IIn" secondAttribute="bottom" constant="5" id="Zg5-P7-5xy"/>
+                                            <constraint firstItem="liH-Vh-sj5" firstAttribute="width" secondItem="v2D-Q9-2b4" secondAttribute="width" id="dYN-Qg-E55"/>
+                                            <constraint firstAttribute="trailing" secondItem="DqY-w5-jmK" secondAttribute="trailing" constant="5" id="eGy-TD-VEh"/>
+                                            <constraint firstItem="iqU-Kp-ygx" firstAttribute="leading" secondItem="JbZ-nB-WXU" secondAttribute="trailing" constant="5" id="jiP-nX-I9r"/>
+                                            <constraint firstItem="4aK-s2-IIn" firstAttribute="width" secondItem="liH-Vh-sj5" secondAttribute="width" id="kMt-g4-78x"/>
+                                            <constraint firstAttribute="trailing" secondItem="iqU-Kp-ygx" secondAttribute="trailing" constant="5" id="mWS-Jt-vUW"/>
+                                            <constraint firstItem="liH-Vh-sj5" firstAttribute="leading" secondItem="v2D-Q9-2b4" secondAttribute="trailing" constant="5" id="mhy-QX-ONK"/>
+                                            <constraint firstItem="hE6-XY-EwL" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="uck-zp-QGY"/>
+                                            <constraint firstItem="rKY-KD-z7c" firstAttribute="leading" secondItem="ZIx-tQ-7LP" secondAttribute="trailing" constant="5" id="urm-YP-zvr"/>
+                                            <constraint firstItem="F66-Cc-zBV" firstAttribute="leading" secondItem="F2X-pR-6wd" secondAttribute="leading" constant="5" id="voD-fz-BOk"/>
+                                            <constraint firstItem="DqY-w5-jmK" firstAttribute="width" secondItem="hE6-XY-EwL" secondAttribute="width" id="z7H-0y-afB"/>
+                                            <constraint firstItem="F66-Cc-zBV" firstAttribute="top" secondItem="v2D-Q9-2b4" secondAttribute="bottom" constant="5" id="ziT-Ca-9QP"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚖️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGW-nO-w7g">
+                                        <rect key="frame" x="174.5" y="0.0" width="65" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="liH-Vh-sj5" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="6fG-tD-8dr"/>
-                                    <constraint firstItem="hE6-XY-EwL" firstAttribute="leading" secondItem="4aK-s2-IIn" secondAttribute="trailing" constant="5" id="Ao6-0r-ROE"/>
-                                    <constraint firstItem="DqY-w5-jmK" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="BBO-GP-4O7"/>
-                                    <constraint firstItem="v2D-Q9-2b4" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="BwX-5z-tPL"/>
-                                    <constraint firstItem="hE6-XY-EwL" firstAttribute="width" secondItem="4aK-s2-IIn" secondAttribute="width" id="GRj-UD-NjU"/>
-                                    <constraint firstAttribute="bottom" secondItem="v2D-Q9-2b4" secondAttribute="bottom" constant="5" id="HaZ-pi-BdI"/>
-                                    <constraint firstItem="4aK-s2-IIn" firstAttribute="leading" secondItem="liH-Vh-sj5" secondAttribute="trailing" constant="5" id="Heb-uE-BId"/>
-                                    <constraint firstItem="4aK-s2-IIn" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="K19-Ko-ft0"/>
-                                    <constraint firstItem="v2D-Q9-2b4" firstAttribute="leading" secondItem="F2X-pR-6wd" secondAttribute="leading" constant="5" id="Lih-U2-TEk"/>
-                                    <constraint firstItem="DqY-w5-jmK" firstAttribute="leading" secondItem="hE6-XY-EwL" secondAttribute="trailing" constant="5" id="Tyx-yj-vFv"/>
-                                    <constraint firstItem="liH-Vh-sj5" firstAttribute="width" secondItem="v2D-Q9-2b4" secondAttribute="width" id="dYN-Qg-E55"/>
-                                    <constraint firstAttribute="trailing" secondItem="DqY-w5-jmK" secondAttribute="trailing" constant="5" id="eGy-TD-VEh"/>
-                                    <constraint firstItem="4aK-s2-IIn" firstAttribute="width" secondItem="liH-Vh-sj5" secondAttribute="width" id="kMt-g4-78x"/>
-                                    <constraint firstItem="liH-Vh-sj5" firstAttribute="leading" secondItem="v2D-Q9-2b4" secondAttribute="trailing" constant="5" id="mhy-QX-ONK"/>
-                                    <constraint firstItem="hE6-XY-EwL" firstAttribute="top" secondItem="F2X-pR-6wd" secondAttribute="top" constant="5" id="uck-zp-QGY"/>
-                                    <constraint firstItem="DqY-w5-jmK" firstAttribute="width" secondItem="hE6-XY-EwL" secondAttribute="width" id="z7H-0y-afB"/>
+                                    <constraint firstItem="pGW-nO-w7g" firstAttribute="top" secondItem="sV0-5B-e51" secondAttribute="top" id="063-UK-46C"/>
+                                    <constraint firstItem="pGW-nO-w7g" firstAttribute="centerX" secondItem="sV0-5B-e51" secondAttribute="centerX" id="8c6-HZ-yc7"/>
+                                    <constraint firstAttribute="trailing" secondItem="eMd-0B-AqQ" secondAttribute="trailing" constant="30" id="H7i-w9-hE7"/>
+                                    <constraint firstItem="eMd-0B-AqQ" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="30" id="IFw-Vp-Da9"/>
+                                    <constraint firstItem="F2X-pR-6wd" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="10" id="LCa-G4-mai"/>
+                                    <constraint firstItem="tIR-57-dKU" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="30" id="Q2M-va-cne"/>
+                                    <constraint firstItem="eMd-0B-AqQ" firstAttribute="top" secondItem="pGW-nO-w7g" secondAttribute="bottom" constant="25" id="QVP-E9-HZL"/>
+                                    <constraint firstItem="tIR-57-dKU" firstAttribute="top" secondItem="eMd-0B-AqQ" secondAttribute="bottom" constant="50" id="SUF-v2-pfz"/>
+                                    <constraint firstAttribute="trailing" secondItem="F2X-pR-6wd" secondAttribute="trailing" constant="10" id="WwB-34-cSx"/>
+                                    <constraint firstItem="F2X-pR-6wd" firstAttribute="top" secondItem="tIR-57-dKU" secondAttribute="bottom" constant="25" id="dSF-dx-ODs"/>
+                                    <constraint firstAttribute="trailing" secondItem="tIR-57-dKU" secondAttribute="trailing" constant="30" id="ukZ-qx-e0g"/>
+                                    <constraint firstAttribute="bottom" secondItem="F2X-pR-6wd" secondAttribute="bottom" id="va1-JC-aLg"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tIR-57-dKU" firstAttribute="centerY" secondItem="Rks-7S-Wuo" secondAttribute="centerY" id="IqC-JY-WV5"/>
+                            <constraint firstItem="sV0-5B-e51" firstAttribute="centerY" secondItem="Rks-7S-Wuo" secondAttribute="centerY" multiplier="0.9" id="0xU-8v-IxH"/>
                             <constraint firstItem="rhZ-CS-Oxl" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="50" id="NOI-Iz-woL"/>
-                            <constraint firstItem="tIR-57-dKU" firstAttribute="centerX" secondItem="Rks-7S-Wuo" secondAttribute="centerX" id="Q6a-YP-bCY"/>
                             <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="eNh-k7-bAJ" secondAttribute="trailing" constant="50" id="Sbg-fw-6Lq"/>
-                            <constraint firstItem="F2X-pR-6wd" firstAttribute="top" secondItem="boz-eb-vSf" secondAttribute="top" constant="173" id="Ud8-A8-oJy"/>
-                            <constraint firstItem="F2X-pR-6wd" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="20" id="WoB-pq-GB6"/>
-                            <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="eNh-k7-bAJ" secondAttribute="bottom" constant="50" id="b7b-wI-Bbg"/>
-                            <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="F2X-pR-6wd" secondAttribute="trailing" constant="20" id="bD8-LV-eyh"/>
-                            <constraint firstItem="boz-eb-vSf" firstAttribute="trailing" secondItem="tIR-57-dKU" secondAttribute="trailing" constant="20" id="diN-YP-637"/>
-                            <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="rhZ-CS-Oxl" secondAttribute="bottom" constant="50" id="iWP-It-4Ak"/>
-                            <constraint firstItem="tIR-57-dKU" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" constant="20" id="kcD-tE-q8V"/>
+                            <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="eNh-k7-bAJ" secondAttribute="bottom" constant="10" id="b7b-wI-Bbg"/>
+                            <constraint firstItem="boz-eb-vSf" firstAttribute="bottom" secondItem="rhZ-CS-Oxl" secondAttribute="bottom" constant="10" id="iWP-It-4Ak"/>
+                            <constraint firstItem="sV0-5B-e51" firstAttribute="trailing" secondItem="boz-eb-vSf" secondAttribute="trailing" id="tm3-c2-5XT"/>
+                            <constraint firstItem="sV0-5B-e51" firstAttribute="leading" secondItem="boz-eb-vSf" secondAttribute="leading" id="uBd-GG-L0p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="boz-eb-vSf"/>
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="eMd-0B-AqQ" id="f3u-jl-dae"/>
+                        <outlet property="likertContainer" destination="sV0-5B-e51" id="lsK-q1-RX9"/>
+                        <outlet property="likertTextLabel" destination="tIR-57-dKU" id="G4X-Dx-fBg"/>
                         <outlet property="nextButton" destination="eNh-k7-bAJ" id="6it-Lp-5Me"/>
                         <outlet property="previousButton" destination="rhZ-CS-Oxl" id="i4O-l3-EWM"/>
                         <outlet property="radioButton1" destination="v2D-Q9-2b4" id="orP-ax-hst"/>
@@ -679,7 +770,7 @@
                         <outlet property="radioButton3" destination="4aK-s2-IIn" id="bzc-ny-nix"/>
                         <outlet property="radioButton4" destination="hE6-XY-EwL" id="MpM-LJ-9wV"/>
                         <outlet property="radioButton5" destination="DqY-w5-jmK" id="etF-dl-f3p"/>
-                        <outlet property="tempLabel" destination="tIR-57-dKU" id="TZP-ba-kXl"/>
+                        <outlet property="radioButtonContainer" destination="F2X-pR-6wd" id="OWm-4j-DRw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC8-p3-4Oi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -701,23 +792,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv8-aK-s2C">
-                                <rect key="frame" x="50" y="772" width="104" height="40"/>
+                                <rect key="frame" x="50" y="812" width="104" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cbS-BI-ogf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Föregående"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButtonPressed:" destination="ODZ-MA-LZW" eventType="touchUpInside" id="EUq-L5-s2Z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpw-J1-1Gs">
-                                <rect key="frame" x="313" y="772" width="51" height="40"/>
+                                <rect key="frame" x="313" y="812" width="51" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eqm-wH-EJr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nästa"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="ODZ-MA-LZW" eventType="touchUpInside" id="OhK-yQ-OIA"/>
                                 </connections>
@@ -727,12 +822,12 @@
                         <constraints>
                             <constraint firstItem="fv8-aK-s2C" firstAttribute="leading" secondItem="lGy-fB-c6B" secondAttribute="leading" constant="50" id="EAI-Z3-2Rb"/>
                             <constraint firstItem="VuL-5K-jag" firstAttribute="centerX" secondItem="jsJ-Bj-Uu3" secondAttribute="centerX" id="L5x-BO-Nt3"/>
-                            <constraint firstItem="lGy-fB-c6B" firstAttribute="bottom" secondItem="fv8-aK-s2C" secondAttribute="bottom" constant="50" id="Mh5-RT-1ND"/>
+                            <constraint firstItem="lGy-fB-c6B" firstAttribute="bottom" secondItem="fv8-aK-s2C" secondAttribute="bottom" constant="10" id="Mh5-RT-1ND"/>
                             <constraint firstItem="VuL-5K-jag" firstAttribute="centerY" secondItem="jsJ-Bj-Uu3" secondAttribute="centerY" id="aNc-P1-2m4"/>
                             <constraint firstItem="VuL-5K-jag" firstAttribute="leading" secondItem="lGy-fB-c6B" secondAttribute="leading" constant="20" id="bf6-9K-T1D"/>
                             <constraint firstItem="lGy-fB-c6B" firstAttribute="trailing" secondItem="Kpw-J1-1Gs" secondAttribute="trailing" constant="50" id="e9h-u1-KpU"/>
                             <constraint firstItem="lGy-fB-c6B" firstAttribute="trailing" secondItem="VuL-5K-jag" secondAttribute="trailing" constant="20" id="rn7-h5-Fdf"/>
-                            <constraint firstItem="lGy-fB-c6B" firstAttribute="bottom" secondItem="Kpw-J1-1Gs" secondAttribute="bottom" constant="50" id="zYl-lg-TY2"/>
+                            <constraint firstItem="lGy-fB-c6B" firstAttribute="bottom" secondItem="Kpw-J1-1Gs" secondAttribute="bottom" constant="10" id="zYl-lg-TY2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lGy-fB-c6B"/>
                     </view>
@@ -762,23 +857,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-8H-6e5">
-                                <rect key="frame" x="50" y="772" width="104" height="40"/>
+                                <rect key="frame" x="50" y="812" width="104" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BCm-HV-6F3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Föregående"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="DAO-uI-B04"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-LP-7JH">
-                                <rect key="frame" x="313" y="772" width="51" height="40"/>
+                                <rect key="frame" x="313" y="812" width="51" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hfX-tz-Hy0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nästa"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="dTA-Mo-NEt"/>
                                 </connections>
@@ -786,12 +885,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="CGK-hn-4ba" firstAttribute="bottom" secondItem="1s7-LP-7JH" secondAttribute="bottom" constant="50" id="4Ig-dP-n4r"/>
+                            <constraint firstItem="CGK-hn-4ba" firstAttribute="bottom" secondItem="1s7-LP-7JH" secondAttribute="bottom" constant="10" id="4Ig-dP-n4r"/>
                             <constraint firstItem="CGK-hn-4ba" firstAttribute="trailing" secondItem="1s7-LP-7JH" secondAttribute="trailing" constant="50" id="6J1-Ut-gw1"/>
                             <constraint firstItem="RDl-n1-kT6" firstAttribute="leading" secondItem="CGK-hn-4ba" secondAttribute="leading" constant="20" id="CEP-Ia-ImH"/>
                             <constraint firstItem="RDl-n1-kT6" firstAttribute="centerX" secondItem="9cY-MS-ltF" secondAttribute="centerX" id="GdY-QF-fGq"/>
                             <constraint firstItem="AjW-8H-6e5" firstAttribute="leading" secondItem="CGK-hn-4ba" secondAttribute="leading" constant="50" id="GgO-GY-AG5"/>
-                            <constraint firstItem="CGK-hn-4ba" firstAttribute="bottom" secondItem="AjW-8H-6e5" secondAttribute="bottom" constant="50" id="TZS-Gy-Aq3"/>
+                            <constraint firstItem="CGK-hn-4ba" firstAttribute="bottom" secondItem="AjW-8H-6e5" secondAttribute="bottom" constant="10" id="TZS-Gy-Aq3"/>
                             <constraint firstItem="RDl-n1-kT6" firstAttribute="centerY" secondItem="9cY-MS-ltF" secondAttribute="centerY" id="h7t-dv-dYd"/>
                             <constraint firstItem="CGK-hn-4ba" firstAttribute="trailing" secondItem="RDl-n1-kT6" secondAttribute="trailing" constant="20" id="zQU-Nz-XHP"/>
                         </constraints>
@@ -823,23 +922,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHw-YL-1Oc">
-                                <rect key="frame" x="50" y="772" width="104" height="40"/>
+                                <rect key="frame" x="50" y="812" width="104" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nmY-Ho-Jvn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Föregående"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButtonPressed:" destination="zVO-vs-pXH" eventType="touchUpInside" id="fjM-HZ-kA5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxy-Zg-DwB">
-                                <rect key="frame" x="313" y="772" width="51" height="40"/>
+                                <rect key="frame" x="313" y="812" width="51" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oEL-Bh-sAq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nästa"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="zVO-vs-pXH" eventType="touchUpInside" id="oHn-eC-QI6"/>
                                 </connections>
@@ -849,8 +952,8 @@
                         <constraints>
                             <constraint firstItem="KHw-YL-1Oc" firstAttribute="leading" secondItem="btn-ss-aiV" secondAttribute="leading" constant="50" id="1wR-aI-9bp"/>
                             <constraint firstItem="dgK-XM-cFq" firstAttribute="centerY" secondItem="Bf2-Ff-Jqp" secondAttribute="centerY" id="HE8-NG-zQb"/>
-                            <constraint firstItem="btn-ss-aiV" firstAttribute="bottom" secondItem="Yxy-Zg-DwB" secondAttribute="bottom" constant="50" id="XDT-E0-qby"/>
-                            <constraint firstItem="btn-ss-aiV" firstAttribute="bottom" secondItem="KHw-YL-1Oc" secondAttribute="bottom" constant="50" id="bdR-M0-G1D"/>
+                            <constraint firstItem="btn-ss-aiV" firstAttribute="bottom" secondItem="Yxy-Zg-DwB" secondAttribute="bottom" constant="10" id="XDT-E0-qby"/>
+                            <constraint firstItem="btn-ss-aiV" firstAttribute="bottom" secondItem="KHw-YL-1Oc" secondAttribute="bottom" constant="10" id="bdR-M0-G1D"/>
                             <constraint firstItem="dgK-XM-cFq" firstAttribute="leading" secondItem="btn-ss-aiV" secondAttribute="leading" constant="20" id="ln3-DH-JYu"/>
                             <constraint firstItem="dgK-XM-cFq" firstAttribute="centerX" secondItem="Bf2-Ff-Jqp" secondAttribute="centerX" id="qF8-iA-mI8"/>
                             <constraint firstItem="btn-ss-aiV" firstAttribute="trailing" secondItem="Yxy-Zg-DwB" secondAttribute="trailing" constant="50" id="y8d-nU-vca"/>
@@ -884,23 +987,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7x-B8-pvH">
-                                <rect key="frame" x="313" y="772" width="51" height="40"/>
+                                <rect key="frame" x="313" y="812" width="51" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Rt0-FE-as0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nästa"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonPressed:" destination="8qP-bg-Ndh" eventType="touchUpInside" id="5Yi-bj-3zJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s14-UN-bn1">
-                                <rect key="frame" x="50" y="772" width="104" height="40"/>
+                                <rect key="frame" x="50" y="812" width="104" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ZZc-SE-160"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Föregående"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButtonPressed:" destination="8qP-bg-Ndh" eventType="touchUpInside" id="KWk-tn-RLk"/>
                                 </connections>
@@ -909,9 +1016,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="s14-UN-bn1" firstAttribute="leading" secondItem="LyV-br-oGQ" secondAttribute="leading" constant="50" id="8Ao-zL-Yy9"/>
-                            <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="w7x-B8-pvH" secondAttribute="bottom" constant="50" id="AOj-8Z-sAH"/>
+                            <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="w7x-B8-pvH" secondAttribute="bottom" constant="10" id="AOj-8Z-sAH"/>
                             <constraint firstItem="mtT-Qu-1QF" firstAttribute="centerY" secondItem="GHZ-4p-kij" secondAttribute="centerY" id="Lhc-pi-rj1"/>
-                            <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="s14-UN-bn1" secondAttribute="bottom" constant="50" id="WDj-Xj-kMr"/>
+                            <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="s14-UN-bn1" secondAttribute="bottom" constant="10" id="WDj-Xj-kMr"/>
                             <constraint firstItem="mtT-Qu-1QF" firstAttribute="leading" secondItem="LyV-br-oGQ" secondAttribute="leading" constant="20" id="ay9-FV-yGp"/>
                             <constraint firstAttribute="trailing" secondItem="w7x-B8-pvH" secondAttribute="trailing" constant="50" id="eV2-5F-yRF"/>
                             <constraint firstItem="LyV-br-oGQ" firstAttribute="trailing" secondItem="mtT-Qu-1QF" secondAttribute="trailing" constant="20" id="rEy-BX-tQ4"/>
@@ -945,23 +1052,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oj-ko-O5g">
-                                <rect key="frame" x="50" y="772" width="104" height="40"/>
+                                <rect key="frame" x="50" y="812" width="104" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="i2n-J2-1fs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Föregående"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButtonPressed:" destination="Se6-vn-mhF" eventType="touchUpInside" id="H6a-CY-rnv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePr-KY-St8">
-                                <rect key="frame" x="286" y="772" width="78" height="40"/>
+                                <rect key="frame" x="286" y="812" width="78" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rfe-mL-hFC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Skicka in"/>
+                                <state key="normal" title="Skicka in">
+                                    <color key="titleColor" name="lta_blue"/>
+                                </state>
                                 <connections>
                                     <action selector="sendInButtonPressed:" destination="Se6-vn-mhF" eventType="touchUpInside" id="qrr-9V-JD0"/>
                                 </connections>
@@ -974,8 +1085,8 @@
                             <constraint firstItem="Ycy-gS-j3w" firstAttribute="centerX" secondItem="NNk-LE-5hZ" secondAttribute="centerX" id="PST-4n-eM5"/>
                             <constraint firstItem="8Oj-ko-O5g" firstAttribute="leading" secondItem="7Mb-z1-8mL" secondAttribute="leading" constant="50" id="XwQ-PH-srW"/>
                             <constraint firstItem="Ycy-gS-j3w" firstAttribute="centerY" secondItem="NNk-LE-5hZ" secondAttribute="centerY" id="esj-oV-tlN"/>
-                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="8Oj-ko-O5g" secondAttribute="bottom" constant="50" id="jhN-te-XGa"/>
-                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="ePr-KY-St8" secondAttribute="bottom" constant="50" id="vIr-85-oZ4"/>
+                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="8Oj-ko-O5g" secondAttribute="bottom" constant="10" id="jhN-te-XGa"/>
+                            <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="ePr-KY-St8" secondAttribute="bottom" constant="10" id="vIr-85-oZ4"/>
                             <constraint firstItem="7Mb-z1-8mL" firstAttribute="trailing" secondItem="ePr-KY-St8" secondAttribute="trailing" constant="50" id="zVi-xV-7pi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Mb-z1-8mL"/>
@@ -996,9 +1107,6 @@
         <image name="lundsuniversitet_logo" width="118" height="118"/>
         <namedColor name="lta_blue">
             <color red="0.31764705882352939" green="0.39215686274509803" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lta_gold">
-            <color red="0.72941176470588232" green="0.62745098039215685" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lta_grey">
             <color red="0.42352941176470588" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

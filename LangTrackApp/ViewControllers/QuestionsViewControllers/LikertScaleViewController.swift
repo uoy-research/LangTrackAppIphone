@@ -10,18 +10,17 @@ import UIKit
 
 class LikertScaleViewController: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var tempLabel: UILabel!
-    
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var radioButton1: LikertRadioButton!
-    
     @IBOutlet weak var radioButton2: LikertRadioButton!
-    
     @IBOutlet weak var radioButton3: LikertRadioButton!
-    
     @IBOutlet weak var radioButton4: LikertRadioButton!
-    
     @IBOutlet weak var radioButton5: LikertRadioButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var likertTextLabel: UILabel!
+    @IBOutlet weak var radioButtonContainer: UIView!
+    @IBOutlet weak var likertContainer: UIView!
+    
     
     
     var listener: QuestionListener?
@@ -33,7 +32,9 @@ class LikertScaleViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        tempLabel.text = theQuestion.text
+        radioButton3.isSelected = true
+        likertTextLabel.text = theQuestion.text
+        descriptionLabel.text = theQuestion.description
     }
     
     func setListener(listener: QuestionListener) {
@@ -58,6 +59,7 @@ class LikertScaleViewController: UIViewController {
     
     @IBAction func likertButtonPressed(_ sender: LikertRadioButton) {
         deselectAllRadiobuttons()
+        print("LikertRadioButton tag: \(sender.tag)")
         sender.isSelected = !sender.isSelected
     }
 }
