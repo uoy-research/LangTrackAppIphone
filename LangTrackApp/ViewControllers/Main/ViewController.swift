@@ -5,6 +5,8 @@
 //  Created by Stephan Björck on 2020-01-30.
 //  Copyright © 2020 Stephan Björck. All rights reserved.
 //
+//tidigare bundle identifier se.lu.humlab.LangTrackApp
+//
 // test1@humlablu.com
 // 123456
 
@@ -24,9 +26,11 @@
  FIXA iTunes connect!!!!!
  Koppla push och hantera i appen
  
- länk till filen på dropbox: https://www.dropbox.com/s/6ordf3pkyvtb5cu/survey_json.txt?dl=0
+ länk till filen på dropbox: https://www.dropbox.com/s/2w7cnliiow0st3d/survey_json.txt?dl=1
  survey = enkät
  answer = enkätsvar
+ 
+ om ändrad AppleID eller bundleID: pod deintegrate -> pod install -> Starta om med ny workspace
  */
 
 import UIKit

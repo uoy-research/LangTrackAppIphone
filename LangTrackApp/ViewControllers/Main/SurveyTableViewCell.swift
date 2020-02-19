@@ -33,7 +33,7 @@ class SurveyTableViewCell: UITableViewCell {
     func setSurveyInfo(survey: Survey)  {
         surveyTitle.text = survey.title
         surveyDate.text = DateParser.displayString(for: Date(timeIntervalSince1970: TimeInterval(survey.date)))
-        if (survey.responded) {
+        if (survey.responded ?? false) {
             surveyUnansweredIndicator.isHidden = true
         }else{
             surveyUnansweredIndicator.isHidden = false

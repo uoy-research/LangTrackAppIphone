@@ -12,7 +12,7 @@ import Foundation
 struct JsonHelper {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
-    static let theUrl = "https://www.dropbox.com/s/0iubma625aax6vg/survey_json.txt?dl=1"
+    static let theUrl = "https://www.dropbox.com/s/69ty2png02001hk/survey_json.txt?dl=1"
     
     static func getSurveys(token: String, completionhandler: @escaping (_ result: [Survey]?) -> Void){
         
@@ -36,16 +36,35 @@ struct JsonHelper {
                 if let response = response as? HTTPURLResponse {
                     print("All headers: \(response.allHeaderFields)")
                     // Read a specific HTTP Response Header by name
-                    print("Specific header: \(response.value(forHTTPHeaderField: "Content-Type") ?? " header not found")")
+             print("Specific header: \(response.value(forHTTPHeaderField: "Content-Type") ?? " header not found")")
+             }
+             }*/
+            let listWithSurveys = parseJson(data: data!)
+            if listWithSurveys != nil
+            {
+                for survey in listWithSurveys!{
+                    for question in survey.questions{
+                        if question.index == 0{
+                            question.previous = 0
+                            question.next = question.index + 1
+                        }else if question.index < survey.questions.count - 1{
+                            question.next = question.index + 1
+                            question.previous = question.index - 1
+                        }else{
+                            question.next = 0
+                            question.previous = question.index - 1
+                        }
+                    }
                 }
-            }*/
-            completionhandler(parseJson(data: data!))
+            }
+            completionhandler(listWithSurveys)
         })
         task.resume()
     }
     
     
     private static func parseJson(data: Data) -> [Survey]?{
+        
         // Decode data to object
         var returnValue: [Survey]?
         do {
