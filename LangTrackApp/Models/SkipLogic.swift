@@ -9,6 +9,6 @@
 import Foundation
 
 class SkipLogic : Codable {
-    var ifChosen: Int64 = -99
-    var goto: Int64 = 0
+    var ifChosen: Int = -99
+    var goto: Int = 0
 }

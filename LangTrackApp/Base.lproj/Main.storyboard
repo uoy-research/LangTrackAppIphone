@@ -48,7 +48,7 @@
                                                                     <color key="textColor" name="lta_blue"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Ha-3YB">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Ha-3YB" customClass="UIImageView">
                                                                     <rect key="frame" x="364" y="27.5" width="20" height="20"/>
                                                                     <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>

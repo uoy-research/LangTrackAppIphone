@@ -728,13 +728,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SFTNL3RK2A;
+				DEVELOPMENT_TEAM = MMH2VL4QF4;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.humlab.LangTrackApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.lu.LangTrackApp.Lang-Track-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -747,13 +747,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SFTNL3RK2A;
+				DEVELOPMENT_TEAM = MMH2VL4QF4;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.humlab.LangTrackApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "se.lu.LangTrackApp.Lang-Track-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
