@@ -12,7 +12,7 @@ class SurveyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var surveyBackground: UIView!
     @IBOutlet weak var surveyTitle: UILabel!
-    @IBOutlet weak var surveyUnansweredIndicator: UIView!
+    @IBOutlet weak var surveyUnansweredIndicator: UIImageView!
     @IBOutlet weak var surveyDate: UILabel!
     
     override func awakeFromNib() {
@@ -32,12 +32,18 @@ class SurveyTableViewCell: UITableViewCell {
     
     func setSurveyInfo(survey: Survey)  {
         surveyTitle.text = survey.title
-        surveyDate.text = DateParser.displayString(for: Date(timeIntervalSince1970: TimeInterval(survey.date)))
-        if (survey.responded) {
+        if (survey.responded ?? false || survey.active ?? false != true) {
             surveyUnansweredIndicator.isHidden = true
+            surveyDate.text = "Inaktiv"
+            if(survey.responded ?? false){
+                surveyDate.text?.append(", besvarad")
+            }else{
+                surveyDate.text?.append(", obesvarad")
+            }
         }else{
             surveyUnansweredIndicator.isHidden = false
-            surveyUnansweredIndicator.backgroundColor = UIColor.red
+            surveyUnansweredIndicator.image = #imageLiteral(resourceName: "lta_icon_ground_light")
+            surveyDate.text = "53 minuter kvar"
         }
     }
 
