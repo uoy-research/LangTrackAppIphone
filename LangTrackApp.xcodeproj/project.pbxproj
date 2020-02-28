@@ -42,6 +42,7 @@
 		F178752523E41639003D16D1 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752423E41639003D16D1 /* Survey.swift */; };
 		F178752723E41654003D16D1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752623E41654003D16D1 /* Question.swift */; };
 		F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752923E41C30003D16D1 /* QuestionListener.swift */; };
+		F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1963208240922AE00A0D8D2 /* VKCheckbox.swift */; };
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		F178752423E41639003D16D1 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		F178752623E41654003D16D1 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		F178752923E41C30003D16D1 /* QuestionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListener.swift; sourceTree = "<group>"; };
+		F1963208240922AE00A0D8D2 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				F15F595923ED91B20026430A /* LikertRadioButton.swift */,
+				F1963208240922AE00A0D8D2 /* VKCheckbox.swift */,
 			);
 			path = CustonViews;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				F178752323E4160E003D16D1 /* Type.swift in Sources */,
 				F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */,
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
+				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,
 				F13C4B1023E968F80028F912 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

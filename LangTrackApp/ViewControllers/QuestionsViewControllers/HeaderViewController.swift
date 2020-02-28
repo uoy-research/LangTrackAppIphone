@@ -16,7 +16,6 @@ class HeaderViewController: UIViewController {
     @IBOutlet weak var greetingsLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     
     var theUser: User?
     var listener: QuestionListener?
@@ -24,12 +23,15 @@ class HeaderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeButton.layer.cornerRadius = 8
+        nextButton.layer.cornerRadius = 8
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
         userNameLabel.text = "Inloggad som\n\(theUser?.userName ?? "noName")"
         greetingsLabel.text = question.text
+        subTitleLabel.text = question.title
     }
     
     func setListener(listener: QuestionListener) {

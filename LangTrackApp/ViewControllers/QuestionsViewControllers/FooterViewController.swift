@@ -19,6 +19,8 @@ class FooterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousButton.layer.cornerRadius = 8
+        sendInButton.layer.cornerRadius = 8
     }
     
     func setInfo(question: Question){
