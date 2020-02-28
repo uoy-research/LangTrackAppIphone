@@ -23,7 +23,7 @@
  skicka med token från firebase i header /refreshtoken
  *skapa survey som Json och läs in som objekt
  *lägga json fil någonstans och hämta med http GET
- FIXA iTunes connect!!!!!
+ *FIXA iTunes connect!!!!!
  Koppla push och hantera i appen
  
  länk till filen på dropbox: https://www.dropbox.com/s/2w7cnliiow0st3d/survey_json.txt?dl=1

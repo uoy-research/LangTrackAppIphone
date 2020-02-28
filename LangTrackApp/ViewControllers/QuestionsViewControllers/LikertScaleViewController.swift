@@ -28,11 +28,13 @@ class LikertScaleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousButton.layer.cornerRadius = 8
+        nextButton.layer.cornerRadius = 8
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
-        radioButton3.isSelected = true
+        //radioButton3.isSelected = true
         likertTextLabel.text = theQuestion.text
         descriptionLabel.text = theQuestion.description
     }

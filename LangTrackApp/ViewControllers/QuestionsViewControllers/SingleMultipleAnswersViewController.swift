@@ -19,6 +19,8 @@ class SingleMultipleAnswersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousButton.layer.cornerRadius = 8
+        nextButton.layer.cornerRadius = 8
     }
     
     func setInfo(question: Question){

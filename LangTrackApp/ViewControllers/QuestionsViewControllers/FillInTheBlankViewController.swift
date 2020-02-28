@@ -12,18 +12,22 @@ class FillInTheBlankViewController: UIViewController {
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var questionTextLabel: UILabel!
+    @IBOutlet weak var blankDescriptionLabel: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousButton.layer.cornerRadius = 8
+        nextButton.layer.cornerRadius = 8
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
-        tempLabel.text = theQuestion.text
+        questionTextLabel.text = theQuestion.text
+        blankDescriptionLabel.text = "Välj ord i listan"
     }
     
     func setListener(listener: QuestionListener) {
