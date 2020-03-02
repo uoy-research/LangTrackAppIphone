@@ -36,7 +36,14 @@ class MultipleChoiceViewController: UIViewController {
         self.listener = listener
     }
     
+    func emptyCheckboxContainer(){
+        for v in choicesContainer.subviews{
+            v.removeFromSuperview()
+        }
+    }
+    
     func fillCheckboxContainer(){
+        emptyCheckboxContainer()
         let spacer = 10
         let size = 29
         if theQuestion.multipleChoisesAnswers != nil{
@@ -45,11 +52,11 @@ class MultipleChoiceViewController: UIViewController {
                 //check.bgColorSelected = .white
                 check.bgColorSelected = UIColor(named: "lta_blue") ?? .black
                 check.color = .white
-                check.borderWidth = 1
+                check.borderWidth = 1.5
                 check.tag = i
                 check.checkboxValueChangedBlock = {
                     tag, ison in
-                    print("value \(tag) is on: \(ison)")
+                    print("value \(tag) is \(ison)")
                 }
                 let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: 148, height: size))
                 text.text = choice

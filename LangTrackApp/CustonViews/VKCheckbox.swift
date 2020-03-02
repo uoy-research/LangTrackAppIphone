@@ -2,8 +2,8 @@
 //  VKCheckbox.swift
 //  LangTrackApp
 //
-//  Created by Stephan Björck on 2020-02-28.
-//  Copyright © 2020 Stephan Björck. All rights reserved.
+//  Created by Vladislav Kovalyov, http://woopss.com/
+//  https://github.com/vladislav-k/VKCheckbox
 //
 
 import UIKit
