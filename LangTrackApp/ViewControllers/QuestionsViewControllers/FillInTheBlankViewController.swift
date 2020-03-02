@@ -15,26 +15,42 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var questionTextLabel: UILabel!
-    @IBOutlet weak var blankDescriptionLabel: UILabel!
     @IBOutlet weak var selectedWordContainer: UIView!
+    @IBOutlet weak var containerArrow: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     var dropDownOpen = false
+    let radious:CGFloat = 8
+    var arrowUp = false
+    var rowheight: CGFloat = 35
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        previousButton.layer.cornerRadius = 8
-        nextButton.layer.cornerRadius = 8
-        tableviewHeightConstraint.constant = 0
+        previousButton.layer.cornerRadius = radious
+        nextButton.layer.cornerRadius = radious
+        tableviewHeightConstraint.constant = radious
         let touch = UITapGestureRecognizer(target: self, action: #selector(self.selectedWordTouched))
         selectedWordContainer.addGestureRecognizer(touch)
+        fillTableview.rowHeight = rowheight
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if #available(iOS 11.0, *) {
+            self.selectedWordContainer.clipsToBounds = true
+            selectedWordContainer.layer.cornerRadius = radious
+            selectedWordContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            
+            self.fillTableview.clipsToBounds = true
+            fillTableview.layer.cornerRadius = radious
+            fillTableview.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        }
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
         questionTextLabel.text = theQuestion.text
-        blankDescriptionLabel.text = "Välj ord i listan"
     }
     
     func setListener(listener: QuestionListener) {
@@ -42,7 +58,8 @@ class FillInTheBlankViewController: UIViewController {
     }
     
     func openProjectDropDown(){
-        var dropDownHeight = CGFloat(50 * (self.theQuestion.fillBlanksChoises?.count ?? 0))
+        turnArrow()
+        var dropDownHeight = CGFloat(Int(rowheight) * (self.theQuestion.fillBlanksChoises?.count ?? 0))
         if dropDownHeight > 190{
             dropDownHeight = 190
         }
@@ -55,11 +72,28 @@ class FillInTheBlankViewController: UIViewController {
     }
     
     func closeProjectDropDown(){
+        turnArrow()
         UIView.animate(withDuration: 0.3, animations:  {
-            self.tableviewHeightConstraint.constant = 0
+            self.tableviewHeightConstraint.constant = self.radious
             self.view.layoutIfNeeded()
         }){_ in
             self.dropDownOpen = false
+        }
+    }
+    
+    func turnArrow(){
+        if arrowUp{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.containerArrow.transform = CGAffineTransform(rotationAngle: 0)
+                self.view.layoutIfNeeded()
+            })
+            arrowUp = false
+        }else{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.containerArrow.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                self.view.layoutIfNeeded()
+            })
+            arrowUp = true
         }
     }
     
@@ -81,22 +115,29 @@ class FillInTheBlankViewController: UIViewController {
     
 }
 
+//MARK:- TableViewDelegate
 extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return theQuestion.fillBlanksChoises?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fillCell", for: indexPath)
         if let cell = cell as? FillInBlankCell{
-            cell.theText.text = "rad \(indexPath.row)"
+            cell.theText.text = theQuestion.fillBlanksChoises?[indexPath.row] ?? ""
+            cell.selectionStyle = .none
         }
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("you selected \(theQuestion.fillBlanksChoises?[indexPath.row] ?? "")")
+        closeProjectDropDown()
+    }
 }
+
+//MARK:- FillInBlankCell class
 
 class FillInBlankCell: UITableViewCell {
     
