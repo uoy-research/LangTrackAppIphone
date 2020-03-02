@@ -18,6 +18,7 @@ class MultipleChoiceViewController: UIViewController {
     
     var listener: QuestionListener?
     var theQuestion = Question()
+    var theAnswer: Answer? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,17 @@ class MultipleChoiceViewController: UIViewController {
                 check.color = .white
                 check.borderWidth = 1.5
                 check.tag = i
+                if theAnswer != nil {
+                    if theAnswer!.multipleChoiceAnswer != nil{
+                        if theAnswer!.multipleChoiceAnswer!.contains(check.tag){
+                            check.setOn(true)
+                        }
+                    }
+                }
                 check.checkboxValueChangedBlock = {
                     tag, ison in
                     print("value \(tag) is \(ison)")
+                    self.saveAnswers()
                 }
                 let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: 148, height: size))
                 text.text = choice
@@ -69,6 +78,21 @@ class MultipleChoiceViewController: UIViewController {
                 checkboxContainerHeightConstraint.constant = CGFloat((size + spacer) * (i+1))
             }
         }
+    }
+    
+    func saveAnswers(){
+        var answers = [Int]()
+        for v in choicesContainer.subviews{
+            if v is VKCheckbox{
+                let check = v as! VKCheckbox
+                if check.isOn{
+                    if !answers.contains(check.tag){
+                        answers.append(check.tag)
+                    }
+                }
+            }
+        }
+        listener?.setMultipleAnswersAnswer(selected: answers)
     }
 
     @IBAction func previousButtonPressed(_ sender: Any) {

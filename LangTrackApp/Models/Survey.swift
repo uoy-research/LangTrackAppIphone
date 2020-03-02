@@ -18,16 +18,5 @@ class Survey : Codable{
     var respondeddate: Int64? = -1
     var published: Int64? = -1
     var expiry: Int64? = -1
+    var answer = [Int:Answer]()
 }
-/*
- var active: Boolean = false,
- var id: String = "",
- var date: Long = -1,
- var respondeddate: Long = -1,
- var published: Long = -1,
- var expiry: Long = -1,
- var title: String = "",
- var headerText: String = "",
- var questions: List<Question>? = null,
- var footerText: String = "",
- var answer: MutableList<Answer>? = null*/

@@ -18,11 +18,13 @@ class SingleMultipleAnswersViewController: UIViewController {
     
     var listener: QuestionListener?
     var theQuestion = Question()
+    var theAnswer: Answer? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         nextButton.layer.cornerRadius = 8
+        
     }
     
     func setInfo(question: Question){
@@ -66,12 +68,19 @@ class SingleMultipleAnswersViewController: UIViewController {
                 check.line = .thin
                 check.cornerRadius = check.frame.width / 2
                 check.tag = i
+                if theAnswer != nil {
+                    if theAnswer!.singleMultipleAnswer != nil{
+                        if check.tag == theAnswer!.singleMultipleAnswer!{
+                            check.setOn(true)
+                        }
+                    }
+                }
                 check.checkboxValueChangedBlock = {
                     tag, ison in
                     if ison{
                         self.markSelectedAnswer(selected: tag)
+                        self.listener?.setSingleMultipleAnswer(selected: tag)
                     }
-                    print("value \(tag) is on: \(ison)")
                 }
                 let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: 148, height: size))
                 text.text = answer

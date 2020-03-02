@@ -146,6 +146,7 @@ class SurveyViewController: UIViewController {
             multipleChoice!.view.frame = surveyContainer.bounds
             multipleChoice!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             multipleChoice!.didMove(toParent: self)
+            multipleChoice!.theAnswer = theSurvey!.answer[currentPage.index]
             multipleChoice!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.singleMultipleAnswers.rawValue)
@@ -155,6 +156,7 @@ class SurveyViewController: UIViewController {
             singleMultipleAnswers!.view.frame = surveyContainer.bounds
             singleMultipleAnswers!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             singleMultipleAnswers!.didMove(toParent: self)
+            singleMultipleAnswers!.theAnswer = theSurvey!.answer[currentPage.index]
             singleMultipleAnswers!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.openEndedTextResponses.rawValue)
@@ -181,6 +183,19 @@ class SurveyViewController: UIViewController {
 
 //MARK:- QuestionListener
 extension SurveyViewController: QuestionListener{
+    func setMultipleAnswersAnswer(selected: [Int]) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
+        }
+    }
+    
+    
+    func setSingleMultipleAnswer(selected: Int) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
+        }
+    }
+    
     
     func closeSurvey() {
         print("closeSurvey")
@@ -195,7 +210,7 @@ extension SurveyViewController: QuestionListener{
     }
     
     func nextQuestion(current: Question) {
-        print("nextQuestion: \(current.next)")
+        print("nextQuestion: \(current.next ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.next{
