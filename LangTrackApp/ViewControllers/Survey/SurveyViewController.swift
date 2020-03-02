@@ -54,7 +54,7 @@ class SurveyViewController: UIViewController {
         
         if theSurvey?.questions.first != nil{
             showPage(newPage: theSurvey!.questions.first!)
-        }
+        }//TODO popup if error
     }
     
 
@@ -228,7 +228,7 @@ extension SurveyViewController: QuestionListener{
     }
     
     func previousQuestion(current: Question) {
-        print("previousQuestion: \(current.previous)")
+        print("previousQuestion: \(current.previous ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.previous{
