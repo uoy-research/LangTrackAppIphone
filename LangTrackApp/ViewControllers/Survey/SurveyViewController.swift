@@ -128,6 +128,7 @@ class SurveyViewController: UIViewController {
             likertScale!.view.frame = surveyContainer.bounds
             likertScale!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             likertScale!.didMove(toParent: self)
+            likertScale!.theAnswer = theSurvey!.answer[currentPage.index]
             likertScale!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.fillInTheBlank.rawValue)
@@ -183,6 +184,12 @@ class SurveyViewController: UIViewController {
 
 //MARK:- QuestionListener
 extension SurveyViewController: QuestionListener{
+    func setLikertAnswer(selected: Int) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+        }
+    }
+    
     func setMultipleAnswersAnswer(selected: [Int]) {
         if theSurvey != nil{
             theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)

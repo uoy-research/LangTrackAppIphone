@@ -98,7 +98,7 @@ class TestSurvey {
         tempQuestionList.append(q6)
 
         tempQuestionList = tempQuestionList.sorted(by: { $0.index < $1.index})
-        let tempSurvey = Survey()
+        var tempSurvey = Survey()
         tempSurvey.questions = tempQuestionList
         tempSurvey.date = Int64(Date().timeIntervalSince1970)
         tempSurvey.responded = responded
@@ -146,7 +146,7 @@ class TestSurvey {
         tempQuestionList.append(q6)
 
         tempQuestionList = tempQuestionList.sorted(by: { $0.index < $1.index})
-        let tempSurvey = Survey()
+        var tempSurvey = Survey()
         tempSurvey.questions = tempQuestionList
         tempSurvey.date = Int64(Date().timeIntervalSince1970)
         tempSurvey.responded = responded
@@ -218,7 +218,7 @@ class TestSurvey {
         tempQuestionList.append(q6)
 
         tempQuestionList = tempQuestionList.sorted(by: { $0.index < $1.index})
-        let tempSurvey = Survey()
+        var tempSurvey = Survey()
         tempSurvey.questions = tempQuestionList
         tempSurvey.date = Int64(Date().timeIntervalSince1970)
         tempSurvey.responded = responded

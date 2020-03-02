@@ -72,7 +72,7 @@ struct JsonHelper {
         do {
             let json = try JSON(data: data)
             for (_,subJson):(String, JSON) in json {
-                let tempSurvey = Survey()
+                var tempSurvey = Survey()
                 for (key,subJson):(String, JSON) in subJson {
                     if(key == "title"){
                         tempSurvey.title = subJson.stringValue

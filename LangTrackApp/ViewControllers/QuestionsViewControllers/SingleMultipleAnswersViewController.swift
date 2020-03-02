@@ -42,7 +42,7 @@ class SingleMultipleAnswersViewController: UIViewController {
             if v is VKCheckbox{
                 let check = v as! VKCheckbox
                 if check.tag != selected{
-                    check.setOn(false)
+                    check.setOn(false, animated: true)
                 }
             }
         }

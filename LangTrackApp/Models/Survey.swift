@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Survey : Codable{
+struct Survey : Codable{
     var id: String = ""
     var date: Int64 = -1
     var responded: Bool? = false
