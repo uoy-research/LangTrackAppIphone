@@ -25,7 +25,7 @@ class SurveyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         header = storyboard.instantiateViewController(withIdentifier: "header") as? HeaderViewController
         header?.setListener(listener: self)
@@ -54,7 +54,7 @@ class SurveyViewController: UIViewController {
         
         if theSurvey?.questions.first != nil{
             showPage(newPage: theSurvey!.questions.first!)
-        }
+        }//TODO popup if error
     }
     
 
@@ -128,6 +128,7 @@ class SurveyViewController: UIViewController {
             likertScale!.view.frame = surveyContainer.bounds
             likertScale!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             likertScale!.didMove(toParent: self)
+            likertScale!.theAnswer = theSurvey!.answer[currentPage.index]
             likertScale!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.fillInTheBlank.rawValue)
@@ -146,6 +147,7 @@ class SurveyViewController: UIViewController {
             multipleChoice!.view.frame = surveyContainer.bounds
             multipleChoice!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             multipleChoice!.didMove(toParent: self)
+            multipleChoice!.theAnswer = theSurvey!.answer[currentPage.index]
             multipleChoice!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.singleMultipleAnswers.rawValue)
@@ -155,6 +157,7 @@ class SurveyViewController: UIViewController {
             singleMultipleAnswers!.view.frame = surveyContainer.bounds
             singleMultipleAnswers!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             singleMultipleAnswers!.didMove(toParent: self)
+            singleMultipleAnswers!.theAnswer = theSurvey!.answer[currentPage.index]
             singleMultipleAnswers!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.openEndedTextResponses.rawValue)
@@ -181,6 +184,25 @@ class SurveyViewController: UIViewController {
 
 //MARK:- QuestionListener
 extension SurveyViewController: QuestionListener{
+    func setLikertAnswer(selected: Int) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+        }
+    }
+    
+    func setMultipleAnswersAnswer(selected: [Int]) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
+        }
+    }
+    
+    
+    func setSingleMultipleAnswer(selected: Int) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
+        }
+    }
+    
     
     func closeSurvey() {
         print("closeSurvey")
@@ -195,7 +217,7 @@ extension SurveyViewController: QuestionListener{
     }
     
     func nextQuestion(current: Question) {
-        print("nextQuestion: \(current.next)")
+        print("nextQuestion: \(current.next ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.next{
@@ -206,7 +228,7 @@ extension SurveyViewController: QuestionListener{
     }
     
     func previousQuestion(current: Question) {
-        print("previousQuestion: \(current.previous)")
+        print("previousQuestion: \(current.previous ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.previous{

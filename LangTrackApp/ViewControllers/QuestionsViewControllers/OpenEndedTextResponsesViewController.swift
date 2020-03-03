@@ -10,6 +10,7 @@ import UIKit
 
 class OpenEndedTextResponsesViewController: UIViewController {
 
+    @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var tempLabel: UILabel!
@@ -21,6 +22,8 @@ class OpenEndedTextResponsesViewController: UIViewController {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         nextButton.layer.cornerRadius = 8
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     func setInfo(question: Question){

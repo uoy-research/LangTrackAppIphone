@@ -14,4 +14,7 @@ protocol QuestionListener{
     func previousQuestion(current: Question)
     func closeSurvey()
     func sendInSurvey()
+    func setSingleMultipleAnswer(selected: Int)
+    func setMultipleAnswersAnswer(selected: [Int])
+    func setLikertAnswer(selected: Int)
 }

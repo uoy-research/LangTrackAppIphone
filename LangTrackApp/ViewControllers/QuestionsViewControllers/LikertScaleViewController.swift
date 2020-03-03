@@ -20,16 +20,20 @@ class LikertScaleViewController: UIViewController {
     @IBOutlet weak var likertTextLabel: UILabel!
     @IBOutlet weak var radioButtonContainer: UIView!
     @IBOutlet weak var likertContainer: UIView!
+    @IBOutlet weak var theIcon: UIImageView!
     
     
     
     var listener: QuestionListener?
     var theQuestion = Question()
+    var theAnswer: Answer? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         nextButton.layer.cornerRadius = 8
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     func setInfo(question: Question){
@@ -37,6 +41,48 @@ class LikertScaleViewController: UIViewController {
         //radioButton3.isSelected = true
         likertTextLabel.text = theQuestion.text
         descriptionLabel.text = theQuestion.description
+        if theAnswer != nil {
+            if theAnswer!.likertAnswer != nil{
+                setSelected(selected: theAnswer!.likertAnswer ?? 10)
+            }
+        }
+    }
+    
+    func setSelected(selected: Int){
+        switch selected {
+        case 0:
+            radioButton1.isSelected = true
+            radioButton2.isSelected = false
+            radioButton3.isSelected = false
+            radioButton4.isSelected = false
+            radioButton5.isSelected = false
+        case 1:
+            radioButton1.isSelected = false
+            radioButton2.isSelected = true
+            radioButton3.isSelected = false
+            radioButton4.isSelected = false
+            radioButton5.isSelected = false
+        case 2:
+            radioButton1.isSelected = false
+            radioButton2.isSelected = false
+            radioButton3.isSelected = true
+            radioButton4.isSelected = false
+            radioButton5.isSelected = false
+        case 3:
+            radioButton1.isSelected = false
+            radioButton2.isSelected = false
+            radioButton3.isSelected = false
+            radioButton4.isSelected = true
+            radioButton5.isSelected = false
+        case 4:
+            radioButton1.isSelected = false
+            radioButton2.isSelected = false
+            radioButton3.isSelected = false
+            radioButton4.isSelected = false
+            radioButton5.isSelected = true
+        default:
+            print("likert setSelected: \(selected)")
+        }
     }
     
     func setListener(listener: QuestionListener) {
@@ -61,7 +107,7 @@ class LikertScaleViewController: UIViewController {
     
     @IBAction func likertButtonPressed(_ sender: LikertRadioButton) {
         deselectAllRadiobuttons()
-        print("LikertRadioButton tag: \(sender.tag)")
         sender.isSelected = !sender.isSelected
+        listener?.setLikertAnswer(selected: sender.tag)
     }
 }

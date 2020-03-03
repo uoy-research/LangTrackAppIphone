@@ -13,6 +13,7 @@ class FooterViewController: UIViewController {
     @IBOutlet weak var sendInButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var theIcon: UIImageView!
     
     var listener: QuestionListener?
     var theQuestion = Question()
@@ -21,6 +22,8 @@ class FooterViewController: UIViewController {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         sendInButton.layer.cornerRadius = 8
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     func setInfo(question: Question){
