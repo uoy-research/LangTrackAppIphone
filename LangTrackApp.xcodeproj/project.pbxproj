@@ -17,6 +17,7 @@
 		F10B84B923E47A71003CAC76 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B84B823E47A71003CAC76 /* DateParser.swift */; };
 		F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */; };
 		F11007DF240D0B9E0097A6A4 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11007DE240D0B9E0097A6A4 /* Answer.swift */; };
+		F11499F6240E543300DC988A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499F5240E543300DC988A /* ViewExtension.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
 		F1532DB023EABA4D00171355 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* JsonHelper.swift */; };
 		F1532DB223EAC67C00171355 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DB123EAC67C00171355 /* EncodableExtension.swift */; };
@@ -81,6 +82,7 @@
 		F10B84B823E47A71003CAC76 /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTableViewCell.swift; sourceTree = "<group>"; };
 		F11007DE240D0B9E0097A6A4 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		F11499F5240E543300DC988A /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1532DAF23EABA4D00171355 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		F1532DB123EAC67C00171355 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				F10136E923E85F3B00B36CF0 /* StringExtension.swift */,
 				F1532DB123EAC67C00171355 /* EncodableExtension.swift */,
 				F1532DB323EB10B400171355 /* DateExtension.swift */,
+				F11499F5240E543300DC988A /* ViewExtension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				F10136EA23E85F3B00B36CF0 /* StringExtension.swift in Sources */,
 				F10B84B623E46400003CAC76 /* TestSurvey.swift in Sources */,
 				F1532DB223EAC67C00171355 /* EncodableExtension.swift in Sources */,
+				F11499F6240E543300DC988A /* ViewExtension.swift in Sources */,
 				F15658A923E33DE500EC2796 /* FillInTheBlankViewController.swift in Sources */,
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
 				F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */,

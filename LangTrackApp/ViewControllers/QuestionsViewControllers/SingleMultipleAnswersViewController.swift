@@ -16,6 +16,7 @@ class SingleMultipleAnswersViewController: UIViewController {
     @IBOutlet weak var answersContainer: UIView!
     @IBOutlet weak var answersContainerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var theIcon: UIImageView!
     var listener: QuestionListener?
     var theQuestion = Question()
     var theAnswer: Answer? 
@@ -24,7 +25,8 @@ class SingleMultipleAnswersViewController: UIViewController {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         nextButton.layer.cornerRadius = 8
-        
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     func setInfo(question: Question){

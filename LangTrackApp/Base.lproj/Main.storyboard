@@ -782,6 +782,7 @@
                         <outlet property="radioButton4" destination="hE6-XY-EwL" id="MpM-LJ-9wV"/>
                         <outlet property="radioButton5" destination="DqY-w5-jmK" id="etF-dl-f3p"/>
                         <outlet property="radioButtonContainer" destination="F2X-pR-6wd" id="OWm-4j-DRw"/>
+                        <outlet property="theIcon" destination="rSh-5b-w28" id="4ef-ET-6Ty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC8-p3-4Oi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -852,24 +853,24 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcb-Ub-2k0">
-                                                        <rect key="frame" x="213" y="8.5" width="30" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcb-Ub-2k0">
+                                                        <rect key="frame" x="208" y="8.5" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="P2F-pB-XRn"/>
                                                             <constraint firstAttribute="height" constant="30" id="cBB-ay-1Uo"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" name="lta_light_grey"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Fcb-Ub-2k0" secondAttribute="trailing" constant="10" id="112-6H-71h"/>
                                                     <constraint firstItem="c9w-eu-TBZ" firstAttribute="top" secondItem="LWP-YC-nTj" secondAttribute="top" constant="7" id="FFq-zI-zC8"/>
                                                     <constraint firstAttribute="height" constant="40" id="e49-JN-s9Z"/>
                                                     <constraint firstAttribute="bottom" secondItem="c9w-eu-TBZ" secondAttribute="bottom" id="fPZ-DW-wUx"/>
                                                     <constraint firstItem="Fcb-Ub-2k0" firstAttribute="centerY" secondItem="c9w-eu-TBZ" secondAttribute="centerY" id="gOH-dP-OzB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Fcb-Ub-2k0" secondAttribute="trailing" constant="5" id="iER-rO-DKb"/>
                                                     <constraint firstItem="c9w-eu-TBZ" firstAttribute="centerX" secondItem="LWP-YC-nTj" secondAttribute="centerX" id="sBe-iI-qPM"/>
                                                     <constraint firstItem="c9w-eu-TBZ" firstAttribute="width" secondItem="LWP-YC-nTj" secondAttribute="width" multiplier="0.72" id="sVt-23-cAb"/>
                                                 </constraints>
@@ -958,13 +959,16 @@
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="arrowTrailingConstraint" destination="112-6H-71h" id="tVy-Jg-rXW"/>
                         <outlet property="containerArrow" destination="Fcb-Ub-2k0" id="Vb5-n4-Wjj"/>
                         <outlet property="fillTableview" destination="09h-dB-tiR" id="bKs-Dn-CPu"/>
                         <outlet property="nextButton" destination="Kpw-J1-1Gs" id="WaB-Un-Wr4"/>
                         <outlet property="previousButton" destination="fv8-aK-s2C" id="PEU-xq-Xvu"/>
                         <outlet property="questionTextLabel" destination="dCv-sV-tB8" id="anO-Rk-d1K"/>
                         <outlet property="selectedWordContainer" destination="LWP-YC-nTj" id="brV-Fo-ew1"/>
+                        <outlet property="selectedWordLabel" destination="c9w-eu-TBZ" id="sxu-gc-Xgg"/>
                         <outlet property="tableviewHeightConstraint" destination="7k7-59-0ZU" id="6y2-SR-HXn"/>
+                        <outlet property="theIcon" destination="Pqu-qS-MfS" id="sYE-9V-BiA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkm-zj-4DB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1078,6 +1082,7 @@
                         <outlet property="multipleChoiceTextLabel" destination="Tgr-TA-Slk" id="2Zq-I8-P61"/>
                         <outlet property="nextButton" destination="1s7-LP-7JH" id="wsM-8X-ime"/>
                         <outlet property="previousButton" destination="AjW-8H-6e5" id="1Ef-ZO-tO0"/>
+                        <outlet property="theIcon" destination="Oum-1e-AxN" id="vZh-g4-BLv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5R-Ht-iwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1191,6 +1196,7 @@
                         <outlet property="nextButton" destination="Yxy-Zg-DwB" id="9Ut-lZ-MpG"/>
                         <outlet property="previousButton" destination="KHw-YL-1Oc" id="Iq1-sG-WAo"/>
                         <outlet property="singleMultipleTextLabel" destination="UUX-5C-McY" id="QPJ-3c-Asu"/>
+                        <outlet property="theIcon" destination="tWd-yx-3lG" id="CvQ-oR-Sye"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81v-Xk-pRD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1239,6 +1245,13 @@
                                     <action selector="previousButtonPressed:" destination="8qP-bg-Ndh" eventType="touchUpInside" id="KWk-tn-RLk"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_open_light" translatesAutoresizingMaskIntoConstraints="NO" id="BNZ-Rh-6pw">
+                                <rect key="frame" x="157" y="99.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cH9-FI-HPU"/>
+                                    <constraint firstAttribute="width" constant="100" id="lmg-hY-uFx"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1246,6 +1259,8 @@
                             <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="w7x-B8-pvH" secondAttribute="bottom" constant="10" id="AOj-8Z-sAH"/>
                             <constraint firstItem="w7x-B8-pvH" firstAttribute="width" secondItem="s14-UN-bn1" secondAttribute="width" id="L37-Xl-nZf"/>
                             <constraint firstItem="mtT-Qu-1QF" firstAttribute="centerY" secondItem="GHZ-4p-kij" secondAttribute="centerY" id="Lhc-pi-rj1"/>
+                            <constraint firstItem="BNZ-Rh-6pw" firstAttribute="centerX" secondItem="GHZ-4p-kij" secondAttribute="centerX" id="Og1-Sw-GHI"/>
+                            <constraint firstItem="BNZ-Rh-6pw" firstAttribute="centerY" secondItem="GHZ-4p-kij" secondAttribute="centerY" multiplier="1:3" id="P3g-Me-Ksw"/>
                             <constraint firstItem="LyV-br-oGQ" firstAttribute="bottom" secondItem="s14-UN-bn1" secondAttribute="bottom" constant="10" id="WDj-Xj-kMr"/>
                             <constraint firstItem="mtT-Qu-1QF" firstAttribute="leading" secondItem="LyV-br-oGQ" secondAttribute="leading" constant="20" id="ay9-FV-yGp"/>
                             <constraint firstAttribute="trailing" secondItem="w7x-B8-pvH" secondAttribute="trailing" constant="20" id="eV2-5F-yRF"/>
@@ -1260,6 +1275,7 @@
                         <outlet property="nextButton" destination="w7x-B8-pvH" id="nGn-WQ-lQ9"/>
                         <outlet property="previousButton" destination="s14-UN-bn1" id="IyG-aB-HCI"/>
                         <outlet property="tempLabel" destination="mtT-Qu-1QF" id="t8n-C7-K9G"/>
+                        <outlet property="theIcon" destination="BNZ-Rh-6pw" id="Ake-hb-LHW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkR-vr-bc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1308,16 +1324,25 @@
                                     <action selector="sendInButtonPressed:" destination="Se6-vn-mhF" eventType="touchUpInside" id="qrr-9V-JD0"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_done_light" translatesAutoresizingMaskIntoConstraints="NO" id="Klg-9h-Zaz">
+                                <rect key="frame" x="157" y="99.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="pQB-lt-Imo"/>
+                                    <constraint firstAttribute="width" constant="100" id="qxh-uO-1mI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7Mb-z1-8mL" firstAttribute="trailing" secondItem="Ycy-gS-j3w" secondAttribute="trailing" constant="20" id="1NG-7M-miC"/>
+                            <constraint firstItem="Klg-9h-Zaz" firstAttribute="centerX" secondItem="NNk-LE-5hZ" secondAttribute="centerX" id="Dcb-0u-Oof"/>
                             <constraint firstItem="Ycy-gS-j3w" firstAttribute="leading" secondItem="7Mb-z1-8mL" secondAttribute="leading" constant="20" id="Nw3-ix-LSV"/>
                             <constraint firstItem="Ycy-gS-j3w" firstAttribute="centerX" secondItem="NNk-LE-5hZ" secondAttribute="centerX" id="PST-4n-eM5"/>
                             <constraint firstItem="8Oj-ko-O5g" firstAttribute="leading" secondItem="7Mb-z1-8mL" secondAttribute="leading" constant="20" id="XwQ-PH-srW"/>
                             <constraint firstItem="Ycy-gS-j3w" firstAttribute="centerY" secondItem="NNk-LE-5hZ" secondAttribute="centerY" id="esj-oV-tlN"/>
                             <constraint firstItem="ePr-KY-St8" firstAttribute="leading" secondItem="8Oj-ko-O5g" secondAttribute="trailing" constant="20" id="hmf-cE-DTL"/>
                             <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="8Oj-ko-O5g" secondAttribute="bottom" constant="10" id="jhN-te-XGa"/>
+                            <constraint firstItem="Klg-9h-Zaz" firstAttribute="centerY" secondItem="NNk-LE-5hZ" secondAttribute="centerY" multiplier="1:3" id="puq-tT-8cq"/>
                             <constraint firstItem="ePr-KY-St8" firstAttribute="width" secondItem="8Oj-ko-O5g" secondAttribute="width" id="v8R-ht-bFZ"/>
                             <constraint firstItem="7Mb-z1-8mL" firstAttribute="bottom" secondItem="ePr-KY-St8" secondAttribute="bottom" constant="10" id="vIr-85-oZ4"/>
                             <constraint firstItem="7Mb-z1-8mL" firstAttribute="trailing" secondItem="ePr-KY-St8" secondAttribute="trailing" constant="20" id="zVi-xV-7pi"/>
@@ -1329,6 +1354,7 @@
                         <outlet property="previousButton" destination="8Oj-ko-O5g" id="oGr-r7-A27"/>
                         <outlet property="sendInButton" destination="ePr-KY-St8" id="nVA-VL-rib"/>
                         <outlet property="tempLabel" destination="Ycy-gS-j3w" id="aP6-6t-8Z1"/>
+                        <outlet property="theIcon" destination="Klg-9h-Zaz" id="R94-qA-ios"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7E1-gz-oSy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1338,8 +1364,10 @@
     </scenes>
     <resources>
         <image name="lta_icon_blank_light" width="507" height="506"/>
+        <image name="lta_icon_done_light" width="507" height="506"/>
         <image name="lta_icon_likert_light" width="507" height="506"/>
         <image name="lta_icon_multiple_choice_light" width="507" height="506"/>
+        <image name="lta_icon_open_light" width="507" height="506"/>
         <image name="lta_icon_single_marked_light" width="507" height="506"/>
         <image name="lundsuniversitet_logo" width="118" height="118"/>
         <namedColor name="lta_blue">

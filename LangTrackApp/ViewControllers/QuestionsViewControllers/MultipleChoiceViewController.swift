@@ -16,6 +16,7 @@ class MultipleChoiceViewController: UIViewController {
     @IBOutlet weak var choicesContainer: UIView!
     @IBOutlet weak var checkboxContainerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var theIcon: UIImageView!
     var listener: QuestionListener?
     var theQuestion = Question()
     var theAnswer: Answer? 
@@ -24,7 +25,8 @@ class MultipleChoiceViewController: UIViewController {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         nextButton.layer.cornerRadius = 8
-        
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     func setInfo(question: Question){

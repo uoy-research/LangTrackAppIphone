@@ -20,6 +20,7 @@ class LikertScaleViewController: UIViewController {
     @IBOutlet weak var likertTextLabel: UILabel!
     @IBOutlet weak var radioButtonContainer: UIView!
     @IBOutlet weak var likertContainer: UIView!
+    @IBOutlet weak var theIcon: UIImageView!
     
     
     
@@ -31,6 +32,8 @@ class LikertScaleViewController: UIViewController {
         super.viewDidLoad()
         previousButton.layer.cornerRadius = 8
         nextButton.layer.cornerRadius = 8
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     func setInfo(question: Question){

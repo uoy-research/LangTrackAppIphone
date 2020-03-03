@@ -10,6 +10,7 @@ import UIKit
 
 class FillInTheBlankViewController: UIViewController {
 
+    @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var tableviewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var fillTableview: UITableView!
     @IBOutlet weak var nextButton: UIButton!
@@ -17,6 +18,8 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var questionTextLabel: UILabel!
     @IBOutlet weak var selectedWordContainer: UIView!
     @IBOutlet weak var containerArrow: UILabel!
+    @IBOutlet weak var selectedWordLabel: UILabel!
+    @IBOutlet weak var arrowTrailingConstraint: NSLayoutConstraint!
     
     var listener: QuestionListener?
     var theQuestion = Question()
@@ -24,6 +27,9 @@ class FillInTheBlankViewController: UIViewController {
     let radious:CGFloat = 8
     var arrowUp = false
     var rowheight: CGFloat = 35
+    var theSentence: FillInWordSentence? = nil
+    var theChosenWordIndex : Int? = nil
+    var theAnswer: Answer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +39,8 @@ class FillInTheBlankViewController: UIViewController {
         let touch = UITapGestureRecognizer(target: self, action: #selector(self.selectedWordTouched))
         selectedWordContainer.addGestureRecognizer(touch)
         fillTableview.rowHeight = rowheight
+        theIcon.clipsToBounds = false
+        theIcon.setSmallViewShadow()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,9 +56,36 @@ class FillInTheBlankViewController: UIViewController {
         }
     }
     
+    func getTextAsList(){
+        let arrayWithWords = theQuestion.text.components(separatedBy: " ")
+        if !arrayWithWords.isEmpty{
+            var ind = -99
+            for (i,word) in arrayWithWords.enumerated() {
+                if word == "_____"{
+                    ind = i
+                }
+            }
+            theSentence = FillInWordSentence()
+            theSentence?.listWithWords = arrayWithWords
+            theSentence?.indexForMissingWord = ind
+        }
+    }
+    
     func setInfo(question: Question){
         self.theQuestion = question
-        questionTextLabel.text = theQuestion.text
+        getTextAsList()
+        if (theSentence != nil){
+            setSentence()
+        }
+    }
+    
+    func setSentence(){
+        if theAnswer != nil && theAnswer?.fillBlankAnswer != nil{
+            // show previous answer
+            let selectedWord = theQuestion.fillBlanksChoises?[theAnswer!.fillBlankAnswer!] ?? "_____"
+            theSentence!.listWithWords[theSentence!.indexForMissingWord] = selectedWord
+        }
+        questionTextLabel.text = theSentence?.listWithWords.joined(separator: " ")
     }
     
     func setListener(listener: QuestionListener) {
@@ -63,8 +98,11 @@ class FillInTheBlankViewController: UIViewController {
         if dropDownHeight > 190{
             dropDownHeight = 190
         }
+        let arrowCenter = (selectedWordContainer.frame.width / 2) - 15
         UIView.animate(withDuration: 0.3,animations: {
             self.tableviewHeightConstraint.constant = dropDownHeight
+            self.selectedWordLabel.alpha = 0
+            self.arrowTrailingConstraint.constant = arrowCenter
             self.view.layoutIfNeeded()
         }){_ in
             self.dropDownOpen = true
@@ -75,6 +113,8 @@ class FillInTheBlankViewController: UIViewController {
         turnArrow()
         UIView.animate(withDuration: 0.3, animations:  {
             self.tableviewHeightConstraint.constant = self.radious
+            self.selectedWordLabel.alpha = 1
+            self.arrowTrailingConstraint.constant = 10
             self.view.layoutIfNeeded()
         }){_ in
             self.dropDownOpen = false
@@ -132,8 +172,12 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("you selected \(theQuestion.fillBlanksChoises?[indexPath.row] ?? "")")
+        selectedWordLabel.text = theQuestion.fillBlanksChoises?[indexPath.row] ?? ""
+        let tempAnswer = Answer()
+        tempAnswer.fillBlankAnswer = indexPath.row
+        theAnswer = tempAnswer
         closeProjectDropDown()
+        setSentence()
     }
 }
 
@@ -150,7 +194,12 @@ class FillInBlankCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+}
+
+class FillInWordSentence {
+    var listWithWords = [String]()
+    var indexForMissingWord: Int = -99
 }
