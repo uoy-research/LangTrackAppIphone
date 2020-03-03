@@ -184,6 +184,18 @@ class SurveyViewController: UIViewController {
 
 //MARK:- QuestionListener
 extension SurveyViewController: QuestionListener{
+    func setOpenEndedAnswer(text: String) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: text)
+        }
+    }
+    
+    func setFillBlankAnswer(selected: Int) {
+        if theSurvey != nil{
+            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: selected, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+        }
+    }
+    
     func setLikertAnswer(selected: Int) {
         if theSurvey != nil{
             theSurvey!.answer[currentPage.index] = Answer(likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
