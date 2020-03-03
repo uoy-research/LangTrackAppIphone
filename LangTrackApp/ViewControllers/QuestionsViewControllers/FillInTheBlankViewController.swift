@@ -178,6 +178,7 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
         theAnswer = tempAnswer
         closeProjectDropDown()
         setSentence()
+        listener?.setFillBlankAnswer(selected: indexPath.row)
     }
 }
 
