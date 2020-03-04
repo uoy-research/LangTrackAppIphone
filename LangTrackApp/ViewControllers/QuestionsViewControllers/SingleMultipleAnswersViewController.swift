@@ -50,6 +50,24 @@ class SingleMultipleAnswersViewController: UIViewController {
         }
     }
     
+    func getSelected() -> Int?{
+        for v in answersContainer.subviews{
+            if v is VKCheckbox{
+                if (v as! VKCheckbox).isOn{
+                    return v.tag
+                }
+            }
+        }
+        return nil
+    }
+    
+    func saveAnswer(){
+        let answer = getSelected()
+        if answer != nil{
+            listener?.setSingleMultipleAnswer(selected: answer!)
+        }
+    }
+    
     func emptyAnswers(){
         for v in answersContainer.subviews{
             v.removeFromSuperview()
@@ -81,7 +99,6 @@ class SingleMultipleAnswersViewController: UIViewController {
                     tag, ison in
                     if ison{
                         self.markSelectedAnswer(selected: tag)
-                        self.listener?.setSingleMultipleAnswer(selected: tag)
                     }
                 }
                 let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: 148, height: size))
@@ -98,10 +115,12 @@ class SingleMultipleAnswersViewController: UIViewController {
     }
     
     @IBAction func previousButtonPressed(_ sender: Any) {
+        saveAnswer()
         listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        saveAnswer()
         listener?.nextQuestion(current: theQuestion)
     }
     

@@ -50,13 +50,13 @@ class OpenEndedTextResponsesViewController: UIViewController {
     }
     
     @IBAction func previousButtonPressed(_ sender: Any) {
-        listener?.previousQuestion(current: theQuestion)
         saveAnswer()
+        listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        listener?.nextQuestion(current: theQuestion)
         saveAnswer()
+        listener?.nextQuestion(current: theQuestion)
     }
     
 }
