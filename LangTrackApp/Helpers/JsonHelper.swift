@@ -101,6 +101,59 @@ struct JsonHelper {
                     if(key == "questions"){
                         tempSurvey.questions = getQuestionsFrom(jsonArray: subJson)
                     }
+                    if(key == "answer"){
+                        let answerDict = subJson.dictionaryObject
+                        if answerDict != nil{
+                            for a in answerDict!{
+                                let index = a.key
+                                let indexAsInt = Int(index) ?? -99
+                                let aDict = a.value as? [String:Any]
+                                if aDict != nil{
+                                    for answer in aDict!{
+                                        switch answer.key {
+                                        case "likertAnswer":
+                                            let likertAnswer = answer.value as? Int ?? -99
+                                            if likertAnswer != -99{
+                                                if indexAsInt != -99{
+                                                    tempSurvey.answer[indexAsInt] = Answer(likertAnswer: likertAnswer, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+                                                }
+                                            }
+                                        case "singleMultipleAnswer":
+                                            let singleMultipleAnswer = answer.value as? Int ?? -99
+                                            if singleMultipleAnswer != -99{
+                                                if indexAsInt != -99{
+                                                    tempSurvey.answer[indexAsInt] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: singleMultipleAnswer, openEndedAnswer: nil)
+                                                }
+                                            }
+                                        case "OpenEndedAnswer":
+                                            let openEndedAnswer = answer.value as! String
+                                            if openEndedAnswer != ""{
+                                                if indexAsInt != -99{
+                                                    tempSurvey.answer[indexAsInt] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: openEndedAnswer)
+                                                }
+                                            }
+                                        case "multipleChoiceAnswer":
+                                            let multipleAnswer = answer.value as? [Int]
+                                            if multipleAnswer != nil{
+                                                if indexAsInt != -99{
+                                                    tempSurvey.answer[indexAsInt] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multipleAnswer, singleMultipleAnswer: nil, openEndedAnswer: nil)
+                                                }
+                                            }
+                                        case "fillBlankAnswer":
+                                            let fillBlankAnswer = answer.value as? Int ?? -99
+                                            if fillBlankAnswer != -99{
+                                                if indexAsInt != -99{
+                                                    tempSurvey.answer[indexAsInt] = Answer(likertAnswer: nil, fillBlankAnswer: fillBlankAnswer, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+                                                }
+                                            }
+                                        default:
+                                            print("no match")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 returnValue.append(tempSurvey)
             }

@@ -35,7 +35,7 @@ class SurveyTableViewCell: UITableViewCell {
         if (survey.responded ?? false || survey.active ?? false != true) {
             surveyUnansweredIndicator.isHidden = true
             surveyDate.text = "Inaktiv"
-            if(survey.responded ?? false){
+            if(!survey.answerIsEmpty()){
                 surveyDate.text?.append(", besvarad")
             }else{
                 surveyDate.text?.append(", obesvarad")

@@ -58,6 +58,8 @@ class ViewController: UIViewController {
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     var latestFetchMilli: Int64 = 0
     
+    static let newNotification = NSNotification.Name(rawValue: "newNotification")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +84,22 @@ class ViewController: UIViewController {
         print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
         print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
         
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(ViewController.receivedNewNotification(_:)),
+        name: ViewController.newNotification,
+        object: self)
+    }
+    
+    deinit {
+      NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func receivedNewNotification(_ aps: Notification) {
         
+        // here is the aps if app is running
+        // or if user clicked notification to start app
+        print("receivedNewNotification: \(aps)")
     }
     
     
@@ -158,10 +175,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
+        let currentSurvey = surveyList[indexPath.row]
+        var isNil = true
+        for a in currentSurvey.answer{
+            if a.value.isAllNil(){
+                isNil = false
+            }
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)//callToActionCell
         cell.selectionStyle = .none
         if let cell = cell as? SurveyTableViewCell{
-            cell.setSurveyInfo(survey: surveyList[indexPath.row])
+            cell.setSurveyInfo(survey: currentSurvey)
         }else{
             print("no cell")
         }

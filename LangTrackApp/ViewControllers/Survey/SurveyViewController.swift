@@ -138,6 +138,7 @@ class SurveyViewController: UIViewController {
             fillInTheBlank!.view.frame = surveyContainer.bounds
             fillInTheBlank!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             fillInTheBlank!.didMove(toParent: self)
+            fillInTheBlank!.theAnswer = theSurvey!.answer[currentPage.index]
             fillInTheBlank!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.multipleChoice.rawValue)
@@ -167,6 +168,7 @@ class SurveyViewController: UIViewController {
             openEndedTextResponses!.view.frame = surveyContainer.bounds
             openEndedTextResponses!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             openEndedTextResponses!.didMove(toParent: self)
+            openEndedTextResponses!.theAnswer = theSurvey!.answer[currentPage.index]
             openEndedTextResponses!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.footer.rawValue)

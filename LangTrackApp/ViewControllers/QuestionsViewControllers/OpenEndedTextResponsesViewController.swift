@@ -18,6 +18,7 @@ class OpenEndedTextResponsesViewController: UIViewController {
     
     var listener: QuestionListener?
     var theQuestion = Question()
+    var theAnswer: Answer?//TODO: set answer in viewwillAppear
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -84,6 +84,7 @@ class FillInTheBlankViewController: UIViewController {
             // show previous answer
             let selectedWord = theQuestion.fillBlanksChoises?[theAnswer!.fillBlankAnswer!] ?? "_____"
             theSentence!.listWithWords[theSentence!.indexForMissingWord] = selectedWord
+            selectedWordLabel.text = selectedWord
         }
         questionTextLabel.text = theSentence?.listWithWords.joined(separator: " ")
     }
@@ -172,7 +173,6 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedWordLabel.text = theQuestion.fillBlanksChoises?[indexPath.row] ?? ""
         let tempAnswer = Answer()
         tempAnswer.fillBlankAnswer = indexPath.row
         theAnswer = tempAnswer
