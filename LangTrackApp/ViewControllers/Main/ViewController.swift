@@ -176,20 +176,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentSurvey = surveyList[indexPath.row]
-        var isNil = true
-        for a in currentSurvey.answer{
-            if a.value.isAllNil(){
-                isNil = false
+        if currentSurvey.isActive(){
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
+            cell.selectionStyle = .none
+            if let cell = cell as? CallToActionTableViewCell{
+                cell.setSurveyInfo(survey: currentSurvey)
+            }else{
+                print("no cell")
             }
-        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)//callToActionCell
-        cell.selectionStyle = .none
-        if let cell = cell as? SurveyTableViewCell{
-            cell.setSurveyInfo(survey: currentSurvey)
+            return cell
         }else{
-            print("no cell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
+            cell.selectionStyle = .none
+            if let cell = cell as? SurveyTableViewCell{
+                cell.setSurveyInfo(survey: currentSurvey)
+            }else{
+                print("no cell")
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

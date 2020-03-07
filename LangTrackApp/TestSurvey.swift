@@ -6,7 +6,7 @@
 //  Copyright © 2020 Stephan Björck. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 
 
 class TestSurvey {
@@ -228,4 +228,4 @@ class TestSurvey {
     }
 }
 
-
+*/

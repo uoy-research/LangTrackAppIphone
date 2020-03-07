@@ -19,6 +19,7 @@
 		F11007DF240D0B9E0097A6A4 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11007DE240D0B9E0097A6A4 /* Answer.swift */; };
 		F11499F6240E543300DC988A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499F5240E543300DC988A /* ViewExtension.swift */; };
 		F11499F8240E8D8200DC988A /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499F7240E8D8200DC988A /* TextViewExtension.swift */; };
+		F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
 		F1532DB023EABA4D00171355 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* JsonHelper.swift */; };
 		F1532DB223EAC67C00171355 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DB123EAC67C00171355 /* EncodableExtension.swift */; };
@@ -86,6 +87,7 @@
 		F11499F5240E543300DC988A /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		F11499F7240E8D8200DC988A /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
 		F11499F9241155DC00DC988A /* LangTrackApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LangTrackApp.entitlements; sourceTree = "<group>"; };
+		F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToActionTableViewCell.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1532DAF23EABA4D00171355 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		F1532DB123EAC67C00171355 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				F156587423E2DD7500EC2796 /* ViewController.swift */,
 				F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */,
+				F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				F178752723E41654003D16D1 /* Question.swift in Sources */,
 				F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */,
 				F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */,
+				F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */,
 				F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */,
 				F15658A723E33DD100EC2796 /* LikertScaleViewController.swift in Sources */,
 				F10136EA23E85F3B00B36CF0 /* StringExtension.swift in Sources */,

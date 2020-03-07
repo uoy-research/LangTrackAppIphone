@@ -34,13 +34,13 @@
                                                             <rect key="frame" x="5" y="10" width="394" height="75"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss0-lG-nu8">
-                                                                    <rect key="frame" x="15" y="15" width="339" height="24"/>
+                                                                    <rect key="frame" x="15" y="15" width="49.5" height="24"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                     <color key="textColor" name="lta_blue"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMw-Kv-jAK">
-                                                                    <rect key="frame" x="15" y="44" width="339" height="21"/>
+                                                                    <rect key="frame" x="15" y="44" width="37" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="5Nz-Uw-zSj"/>
                                                                     </constraints>
@@ -48,26 +48,14 @@
                                                                     <color key="textColor" name="lta_blue"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOm-Ha-3YB" customClass="UIImageView">
-                                                                    <rect key="frame" x="364" y="27.5" width="20" height="20"/>
-                                                                    <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="20" id="6qQ-43-TUA"/>
-                                                                        <constraint firstAttribute="width" constant="20" id="fp8-7j-xd7"/>
-                                                                    </constraints>
-                                                                </view>
                                                             </subviews>
                                                             <color key="backgroundColor" name="lta_light_grey"/>
                                                             <constraints>
                                                                 <constraint firstItem="KMw-Kv-jAK" firstAttribute="top" secondItem="ss0-lG-nu8" secondAttribute="bottom" constant="5" id="GwV-Xh-8s2"/>
-                                                                <constraint firstItem="gOm-Ha-3YB" firstAttribute="leading" secondItem="ss0-lG-nu8" secondAttribute="trailing" constant="10" id="MFc-ZX-TMn"/>
                                                                 <constraint firstItem="KMw-Kv-jAK" firstAttribute="leading" secondItem="ylO-48-9ZZ" secondAttribute="leading" constant="15" id="MNJ-je-RGf"/>
-                                                                <constraint firstItem="gOm-Ha-3YB" firstAttribute="centerY" secondItem="ylO-48-9ZZ" secondAttribute="centerY" id="YO7-NW-mPJ"/>
                                                                 <constraint firstItem="ss0-lG-nu8" firstAttribute="leading" secondItem="ylO-48-9ZZ" secondAttribute="leading" constant="15" id="acl-M2-CGN"/>
-                                                                <constraint firstAttribute="trailing" secondItem="gOm-Ha-3YB" secondAttribute="trailing" constant="10" id="dNV-dY-wJk"/>
                                                                 <constraint firstAttribute="bottom" secondItem="KMw-Kv-jAK" secondAttribute="bottom" constant="10" id="hbC-yn-LJo"/>
                                                                 <constraint firstItem="ss0-lG-nu8" firstAttribute="top" secondItem="ylO-48-9ZZ" secondAttribute="top" constant="15" id="oQi-Wj-0DG"/>
-                                                                <constraint firstItem="gOm-Ha-3YB" firstAttribute="leading" secondItem="KMw-Kv-jAK" secondAttribute="trailing" constant="10" id="pIm-GK-cHZ"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -83,16 +71,32 @@
                                                     <outlet property="surveyBackground" destination="ylO-48-9ZZ" id="Zfp-Ak-iP0"/>
                                                     <outlet property="surveyDate" destination="KMw-Kv-jAK" id="KqL-by-uil"/>
                                                     <outlet property="surveyTitle" destination="ss0-lG-nu8" id="WWD-N0-iIy"/>
-                                                    <outlet property="surveyUnansweredIndicator" destination="gOm-Ha-3YB" id="cAt-45-FgZ"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="callToActionCell" id="DtT-ZO-fwL">
-                                                <rect key="frame" x="0.0" y="113" width="404" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="callToActionCell" id="DtT-ZO-fwL" customClass="CallToActionTableViewCell" customModule="Lang_Track_App">
+                                                <rect key="frame" x="0.0" y="113" width="404" height="43"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DtT-ZO-fwL" id="ai0-QD-hQ8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-DP-nOO">
+                                                            <rect key="frame" x="20" y="11" width="364" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="uZY-DP-nOO" firstAttribute="leading" secondItem="ai0-QD-hQ8" secondAttribute="leadingMargin" id="dtp-6u-GJ6"/>
+                                                        <constraint firstItem="uZY-DP-nOO" firstAttribute="bottom" secondItem="ai0-QD-hQ8" secondAttribute="bottomMargin" id="eei-no-uzd"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="uZY-DP-nOO" secondAttribute="trailing" id="ipZ-dk-5ol"/>
+                                                        <constraint firstItem="uZY-DP-nOO" firstAttribute="top" secondItem="ai0-QD-hQ8" secondAttribute="topMargin" id="vUq-yo-3t3"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="callToActionLabel" destination="uZY-DP-nOO" id="QkA-p9-wQk"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>

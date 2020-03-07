@@ -13,7 +13,7 @@ import SwiftyJSON
 struct JsonHelper {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
-    static let theUrl = "https://www.dropbox.com/s/eqtummlm9fu4n8x/survey_json.txt?dl=1"
+    static let theUrl = "https://www.dropbox.com/s/tchefrp4jne99tf/survey_json.txt?dl=1"
     
     static func getSurveys(token: String, completionhandler: @escaping (_ result: [Survey]?) -> Void){
         
@@ -77,9 +77,9 @@ struct JsonHelper {
                     if(key == "title"){
                         tempSurvey.title = subJson.stringValue
                     }
-                    if(key == "active"){
-                        tempSurvey.active = subJson.boolValue
-                    }
+//                    if(key == "active"){
+//                        tempSurvey.active = subJson.boolValue
+//                    }
                     if(key == "date"){
                         tempSurvey.date = subJson.int64Value
                     }
@@ -92,9 +92,9 @@ struct JsonHelper {
                     if(key == "published"){
                         tempSurvey.published = subJson.int64Value
                     }
-                    if(key == "responded"){
-                        tempSurvey.responded = subJson.boolValue
-                    }
+//                    if(key == "responded"){
+//                        tempSurvey.responded = subJson.boolValue
+//                    }
                     if(key == "respondeddate"){
                         tempSurvey.respondeddate = subJson.int64Value
                     }

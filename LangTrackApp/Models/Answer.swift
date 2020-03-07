@@ -27,12 +27,12 @@ var openEndedAnswer: String? = nil
         self.openEndedAnswer = openEndedAnswer
     }
     
-    func isAllNil() -> Bool{
-        if likertAnswer == nil &&
+    func isEmpty() -> Bool{
+        if (likertAnswer == nil &&
             fillBlankAnswer == nil &&
             multipleChoiceAnswer == nil &&
             singleMultipleAnswer == nil &&
-            openEndedAnswer == nil{
+            openEndedAnswer == nil){
             return true
         }else {
             return false
