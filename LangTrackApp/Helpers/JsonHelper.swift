@@ -13,7 +13,7 @@ import SwiftyJSON
 struct JsonHelper {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
-    static let theUrl = "https://www.dropbox.com/s/tchefrp4jne99tf/survey_json.txt?dl=1"
+    static let theUrl = "https://www.dropbox.com/s/n2l1vssqm2pfaqp/survey_json.txt?dl=1"//2 st går ut 23 april 22:03
     
     static func getSurveys(token: String, completionhandler: @escaping (_ result: [Survey]?) -> Void){
         

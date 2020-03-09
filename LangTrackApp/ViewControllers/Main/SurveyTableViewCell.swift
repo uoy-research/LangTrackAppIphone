@@ -10,29 +10,26 @@ import UIKit
 
 class SurveyTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var surveyBackground: UIView!
     @IBOutlet weak var surveyTitle: UILabel!
-    @IBOutlet weak var surveyDate: UILabel!
+    @IBOutlet weak var answeredLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        surveyBackground.layer.borderWidth = 1.5
-        surveyBackground.layer.cornerRadius = 8
-        surveyBackground.layer.borderColor = UIColor.init(named: "lta_blue")?.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     func setSurveyInfo(survey: Survey)  {
         surveyTitle.text = survey.title
-        if(!survey.answerIsEmpty()){
-            surveyDate.text?.append(", besvarad")
+        dateLabel.text = "datum"
+        if survey.answerIsEmpty(){
+            answeredLabel.text = "Obesvarad"
         }else{
-            surveyDate.text?.append(", obesvarad")
+            answeredLabel.text = "Besvarad"
         }
     }
 }

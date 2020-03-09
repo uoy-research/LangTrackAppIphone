@@ -63,10 +63,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        theTableView.rowHeight = UITableView.automaticDimension
-        theTableView.estimatedRowHeight = 75
+//        theTableView.rowHeight = UITableView.automaticDimension
+//        theTableView.estimatedRowHeight = 75
         theTableView.delegate = self
-        theTableView.layer.cornerRadius = 8
+//        theTableView.layer.cornerRadius = 8
         
         aboutButton.layer.cornerRadius = 8
         aboutButton.layer.borderWidth = 0.35
@@ -102,6 +102,18 @@ class ViewController: UIViewController {
         print("receivedNewNotification: \(aps)")
     }
     
+    func sortSurveyList(theList : [Survey]) -> [Survey]{
+        var activeList = theList.filter {$0.isActive()}
+        var unActiveList = theList.filter {!$0.isActive()}
+        activeList.sort {$0.published ?? 0 < $1.published ?? 0}
+        unActiveList.sort {$0.published ?? 0 < $1.published ?? 0}
+        var finallist = [Survey]()
+        finallist.append(contentsOf: activeList)
+        finallist.append(contentsOf: unActiveList)
+        
+        return finallist
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
@@ -115,7 +127,7 @@ class ViewController: UIViewController {
                     JsonHelper.getSurveys(token: token) { (surveys) in
                         if surveys != nil{
                             DispatchQueue.main.async {
-                                self.surveyList = surveys!
+                                self.surveyList = self.sortSurveyList(theList: surveys!)
                                 self.theTableView.reloadData()
                             }
                         }
@@ -182,6 +194,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             cell.selectionStyle = .none
             if let cell = cell as? CallToActionTableViewCell{
                 cell.setSurveyInfo(survey: currentSurvey)
+                cell.setListener(theListener: self)
             }else{
                 print("no cell")
             }
@@ -209,5 +222,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         newViewController.theSurvey = surveyList[indexPath.row]
         newViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(newViewController, animated: true)*/
+    }
+}
+
+extension ViewController: CellTimerListener{
+    func timerExpiered() {
+        print("ViewController: CellTimerListener timerExpiered")
+        //TODO: reload tableview to remove expiered survey from 'call to action'
     }
 }
