@@ -80,7 +80,7 @@ class FillInTheBlankViewController: UIViewController {
     }
     
     func setSentence(){
-        var theAttributedSentence = NSMutableAttributedString()
+        let theAttributedSentence = NSMutableAttributedString()
         if theAnswer != nil && theAnswer?.fillBlankAnswer != nil{
             // show previous answer
             let selectedWord = theQuestion.fillBlanksChoises?[theAnswer!.fillBlankAnswer!] ?? "_____"

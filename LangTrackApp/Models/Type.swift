@@ -12,7 +12,7 @@ enum Type: String,  Codable {
     case header = "header"
     case likertScales = "likert"
     case fillInTheBlank = "blanks"
-    case multipleChoice = "multiple"
+    case multipleChoice = "multi"
     case singleMultipleAnswers = "single"
     case openEndedTextResponses = "open"
     case footer = "footer"

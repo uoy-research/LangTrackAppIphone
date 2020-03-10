@@ -219,19 +219,14 @@ extension SurveyViewController: QuestionListener{
     
     
     func closeSurvey() {
-        print("closeSurvey")
-        //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
     func sendInSurvey() {
-        print("sendInSurvey")
-        //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
     func nextQuestion(current: Question) {
-        print("nextQuestion: \(current.next ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.next{
@@ -242,7 +237,6 @@ extension SurveyViewController: QuestionListener{
     }
     
     func previousQuestion(current: Question) {
-        print("previousQuestion: \(current.previous ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.previous{
