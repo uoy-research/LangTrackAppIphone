@@ -138,6 +138,7 @@ class SurveyViewController: UIViewController {
             fillInTheBlank!.view.frame = surveyContainer.bounds
             fillInTheBlank!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             fillInTheBlank!.didMove(toParent: self)
+            fillInTheBlank!.theAnswer = theSurvey!.answer[currentPage.index]
             fillInTheBlank!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.multipleChoice.rawValue)
@@ -167,6 +168,7 @@ class SurveyViewController: UIViewController {
             openEndedTextResponses!.view.frame = surveyContainer.bounds
             openEndedTextResponses!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             openEndedTextResponses!.didMove(toParent: self)
+            openEndedTextResponses!.theAnswer = theSurvey!.answer[currentPage.index]
             openEndedTextResponses!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.footer.rawValue)
@@ -217,19 +219,14 @@ extension SurveyViewController: QuestionListener{
     
     
     func closeSurvey() {
-        print("closeSurvey")
-        //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
     func sendInSurvey() {
-        print("sendInSurvey")
-        //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
     func nextQuestion(current: Question) {
-        print("nextQuestion: \(current.next ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.next{
@@ -240,7 +237,6 @@ extension SurveyViewController: QuestionListener{
     }
     
     func previousQuestion(current: Question) {
-        print("previousQuestion: \(current.previous ?? 0)")
         if theSurvey != nil{
             for q in theSurvey!.questions {
                 if q.index == current.previous{

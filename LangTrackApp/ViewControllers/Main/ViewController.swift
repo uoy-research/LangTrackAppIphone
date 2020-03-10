@@ -57,14 +57,17 @@ class ViewController: UIViewController {
     var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     var latestFetchMilli: Int64 = 0
+    var tokenChangeListener: IDTokenDidChangeListenerHandle?
+    
+    static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        theTableView.rowHeight = UITableView.automaticDimension
-        theTableView.estimatedRowHeight = 75
+//        theTableView.rowHeight = UITableView.automaticDimension
+//        theTableView.estimatedRowHeight = 75
         theTableView.delegate = self
-        theTableView.layer.cornerRadius = 8
+//        theTableView.layer.cornerRadius = 8
         
         aboutButton.layer.cornerRadius = 8
         aboutButton.layer.borderWidth = 0.35
@@ -82,25 +85,76 @@ class ViewController: UIViewController {
         print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
         print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
         
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(ViewController.receivedNewNotification(_:)),
+        name: ViewController.newNotification,
+        object: self)
         
+        if self.tokenChangeListener == nil && Auth.auth().currentUser != nil{
+            setTokenListener()
+        }
     }
     
+    deinit {
+      NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func receivedNewNotification(_ aps: Notification) {
+        
+        // here is the aps if app is running
+        // or if user clicked notification to start app
+        print("receivedNewNotification: \(aps)")
+    }
+    
+    func sortSurveyList(theList : [Survey]) -> [Survey]{
+        var activeList = theList.filter {$0.isActive()}
+        var unActiveList = theList.filter {!$0.isActive()}
+        activeList.sort {$0.published ?? 0 < $1.published ?? 0}
+        unActiveList.sort {$0.published ?? 0 < $1.published ?? 0}
+        var finallist = [Survey]()
+        finallist.append(contentsOf: activeList)
+        finallist.append(contentsOf: unActiveList)
+        
+        return finallist
+    }
+    
+    func setTokenListener(){
+        self.tokenChangeListener = Auth.auth().addIDTokenDidChangeListener() { (auth, user) in
+            if let user = user {
+                // Get the token, renewing it if the 60 minute expiration
+                //  has occurred.
+                user.getIDToken { idToken, error in
+                    if let error = error {
+                        // Handle error
+                        print("getIDToken error: \(error)")
+                        return;
+                    }
+                    
+                    print("getIDToken token: \(String(describing: idToken))")
+                    if idToken != nil{
+                        SurveyRepository.setIdToken(token: idToken!)
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
         }else{
+            if self.tokenChangeListener == nil{
+                setTokenListener()
+            }
             // the user is logged in
             // if less than 5 min ago - dont fetch
             if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
-                if let token = Auth.auth().currentUser?.refreshToken{
-                    print("Fetching new surveys")
-                    JsonHelper.getSurveys(token: token) { (surveys) in
-                        if surveys != nil{
-                            DispatchQueue.main.async {
-                                self.surveyList = surveys!
-                                self.theTableView.reloadData()
-                            }
+                SurveyRepository.getSurveys() { (surveys) in
+                    if surveys != nil{
+                        DispatchQueue.main.async {
+                            self.surveyList = self.sortSurveyList(theList: surveys!)
+                            self.theTableView.reloadData()
                         }
                     }
                 }
@@ -125,6 +179,10 @@ class ViewController: UIViewController {
                         self.performSegue(withIdentifier: "login", sender: nil)
                         //TODO: Töm listor osv
                         self.userNameLabel.text = ""
+                        // Remove the token ID listenter.
+                        guard let tokenListener = self.tokenChangeListener else { return }
+                        Auth.auth().removeStateDidChangeListener(tokenListener)
+                        self.tokenChangeListener = nil
                     } catch let signOutError as NSError {
                         print ("Error signing out: %@", signOutError)
                     }
@@ -158,18 +216,31 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
-        cell.selectionStyle = .none
-        if let cell = cell as? SurveyTableViewCell{
-            cell.setSurveyInfo(survey: surveyList[indexPath.row])
+        let currentSurvey = surveyList[indexPath.row]
+        if currentSurvey.isActive(){
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
+            cell.selectionStyle = .none
+            if let cell = cell as? CallToActionTableViewCell{
+                cell.setSurveyInfo(survey: currentSurvey)
+                cell.setListener(theListener: self)
+            }else{
+                print("no cell")
+            }
+            return cell
         }else{
-            print("no cell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
+            cell.selectionStyle = .none
+            if let cell = cell as? SurveyTableViewCell{
+                cell.setSurveyInfo(survey: currentSurvey)
+            }else{
+                print("no cell")
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("you selected \(indexPath.row)")
         selectedSurvey = surveyList[indexPath.row]
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "survey", sender: nil)
@@ -179,5 +250,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         newViewController.theSurvey = surveyList[indexPath.row]
         newViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(newViewController, animated: true)*/
+    }
+}
+
+extension ViewController: CellTimerListener{
+    func timerExpiered() {
+        print("ViewController: CellTimerListener timerExpiered")
+        //TODO: reload tableview to remove expiered survey from 'call to action'
     }
 }

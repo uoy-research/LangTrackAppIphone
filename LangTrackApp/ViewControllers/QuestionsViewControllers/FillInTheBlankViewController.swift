@@ -80,12 +80,43 @@ class FillInTheBlankViewController: UIViewController {
     }
     
     func setSentence(){
+        let theAttributedSentence = NSMutableAttributedString()
         if theAnswer != nil && theAnswer?.fillBlankAnswer != nil{
             // show previous answer
             let selectedWord = theQuestion.fillBlanksChoises?[theAnswer!.fillBlankAnswer!] ?? "_____"
             theSentence!.listWithWords[theSentence!.indexForMissingWord] = selectedWord
+            selectedWordLabel.text = selectedWord
+            
+            
+            if selectedWord != "_____"{
+                for word in theSentence!.listWithWords{
+                    if word == selectedWord{
+                        //underline and add word
+                        theAttributedSentence.append(underLineText(text: word))
+                    }else{
+                        //just add word
+                        theAttributedSentence.append(NSAttributedString(string: word))
+                    }
+                    
+                    if word != theSentence!.listWithWords.last{
+                        theAttributedSentence.append(NSAttributedString(string: " "))
+                    }
+                }
+            }
         }
-        questionTextLabel.text = theSentence?.listWithWords.joined(separator: " ")
+        if theAttributedSentence.string == ""{
+            questionTextLabel.text = theSentence?.listWithWords.joined(separator: " ")
+        }else{
+            questionTextLabel.text = ""
+            questionTextLabel.attributedText = theAttributedSentence
+        }
+        
+    }
+    
+    func underLineText(text: String)-> NSMutableAttributedString{
+        let attributedText = NSMutableAttributedString(string: text)
+        attributedText.addAttribute(NSMutableAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributedText.length))
+        return attributedText
     }
     
     func setListener(listener: QuestionListener) {
@@ -172,7 +203,6 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedWordLabel.text = theQuestion.fillBlanksChoises?[indexPath.row] ?? ""
         let tempAnswer = Answer()
         tempAnswer.fillBlankAnswer = indexPath.row
         theAnswer = tempAnswer

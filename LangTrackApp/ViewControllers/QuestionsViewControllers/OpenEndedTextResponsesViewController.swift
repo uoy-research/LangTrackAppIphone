@@ -18,6 +18,7 @@ class OpenEndedTextResponsesViewController: UIViewController {
     
     var listener: QuestionListener?
     var theQuestion = Question()
+    var theAnswer: Answer?//TODO: set answer in viewwillAppear
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +51,13 @@ class OpenEndedTextResponsesViewController: UIViewController {
     }
     
     @IBAction func previousButtonPressed(_ sender: Any) {
-        listener?.previousQuestion(current: theQuestion)
         saveAnswer()
+        listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        listener?.nextQuestion(current: theQuestion)
         saveAnswer()
+        listener?.nextQuestion(current: theQuestion)
     }
     
 }

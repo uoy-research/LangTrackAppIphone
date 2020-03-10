@@ -26,4 +26,16 @@ var openEndedAnswer: String? = nil
         self.singleMultipleAnswer = singleMultipleAnswer
         self.openEndedAnswer = openEndedAnswer
     }
+    
+    func isEmpty() -> Bool{
+        if (likertAnswer == nil &&
+            fillBlankAnswer == nil &&
+            multipleChoiceAnswer == nil &&
+            singleMultipleAnswer == nil &&
+            openEndedAnswer == nil){
+            return true
+        }else {
+            return false
+        }
+    }
 }

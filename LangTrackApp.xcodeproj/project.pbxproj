@@ -19,8 +19,11 @@
 		F11007DF240D0B9E0097A6A4 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11007DE240D0B9E0097A6A4 /* Answer.swift */; };
 		F11499F6240E543300DC988A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499F5240E543300DC988A /* ViewExtension.swift */; };
 		F11499F8240E8D8200DC988A /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499F7240E8D8200DC988A /* TextViewExtension.swift */; };
+		F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */; };
+		F11499FD241575DA00DC988A /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */; };
+		F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FE2416384700DC988A /* CellTimerListener.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
-		F1532DB023EABA4D00171355 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* JsonHelper.swift */; };
+		F1532DB023EABA4D00171355 /* SurveyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* SurveyRepository.swift */; };
 		F1532DB223EAC67C00171355 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DB123EAC67C00171355 /* EncodableExtension.swift */; };
 		F1532DB423EB10B400171355 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DB323EB10B400171355 /* DateExtension.swift */; };
 		F156587123E2DD7500EC2796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156587023E2DD7500EC2796 /* AppDelegate.swift */; };
@@ -85,11 +88,15 @@
 		F11007DE240D0B9E0097A6A4 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		F11499F5240E543300DC988A /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		F11499F7240E8D8200DC988A /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
+		F11499F9241155DC00DC988A /* LangTrackApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LangTrackApp.entitlements; sourceTree = "<group>"; };
+		F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToActionTableViewCell.swift; sourceTree = "<group>"; };
+		F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
+		F11499FE2416384700DC988A /* CellTimerListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTimerListener.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F1532DAF23EABA4D00171355 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		F1532DAF23EABA4D00171355 /* SurveyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyRepository.swift; sourceTree = "<group>"; };
 		F1532DB123EAC67C00171355 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		F1532DB323EB10B400171355 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		F156586D23E2DD7500EC2796 /* LangTrackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LangTrackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F156586D23E2DD7500EC2796 /* Lang Track App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lang Track App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F156587023E2DD7500EC2796 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F156587223E2DD7500EC2796 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F156587423E2DD7500EC2796 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +195,7 @@
 				F1532DB323EB10B400171355 /* DateExtension.swift */,
 				F11499F5240E543300DC988A /* ViewExtension.swift */,
 				F11499F7240E8D8200DC988A /* TextViewExtension.swift */,
+				F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -196,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F10B84B823E47A71003CAC76 /* DateParser.swift */,
-				F1532DAF23EABA4D00171355 /* JsonHelper.swift */,
+				F1532DAF23EABA4D00171355 /* SurveyRepository.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 			children = (
 				F156587423E2DD7500EC2796 /* ViewController.swift */,
 				F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */,
+				F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -233,7 +242,7 @@
 		F156586E23E2DD7500EC2796 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F156586D23E2DD7500EC2796 /* LangTrackApp.app */,
+				F156586D23E2DD7500EC2796 /* Lang Track App.app */,
 				F156588323E2DD7600EC2796 /* LangTrackAppTests.xctest */,
 				F156588E23E2DD7600EC2796 /* LangTrackAppUITests.xctest */,
 			);
@@ -243,6 +252,7 @@
 		F156586F23E2DD7500EC2796 /* LangTrackApp */ = {
 			isa = PBXGroup;
 			children = (
+				F11499F9241155DC00DC988A /* LangTrackApp.entitlements */,
 				F1B05A1723ED9766004B8BB6 /* CustonViews */,
 				F10136E823E85F2200B36CF0 /* Extentions */,
 				F16D556F23E8238500DD92A1 /* GoogleService-Info.plist */,
@@ -322,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				F178752923E41C30003D16D1 /* QuestionListener.swift */,
+				F11499FE2416384700DC988A /* CellTimerListener.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -353,7 +364,7 @@
 			);
 			name = LangTrackApp;
 			productName = LangTrackApp;
-			productReference = F156586D23E2DD7500EC2796 /* LangTrackApp.app */;
+			productReference = F156586D23E2DD7500EC2796 /* Lang Track App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F156588223E2DD7600EC2796 /* LangTrackAppTests */ = {
@@ -549,7 +560,8 @@
 				F11499F8240E8D8200DC988A /* TextViewExtension.swift in Sources */,
 				F11007DF240D0B9E0097A6A4 /* Answer.swift in Sources */,
 				F156587523E2DD7500EC2796 /* ViewController.swift in Sources */,
-				F1532DB023EABA4D00171355 /* JsonHelper.swift in Sources */,
+				F1532DB023EABA4D00171355 /* SurveyRepository.swift in Sources */,
+				F11499FD241575DA00DC988A /* TimeIntervalExtension.swift in Sources */,
 				F156587123E2DD7500EC2796 /* AppDelegate.swift in Sources */,
 				F10136E723E8372300B36CF0 /* LoginViewController.swift in Sources */,
 				F15658A523E33DA100EC2796 /* HeaderViewController.swift in Sources */,
@@ -558,6 +570,7 @@
 				F178752723E41654003D16D1 /* Question.swift in Sources */,
 				F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */,
 				F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */,
+				F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */,
 				F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */,
 				F15658A723E33DD100EC2796 /* LikertScaleViewController.swift in Sources */,
 				F10136EA23E85F3B00B36CF0 /* StringExtension.swift in Sources */,
@@ -572,6 +585,7 @@
 				F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */,
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,
+				F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */,
 				F13C4B1023E968F80028F912 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,15 +760,16 @@
 			baseConfigurationReference = 9BCD639B2053BBB119B8E7E7 /* Pods-LangTrackApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LangTrackApp/LangTrackApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MMH2VL4QF4;
+				DEVELOPMENT_TEAM = 3CY4P3X5YK;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "se.lu.LangTrackApp.Lang-Track-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = se.lu.LangTrackApp;
+				PRODUCT_NAME = "Lang Track App";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -765,15 +780,16 @@
 			baseConfigurationReference = A79AEA3BB8C78AE9581D5748 /* Pods-LangTrackApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LangTrackApp/LangTrackApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MMH2VL4QF4;
+				DEVELOPMENT_TEAM = 3CY4P3X5YK;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "se.lu.LangTrackApp.Lang-Track-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = se.lu.LangTrackApp;
+				PRODUCT_NAME = "Lang Track App";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
