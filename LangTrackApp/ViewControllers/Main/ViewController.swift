@@ -50,8 +50,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var instructionsButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
     
-    var surveyList = [Survey]()
-    var selectedSurvey: Survey?
+    //var surveyList = [Survey]()
+    //var selectedSurvey: Survey?
     var theUser: User?
     var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
@@ -107,17 +107,7 @@ class ViewController: UIViewController {
         print("receivedNewNotification: \(aps)")
     }
     
-    func sortSurveyList(theList : [Survey]) -> [Survey]{
-        var activeList = theList.filter {$0.isActive()}
-        var unActiveList = theList.filter {!$0.isActive()}
-        activeList.sort {$0.published ?? 0 < $1.published ?? 0}
-        unActiveList.sort {$0.published ?? 0 < $1.published ?? 0}
-        var finallist = [Survey]()
-        finallist.append(contentsOf: activeList)
-        finallist.append(contentsOf: unActiveList)
-        
-        return finallist
-    }
+    
     
     func setTokenListener(){
         self.tokenChangeListener = Auth.auth().addIDTokenDidChangeListener() { (auth, user) in
@@ -152,7 +142,7 @@ class ViewController: UIViewController {
                 SurveyRepository.getSurveys() { (surveys) in
                     if surveys != nil{
                         DispatchQueue.main.async {
-                            self.surveyList = self.sortSurveyList(theList: surveys!)
+                            //self.surveyList = self.sortSurveyList(theList: surveys!)
                             self.theTableView.reloadData()
                         }
                     }
@@ -163,6 +153,7 @@ class ViewController: UIViewController {
             username!.until("@")
             self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
             userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
+            theTableView.reloadData()
         }
     }
     @IBAction func logOutButtonPressed(_ sender: Any) {
@@ -197,7 +188,7 @@ class ViewController: UIViewController {
         if segue.identifier == "survey"{
             let dest = segue.destination as! SurveyViewController
             dest.modalPresentationStyle = .fullScreen
-            dest.theSurvey = selectedSurvey
+            dest.theSurvey = SurveyRepository.selectedSurvey//selectedSurvey
             dest.theUser = self.theUser
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
@@ -211,11 +202,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        surveyList.count
+        //surveyList.count
+        SurveyRepository.surveyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentSurvey = surveyList[indexPath.row]
+        let currentSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
         if currentSurvey.isActive(){
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
@@ -240,7 +232,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSurvey = surveyList[indexPath.row]
+        SurveyRepository.selectedSurvey = SurveyRepository.surveyList[indexPath.row]
+        //selectedSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "survey", sender: nil)
         }
