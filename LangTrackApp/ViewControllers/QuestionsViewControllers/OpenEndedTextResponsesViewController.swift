@@ -34,6 +34,11 @@ class OpenEndedTextResponsesViewController: UIViewController {
     func setInfo(question: Question){
         self.theQuestion = question
         openTextLabel.text = theQuestion.text
+        if theAnswer?.openEndedAnswer != nil{
+            openTextView.text = theAnswer?.openEndedAnswer
+        }else{
+            openTextView.text = ""
+        }
     }
     
     func setListener(listener: QuestionListener) {

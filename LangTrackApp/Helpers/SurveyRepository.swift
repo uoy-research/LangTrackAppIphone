@@ -13,11 +13,57 @@ import SwiftyJSON
 struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
-    static let theUrl = "https://www.dropbox.com/s/66vglsb2hoco22d/play_survey_json.txt?dl=1"
+    static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
     static var idToken = ""
+    static var surveyList: [Survey] = []{
+        didSet{
+            print("surveyList didSet, count: \(surveyList.count)")
+        }
+    }
+    static var selectedSurvey: Survey?
     
     static func setIdToken(token: String){
         self.idToken = token
+    }
+    
+    static func postAnswer(theSurvey: Survey){
+        
+        //header: uID/SurveyID/dataset
+        
+        //body:
+        /**
+         {
+             "answers": [
+                 {
+                     "index": 0,
+                     "type": "single",
+                     "intValue": "1"
+                 },
+                 {
+                     "index": 1,
+                     "type": "multi",
+                     "multiValue": [
+                         1,
+                         2
+                     ]
+                 },
+                 {
+                     "index": 2,
+                     "type": "likert",
+                     "stringValue": 10
+                 },
+                 {
+                     "index": 4,
+                     "type": "blanks",
+                     "intValue": 3
+                 },
+                 {
+                     "index": 4,
+                     "type": "open",
+                     "stringValue": "Kul!"
+                 }
+             ]
+         }*/
     }
     
     static func postDeviceToken(deviceToken: String){
@@ -96,9 +142,24 @@ struct SurveyRepository {
             }
             
             //let answered = listWithSurveys?.filter($0 < 1)
+            if listWithSurveys != nil{
+                surveyList = sortSurveyList(theList: listWithSurveys!)
+            }
             completionhandler(listWithSurveys)
         })
         task.resume()
+    }
+    
+    static func sortSurveyList(theList : [Survey]) -> [Survey]{
+        var activeList = theList.filter {$0.isActive()}
+        var unActiveList = theList.filter {!$0.isActive()}
+        activeList.sort {$0.published ?? 0 < $1.published ?? 0}
+        unActiveList.sort {$0.published ?? 0 < $1.published ?? 0}
+        var finallist = [Survey]()
+        finallist.append(contentsOf: activeList)
+        finallist.append(contentsOf: unActiveList)
+        
+        return finallist
     }
     
     
