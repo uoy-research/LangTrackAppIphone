@@ -130,8 +130,7 @@ class ViewController: UIViewController {
                         print("getIDToken error: \(error)")
                         return;
                     }
-                    
-                    print("getIDToken token: \(String(describing: idToken))")
+                    //print("getIDToken token: \(String(describing: idToken))")
                     if idToken != nil{
                         SurveyRepository.setIdToken(token: idToken!)
                     }
@@ -222,7 +221,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
             cell.selectionStyle = .none
             if let cell = cell as? CallToActionTableViewCell{
-                cell.setSurveyInfo(survey: currentSurvey)
+                cell.setSurveyInfo(survey: currentSurvey, tableviewHeight: theTableView.frame.height)
                 cell.setListener(theListener: self)
             }else{
                 print("no cell")

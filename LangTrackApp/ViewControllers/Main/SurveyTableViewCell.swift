@@ -15,6 +15,8 @@ class SurveyTableViewCell: UITableViewCell {
     @IBOutlet weak var surveyTitle: UILabel!
     @IBOutlet weak var answeredLabel: UILabel!
     
+    let dateformat = "yyyy-MM-dd HH:mm"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -25,7 +27,11 @@ class SurveyTableViewCell: UITableViewCell {
     
     func setSurveyInfo(survey: Survey)  {
         surveyTitle.text = survey.title
-        dateLabel.text = "datum"
+        if survey.published != nil{
+            dateLabel.text = "Publicerad: \(Date(milliseconds: survey.published!).toString(dateFormat: dateformat))"
+        }else{
+            dateLabel.text = ""
+        }
         if survey.answerIsEmpty(){
             answeredLabel.text = "Obesvarad"
         }else{
