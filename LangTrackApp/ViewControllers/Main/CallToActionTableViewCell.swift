@@ -13,6 +13,7 @@ class CallToActionTableViewCell: UITableViewCell {
     @IBOutlet weak var expiryLabel: UILabel!
     @IBOutlet weak var callToActionBackgroundView: UIView!
     @IBOutlet weak var callToActionLabel: UILabel!
+    @IBOutlet weak var callToActionHeightConstraint: NSLayoutConstraint!
     
     var theSurvey : Survey? = nil
     var listener: CellTimerListener? = nil
@@ -50,7 +51,8 @@ class CallToActionTableViewCell: UITableViewCell {
         }
     }
     
-    func setSurveyInfo(survey: Survey)  {
+    func setSurveyInfo(survey: Survey, tableviewHeight: CGFloat)  {
+        self.callToActionHeightConstraint.constant = tableviewHeight / 3
         self.theSurvey = survey
         //self.callToActionLabel.text  = survey.title
         setExpieryTime()

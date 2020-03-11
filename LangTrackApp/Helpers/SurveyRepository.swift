@@ -13,7 +13,7 @@ import SwiftyJSON
 struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
-    static let theUrl = "https://www.dropbox.com/s/d6ligny9b1lmlqj/play_survey_json.txt?dl=1"
+    static let theUrl = "https://www.dropbox.com/s/66vglsb2hoco22d/play_survey_json.txt?dl=1"
     static var idToken = ""
     
     static func setIdToken(token: String){
@@ -113,9 +113,9 @@ struct SurveyRepository {
                     if(key == "title"){
                         tempSurvey.title = subJson.stringValue
                     }
-                    if(key == "date"){
-                        tempSurvey.date = subJson.int64Value
-                    }
+//                    if(key == "date"){
+//                        tempSurvey.date = subJson.int64Value
+//                    }
                     if(key == "expiry"){
                         tempSurvey.expiry = subJson.int64Value
                     }

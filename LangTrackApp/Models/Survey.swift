@@ -10,7 +10,7 @@ import Foundation
 
 struct Survey : Codable{
     var id: String = ""
-    var date: Int64 = -1
+    //var date: Int64 = -1
     var title: String = ""
     var questions = [Question]()
     var respondeddate: Int64? = -1
