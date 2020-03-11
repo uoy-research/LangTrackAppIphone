@@ -13,11 +13,51 @@ import SwiftyJSON
 struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
-    static let theUrl = "https://www.dropbox.com/s/66vglsb2hoco22d/play_survey_json.txt?dl=1"
+    static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
     static var idToken = ""
     
     static func setIdToken(token: String){
         self.idToken = token
+    }
+    
+    static func postAnswer(theSurvey: Survey){
+        
+        //header: uID/SurveyID/dataset
+        
+        //body:
+        /**
+         {
+             "answers": [
+                 {
+                     "index": 0,
+                     "type": "single",
+                     "intValue": "1"
+                 },
+                 {
+                     "index": 1,
+                     "type": "multi",
+                     "multiValue": [
+                         1,
+                         2
+                     ]
+                 },
+                 {
+                     "index": 2,
+                     "type": "likert",
+                     "stringValue": 10
+                 },
+                 {
+                     "index": 4,
+                     "type": "blanks",
+                     "intValue": 3
+                 },
+                 {
+                     "index": 4,
+                     "type": "open",
+                     "stringValue": "Kul!"
+                 }
+             ]
+         }*/
     }
     
     static func postDeviceToken(deviceToken: String){
