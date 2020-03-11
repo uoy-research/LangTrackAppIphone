@@ -64,8 +64,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        theTableView.rowHeight = UITableView.automaticDimension
-//        theTableView.estimatedRowHeight = 75
+        theTableView.rowHeight = UITableView.automaticDimension
+        theTableView.estimatedRowHeight = 175
         theTableView.delegate = self
 //        theTableView.layer.cornerRadius = 8
         
@@ -138,7 +138,8 @@ class ViewController: UIViewController {
             }
             // the user is logged in
             // if less than 5 min ago - dont fetch
-            if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
+            // -not working if logOut and logIn within 5 min-
+            /*if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
                 SurveyRepository.getSurveys() { (surveys) in
                     if surveys != nil{
                         DispatchQueue.main.async {
@@ -148,6 +149,15 @@ class ViewController: UIViewController {
                     }
                 }
                 latestFetchMilli = Date().millisecondsSince1970
+            }*/
+            self.theTableView.reloadData()
+            SurveyRepository.getSurveys() { (surveys) in
+                if surveys != nil{
+                    DispatchQueue.main.async {
+                        //self.surveyList = self.sortSurveyList(theList: surveys!)
+                        self.theTableView.reloadData()
+                    }
+                }
             }
             var username = Auth.auth().currentUser?.email
             username!.until("@")
@@ -168,6 +178,7 @@ class ViewController: UIViewController {
                         try firebaseAuth.signOut()
                         self.performSegue(withIdentifier: "login", sender: nil)
                         //TODO: Töm listor osv
+                        SurveyRepository.surveyList = []
                         self.userNameLabel.text = ""
                         // Remove the token ID listenter.
                         guard let tokenListener = self.tokenChangeListener else { return }

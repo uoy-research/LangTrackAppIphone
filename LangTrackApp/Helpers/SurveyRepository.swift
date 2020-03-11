@@ -15,7 +15,11 @@ struct SurveyRepository {
     //sista nollan ska ändras till etta vid hämtning från dropbox
     static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
     static var idToken = ""
-    static var surveyList: [Survey] = []
+    static var surveyList: [Survey] = []{
+        didSet{
+            print("surveyList didSet, count: \(surveyList.count)")
+        }
+    }
     static var selectedSurvey: Survey?
     
     static func setIdToken(token: String){
