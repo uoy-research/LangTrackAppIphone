@@ -61,6 +61,7 @@ class FillInTheBlankViewController: UIViewController {
         if !arrayWithWords.isEmpty{
             var ind = -99
             for (i,word) in arrayWithWords.enumerated() {
+                 #warning ("TODO: Handle when missing word is last with dot direct after")
                 if word == "_____" || word == "_____."{
                     ind = i
                 }

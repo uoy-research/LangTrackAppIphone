@@ -159,8 +159,6 @@ struct SurveyRepository {
         
         return finallist
     }
-    //test with expiry
-    static var expirytest = 0
     private static func createAssignmentsFromData(data: Data) -> [Assignment]?{
         var returnValue = [Assignment]()
         do {
@@ -337,11 +335,8 @@ struct SurveyRepository {
                 tempAssignment.survey.questions.sort(by: { $0.index < $1.index})
                 #warning ("TODO: remove")
                 //test with expiry
-                if expirytest < 2{
-                    tempAssignment.expiry = Date().addingTimeInterval(TimeInterval.init(integerLiteral: 5))
-                    tempAssignment.published = Date()
-                    expirytest += 1
-                }
+                tempAssignment.expiry = Date().addingTimeInterval(TimeInterval.init(integerLiteral: 5))
+                tempAssignment.published = Date()
                 //endtest
                 returnValue.append(tempAssignment)
             }
