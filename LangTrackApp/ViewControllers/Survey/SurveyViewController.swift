@@ -55,7 +55,8 @@ class SurveyViewController: UIViewController {
         
         if theAssignment?.survey.questions.first != nil{
             showPage(newPage: theAssignment!.survey.questions.first!)
-        }//TODO popup if error
+        }
+         #warning ("TODO popup if error")
     }
     
 

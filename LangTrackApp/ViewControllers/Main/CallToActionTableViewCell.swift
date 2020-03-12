@@ -16,6 +16,7 @@ class CallToActionTableViewCell: UITableViewCell {
     @IBOutlet weak var callToActionHeightConstraint: NSLayoutConstraint!
     
     var theSurvey : Survey? = nil
+    var theAssignment: Assignment?
     var listener: CellTimerListener? = nil
     
     override func awakeFromNib() {
@@ -40,10 +41,11 @@ class CallToActionTableViewCell: UITableViewCell {
     }
     
     func setExpieryTime(){
-        if theSurvey != nil{
-            if theSurvey!.expiry != nil{
-                let millisecondsLeft = theSurvey!.expiry! - Date().millisecondsSince1970
-                expiryLabel.text = "Tid kvar: \(TimeInterval().stringFromSecondTimeInterval(time: millisecondsLeft / 1000) )"
+        if theAssignment != nil{
+            if theSurvey?.createdAt != nil{
+                let millisecondsLeft = theAssignment!.createdAt!.distance(to: Date())
+                 #warning ("TODO: should be expiered!!")
+                expiryLabel.text = "Tid kvar: \(TimeInterval().stringFromSecondTimeInterval(time: theAssignment?.timeLeftToExpiryInMilli() ?? -99))"
                 if millisecondsLeft <= 0{
                     listener?.timerExpiered()
                 }
@@ -51,10 +53,10 @@ class CallToActionTableViewCell: UITableViewCell {
         }
     }
     
-    func setSurveyInfo(survey: Survey, tableviewHeight: CGFloat)  {
+    func setSurveyInfo(assignment: Assignment, tableviewHeight: CGFloat)  {
         self.callToActionHeightConstraint.constant = tableviewHeight / 3
-        self.theSurvey = survey
-        //self.callToActionLabel.text  = survey.title
+        self.theSurvey = assignment.survey
+        self.theAssignment = assignment
         setExpieryTime()
     }
 

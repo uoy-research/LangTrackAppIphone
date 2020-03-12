@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+struct User: Codable {
     var id = ""
     var userName = ""
     var userEmail = ""

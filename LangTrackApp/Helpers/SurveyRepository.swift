@@ -1,5 +1,5 @@
 //
-//  JsonHelper.swift
+//  SurveyRepository.swift
 //  LangTrackApp
 //
 //  Created by Stephan Björck on 2020-02-05.
@@ -141,76 +141,45 @@ struct SurveyRepository {
                 }
                 assignmentList = listWithAssignments!
             }
-            /*let listWithSurveys = parseJson(data: data!)
-            if listWithSurveys != nil
-            {
-                for survey in listWithSurveys!{
-                    for question in survey.questions{
-                        if question.index == 0{
-                            question.previous = 0
-                            question.next = question.index + 1
-                        }else if question.index < survey.questions.count - 1{
-                            question.next = question.index + 1
-                            question.previous = question.index - 1
-                        }else{
-                            question.next = 0
-                            question.previous = question.index - 1
-                        }
-                    }
-                }
-            }
             
-            //let answered = listWithSurveys?.filter($0 < 1)
-            if listWithSurveys != nil{
-                surveyList = sortSurveyList(theList: listWithSurveys!)
-            }*/
             completionhandler(assignmentList)
         })
         task.resume()
     }
     
-    static func sortSurveyList(theList : [Survey]) -> [Survey]{
-        var activeList = theList.filter {$0.isActive()}
-        var unActiveList = theList.filter {!$0.isActive()}
-        activeList.sort {$0.published ?? 0 < $1.published ?? 0}
-        unActiveList.sort {$0.published ?? 0 < $1.published ?? 0}
-        var finallist = [Survey]()
-        finallist.append(contentsOf: activeList)
-        finallist.append(contentsOf: unActiveList)
-        
-        return finallist
-    }
-    
     static func sortAssignmentList(theList : [Assignment]) -> [Assignment]{
-        var activeList = theList.filter {$0.survey.isActive()}
-        var unActiveList = theList.filter {!$0.survey.isActive()}
-        activeList.sort {$0.survey.published ?? 0 < $1.survey.published ?? 0}
-        unActiveList.sort {$0.survey.published ?? 0 < $1.survey.published ?? 0}
+        var activeList = theList.filter {$0.dataset == nil}
+        #warning ("TODO: check if expiered")
+        var unActiveList = theList.filter {$0.dataset != nil}
+        activeList.sort {$0.survey.published?.millisecondsSince1970 ?? 0 < $1.survey.published?.millisecondsSince1970 ?? 0}
+        unActiveList.sort {$0.survey.published?.millisecondsSince1970 ?? 0 < $1.survey.published?.millisecondsSince1970 ?? 0}
         var finallist = [Assignment]()
         finallist.append(contentsOf: activeList)
         finallist.append(contentsOf: unActiveList)
         
         return finallist
     }
-    
+    //test with expiry
+    static var expirytest = 0
     private static func createAssignmentsFromData(data: Data) -> [Assignment]?{
         var returnValue = [Assignment]()
         do {
             let json = try JSON(data: data)
             for (_,assignmentJson):(String, JSON) in json {
-                let tempAssignment = Assignment()
+                var tempAssignment = Assignment()
+                let formatter1 = DateFormatter()
+                formatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 for (key,postJson):(String, JSON) in assignmentJson{
                     if key == "userId"{
                         tempAssignment.userId = postJson.stringValue
                     }
                     if key == "createdAt"{
-                        tempAssignment.createdAt = postJson.stringValue
+                        tempAssignment.createdAt = formatter1.date(from: postJson.stringValue)
                     }
                     if key == "updatedAt"{
-                        tempAssignment.updatedAt = postJson.stringValue
+                        tempAssignment.updatedAt = formatter1.date(from: postJson.stringValue)
                     }
                     if key == "survey"{
-                        print("postJson survey: \(postJson.convertToString ?? "noValue")")
                         if let surveyDict = postJson.dictionaryObject{
                             
                             if let updatedAt = surveyDict["updatedAt"] as? String{
@@ -225,22 +194,18 @@ struct SurveyRepository {
                             if let title = surveyDict["title"] as? String{
                                 tempAssignment.survey.title = title
                             }
-                            /*if let title = surveyDict["published"] as? String{
-                                tempAssignment.survey.published = title
+                            if let published = surveyDict["published"] as? String{
+                                tempAssignment.survey.published = formatter1.date(from: published)
                             }
-                            if let title = surveyDict["expiry"] as? String{
-                                tempAssignment.survey.expiry = title
-                            }*/
+                            if let expiry = surveyDict["expiry"] as? String{
+                                tempAssignment.survey.expiry = formatter1.date(from: expiry)
+                            }
                             if let questionsDict = surveyDict["questions"] as? [Any]{
                                 for question in questionsDict{
                                     let tempQuestion = Question()
                                     var values: [String]?
                                     if let post = question as? [String: Any]{
-                                        /**
-                                         var fillBlanksChoises: [String]? = nil
-                                         var multipleChoisesAnswers: [String]? = nil
-                                         var singleMultipleAnswers: [String]? = nil
-                                         var skip: SkipLogic? = nil*/
+                                        
                                         var index = -99
                                         var type = ""
                                         var description = ""
@@ -288,7 +253,7 @@ struct SurveyRepository {
                                         tempQuestion.title = title
                                         tempQuestion.text = text
                                     }
-                                    //TODO: check type and add values
+                                     #warning ("TODO: check type and add values")
                                     if values != nil{
                                         switch tempQuestion.type {
                                         case "single":
@@ -370,6 +335,14 @@ struct SurveyRepository {
                     }
                 }
                 tempAssignment.survey.questions.sort(by: { $0.index < $1.index})
+                #warning ("TODO: remove")
+                //test with expiry
+                if expirytest < 2{
+                    tempAssignment.expiry = Date().addingTimeInterval(TimeInterval.init(integerLiteral: 5))
+                    tempAssignment.published = Date()
+                    expirytest += 1
+                }
+                //endtest
                 returnValue.append(tempAssignment)
             }
         }catch  {
@@ -381,187 +354,5 @@ struct SurveyRepository {
         }else{
             return nil
         }
-    }
-    
-    private static func parseJson(data: Data) -> [Survey]?{
-        var returnValue = [Survey]()
-        
-        do {
-            let json = try JSON(data: data)
-            for (_,subJson):(String, JSON) in json {
-                var tempSurvey = Survey()
-                for (key,subJson):(String, JSON) in subJson {
-                    if(key == "title"){
-                        tempSurvey.title = subJson.stringValue
-                    }
-//                    if(key == "date"){
-//                        tempSurvey.date = subJson.int64Value
-//                    }
-                    if(key == "expiry"){
-                        tempSurvey.expiry = subJson.int64Value
-                    }
-                    if(key == "id"){
-                        tempSurvey.id = subJson.stringValue
-                    }
-                    if(key == "published"){
-                        tempSurvey.published = subJson.int64Value
-                    }
-                    if(key == "respondeddate"){
-                        tempSurvey.respondeddate = subJson.int64Value
-                        /*var milliseconds = subJson.int64Value
-                        var utcDate = Date(milliseconds: milliseconds)
-                        var milli = utcDate.millisecondsSince1970*/
-                    }
-                    if(key == "updatedAt"){
-                        //tempSurvey.updatedAt = Date().utcToDate(utc: subJson.stringValue)
-                    }
-                    if(key == "createdAt"){
-                        //tempSurvey.createdAt = Date().utcToDate(utc: subJson.stringValue)
-                    }
-                    if(key == "questions"){
-                        tempSurvey.questions = getQuestionsFrom(jsonArray: subJson)
-                    }
-                    if(key == "answers"){
-                        let answerDict = subJson.arrayObject
-                        if answerDict != nil{
-                            var index = -99
-                            var type = ""
-                            var intValue = -99
-                            var stringValue = ""
-                            var multiValue: [Int] = []
-                            for b in answerDict!{
-                                let oneAnswer = b as? NSDictionary
-                                if oneAnswer != nil{
-                                    index = -99
-                                    type = ""
-                                    intValue = -99
-                                    stringValue = ""
-                                    multiValue = []
-                                    for c in oneAnswer!{
-                                        if c.key as! String == "index"{
-                                            index = c.value as! Int
-                                        }
-                                        if c.key as! String == "type"{
-                                            type = c.value as! String
-                                        }
-                                        if c.key as! String == "intValue"{
-                                            intValue = c.value as! Int
-                                        }
-                                        if c.key as! String == "multiValue"{
-                                            multiValue = c.value as! [Int]
-                                        }
-                                        if c.key as! String == "stringValue"{
-                                            stringValue = c.value as! String
-                                        }
-                                    }
-                                }
-                            switch type {
-                            case "likert":
-                                if index != -99{
-                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
-                                }
-                            case "blanks":
-                                if index != -99{
-                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
-                                }
-                            case "multi":
-                                if index != -99{
-                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil)
-                                }
-                            case "single":
-                                if index != -99{
-                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil)
-                                }
-                            case "open":
-                                if index != -99{
-                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue)
-                                }
-                            default:
-                                print("answer: no match")
-                            }
-                            }
-                        }
-                    }
-                }
-                returnValue.append(tempSurvey)
-            }
-        } catch  {
-            print("no json")
-        }
-        
-        
-        // Decode data to object
-        /*do {
-         returnValue = try JSONDecoder().decode([Survey].self, from: data)
-         } catch {
-         print("data: \(data)")
-         print("Error took place\(error.localizedDescription).")
-         }*/
-        return returnValue
-    }
-    
-    static func getQuestionsFrom( jsonArray: JSON?) -> [Question]{
-        var tempQuestions = [Question]()
-        if jsonArray != nil{
-            for (_,subJson):(String, JSON) in jsonArray!  {
-                let tempQuestion = Question()
-                var values: [String] = []
-                for (key,subsubJson):(String, JSON) in subJson {
-                    
-                    if(key == "description"){
-                        tempQuestion.description = subsubJson.stringValue
-                    }
-                    if(key == "text"){
-                        tempQuestion.text = subsubJson.stringValue
-                    }
-                    if(key == "id"){
-                        tempQuestion.id = subsubJson.stringValue
-                    }
-                    if(key == "index"){
-                        tempQuestion.index = subsubJson.intValue
-                    }
-                    if(key == "title"){
-                        tempQuestion.title = subsubJson.stringValue
-                    }
-                    if(key == "type"){
-                        tempQuestion.type = subsubJson.stringValue
-                    }
-                    if(key == "values"){
-                        let tempArray = subsubJson.arrayObject as? [String]
-                        if tempArray != nil{
-                            values.append(contentsOf: tempArray!)
-                        }
-                    }
-                    if(key == "skip"){
-                        let tempSkip = SkipLogic()
-                        for (skipKey,skipJson):(String, JSON) in subsubJson {
-                            if(skipKey == "goto"){
-                                tempSkip.goto = skipJson.intValue
-                            }
-                            if(skipKey == "ifChosen"){
-                                tempSkip.ifChosen = skipJson.intValue
-                            }
-                        }
-                        if tempSkip.ifChosen != -99{
-                            tempQuestion.skip = tempSkip
-                        }
-                    }
-                }
-                if values.count > 0{
-                    switch tempQuestion.type {
-                    case Type.multipleChoice.rawValue:
-                        tempQuestion.multipleChoisesAnswers = values
-                    case Type.singleMultipleAnswers.rawValue:
-                        tempQuestion.singleMultipleAnswers = values
-                    case Type.fillInTheBlank.rawValue:
-                        tempQuestion.fillBlanksChoises = values
-                    default:
-                        print("tempQuestion.type: \(tempQuestion.type)")
-                    }
-                }
-                tempQuestions.append(tempQuestion)
-            }
-        }
-        return tempQuestions
     }
 }

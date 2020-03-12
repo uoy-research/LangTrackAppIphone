@@ -25,14 +25,13 @@ class SurveyTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setSurveyInfo(survey: Survey)  {
-        surveyTitle.text = survey.title
-        if survey.published != nil{
-            dateLabel.text = "Publicerad: \(Date(milliseconds: survey.published!).toString(dateFormat: dateformat))"
-        }else{
-            dateLabel.text = ""
+    func setSurveyInfo(assignment: Assignment)  {
+        surveyTitle.text = assignment.survey.title
+        if assignment.createdAt != nil{
+             #warning ("TODO: should be published!!")
+            dateLabel.text = DateParser.displayString(for: assignment.createdAt!)
         }
-        if survey.answerIsEmpty(){
+        if assignment.dataset == nil{
             answeredLabel.text = "Obesvarad"
         }else{
             answeredLabel.text = "Besvarad"
