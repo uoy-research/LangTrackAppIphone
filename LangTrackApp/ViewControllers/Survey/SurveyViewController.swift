@@ -12,6 +12,7 @@ class SurveyViewController: UIViewController {
     @IBOutlet weak var surveyContainer: UIView!
     
     var theSurvey: Survey? = nil
+    var theAssignment: Assignment? = nil
     var currentPage = Question()
     var theUser: User?
     
@@ -52,8 +53,8 @@ class SurveyViewController: UIViewController {
         //to convert to json
         //print(theSurvey!.convertToString!)
         
-        if theSurvey?.questions.first != nil{
-            showPage(newPage: theSurvey!.questions.first!)
+        if theAssignment?.survey.questions.first != nil{
+            showPage(newPage: theAssignment!.survey.questions.first!)
         }//TODO popup if error
     }
     
@@ -61,7 +62,7 @@ class SurveyViewController: UIViewController {
     func showPage(newPage : Question)
     {
         var theQuestion = Question()
-        for ques in theSurvey!.questions {
+        for ques in theAssignment!.survey.questions {
             if ques.index == newPage.index{
                 theQuestion = ques
             }
@@ -128,7 +129,7 @@ class SurveyViewController: UIViewController {
             likertScale!.view.frame = surveyContainer.bounds
             likertScale!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             likertScale!.didMove(toParent: self)
-            likertScale!.theAnswer = theSurvey!.answer[currentPage.index]
+            likertScale!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             likertScale!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.fillInTheBlank.rawValue)
@@ -138,7 +139,7 @@ class SurveyViewController: UIViewController {
             fillInTheBlank!.view.frame = surveyContainer.bounds
             fillInTheBlank!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             fillInTheBlank!.didMove(toParent: self)
-            fillInTheBlank!.theAnswer = theSurvey!.answer[currentPage.index]
+            fillInTheBlank!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             fillInTheBlank!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.multipleChoice.rawValue)
@@ -148,7 +149,7 @@ class SurveyViewController: UIViewController {
             multipleChoice!.view.frame = surveyContainer.bounds
             multipleChoice!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             multipleChoice!.didMove(toParent: self)
-            multipleChoice!.theAnswer = theSurvey!.answer[currentPage.index]
+            multipleChoice!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             multipleChoice!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.singleMultipleAnswers.rawValue)
@@ -158,7 +159,7 @@ class SurveyViewController: UIViewController {
             singleMultipleAnswers!.view.frame = surveyContainer.bounds
             singleMultipleAnswers!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             singleMultipleAnswers!.didMove(toParent: self)
-            singleMultipleAnswers!.theAnswer = theSurvey!.answer[currentPage.index]
+            singleMultipleAnswers!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             singleMultipleAnswers!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.openEndedTextResponses.rawValue)
@@ -168,7 +169,7 @@ class SurveyViewController: UIViewController {
             openEndedTextResponses!.view.frame = surveyContainer.bounds
             openEndedTextResponses!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             openEndedTextResponses!.didMove(toParent: self)
-            openEndedTextResponses!.theAnswer = theSurvey!.answer[currentPage.index]
+            openEndedTextResponses!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             openEndedTextResponses!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.footer.rawValue)
@@ -188,32 +189,32 @@ class SurveyViewController: UIViewController {
 extension SurveyViewController: QuestionListener{
     func setOpenEndedAnswer(text: String) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: text)
+            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: text)
         }
     }
     
     func setFillBlankAnswer(selected: Int) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: selected, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: selected, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
         }
     }
     
     func setLikertAnswer(selected: Int) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
         }
     }
     
     func setMultipleAnswersAnswer(selected: [Int]) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
         }
     }
     
     
     func setSingleMultipleAnswer(selected: Int) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
         }
     }
     

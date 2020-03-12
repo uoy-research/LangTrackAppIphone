@@ -17,6 +17,8 @@ struct Survey : Codable{
     var published: Int64? = -1
     var expiry: Int64? = -1
     var answer = [Int:Answer]()
+    var updatedAt = ""
+    var createdAt = ""
     
     func answerIsEmpty() -> Bool{
         for i in answer{

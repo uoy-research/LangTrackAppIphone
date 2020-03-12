@@ -151,8 +151,8 @@ class ViewController: UIViewController {
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
             self.theTableView.reloadData()
-            SurveyRepository.getSurveys() { (surveys) in
-                if surveys != nil{
+            SurveyRepository.getSurveys() { (assignments) in
+                if assignments != nil{
                     DispatchQueue.main.async {
                         //self.surveyList = self.sortSurveyList(theList: surveys!)
                         self.theTableView.reloadData()
@@ -199,7 +199,8 @@ class ViewController: UIViewController {
         if segue.identifier == "survey"{
             let dest = segue.destination as! SurveyViewController
             dest.modalPresentationStyle = .fullScreen
-            dest.theSurvey = SurveyRepository.selectedSurvey//selectedSurvey
+            dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
+            dest.theAssignment = SurveyRepository.selectedAssignment
             dest.theUser = self.theUser
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
@@ -214,11 +215,32 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //surveyList.count
-        SurveyRepository.surveyList.count
+        SurveyRepository.assignmentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
+        let currentAssignment = SurveyRepository.assignmentList[indexPath.row]
+        if currentAssignment.survey.isActive(){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
+            cell.selectionStyle = .none
+            if let cell = cell as? CallToActionTableViewCell{
+                cell.setSurveyInfo(survey: currentAssignment.survey, tableviewHeight: theTableView.frame.height)
+                cell.setListener(theListener: self)
+            }else{
+                print("no cell")
+            }
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
+            cell.selectionStyle = .none
+            if let cell = cell as? SurveyTableViewCell{
+                cell.setSurveyInfo(survey: currentAssignment.survey)
+            }else{
+                print("no cell")
+            }
+            return cell
+        }
+        /*let currentSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
         if currentSurvey.isActive(){
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
@@ -239,12 +261,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 print("no cell")
             }
             return cell
-        }
+        }*/
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SurveyRepository.selectedSurvey = SurveyRepository.surveyList[indexPath.row]
-        //selectedSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
+        //SurveyRepository.selectedSurvey = SurveyRepository.surveyList[indexPath.row]
+        SurveyRepository.selectedAssignment = SurveyRepository.assignmentList[indexPath.row]
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "survey", sender: nil)
         }

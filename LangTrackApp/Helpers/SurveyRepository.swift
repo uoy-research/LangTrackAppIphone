@@ -14,13 +14,12 @@ struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
     static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
+    static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/assignments"
     static var idToken = ""
-    static var surveyList: [Survey] = []{
-        didSet{
-            print("surveyList didSet, count: \(surveyList.count)")
-        }
-    }
+    static var assignmentList: [Assignment] = []
+    static var surveyList: [Survey] = []
     static var selectedSurvey: Survey?
+    static var selectedAssignment: Assignment?
     
     static func setIdToken(token: String){
         self.idToken = token
@@ -97,9 +96,9 @@ struct SurveyRepository {
         
     }
     
-    static func getSurveys( completionhandler: @escaping (_ result: [Survey]?) -> Void){
+    static func getSurveys( completionhandler: @escaping (_ result: [Assignment]?) -> Void){
         
-        let request = NSMutableURLRequest(url: URL(string: theUrl)!)
+        let request = NSMutableURLRequest(url: URL(string: mockUrl)!)
         
         // Set HTTP Request Header
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -122,7 +121,27 @@ struct SurveyRepository {
              print("Specific header: \(response.value(forHTTPHeaderField: "Content-Type") ?? " header not found")")
              }
              }*/
-            let listWithSurveys = parseJson(data: data!)
+            if data != nil{
+                let listWithAssignments = createAssignmentsFromData(data: data!)
+                if listWithAssignments != nil{
+                    for assignment in listWithAssignments!{
+                        for question in assignment.survey.questions{
+                            if question.index == 0{
+                                question.previous = 0
+                                question.next = question.index + 1
+                            }else if question.index < assignment.survey.questions.count - 1{
+                                question.next = question.index + 1
+                                question.previous = question.index - 1
+                            }else{
+                                question.next = 0
+                                question.previous = question.index - 1
+                            }
+                        }
+                    }
+                }
+                assignmentList = listWithAssignments!
+            }
+            /*let listWithSurveys = parseJson(data: data!)
             if listWithSurveys != nil
             {
                 for survey in listWithSurveys!{
@@ -144,8 +163,8 @@ struct SurveyRepository {
             //let answered = listWithSurveys?.filter($0 < 1)
             if listWithSurveys != nil{
                 surveyList = sortSurveyList(theList: listWithSurveys!)
-            }
-            completionhandler(listWithSurveys)
+            }*/
+            completionhandler(assignmentList)
         })
         task.resume()
     }
@@ -162,6 +181,207 @@ struct SurveyRepository {
         return finallist
     }
     
+    static func sortAssignmentList(theList : [Assignment]) -> [Assignment]{
+        var activeList = theList.filter {$0.survey.isActive()}
+        var unActiveList = theList.filter {!$0.survey.isActive()}
+        activeList.sort {$0.survey.published ?? 0 < $1.survey.published ?? 0}
+        unActiveList.sort {$0.survey.published ?? 0 < $1.survey.published ?? 0}
+        var finallist = [Assignment]()
+        finallist.append(contentsOf: activeList)
+        finallist.append(contentsOf: unActiveList)
+        
+        return finallist
+    }
+    
+    private static func createAssignmentsFromData(data: Data) -> [Assignment]?{
+        var returnValue = [Assignment]()
+        do {
+            let json = try JSON(data: data)
+            for (_,assignmentJson):(String, JSON) in json {
+                let tempAssignment = Assignment()
+                for (key,postJson):(String, JSON) in assignmentJson{
+                    if key == "userId"{
+                        tempAssignment.userId = postJson.stringValue
+                    }
+                    if key == "createdAt"{
+                        tempAssignment.createdAt = postJson.stringValue
+                    }
+                    if key == "updatedAt"{
+                        tempAssignment.updatedAt = postJson.stringValue
+                    }
+                    if key == "survey"{
+                        print("postJson survey: \(postJson.convertToString ?? "noValue")")
+                        if let surveyDict = postJson.dictionaryObject{
+                            
+                            if let updatedAt = surveyDict["updatedAt"] as? String{
+                                tempAssignment.survey.updatedAt = updatedAt
+                            }
+                            if let createdAt = surveyDict["createdAt"] as? String{
+                                tempAssignment.survey.createdAt = createdAt
+                            }
+                            if let id = surveyDict["id"] as? String{
+                                tempAssignment.survey.id = id
+                            }
+                            if let title = surveyDict["title"] as? String{
+                                tempAssignment.survey.title = title
+                            }
+                            /*if let title = surveyDict["published"] as? String{
+                                tempAssignment.survey.published = title
+                            }
+                            if let title = surveyDict["expiry"] as? String{
+                                tempAssignment.survey.expiry = title
+                            }*/
+                            if let questionsDict = surveyDict["questions"] as? [Any]{
+                                for question in questionsDict{
+                                    let tempQuestion = Question()
+                                    var values: [String]?
+                                    if let post = question as? [String: Any]{
+                                        /**
+                                         var fillBlanksChoises: [String]? = nil
+                                         var multipleChoisesAnswers: [String]? = nil
+                                         var singleMultipleAnswers: [String]? = nil
+                                         var skip: SkipLogic? = nil*/
+                                        var index = -99
+                                        var type = ""
+                                        var description = ""
+                                        var title = ""
+                                        var text = ""
+                                        for questionPost in post{
+                                            if questionPost.key == "index"{
+                                                index = questionPost.value as? Int ?? -99
+                                            }
+                                            if questionPost.key == "type"{
+                                                type = questionPost.value as? String ?? ""
+                                            }
+                                            if questionPost.key == "description"{
+                                                description = questionPost.value as? String ?? ""
+                                            }
+                                            if questionPost.key == "title"{
+                                                title = questionPost.value as? String ?? ""
+                                            }
+                                            if questionPost.key == "text"{
+                                                text = questionPost.value as? String ?? ""
+                                            }
+                                            if questionPost.key == "values"{
+                                                if let valuesArray = questionPost.value as? [String]{
+                                                    values = valuesArray
+                                                }
+                                            }
+                                            if questionPost.key == "skip"{
+                                                if let skipDict = questionPost.value as? [String:Int]{
+                                                    let tempSkip = SkipLogic()
+                                                    for i in skipDict{
+                                                        if i.key == "goto"{
+                                                            tempSkip.goto = i.value
+                                                        }
+                                                        if i.key == "ifChosen"{
+                                                            tempSkip.ifChosen = i.value
+                                                        }
+                                                    }
+                                                    tempQuestion.skip = tempSkip
+                                                }
+                                            }
+                                        }
+                                        tempQuestion.index = index
+                                        tempQuestion.type = type
+                                        tempQuestion.description = description
+                                        tempQuestion.title = title
+                                        tempQuestion.text = text
+                                    }
+                                    //TODO: check type and add values
+                                    if values != nil{
+                                        switch tempQuestion.type {
+                                        case "single":
+                                            tempQuestion.singleMultipleAnswers = values
+                                        case "multi":
+                                            tempQuestion.multipleChoisesAnswers = values
+                                        case "blanks":
+                                            tempQuestion.fillBlanksChoises = values
+                                        default:
+                                            print("tempQuestion.type, no match in switch. Empty?")
+                                        }
+                                    }
+                                    tempAssignment.survey.questions.append(tempQuestion)
+                                }
+                            }
+                        }
+                    }
+                    if key == "dataset"{
+                        let setDict = postJson.dictionaryObject
+                        let tempDataSet : Dataset?
+                        if setDict != nil{
+                            tempDataSet = Dataset()
+                            
+                            if let updatedAt = setDict!["updatedAt"] as? String{
+                                tempDataSet!.updatedAt = updatedAt
+                            }
+                            if let createdAt = setDict!["createdAt"] as? String{
+                                tempDataSet!.createdAt = createdAt
+                            }
+                            let answersDict = setDict!["answers"] as? [Any]
+                            if answersDict != nil{
+                                var tempAnswers = [Answer]()
+                                for post in answersDict!{
+                                    if let answer = post as? [String: Any]{
+                                        var index = 0
+                                        var type = ""
+                                        var multiValue: [Int]?
+                                        var intValue: Int?
+                                        var stringValue: String?
+                                        for answerPost in answer{
+                                            if answerPost.key == "index"{
+                                                index = answerPost.value as? Int ?? 0
+                                            }
+                                            if answerPost.key == "type"{
+                                                type = answerPost.value as? String ?? ""
+                                            }
+                                            if answerPost.key == "multiValue"{
+                                                multiValue = answerPost.value as? [Int]
+                                            }
+                                            if answerPost.key == "intValue"{
+                                                intValue = answerPost.value as? Int
+                                            }
+                                            if answerPost.key == "stringValue"{
+                                                stringValue = answerPost.value as? String
+                                            }
+                                        }
+                                        switch type {
+                                        case "likert":
+                                            tempAnswers.append(Answer(index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                        case "single":
+                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil))
+                                        case "multi":
+                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                        case "blanks":
+                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                        case "open":
+                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue))
+                                        default:
+                                            print("answersDict, no match in switch")
+                                        }
+                                    }
+                                }
+                                tempDataSet!.answers = tempAnswers
+                            }
+                            if tempDataSet != nil{
+                                tempAssignment.dataset = tempDataSet
+                            }
+                        }
+                    }
+                }
+                tempAssignment.survey.questions.sort(by: { $0.index < $1.index})
+                returnValue.append(tempAssignment)
+            }
+        }catch  {
+            print("no json")
+        }
+        if returnValue.count > 0{
+            returnValue = sortAssignmentList(theList: returnValue)
+            return returnValue
+        }else{
+            return nil
+        }
+    }
     
     private static func parseJson(data: Data) -> [Survey]?{
         var returnValue = [Survey]()
@@ -188,6 +408,15 @@ struct SurveyRepository {
                     }
                     if(key == "respondeddate"){
                         tempSurvey.respondeddate = subJson.int64Value
+                        /*var milliseconds = subJson.int64Value
+                        var utcDate = Date(milliseconds: milliseconds)
+                        var milli = utcDate.millisecondsSince1970*/
+                    }
+                    if(key == "updatedAt"){
+                        //tempSurvey.updatedAt = Date().utcToDate(utc: subJson.stringValue)
+                    }
+                    if(key == "createdAt"){
+                        //tempSurvey.createdAt = Date().utcToDate(utc: subJson.stringValue)
                     }
                     if(key == "questions"){
                         tempSurvey.questions = getQuestionsFrom(jsonArray: subJson)
@@ -229,23 +458,23 @@ struct SurveyRepository {
                             switch type {
                             case "likert":
                                 if index != -99{
-                                    tempSurvey.answer[index] = Answer(likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
                                 }
                             case "blanks":
                                 if index != -99{
-                                    tempSurvey.answer[index] = Answer(likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
                                 }
                             case "multi":
                                 if index != -99{
-                                    tempSurvey.answer[index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil)
+                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil)
                                 }
                             case "single":
                                 if index != -99{
-                                    tempSurvey.answer[index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil)
+                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil)
                                 }
                             case "open":
                                 if index != -99{
-                                    tempSurvey.answer[index] = Answer(likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue)
+                                    tempSurvey.answer[index] = Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue)
                                 }
                             default:
                                 print("answer: no match")
