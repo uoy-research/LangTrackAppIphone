@@ -9,6 +9,7 @@
 import Foundation
 
 class Answer : Codable{
+    var type: String = ""
     var index: Int = -99
     var likertAnswer: Int? = nil
     var fillBlankAnswer: Int? = nil
@@ -16,12 +17,14 @@ class Answer : Codable{
     var singleMultipleAnswer: Int? = nil
     var openEndedAnswer: String? = nil
     
-    init(index: Int,
+    init(type: String,
+        index: Int,
          likertAnswer: Int? = nil,
          fillBlankAnswer: Int? = nil,
          multipleChoiceAnswer: [Int]? = nil,
          singleMultipleAnswer: Int? = nil,
          openEndedAnswer: String? = nil) {
+        self.type = type
         self.index = index
         self.likertAnswer = likertAnswer
         self.fillBlankAnswer = fillBlankAnswer

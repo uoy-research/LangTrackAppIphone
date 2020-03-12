@@ -9,7 +9,13 @@
 import Foundation
 import SwiftyJSON
 
-
+struct AnswerBody: Codable{
+    var index: Int = -99
+    var type: String = ""
+    var intValue: Int? = nil
+    var multiValue: [Int]? = nil
+    var stringValue: String? = nil
+}
 struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
@@ -17,20 +23,78 @@ struct SurveyRepository {
     static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/assignments"
     static var idToken = ""
     static var assignmentList: [Assignment] = []
-    static var surveyList: [Survey] = []
-    static var selectedSurvey: Survey?
     static var selectedAssignment: Assignment?
     
     static func setIdToken(token: String){
         self.idToken = token
     }
     
-    static func postAnswer(theSurvey: Survey){
+    static func postAnswer(answerDict: [Answer]){
         
+        var answers = [AnswerBody]()
+        for answer in answerDict{
+            var body = AnswerBody()
+            body.index = answer.index
+            body.type = answer.type
+            switch answer.type {
+            case "likert":
+                body.intValue = answer.likertAnswer
+            case "single":
+                body.intValue = answer.singleMultipleAnswer
+            case "blanks":
+                body.intValue = answer.fillBlankAnswer
+            case "multi":
+                body.multiValue = answer.multipleChoiceAnswer
+            case "open":
+                body.stringValue = answer.openEndedAnswer
+            default:
+                print("answersDict, no match in switch")
+            }
+            answers.append(body)
+        }
+        let encoder = JSONEncoder()
+        if let jsonData = try? encoder.encode(answers) {
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print(jsonString)
+            }
+        }
         //header: uID/SurveyID/dataset
         
         //body:
         /**
+         
+         From JSONEncoder
+         [
+            {
+                "index":1,
+                "type":"single",
+                "intValue":1
+            },
+            {
+                "index":2,
+                "type":"multi",
+                "multiValue":[
+                    0,
+                    2
+                ]
+            },
+            {
+                "index":3,
+                "type":"likert",
+                "intValue":4
+            },
+            {
+                "index":4,
+                "type":"blanks",
+                "intValue":3
+            },
+            {
+                "index":5,
+                "type":"open",
+                "stringValue":"Kul!"
+            }
+         ]
+         /////////////////////////////
          {
              "answers": [
                  {
@@ -310,15 +374,15 @@ struct SurveyRepository {
                                         }
                                         switch type {
                                         case "likert":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "likert",index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
                                         case "single":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "single",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil))
                                         case "multi":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "multi",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil))
                                         case "blanks":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "blanks",index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
                                         case "open":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue))
+                                            tempAnswers.append(Answer(type: "open",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue))
                                         default:
                                             print("answersDict, no match in switch")
                                         }

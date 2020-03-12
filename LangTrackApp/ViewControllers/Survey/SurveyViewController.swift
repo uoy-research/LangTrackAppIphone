@@ -10,7 +10,7 @@ import UIKit
 
 class SurveyViewController: UIViewController {
     @IBOutlet weak var surveyContainer: UIView!
-    
+     #warning ("TODO After demo... replace theSurvey with [Int:Answer]")
     var theSurvey: Survey? = nil
     var theAssignment: Assignment? = nil
     var currentPage = Question()
@@ -190,32 +190,32 @@ class SurveyViewController: UIViewController {
 extension SurveyViewController: QuestionListener{
     func setOpenEndedAnswer(text: String) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: text)
+            theSurvey!.answer[currentPage.index] = Answer(type: "open", index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: text)
         }
     }
     
     func setFillBlankAnswer(selected: Int) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: selected, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(type: "blanks", index: currentPage.index, likertAnswer: nil, fillBlankAnswer: selected, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
         }
     }
     
     func setLikertAnswer(selected: Int) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(type: "likert", index: currentPage.index, likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
         }
     }
     
     func setMultipleAnswersAnswer(selected: [Int]) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(type: "multi", index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
         }
     }
     
     
     func setSingleMultipleAnswer(selected: Int) {
         if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
+            theSurvey!.answer[currentPage.index] = Answer(type: "single", index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
         }
     }
     
@@ -229,8 +229,8 @@ extension SurveyViewController: QuestionListener{
     }
     
     func nextQuestion(current: Question) {
-        if theSurvey != nil{
-            for q in theSurvey!.questions {
+        if theAssignment != nil{
+            for q in theAssignment!.survey.questions {
                 if q.index == current.next{
                     showPage(newPage: q)
                 }
@@ -239,8 +239,8 @@ extension SurveyViewController: QuestionListener{
     }
     
     func previousQuestion(current: Question) {
-        if theSurvey != nil{
-            for q in theSurvey!.questions {
+        if theAssignment != nil{
+            for q in theAssignment!.survey.questions {
                 if q.index == current.previous{
                     showPage(newPage: q)
                 }

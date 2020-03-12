@@ -179,7 +179,7 @@ class ViewController: UIViewController {
                         try firebaseAuth.signOut()
                         self.performSegue(withIdentifier: "login", sender: nil)
                          #warning ("TODO: Töm listor osv")
-                        SurveyRepository.surveyList = []
+                        SurveyRepository.assignmentList = []
                         self.userNameLabel.text = ""
                         // Remove the token ID listenter.
                         guard let tokenListener = self.tokenChangeListener else { return }
