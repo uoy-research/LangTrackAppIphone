@@ -9,17 +9,20 @@
 import Foundation
 
 class Answer : Codable{
-var likertAnswer: Int? = nil
-var fillBlankAnswer: Int? = nil
-var multipleChoiceAnswer: [Int]? = nil
-var singleMultipleAnswer: Int? = nil
-var openEndedAnswer: String? = nil
+    var index: Int = -99
+    var likertAnswer: Int? = nil
+    var fillBlankAnswer: Int? = nil
+    var multipleChoiceAnswer: [Int]? = nil
+    var singleMultipleAnswer: Int? = nil
+    var openEndedAnswer: String? = nil
     
-    init(likertAnswer: Int? = nil,
+    init(index: Int,
+         likertAnswer: Int? = nil,
          fillBlankAnswer: Int? = nil,
          multipleChoiceAnswer: [Int]? = nil,
          singleMultipleAnswer: Int? = nil,
          openEndedAnswer: String? = nil) {
+        self.index = index
         self.likertAnswer = likertAnswer
         self.fillBlankAnswer = fillBlankAnswer
         self.multipleChoiceAnswer = multipleChoiceAnswer

@@ -94,6 +94,7 @@ class ViewController: UIViewController {
         if self.tokenChangeListener == nil && Auth.auth().currentUser != nil{
             setTokenListener()
         }
+        
     }
     
     deinit {
@@ -151,8 +152,8 @@ class ViewController: UIViewController {
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
             self.theTableView.reloadData()
-            SurveyRepository.getSurveys() { (surveys) in
-                if surveys != nil{
+            SurveyRepository.getSurveys() { (assignments) in
+                if assignments != nil{
                     DispatchQueue.main.async {
                         //self.surveyList = self.sortSurveyList(theList: surveys!)
                         self.theTableView.reloadData()
@@ -177,7 +178,7 @@ class ViewController: UIViewController {
                     do {
                         try firebaseAuth.signOut()
                         self.performSegue(withIdentifier: "login", sender: nil)
-                        //TODO: Töm listor osv
+                         #warning ("TODO: Töm listor osv")
                         SurveyRepository.surveyList = []
                         self.userNameLabel.text = ""
                         // Remove the token ID listenter.
@@ -199,7 +200,8 @@ class ViewController: UIViewController {
         if segue.identifier == "survey"{
             let dest = segue.destination as! SurveyViewController
             dest.modalPresentationStyle = .fullScreen
-            dest.theSurvey = SurveyRepository.selectedSurvey//selectedSurvey
+            dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
+            dest.theAssignment = SurveyRepository.selectedAssignment
             dest.theUser = self.theUser
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
@@ -214,17 +216,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //surveyList.count
-        SurveyRepository.surveyList.count
+        SurveyRepository.assignmentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
-        if currentSurvey.isActive(){
-
+        let currentAssignment = SurveyRepository.assignmentList[indexPath.row]
+        if currentAssignment.dataset == nil{
+             #warning ("TODO: check expiered")
             let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
             cell.selectionStyle = .none
             if let cell = cell as? CallToActionTableViewCell{
-                cell.setSurveyInfo(survey: currentSurvey, tableviewHeight: theTableView.frame.height)
+                cell.setSurveyInfo(assignment: currentAssignment, tableviewHeight: theTableView.frame.height)
                 cell.setListener(theListener: self)
             }else{
                 print("no cell")
@@ -234,7 +236,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
             cell.selectionStyle = .none
             if let cell = cell as? SurveyTableViewCell{
-                cell.setSurveyInfo(survey: currentSurvey)
+                cell.setSurveyInfo(assignment: currentAssignment)
             }else{
                 print("no cell")
             }
@@ -243,22 +245,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SurveyRepository.selectedSurvey = SurveyRepository.surveyList[indexPath.row]
-        //selectedSurvey = SurveyRepository.surveyList[indexPath.row]//surveyList[indexPath.row]
+        SurveyRepository.selectedAssignment = SurveyRepository.assignmentList[indexPath.row]
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "survey", sender: nil)
         }
-        /*let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "surveyContainer") as! SurveyViewController
-        newViewController.theSurvey = surveyList[indexPath.row]
-        newViewController.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(newViewController, animated: true)*/
     }
 }
 
 extension ViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
-        //TODO: reload tableview to remove expiered survey from 'call to action'
+         #warning ("TODO: reload tableview to remove expiered survey from 'call to action'")
     }
 }

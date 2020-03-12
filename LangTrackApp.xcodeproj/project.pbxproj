@@ -48,6 +48,8 @@
 		F178752523E41639003D16D1 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752423E41639003D16D1 /* Survey.swift */; };
 		F178752723E41654003D16D1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752623E41654003D16D1 /* Question.swift */; };
 		F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752923E41C30003D16D1 /* QuestionListener.swift */; };
+		F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314172418EA0F0036A5D3 /* Assignment.swift */; };
+		F183141A2418F1690036A5D3 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314192418F1690036A5D3 /* Dataset.swift */; };
 		F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1963208240922AE00A0D8D2 /* VKCheckbox.swift */; };
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +126,8 @@
 		F178752423E41639003D16D1 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		F178752623E41654003D16D1 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		F178752923E41C30003D16D1 /* QuestionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListener.swift; sourceTree = "<group>"; };
+		F18314172418EA0F0036A5D3 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		F18314192418F1690036A5D3 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		F1963208240922AE00A0D8D2 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,6 +328,8 @@
 				F13C4B0F23E968F80028F912 /* User.swift */,
 				F198D7AB23F548AE008B85AA /* SkipLogic.swift */,
 				F11007DE240D0B9E0097A6A4 /* Answer.swift */,
+				F18314172418EA0F0036A5D3 /* Assignment.swift */,
+				F18314192418F1690036A5D3 /* Dataset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -554,6 +560,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */,
+				F183141A2418F1690036A5D3 /* Dataset.swift in Sources */,
 				F178752523E41639003D16D1 /* Survey.swift in Sources */,
 				F1532DB423EB10B400171355 /* DateExtension.swift in Sources */,
 				F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */,

@@ -61,7 +61,8 @@ class FillInTheBlankViewController: UIViewController {
         if !arrayWithWords.isEmpty{
             var ind = -99
             for (i,word) in arrayWithWords.enumerated() {
-                if word == "_____"{
+                 #warning ("TODO: Handle when missing word is last with dot direct after")
+                if word == "_____" || word == "_____."{
                     ind = i
                 }
             }
@@ -203,7 +204,7 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tempAnswer = Answer()
+        let tempAnswer = Answer(index: theQuestion.index)
         tempAnswer.fillBlankAnswer = indexPath.row
         theAnswer = tempAnswer
         closeProjectDropDown()
