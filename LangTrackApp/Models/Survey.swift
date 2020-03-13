@@ -12,9 +12,9 @@ struct Survey : Codable{
     var id: String = ""
     var title: String = ""
     var questions = [Question]()
-    var respondeddate: Date?
-    var published: Date?
-    var expiry: Date?
+    var respondeddate: String = ""
+    var published: String = ""
+    var expiry: String = ""
     var answer = [Int:Answer]()
     var updatedAt = ""
     var createdAt = ""

@@ -34,4 +34,11 @@ struct DateParser {
         let temp = dateFormatter.date(from: utc)
         return temp
     }
+    static func getDate(dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        return dateFormatter.date(from: dateString) // replace Date String
+    }
 }

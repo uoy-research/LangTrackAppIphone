@@ -221,8 +221,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentAssignment = SurveyRepository.assignmentList[indexPath.row]
-        if currentAssignment.dataset == nil{
-             #warning ("TODO: check expiered")
+        let now = Date()
+        let expiary = DateParser.getDate(dateString: currentAssignment.expiry) ?? now
+        if currentAssignment.dataset == nil || now < expiary{
             let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
             cell.selectionStyle = .none
             if let cell = cell as? CallToActionTableViewCell{

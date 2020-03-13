@@ -50,20 +50,59 @@ struct SurveyRepository {
             default:
                 print("answersDict, no match in switch")
             }
-            answers.append(body)
+            if body.index != -99{
+                answers.append(body)
+            }
         }
+        let theTest = ["answers": answers]
         let encoder = JSONEncoder()
-        if let jsonData = try? encoder.encode(answers) {
+        if let jsonData = try? encoder.encode(theTest) {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
                 print(jsonString)
             }
         }
         //header: uID/SurveyID/dataset
         
-        //body:
+        
         /**
+        From JSONEncoder
          
-         From JSONEncoder
+        theTest:
+         {
+            "answers":
+            [
+                {
+                    "index":1,
+                    "type":"single",
+                    "intValue":1
+                },
+                {
+                    "index":2,
+                    "type":"multi",
+                    "multiValue":[
+                        0,
+                        2
+                    ]
+                },
+                {
+                    "index":3,
+                    "type":"likert",
+                    "intValue":4
+                },
+                {
+                    "index":4,
+                    "type":"blanks",
+                    "intValue":3
+                },
+                {
+                    "index":5,
+                    "type":"open",
+                    "stringValue":"Kul!"
+                }
+            ]
+         }
+         
+         body:
          [
             {
                 "index":1,
@@ -215,31 +254,36 @@ struct SurveyRepository {
         var activeList = theList.filter {$0.dataset == nil}
         #warning ("TODO: check if expiered")
         var unActiveList = theList.filter {$0.dataset != nil}
-        activeList.sort {$0.survey.published?.millisecondsSince1970 ?? 0 < $1.survey.published?.millisecondsSince1970 ?? 0}
-        unActiveList.sort {$0.survey.published?.millisecondsSince1970 ?? 0 < $1.survey.published?.millisecondsSince1970 ?? 0}
+        activeList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
+        unActiveList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
         var finallist = [Assignment]()
         finallist.append(contentsOf: activeList)
         finallist.append(contentsOf: unActiveList)
         
         return finallist
     }
+    
     private static func createAssignmentsFromData(data: Data) -> [Assignment]?{
         var returnValue = [Assignment]()
         do {
             let json = try JSON(data: data)
             for (_,assignmentJson):(String, JSON) in json {
                 var tempAssignment = Assignment()
-                let formatter1 = DateFormatter()
-                formatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 for (key,postJson):(String, JSON) in assignmentJson{
                     if key == "userId"{
                         tempAssignment.userId = postJson.stringValue
                     }
                     if key == "createdAt"{
-                        tempAssignment.createdAt = formatter1.date(from: postJson.stringValue)
+                        tempAssignment.createdAt = postJson.stringValue
                     }
                     if key == "updatedAt"{
-                        tempAssignment.updatedAt = formatter1.date(from: postJson.stringValue)
+                        tempAssignment.updatedAt = postJson.stringValue
+                    }
+                    if key == "expireAt"{
+                        tempAssignment.expiry = postJson.stringValue
+                    }
+                    if key == "publishAt"{
+                        tempAssignment.published = postJson.stringValue
                     }
                     if key == "survey"{
                         if let surveyDict = postJson.dictionaryObject{
@@ -256,11 +300,11 @@ struct SurveyRepository {
                             if let title = surveyDict["title"] as? String{
                                 tempAssignment.survey.title = title
                             }
-                            if let published = surveyDict["published"] as? String{
-                                tempAssignment.survey.published = formatter1.date(from: published)
+                            if let published = surveyDict["publishAt"] as? String{
+                                tempAssignment.survey.published = published
                             }
-                            if let expiry = surveyDict["expiry"] as? String{
-                                tempAssignment.survey.expiry = formatter1.date(from: expiry)
+                            if let expiry = surveyDict["expireAt"] as? String{
+                                tempAssignment.survey.expiry = expiry
                             }
                             if let questionsDict = surveyDict["questions"] as? [Any]{
                                 for question in questionsDict{
@@ -397,11 +441,6 @@ struct SurveyRepository {
                     }
                 }
                 tempAssignment.survey.questions.sort(by: { $0.index < $1.index})
-                #warning ("TODO: remove")
-                //test with expiry
-                tempAssignment.expiry = Date().addingTimeInterval(TimeInterval.init(integerLiteral: 5))
-                tempAssignment.published = Date()
-                //endtest
                 returnValue.append(tempAssignment)
             }
         }catch  {
