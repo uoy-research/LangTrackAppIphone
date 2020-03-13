@@ -151,6 +151,7 @@ class ViewController: UIViewController {
                 }
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
+            
             self.theTableView.reloadData()
             SurveyRepository.getSurveys() { (assignments) in
                 if assignments != nil{
@@ -223,16 +224,27 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let currentAssignment = SurveyRepository.assignmentList[indexPath.row]
         let now = Date()
         let expiary = DateParser.getDate(dateString: currentAssignment.expiry) ?? now
-        if currentAssignment.dataset == nil || now < expiary{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
-            cell.selectionStyle = .none
-            if let cell = cell as? CallToActionTableViewCell{
-                cell.setSurveyInfo(assignment: currentAssignment, tableviewHeight: theTableView.frame.height)
-                cell.setListener(theListener: self)
+        if currentAssignment.dataset == nil{
+            if now < expiary{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
+                cell.selectionStyle = .none
+                if let cell = cell as? CallToActionTableViewCell{
+                    cell.setSurveyInfo(assignment: currentAssignment, tableviewHeight: theTableView.frame.height)
+                    cell.setListener(theListener: self)
+                }else{
+                    print("no cell")
+                }
+                return cell
             }else{
-                print("no cell")
+                let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
+                cell.selectionStyle = .none
+                if let cell = cell as? SurveyTableViewCell{
+                    cell.setSurveyInfo(assignment: currentAssignment)
+                }else{
+                    print("no cell")
+                }
+                return cell
             }
-            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
             cell.selectionStyle = .none

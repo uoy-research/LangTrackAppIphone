@@ -61,111 +61,6 @@ struct SurveyRepository {
                 print(jsonString)
             }
         }
-        //header: uID/SurveyID/dataset
-        
-        
-        /**
-        From JSONEncoder
-         
-        theTest:
-         {
-            "answers":
-            [
-                {
-                    "index":1,
-                    "type":"single",
-                    "intValue":1
-                },
-                {
-                    "index":2,
-                    "type":"multi",
-                    "multiValue":[
-                        0,
-                        2
-                    ]
-                },
-                {
-                    "index":3,
-                    "type":"likert",
-                    "intValue":4
-                },
-                {
-                    "index":4,
-                    "type":"blanks",
-                    "intValue":3
-                },
-                {
-                    "index":5,
-                    "type":"open",
-                    "stringValue":"Kul!"
-                }
-            ]
-         }
-         
-         body:
-         [
-            {
-                "index":1,
-                "type":"single",
-                "intValue":1
-            },
-            {
-                "index":2,
-                "type":"multi",
-                "multiValue":[
-                    0,
-                    2
-                ]
-            },
-            {
-                "index":3,
-                "type":"likert",
-                "intValue":4
-            },
-            {
-                "index":4,
-                "type":"blanks",
-                "intValue":3
-            },
-            {
-                "index":5,
-                "type":"open",
-                "stringValue":"Kul!"
-            }
-         ]
-         /////////////////////////////
-         {
-             "answers": [
-                 {
-                     "index": 0,
-                     "type": "single",
-                     "intValue": "1"
-                 },
-                 {
-                     "index": 1,
-                     "type": "multi",
-                     "multiValue": [
-                         1,
-                         2
-                     ]
-                 },
-                 {
-                     "index": 2,
-                     "type": "likert",
-                     "stringValue": 10
-                 },
-                 {
-                     "index": 4,
-                     "type": "blanks",
-                     "intValue": 3
-                 },
-                 {
-                     "index": 4,
-                     "type": "open",
-                     "stringValue": "Kul!"
-                 }
-             ]
-         }*/
     }
     
     static func postDeviceToken(deviceToken: String){
@@ -251,9 +146,11 @@ struct SurveyRepository {
     }
     
     static func sortAssignmentList(theList : [Assignment]) -> [Assignment]{
-        var activeList = theList.filter {$0.dataset == nil}
-        #warning ("TODO: check if expiered")
-        var unActiveList = theList.filter {$0.dataset != nil}
+        let now = Date()
+        //if the assignment is active and the dataset is empty
+        var activeList = theList.filter {$0.dataset == nil && DateParser.getDate(dateString: $0.expiry) ?? now > now}
+        //if the assignment is not active or the dataset exists
+        var unActiveList = theList.filter {$0.dataset != nil || DateParser.getDate(dateString: $0.expiry) ?? now < now}
         activeList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
         unActiveList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
         var finallist = [Assignment]()
