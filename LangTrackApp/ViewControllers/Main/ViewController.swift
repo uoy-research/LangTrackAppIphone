@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     var latestFetchMilli: Int64 = 0
-    var tokenChangeListener: IDTokenDidChangeListenerHandle?
+    var idTokenChangeListener: IDTokenDidChangeListenerHandle?
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -96,8 +96,8 @@ class ViewController: UIViewController {
         object: self)*/
         NotificationCenter.default.addObserver(self, selector: #selector(self.receivedNewNotification(_:)), name: .newNotification, object: nil)
         
-        if self.tokenChangeListener == nil && Auth.auth().currentUser != nil{
-            setTokenListener()
+        if self.idTokenChangeListener == nil && Auth.auth().currentUser != nil{
+            setIdTokenListener()
         }
         
     }
@@ -116,8 +116,8 @@ class ViewController: UIViewController {
     
     
     
-    func setTokenListener(){
-        self.tokenChangeListener = Auth.auth().addIDTokenDidChangeListener() { (auth, user) in
+    func setIdTokenListener(){
+        self.idTokenChangeListener = Auth.auth().addIDTokenDidChangeListener() { (auth, user) in
             if let user = user {
                 // Get the token, renewing it if the 60 minute expiration
                 //  has occurred.
@@ -157,8 +157,8 @@ class ViewController: UIViewController {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
         }else{
-            if self.tokenChangeListener == nil{
-                setTokenListener()
+            if self.idTokenChangeListener == nil{
+                setIdTokenListener()
             }
             // the user is logged in
             // if less than 5 min ago - dont fetch
@@ -193,9 +193,9 @@ class ViewController: UIViewController {
                         SurveyRepository.assignmentList = []
                         self.userNameLabel.text = ""
                         // Remove the token ID listenter.
-                        guard let tokenListener = self.tokenChangeListener else { return }
+                        guard let tokenListener = self.idTokenChangeListener else { return }
                         Auth.auth().removeStateDidChangeListener(tokenListener)
-                        self.tokenChangeListener = nil
+                        self.idTokenChangeListener = nil
                     } catch let signOutError as NSError {
                         print ("Error signing out: %@", signOutError)
                     }
