@@ -10,8 +10,7 @@ import UIKit
 
 class SurveyViewController: UIViewController {
     @IBOutlet weak var surveyContainer: UIView!
-     #warning ("TODO After demo... replace theSurvey with [Int:Answer]")
-    //var theSurvey: Survey? = nil
+    
     var answer = [Int:Answer]()
     var theAssignment: Assignment? = nil
     var currentPage = Question()
@@ -265,6 +264,7 @@ extension SurveyViewController: QuestionListener{
     }
     
     func sendInSurvey() {
+        SurveyRepository.postAnswer(answerDict: answer)
         self.dismiss(animated: true, completion: nil)
     }
     

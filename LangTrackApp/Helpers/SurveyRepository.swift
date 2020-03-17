@@ -9,18 +9,13 @@
 import Foundation
 import SwiftyJSON
 
-struct AnswerBody: Codable{
-    var index: Int = -99
-    var type: String = ""
-    var intValue: Int? = nil
-    var multiValue: [Int]? = nil
-    var stringValue: String? = nil
-}
+
 struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
     static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
-    static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/assignments"
+    static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
+    
     static var idToken = ""
     static var assignmentList: [Assignment] = []
     static var selectedAssignment: Assignment?
@@ -29,10 +24,10 @@ struct SurveyRepository {
         self.idToken = token
     }
     
-    static func postAnswer(answerDict: [Answer]){
+    static func postAnswer(answerDict: [Int: Answer]){
         
         var answers = [AnswerBody]()
-        for answer in answerDict{
+        for answer in answerDict.values{
             var body = AnswerBody()
             body.index = answer.index
             body.type = answer.type
@@ -54,18 +49,88 @@ struct SurveyRepository {
                 answers.append(body)
             }
         }
-        let theTest = ["answers": answers]
+        let theBody = ["answers": answers]
         let encoder = JSONEncoder()
-        if let jsonData = try? encoder.encode(theTest) {
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
+        if let bodyData = try? encoder.encode(theBody) {
+            if let jsonString = String(data: bodyData, encoding: .utf8) {
                 print(jsonString)
             }
+            //  /users/u123/assignments/5e6ffa7d2321b20f1cdeb70d/datasets : answer
+            let answerUrl = "\(mockUrl)user/u123/datasets"
+            let request = NSMutableURLRequest(url: URL(string: answerUrl)!)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue(idToken, forHTTPHeaderField: "token")
+            /*do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
+            }*/
+            request.httpBody = bodyData
+
+            let session = URLSession.shared
+            request.httpMethod = "POST"
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+                if(error != nil){
+                    print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
+                    return
+                }else{
+                    print("postAnswer response: \(response)")
+                    /**postAnswer response: Optional(<NSHTTPURLResponse: 0x282c1f120> { URL: https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/datasets } { Status Code: 404, Headers {
+                        "Access-Control-Allow-Origin" =     (
+                            "*"
+                        );
+                        Connection =     (
+                            "keep-alive"
+                        );
+                        "Content-Encoding" =     (
+                            gzip
+                        );
+                        "Content-Length" =     (
+                            135
+                        );
+                        "Content-Type" =     (
+                            "application/json; charset=utf-8"
+                        );
+                        Date =     (
+                            "Tue, 17 Mar 2020 08:26:08 GMT"
+                        );
+                        Etag =     (
+                            "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+                        );
+                        Server =     (
+                            nginx
+                        );
+                        Vary =     (
+                            "Accept-Encoding"
+                        );
+                        "X-RateLimit-Limit" =     (
+                            120
+                        );
+                        "X-RateLimit-Remaining" =     (
+                            118
+                        );
+                        "X-RateLimit-Reset" =     (
+                            1584433605
+                        );
+                        "x-srv-span" =     (
+                            "v=1;s=5d94f9b0349da96e"
+                        );
+                        "x-srv-trace" =     (
+                            "v=1;t=afdb3a6a97d2e55c"
+                        );
+                    } })*/
+                }
+            })
+            task.resume()
         }
     }
     
     static func postDeviceToken(deviceToken: String){
         let parameters = ["deviceToken": deviceToken]
-        let deviceTokenUrl = "\(theUrl)/u123/devicetoken"
+        let deviceTokenUrl = "\(mockUrl)user/u123/devicetoken"
         let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(idToken, forHTTPHeaderField: "token")
@@ -96,7 +161,8 @@ struct SurveyRepository {
     
     static func getSurveys( completionhandler: @escaping (_ result: [Assignment]?) -> Void){
         
-        let request = NSMutableURLRequest(url: URL(string: mockUrl)!)
+        let assignmentsTokenUrl = "\(mockUrl)user/u123/assignments"
+        let request = NSMutableURLRequest(url: URL(string: assignmentsTokenUrl)!)
         
         // Set HTTP Request Header
         request.setValue("application/json", forHTTPHeaderField: "Accept")
