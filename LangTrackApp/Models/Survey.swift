@@ -9,7 +9,8 @@
 import Foundation
 
 struct Survey : Codable{
-    var id: String = ""
+    var id: String = ""//TODO: remove
+    var name: String = ""
     var title: String = ""
     var questions = [Question]()
     var respondeddate: String = ""

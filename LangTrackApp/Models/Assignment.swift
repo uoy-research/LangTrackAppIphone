@@ -16,6 +16,7 @@ struct Assignment: Codable {
     var dataset: Dataset? = nil
     var published = ""
     var expiry = ""
+    var id = ""
     
     func timeLeftToExpiryInMilli() -> Int64{
         let now = Date()

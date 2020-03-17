@@ -10,12 +10,14 @@ import UIKit
 
 class SingleMultipleAnswersViewController: UIViewController {
 
+    @IBOutlet weak var containerBackground: UIView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var singleMultipleTextLabel: UILabel!
     @IBOutlet weak var answersContainer: UIView!
     @IBOutlet weak var answersContainerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var answersContainerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var theIcon: UIImageView!
     var listener: QuestionListener?
     var theQuestion = Question()
@@ -79,6 +81,7 @@ class SingleMultipleAnswersViewController: UIViewController {
         if theQuestion.singleMultipleAnswers != nil{
             let spacer = 10
             let size = 29
+            var maxIntrinsicWidth: CGFloat = 100
             for (i, answer) in theQuestion.singleMultipleAnswers!.enumerated() {
                 let check = VKCheckbox(frame: CGRect(x: 0, y: ((size + spacer) * i), width: size, height: size))
                 //check.bgColorSelected = .white
@@ -101,15 +104,24 @@ class SingleMultipleAnswersViewController: UIViewController {
                         self.markSelectedAnswer(selected: tag)
                     }
                 }
-                let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: 148, height: size))
+                let containerWidth = Int(containerBackground.frame.width * 0.92) - size - spacer
+                let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: containerWidth, height: size))
                 text.text = answer
                 text.textAlignment = .left
-                text.font = text.font.withSize(19)
+                text.font = text.font.withSize(18)
                 text.contentMode = .center
                 text.numberOfLines = 0
+                if text.intrinsicContentSize.width > maxIntrinsicWidth{
+                    maxIntrinsicWidth = text.intrinsicContentSize.width
+                }
                 answersContainer.addSubview(check)
                 answersContainer.addSubview(text)
                 answersContainerHeightConstraint.constant = CGFloat((size + spacer) * (i+1))
+            }
+            if (maxIntrinsicWidth + CGFloat(size + spacer)) < containerBackground.frame.width{
+                answersContainerWidthConstraint.constant = maxIntrinsicWidth + CGFloat(size + spacer)
+            }else{
+                answersContainerWidthConstraint.constant = containerBackground.frame.width
             }
         }
     }
