@@ -16,6 +16,8 @@ class MultipleChoiceViewController: UIViewController {
     @IBOutlet weak var choicesContainer: UIView!
     @IBOutlet weak var checkboxContainerHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var containerBackground: UIView!
+    @IBOutlet weak var checkboxContainerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var theIcon: UIImageView!
     var listener: QuestionListener?
     var theQuestion = Question()
@@ -49,6 +51,7 @@ class MultipleChoiceViewController: UIViewController {
         emptyCheckboxContainer()
         let spacer = 10
         let size = 29
+        var maxIntrinsicWidth: CGFloat = 100
         if theQuestion.multipleChoisesAnswers != nil{
             for (i, choice) in theQuestion.multipleChoisesAnswers!.enumerated() {
                 let check = VKCheckbox(frame: CGRect(x: 0, y: ((size + spacer) * i), width: size, height: size))
@@ -69,15 +72,24 @@ class MultipleChoiceViewController: UIViewController {
                     print("value \(tag) is \(ison)")
                     self.saveAnswers()
                 }
-                let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: 148, height: size))
+                let containerWidth = Int(containerBackground.frame.width * 0.92) - size - spacer
+                let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: containerWidth, height: size))
                 text.text = choice
                 text.textAlignment = .left
                 text.font = text.font.withSize(19)
                 text.contentMode = .center
                 text.numberOfLines = 0
+                if text.intrinsicContentSize.width > maxIntrinsicWidth{
+                    maxIntrinsicWidth = text.intrinsicContentSize.width
+                }
                 choicesContainer.addSubview(check)
                 choicesContainer.addSubview(text)
                 checkboxContainerHeightConstraint.constant = CGFloat((size + spacer) * (i+1))
+            }
+            if (maxIntrinsicWidth + CGFloat(size + spacer)) < containerBackground.frame.width{
+                checkboxContainerWidthConstraint.constant = maxIntrinsicWidth + CGFloat(size + spacer)
+            }else{
+                checkboxContainerWidthConstraint.constant = containerBackground.frame.width
             }
         }
     }
