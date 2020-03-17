@@ -104,6 +104,7 @@ struct SurveyRepository {
 
         let session = URLSession.shared
         request.httpMethod = "GET"
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData//to refresh...
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             if(error != nil){
