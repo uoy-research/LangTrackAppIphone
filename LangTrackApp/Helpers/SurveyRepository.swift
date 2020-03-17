@@ -153,6 +153,54 @@ struct SurveyRepository {
             if(error != nil){
                 print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
                 return
+            }else{
+                print("postAnswer response: \(response?.description ?? "no postAnswer response")")
+                /**
+                 postAnswer response: <NSHTTPURLResponse: 0x280ea03c0> { URL: https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/devicetoken } { Status Code: 404, Headers {
+                     "Access-Control-Allow-Origin" =     (
+                         "*"
+                     );
+                     Connection =     (
+                         "keep-alive"
+                     );
+                     "Content-Encoding" =     (
+                         gzip
+                     );
+                     "Content-Length" =     (
+                         135
+                     );
+                     "Content-Type" =     (
+                         "application/json; charset=utf-8"
+                     );
+                     Date =     (
+                         "Tue, 17 Mar 2020 08:53:23 GMT"
+                     );
+                     Etag =     (
+                         "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+                     );
+                     Server =     (
+                         nginx
+                     );
+                     Vary =     (
+                         "Accept-Encoding"
+                     );
+                     "X-RateLimit-Limit" =     (
+                         120
+                     );
+                     "X-RateLimit-Remaining" =     (
+                         119
+                     );
+                     "X-RateLimit-Reset" =     (
+                         1584435263
+                     );
+                     "x-srv-span" =     (
+                         "v=1;s=23ced2989dd7451f"
+                     );
+                     "x-srv-trace" =     (
+                         "v=1;t=e74de6d8c766d6a5"
+                     );
+                 } }
+                 */
             }
         })
         task.resume()
