@@ -11,7 +11,7 @@ import UIKit
 class SurveyViewController: UIViewController {
     @IBOutlet weak var surveyContainer: UIView!
     
-    var theSurvey: Survey? = nil
+    var answer = [Int:Answer]()
     var theAssignment: Assignment? = nil
     var currentPage = Question()
     var theUser: User?
@@ -130,7 +130,10 @@ class SurveyViewController: UIViewController {
             likertScale!.view.frame = surveyContainer.bounds
             likertScale!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             likertScale!.didMove(toParent: self)
-            likertScale!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
+            if let theAnswer = answer[currentPage.index]{
+                likertScale!.theAnswer = theAnswer
+            }
+            //likertScale!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             likertScale!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.fillInTheBlank.rawValue)
@@ -140,7 +143,10 @@ class SurveyViewController: UIViewController {
             fillInTheBlank!.view.frame = surveyContainer.bounds
             fillInTheBlank!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             fillInTheBlank!.didMove(toParent: self)
-            fillInTheBlank!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
+            if let theAnswer = answer[currentPage.index]{
+                fillInTheBlank!.theAnswer = theAnswer
+            }
+            //fillInTheBlank!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             fillInTheBlank!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.multipleChoice.rawValue)
@@ -150,7 +156,10 @@ class SurveyViewController: UIViewController {
             multipleChoice!.view.frame = surveyContainer.bounds
             multipleChoice!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             multipleChoice!.didMove(toParent: self)
-            multipleChoice!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
+            if let theAnswer = answer[currentPage.index]{
+                multipleChoice!.theAnswer = theAnswer
+            }
+            //multipleChoice!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             multipleChoice!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.singleMultipleAnswers.rawValue)
@@ -160,7 +169,9 @@ class SurveyViewController: UIViewController {
             singleMultipleAnswers!.view.frame = surveyContainer.bounds
             singleMultipleAnswers!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             singleMultipleAnswers!.didMove(toParent: self)
-            singleMultipleAnswers!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
+            if let theAnswer = answer[currentPage.index]{
+                singleMultipleAnswers!.theAnswer = theAnswer
+            }
             singleMultipleAnswers!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.openEndedTextResponses.rawValue)
@@ -170,7 +181,10 @@ class SurveyViewController: UIViewController {
             openEndedTextResponses!.view.frame = surveyContainer.bounds
             openEndedTextResponses!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             openEndedTextResponses!.didMove(toParent: self)
-            openEndedTextResponses!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
+            if let theAnswer = answer[currentPage.index]{
+                openEndedTextResponses!.theAnswer = theAnswer
+            }
+            //openEndedTextResponses!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             openEndedTextResponses!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.footer.rawValue)
@@ -189,34 +203,59 @@ class SurveyViewController: UIViewController {
 //MARK:- QuestionListener
 extension SurveyViewController: QuestionListener{
     func setOpenEndedAnswer(text: String) {
-        if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: text)
-        }
+        answer[currentPage.index] = Answer(
+            type: "open",
+            index: currentPage.index,
+            likertAnswer: nil,
+            fillBlankAnswer: nil,
+            multipleChoiceAnswer: nil,
+            singleMultipleAnswer: nil,
+            openEndedAnswer: text)
     }
     
     func setFillBlankAnswer(selected: Int) {
-        if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: selected, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
-        }
+        answer[currentPage.index] = Answer(
+            type: "blanks",
+            index: currentPage.index,
+            likertAnswer: nil,
+            fillBlankAnswer: selected,
+            multipleChoiceAnswer: nil,
+            singleMultipleAnswer: nil,
+            openEndedAnswer: nil)
     }
     
     func setLikertAnswer(selected: Int) {
-        if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: selected, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil)
-        }
+        answer[currentPage.index] = Answer(
+            type: "likert",
+            index: currentPage.index,
+            likertAnswer: selected,
+            fillBlankAnswer: nil,
+            multipleChoiceAnswer: nil,
+            singleMultipleAnswer: nil,
+            openEndedAnswer: nil)
     }
     
     func setMultipleAnswersAnswer(selected: [Int]) {
-        if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: selected, singleMultipleAnswer: nil, openEndedAnswer: nil)
-        }
+        answer[currentPage.index] = Answer(
+            type: "multi",
+            index: currentPage.index,
+            likertAnswer: nil,
+            fillBlankAnswer: nil,
+            multipleChoiceAnswer: selected,
+            singleMultipleAnswer: nil,
+            openEndedAnswer: nil)
     }
     
     
     func setSingleMultipleAnswer(selected: Int) {
-        if theSurvey != nil{
-            theSurvey!.answer[currentPage.index] = Answer(index: currentPage.index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: selected, openEndedAnswer: nil)
-        }
+        answer[currentPage.index] = Answer(
+            type: "single",
+            index: currentPage.index,
+            likertAnswer: nil,
+            fillBlankAnswer: nil,
+            multipleChoiceAnswer: nil,
+            singleMultipleAnswer: selected,
+            openEndedAnswer: nil)
     }
     
     
@@ -225,12 +264,13 @@ extension SurveyViewController: QuestionListener{
     }
     
     func sendInSurvey() {
+        SurveyRepository.postAnswer(answerDict: answer)
         self.dismiss(animated: true, completion: nil)
     }
     
     func nextQuestion(current: Question) {
-        if theSurvey != nil{
-            for q in theSurvey!.questions {
+        if theAssignment != nil{
+            for q in theAssignment!.survey.questions {
                 if q.index == current.next{
                     showPage(newPage: q)
                 }
@@ -239,8 +279,8 @@ extension SurveyViewController: QuestionListener{
     }
     
     func previousQuestion(current: Question) {
-        if theSurvey != nil{
-            for q in theSurvey!.questions {
+        if theAssignment != nil{
+            for q in theAssignment!.survey.questions {
                 if q.index == current.previous{
                     showPage(newPage: q)
                 }

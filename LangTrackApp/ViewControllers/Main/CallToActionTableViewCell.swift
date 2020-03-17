@@ -42,14 +42,13 @@ class CallToActionTableViewCell: UITableViewCell {
     
     func setExpieryTime(){
         if theAssignment != nil{
-            if theSurvey?.createdAt != nil{
-                let millisecondsLeft = theAssignment!.createdAt!.distance(to: Date())
-                 #warning ("TODO: should be expiered!!")
-                expiryLabel.text = "Tid kvar: \(TimeInterval().stringFromSecondTimeInterval(time: theAssignment?.timeLeftToExpiryInMilli() ?? -99))"
+            let now = Date()
+            let expiary = DateParser.getDate(dateString: theAssignment!.expiry) ?? now
+                let millisecondsLeft = now.distance(to: expiary)
+                expiryLabel.text = "Tid kvar: \(TimeInterval().stringFromSecondTimeInterval(time: theAssignment!.timeLeftToExpiryInMilli() / 1000))"
                 if millisecondsLeft <= 0{
                     listener?.timerExpiered()
                 }
-            }
         }
     }
     

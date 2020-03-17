@@ -204,7 +204,7 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tempAnswer = Answer(index: theQuestion.index)
+        let tempAnswer = Answer(type: "open", index: theQuestion.index)
         tempAnswer.fillBlankAnswer = indexPath.row
         theAnswer = tempAnswer
         closeProjectDropDown()

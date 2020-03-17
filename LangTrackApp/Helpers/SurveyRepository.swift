@@ -14,60 +14,123 @@ struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
     static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
-    static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/assignments"
+    static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
+    
     static var idToken = ""
     static var assignmentList: [Assignment] = []
-    static var surveyList: [Survey] = []
-    static var selectedSurvey: Survey?
     static var selectedAssignment: Assignment?
     
     static func setIdToken(token: String){
         self.idToken = token
     }
     
-    static func postAnswer(theSurvey: Survey){
+    static func postAnswer(answerDict: [Int: Answer]){
         
-        //header: uID/SurveyID/dataset
-        
-        //body:
-        /**
-         {
-             "answers": [
-                 {
-                     "index": 0,
-                     "type": "single",
-                     "intValue": "1"
-                 },
-                 {
-                     "index": 1,
-                     "type": "multi",
-                     "multiValue": [
-                         1,
-                         2
-                     ]
-                 },
-                 {
-                     "index": 2,
-                     "type": "likert",
-                     "stringValue": 10
-                 },
-                 {
-                     "index": 4,
-                     "type": "blanks",
-                     "intValue": 3
-                 },
-                 {
-                     "index": 4,
-                     "type": "open",
-                     "stringValue": "Kul!"
-                 }
-             ]
-         }*/
+        var answers = [AnswerBody]()
+        for answer in answerDict.values{
+            var body = AnswerBody()
+            body.index = answer.index
+            body.type = answer.type
+            switch answer.type {
+            case "likert":
+                body.intValue = answer.likertAnswer
+            case "single":
+                body.intValue = answer.singleMultipleAnswer
+            case "blanks":
+                body.intValue = answer.fillBlankAnswer
+            case "multi":
+                body.multiValue = answer.multipleChoiceAnswer
+            case "open":
+                body.stringValue = answer.openEndedAnswer
+            default:
+                print("answersDict, no match in switch")
+            }
+            if body.index != -99{
+                answers.append(body)
+            }
+        }
+        let theBody = ["answers": answers]
+        let encoder = JSONEncoder()
+        if let bodyData = try? encoder.encode(theBody) {
+            if let jsonString = String(data: bodyData, encoding: .utf8) {
+                print(jsonString)
+            }
+            //  /users/u123/assignments/5e6ffa7d2321b20f1cdeb70d/datasets : answer
+            let answerUrl = "\(mockUrl)user/u123/datasets"
+            let request = NSMutableURLRequest(url: URL(string: answerUrl)!)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue(idToken, forHTTPHeaderField: "token")
+            /*do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
+            }*/
+            request.httpBody = bodyData
+
+            let session = URLSession.shared
+            request.httpMethod = "POST"
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+                if(error != nil){
+                    print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
+                    return
+                }else{
+                    print("postAnswer response: \(response)")
+                    /**postAnswer response: Optional(<NSHTTPURLResponse: 0x282c1f120> { URL: https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/datasets } { Status Code: 404, Headers {
+                        "Access-Control-Allow-Origin" =     (
+                            "*"
+                        );
+                        Connection =     (
+                            "keep-alive"
+                        );
+                        "Content-Encoding" =     (
+                            gzip
+                        );
+                        "Content-Length" =     (
+                            135
+                        );
+                        "Content-Type" =     (
+                            "application/json; charset=utf-8"
+                        );
+                        Date =     (
+                            "Tue, 17 Mar 2020 08:26:08 GMT"
+                        );
+                        Etag =     (
+                            "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+                        );
+                        Server =     (
+                            nginx
+                        );
+                        Vary =     (
+                            "Accept-Encoding"
+                        );
+                        "X-RateLimit-Limit" =     (
+                            120
+                        );
+                        "X-RateLimit-Remaining" =     (
+                            118
+                        );
+                        "X-RateLimit-Reset" =     (
+                            1584433605
+                        );
+                        "x-srv-span" =     (
+                            "v=1;s=5d94f9b0349da96e"
+                        );
+                        "x-srv-trace" =     (
+                            "v=1;t=afdb3a6a97d2e55c"
+                        );
+                    } })*/
+                }
+            })
+            task.resume()
+        }
     }
     
     static func postDeviceToken(deviceToken: String){
         let parameters = ["deviceToken": deviceToken]
-        let deviceTokenUrl = "\(theUrl)/u123/devicetoken"
+        let deviceTokenUrl = "\(mockUrl)user/u123/devicetoken"
         let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(idToken, forHTTPHeaderField: "token")
@@ -98,7 +161,8 @@ struct SurveyRepository {
     
     static func getSurveys( completionhandler: @escaping (_ result: [Assignment]?) -> Void){
         
-        let request = NSMutableURLRequest(url: URL(string: mockUrl)!)
+        let assignmentsTokenUrl = "\(mockUrl)user/u123/assignments"
+        let request = NSMutableURLRequest(url: URL(string: assignmentsTokenUrl)!)
         
         // Set HTTP Request Header
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -106,6 +170,7 @@ struct SurveyRepository {
 
         let session = URLSession.shared
         request.httpMethod = "GET"
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData//to refresh...
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             if(error != nil){
@@ -148,34 +213,41 @@ struct SurveyRepository {
     }
     
     static func sortAssignmentList(theList : [Assignment]) -> [Assignment]{
-        var activeList = theList.filter {$0.dataset == nil}
-        #warning ("TODO: check if expiered")
-        var unActiveList = theList.filter {$0.dataset != nil}
-        activeList.sort {$0.survey.published?.millisecondsSince1970 ?? 0 < $1.survey.published?.millisecondsSince1970 ?? 0}
-        unActiveList.sort {$0.survey.published?.millisecondsSince1970 ?? 0 < $1.survey.published?.millisecondsSince1970 ?? 0}
+        let now = Date()
+        //if the assignment is active and the dataset is empty
+        var activeList = theList.filter {$0.dataset == nil && DateParser.getDate(dateString: $0.expiry) ?? now > now}
+        //if the assignment is not active or the dataset exists
+        var unActiveList = theList.filter {$0.dataset != nil || DateParser.getDate(dateString: $0.expiry) ?? now < now}
+        activeList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
+        unActiveList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
         var finallist = [Assignment]()
         finallist.append(contentsOf: activeList)
         finallist.append(contentsOf: unActiveList)
         
         return finallist
     }
+    
     private static func createAssignmentsFromData(data: Data) -> [Assignment]?{
         var returnValue = [Assignment]()
         do {
             let json = try JSON(data: data)
             for (_,assignmentJson):(String, JSON) in json {
                 var tempAssignment = Assignment()
-                let formatter1 = DateFormatter()
-                formatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 for (key,postJson):(String, JSON) in assignmentJson{
                     if key == "userId"{
                         tempAssignment.userId = postJson.stringValue
                     }
                     if key == "createdAt"{
-                        tempAssignment.createdAt = formatter1.date(from: postJson.stringValue)
+                        tempAssignment.createdAt = postJson.stringValue
                     }
                     if key == "updatedAt"{
-                        tempAssignment.updatedAt = formatter1.date(from: postJson.stringValue)
+                        tempAssignment.updatedAt = postJson.stringValue
+                    }
+                    if key == "expireAt"{
+                        tempAssignment.expiry = postJson.stringValue
+                    }
+                    if key == "publishAt"{
+                        tempAssignment.published = postJson.stringValue
                     }
                     if key == "survey"{
                         if let surveyDict = postJson.dictionaryObject{
@@ -192,11 +264,11 @@ struct SurveyRepository {
                             if let title = surveyDict["title"] as? String{
                                 tempAssignment.survey.title = title
                             }
-                            if let published = surveyDict["published"] as? String{
-                                tempAssignment.survey.published = formatter1.date(from: published)
+                            if let published = surveyDict["publishAt"] as? String{
+                                tempAssignment.survey.published = published
                             }
-                            if let expiry = surveyDict["expiry"] as? String{
-                                tempAssignment.survey.expiry = formatter1.date(from: expiry)
+                            if let expiry = surveyDict["expireAt"] as? String{
+                                tempAssignment.survey.expiry = expiry
                             }
                             if let questionsDict = surveyDict["questions"] as? [Any]{
                                 for question in questionsDict{
@@ -310,15 +382,15 @@ struct SurveyRepository {
                                         }
                                         switch type {
                                         case "likert":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "likert",index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
                                         case "single":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "single",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil))
                                         case "multi":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "multi",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil))
                                         case "blanks":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "blanks",index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
                                         case "open":
-                                            tempAnswers.append(Answer(index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue))
+                                            tempAnswers.append(Answer(type: "open",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue))
                                         default:
                                             print("answersDict, no match in switch")
                                         }
@@ -333,11 +405,6 @@ struct SurveyRepository {
                     }
                 }
                 tempAssignment.survey.questions.sort(by: { $0.index < $1.index})
-                #warning ("TODO: remove")
-                //test with expiry
-                tempAssignment.expiry = Date().addingTimeInterval(TimeInterval.init(integerLiteral: 5))
-                tempAssignment.published = Date()
-                //endtest
                 returnValue.append(tempAssignment)
             }
         }catch  {

@@ -156,8 +156,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("makeNewItem in didReceiveRemoteNotification")
         //send notification to update surveys
         NotificationCenter.default.post(
-            name: ViewController.newNotification,
-            object: aps)
+            name: .newNotification,
+            object: nil)
         completionHandler(.newData)
     }
     
@@ -202,8 +202,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             }*/
             //send notification with notification info, to update surveys
             NotificationCenter.default.post(
-                name: ViewController.newNotification,
-                object: aps)
+                name: .newNotification,
+                object: nil)
         }
         
         

@@ -40,7 +40,7 @@ class FooterViewController: UIViewController {
     }
     
     @IBAction func sendInButtonPressed(_ sender: Any) {
-        listener?.closeSurvey()
+        listener?.sendInSurvey()
     }
     
 }

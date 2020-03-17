@@ -10,22 +10,21 @@ import Foundation
 
 struct Assignment: Codable {
     var survey = Survey()
-    var updatedAt : Date?
-    var createdAt : Date?
+    var updatedAt = ""
+    var createdAt = ""
     var userId = ""
     var dataset: Dataset? = nil
-    var published : Date?
-    var expiry : Date?
+    var published = ""
+    var expiry = ""
     
-    func timeLeftToExpiryInMilli() -> Int64?{
-        if published != nil && expiry != nil{
-            let millisecondsLeft = expiry!.millisecondsSince1970 - Date().millisecondsSince1970
-            if millisecondsLeft <= 0{
-                return 0
-            }else{
-                return millisecondsLeft
-            }
+    func timeLeftToExpiryInMilli() -> Int64{
+        let now = Date()
+        let exp = DateParser.getDate(dateString: expiry) ?? now
+        let millisecondsLeft = exp.millisecondsSince1970 - now.millisecondsSince1970
+        if millisecondsLeft <= 0{
+            return 0
+        }else{
+            return millisecondsLeft
         }
-        return nil
     }
 }

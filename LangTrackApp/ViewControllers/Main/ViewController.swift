@@ -36,6 +36,10 @@
 import UIKit
 import Firebase
 
+extension Notification.Name {
+static let newNotification = Notification.Name("newNotification")
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var logOutButton: UIButton!
@@ -59,7 +63,7 @@ class ViewController: UIViewController {
     var latestFetchMilli: Int64 = 0
     var tokenChangeListener: IDTokenDidChangeListenerHandle?
     
-    static let newNotification = NSNotification.Name(rawValue: "newNotification")
+    //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,11 +89,12 @@ class ViewController: UIViewController {
         print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
         print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
         
-        NotificationCenter.default.addObserver(
+        /*NotificationCenter.default.addObserver(
         self,
         selector: #selector(ViewController.receivedNewNotification(_:)),
-        name: ViewController.newNotification,
-        object: self)
+        name: .newNotification,
+        object: self)*/
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedNewNotification(_:)), name: .newNotification, object: nil)
         
         if self.tokenChangeListener == nil && Auth.auth().currentUser != nil{
             setTokenListener()
@@ -105,7 +110,8 @@ class ViewController: UIViewController {
         
         // here is the aps if app is running
         // or if user clicked notification to start app
-        print("receivedNewNotification: \(aps)")
+        print("receivedNewNotification")
+        fetchAssignmentsAndSetUserName()
     }
     
     
@@ -130,6 +136,23 @@ class ViewController: UIViewController {
         }
     }
     
+    func fetchAssignmentsAndSetUserName(){
+        self.theTableView.reloadData()
+        SurveyRepository.getSurveys() { (assignments) in
+            if assignments != nil{
+                DispatchQueue.main.async {
+                    //self.surveyList = self.sortSurveyList(theList: surveys!)
+                    self.theTableView.reloadData()
+                }
+            }
+        }
+        var username = Auth.auth().currentUser?.email
+        username!.until("@")
+        self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
+        userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
+        theTableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
@@ -151,20 +174,8 @@ class ViewController: UIViewController {
                 }
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
-            self.theTableView.reloadData()
-            SurveyRepository.getSurveys() { (assignments) in
-                if assignments != nil{
-                    DispatchQueue.main.async {
-                        //self.surveyList = self.sortSurveyList(theList: surveys!)
-                        self.theTableView.reloadData()
-                    }
-                }
-            }
-            var username = Auth.auth().currentUser?.email
-            username!.until("@")
-            self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
-            userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
-            theTableView.reloadData()
+            
+            fetchAssignmentsAndSetUserName()
         }
     }
     @IBAction func logOutButtonPressed(_ sender: Any) {
@@ -179,7 +190,7 @@ class ViewController: UIViewController {
                         try firebaseAuth.signOut()
                         self.performSegue(withIdentifier: "login", sender: nil)
                          #warning ("TODO: Töm listor osv")
-                        SurveyRepository.surveyList = []
+                        SurveyRepository.assignmentList = []
                         self.userNameLabel.text = ""
                         // Remove the token ID listenter.
                         guard let tokenListener = self.tokenChangeListener else { return }
@@ -200,7 +211,7 @@ class ViewController: UIViewController {
         if segue.identifier == "survey"{
             let dest = segue.destination as! SurveyViewController
             dest.modalPresentationStyle = .fullScreen
-            dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
+            //dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
             dest.theAssignment = SurveyRepository.selectedAssignment
             dest.theUser = self.theUser
         }else if segue.identifier == "login"{
@@ -221,17 +232,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentAssignment = SurveyRepository.assignmentList[indexPath.row]
+        let now = Date()
+        let expiary = DateParser.getDate(dateString: currentAssignment.expiry) ?? now
         if currentAssignment.dataset == nil{
-             #warning ("TODO: check expiered")
-            let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
-            cell.selectionStyle = .none
-            if let cell = cell as? CallToActionTableViewCell{
-                cell.setSurveyInfo(assignment: currentAssignment, tableviewHeight: theTableView.frame.height)
-                cell.setListener(theListener: self)
+            if now < expiary{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "callToActionCell", for: indexPath)
+                cell.selectionStyle = .none
+                if let cell = cell as? CallToActionTableViewCell{
+                    cell.setSurveyInfo(assignment: currentAssignment, tableviewHeight: theTableView.frame.height)
+                    cell.setListener(theListener: self)
+                }else{
+                    print("no cell")
+                }
+                return cell
             }else{
-                print("no cell")
+                let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
+                cell.selectionStyle = .none
+                if let cell = cell as? SurveyTableViewCell{
+                    cell.setSurveyInfo(assignment: currentAssignment)
+                }else{
+                    print("no cell")
+                }
+                return cell
             }
-            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "surveyCell", for: indexPath)
             cell.selectionStyle = .none
@@ -255,6 +278,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 extension ViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
-         #warning ("TODO: reload tableview to remove expiered survey from 'call to action'")
+        theTableView.reloadData()
     }
 }

@@ -52,6 +52,7 @@
 		F183141A2418F1690036A5D3 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314192418F1690036A5D3 /* Dataset.swift */; };
 		F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1963208240922AE00A0D8D2 /* VKCheckbox.swift */; };
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
+		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		F18314192418F1690036A5D3 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		F1963208240922AE00A0D8D2 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
+		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 				F11007DE240D0B9E0097A6A4 /* Answer.swift */,
 				F18314172418EA0F0036A5D3 /* Assignment.swift */,
 				F18314192418F1690036A5D3 /* Dataset.swift */,
+				F1BAFD032420B6260047E9E5 /* AnswerBody.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				F15658AF23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift in Sources */,
 				F178752723E41654003D16D1 /* Question.swift in Sources */,
 				F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */,
+				F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */,
 				F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */,
 				F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */,
 				F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */,

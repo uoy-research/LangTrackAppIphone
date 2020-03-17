@@ -12,16 +12,10 @@ import Foundation
 struct DateParser {
   static let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.locale = Locale(identifier: "sv_SE")
-    formatter.timeZone = TimeZone.current
+    formatter.locale = Locale.current
+    formatter.timeZone = TimeZone(identifier: "UTC")
     return formatter
   }()
-  
-  //Wed, 04 Nov 2015 21:00:14 +0000
-  static func dateWithPodcastDateString(_ dateString: String) -> Date? {
-    dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
-    return dateFormatter.date(from: dateString)
-    }
     
     //2019-12-29 12:42
     static func displayString(for date: Date) -> String {
@@ -29,9 +23,8 @@ struct DateParser {
         return dateFormatter.string(from: date)
     }
     
-    static func utcToDate(utc: String) -> Date?{
+    static func getDate(dateString: String) -> Date? {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let temp = dateFormatter.date(from: utc)
-        return temp
+        return dateFormatter.date(from: dateString)
     }
 }
