@@ -17,8 +17,10 @@ struct SurveyRepository {
     static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
     
     static var idToken = ""
+    static var localTimeZoneIdentifier = ""
     static var assignmentList: [Assignment] = []
     static var selectedAssignment: Assignment?
+    static let tempuserId = "u123"
     
     static func setIdToken(token: String){
         self.idToken = token
@@ -78,7 +80,7 @@ struct SurveyRepository {
                         print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
                         return
                     }else{
-                        print("postAnswer response: \(response)")
+                        print("postAnswer response: \(response.debugDescription)")
                     }
                 })
                 task.resume()
@@ -87,20 +89,33 @@ struct SurveyRepository {
     }
     
     static func postDeviceToken(deviceToken: String){
-        let parameters = ["deviceToken": deviceToken]
-        let deviceTokenUrl = "\(mockUrl)user/u123/devicetoken"
+    
+        /*
+         /users/u123
+         
+         {
+             "timezone": "Europe/Stockholm",
+             "deviceToken": "qwerty12345qwert23456"
+         }
+         */
+        let param = [
+            "timezone": localTimeZoneIdentifier,
+            "deviceToken": deviceToken
+        ]
+        
+        let deviceTokenUrl = "\(mockUrl)user/\(tempuserId)"
         let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(idToken, forHTTPHeaderField: "token")
         
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
         }
         
         let session = URLSession.shared
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -112,7 +127,9 @@ struct SurveyRepository {
                 print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
                 return
             }else{
-                print("postAnswer response: \(response?.description ?? "no postAnswer response")")
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                }
                 /**
                  postAnswer response: <NSHTTPURLResponse: 0x280ea03c0> { URL: https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/devicetoken } { Status Code: 404, Headers {
                      "Access-Control-Allow-Origin" =     (
@@ -167,7 +184,7 @@ struct SurveyRepository {
     
     static func getSurveys( completionhandler: @escaping (_ result: [Assignment]?) -> Void){
         
-        let assignmentsTokenUrl = "\(mockUrl)user/u123/assignments"
+        let assignmentsTokenUrl = "\(mockUrl)user/\(tempuserId)/assignments"
         let request = NSMutableURLRequest(url: URL(string: assignmentsTokenUrl)!)
         
         // Set HTTP Request Header
@@ -335,7 +352,6 @@ struct SurveyRepository {
                                         tempQuestion.title = title
                                         tempQuestion.text = text
                                     }
-                                     #warning ("TODO: check type and add values")
                                     if values != nil{
                                         switch tempQuestion.type {
                                         case "single":
@@ -345,7 +361,7 @@ struct SurveyRepository {
                                         case "blanks":
                                             tempQuestion.fillBlanksChoises = values
                                         default:
-                                            print("tempQuestion.type, no match in switch. Empty?")
+                                            1 == 1//not using default...
                                         }
                                     }
                                     tempAssignment.survey.questions.append(tempQuestion)
