@@ -340,6 +340,20 @@ struct SurveyRepository {
                                                     tempQuestion.skip = tempSkip
                                                 }
                                             }
+                                            if questionPost.key == "includeIf"{
+                                                if let skipDict = questionPost.value as? [String:Int]{
+                                                    let tempIncludeIf = IncludeIf()
+                                                    for i in skipDict{
+                                                        if i.key == "ifIndex"{
+                                                            tempIncludeIf.ifIndex = i.value
+                                                        }
+                                                        if i.key == "ifValue"{
+                                                            tempIncludeIf.ifValue = i.value
+                                                        }
+                                                    }
+                                                    tempQuestion.includeIf = tempIncludeIf
+                                                }
+                                            }
                                         }
                                         tempQuestion.index = index
                                         tempQuestion.type = type

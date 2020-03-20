@@ -56,6 +56,7 @@
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
 		F1DB19992424CD480068F49E /* LikertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB19982424CD480068F49E /* LikertView.xib */; };
 		F1DB199B2424CD610068F49E /* LikertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199A2424CD610068F49E /* LikertView.swift */; };
+		F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199C2424FEC10068F49E /* IncludeIf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		F1DB19982424CD480068F49E /* LikertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikertView.xib; sourceTree = "<group>"; };
 		F1DB199A2424CD610068F49E /* LikertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikertView.swift; sourceTree = "<group>"; };
+		F1DB199C2424FEC10068F49E /* IncludeIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeIf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +342,7 @@
 				F18314172418EA0F0036A5D3 /* Assignment.swift */,
 				F18314192418F1690036A5D3 /* Dataset.swift */,
 				F1BAFD032420B6260047E9E5 /* AnswerBody.swift */,
+				F1DB199C2424FEC10068F49E /* IncludeIf.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */,
 				F15658AB23E33DF900EC2796 /* MultipleChoiceViewController.swift in Sources */,
 				F178752323E4160E003D16D1 /* Type.swift in Sources */,
+				F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */,
 				F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */,
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,

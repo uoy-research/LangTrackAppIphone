@@ -21,4 +21,5 @@ class Question : Codable {
     var multipleChoisesAnswers: [String]? = nil
     var singleMultipleAnswers: [String]? = nil
     var skip: SkipLogic? = nil
+    var includeIf: IncludeIf? = nil
 }
