@@ -57,8 +57,8 @@ class ViewController: UIViewController {
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
     var theUser: User?
-    var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
-    var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
+    //var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+    //var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     var latestFetchMilli: Int64 = 0
     var idTokenChangeListener: IDTokenDidChangeListenerHandle?
@@ -85,9 +85,10 @@ class ViewController: UIViewController {
         contactButton.layer.borderWidth = 0.35
         contactButton.layer.borderColor = UIColor.lightGray.cgColor
         
-        print("secondsFromGMT: \(secondsFromGMT)")
-        print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
-        print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
+        //print("secondsFromGMT: \(secondsFromGMT)")
+        //print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
+        //print("localTimeZoneIdentifier: \(localTimeZoneIdentifier)")
+        SurveyRepository.localTimeZoneIdentifier = localTimeZoneIdentifier
         
         /*NotificationCenter.default.addObserver(
         self,

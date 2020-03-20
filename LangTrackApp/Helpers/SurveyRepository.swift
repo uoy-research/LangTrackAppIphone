@@ -17,8 +17,10 @@ struct SurveyRepository {
     static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
     
     static var idToken = ""
+    static var localTimeZoneIdentifier = ""
     static var assignmentList: [Assignment] = []
     static var selectedAssignment: Assignment?
+    static let tempuserId = "u123"
     
     static func setIdToken(token: String){
         self.idToken = token
@@ -78,7 +80,48 @@ struct SurveyRepository {
                         print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
                         return
                     }else{
-                        print("postAnswer response: \(response)")
+                        print("postAnswer response: \(response.debugDescription)")
+                    }
+                })
+                task.resume()
+            }
+        }
+    }
+    
+    static func surveyOpened(timeInUtc: String){
+        
+        let param = [
+            "openedAt": timeInUtc
+        ]
+        if selectedAssignment != nil{
+            if selectedAssignment!.id != ""{
+                let deviceTokenUrl = "\(mockUrl)assignments/\(selectedAssignment!.id)/opened"//TODO: set correct url
+                let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue(idToken, forHTTPHeaderField: "token")
+                
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+                
+                let session = URLSession.shared
+                request.httpMethod = "PUT"
+                
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                /**
+                 the params are json, please check with the server if it requires form data then change the content type e.g. request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"*/
+                
+                let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+                    if(error != nil){
+                        print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
+                        return
+                    }else{
+                        if let httpResponse = response as? HTTPURLResponse {
+                            print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                        }
                     }
                 })
                 task.resume()
@@ -87,20 +130,33 @@ struct SurveyRepository {
     }
     
     static func postDeviceToken(deviceToken: String){
-        let parameters = ["deviceToken": deviceToken]
-        let deviceTokenUrl = "\(mockUrl)user/u123/devicetoken"
+    
+        /*
+         /users/u123
+         
+         {
+             "timezone": "Europe/Stockholm",
+             "deviceToken": "qwerty12345qwert23456"
+         }
+         */
+        let param = [
+            "timezone": localTimeZoneIdentifier,
+            "deviceToken": deviceToken
+        ]
+        
+        let deviceTokenUrl = "\(mockUrl)user/\(tempuserId)"
         let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue(idToken, forHTTPHeaderField: "token")
         
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
         }
         
         let session = URLSession.shared
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -112,53 +168,9 @@ struct SurveyRepository {
                 print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
                 return
             }else{
-                print("postAnswer response: \(response?.description ?? "no postAnswer response")")
-                /**
-                 postAnswer response: <NSHTTPURLResponse: 0x280ea03c0> { URL: https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/user/u123/devicetoken } { Status Code: 404, Headers {
-                     "Access-Control-Allow-Origin" =     (
-                         "*"
-                     );
-                     Connection =     (
-                         "keep-alive"
-                     );
-                     "Content-Encoding" =     (
-                         gzip
-                     );
-                     "Content-Length" =     (
-                         135
-                     );
-                     "Content-Type" =     (
-                         "application/json; charset=utf-8"
-                     );
-                     Date =     (
-                         "Tue, 17 Mar 2020 08:53:23 GMT"
-                     );
-                     Etag =     (
-                         "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
-                     );
-                     Server =     (
-                         nginx
-                     );
-                     Vary =     (
-                         "Accept-Encoding"
-                     );
-                     "X-RateLimit-Limit" =     (
-                         120
-                     );
-                     "X-RateLimit-Remaining" =     (
-                         119
-                     );
-                     "X-RateLimit-Reset" =     (
-                         1584435263
-                     );
-                     "x-srv-span" =     (
-                         "v=1;s=23ced2989dd7451f"
-                     );
-                     "x-srv-trace" =     (
-                         "v=1;t=e74de6d8c766d6a5"
-                     );
-                 } }
-                 */
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                }
             }
         })
         task.resume()
@@ -167,7 +179,7 @@ struct SurveyRepository {
     
     static func getSurveys( completionhandler: @escaping (_ result: [Assignment]?) -> Void){
         
-        let assignmentsTokenUrl = "\(mockUrl)user/u123/assignments"
+        let assignmentsTokenUrl = "\(mockUrl)user/\(tempuserId)/assignments"
         let request = NSMutableURLRequest(url: URL(string: assignmentsTokenUrl)!)
         
         // Set HTTP Request Header
@@ -335,7 +347,6 @@ struct SurveyRepository {
                                         tempQuestion.title = title
                                         tempQuestion.text = text
                                     }
-                                     #warning ("TODO: check type and add values")
                                     if values != nil{
                                         switch tempQuestion.type {
                                         case "single":
@@ -345,7 +356,7 @@ struct SurveyRepository {
                                         case "blanks":
                                             tempQuestion.fillBlanksChoises = values
                                         default:
-                                            print("tempQuestion.type, no match in switch. Empty?")
+                                            1 == 1//not using default...
                                         }
                                     }
                                     tempAssignment.survey.questions.append(tempQuestion)
