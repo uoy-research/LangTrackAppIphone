@@ -218,6 +218,10 @@ class ViewController: UIViewController {
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
             dest.modalPresentationStyle = .fullScreen
+        }else if segue.identifier == "overview"{
+            let dest = segue.destination as! OverviewViewController
+            dest.modalPresentationStyle = .fullScreen
+            dest.theAssignment = SurveyRepository.selectedAssignment
         }
     }
 }
@@ -270,9 +274,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         SurveyRepository.selectedAssignment = SurveyRepository.assignmentList[indexPath.row]
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "survey", sender: nil)
+        let clickedCell = tableView.cellForRow(at: indexPath)
+        
+        if clickedCell is SurveyTableViewCell{
+            DispatchQueue.main.async {
+                //self.performSegue(withIdentifier: "overview", sender: nil)
+                self.performSegue(withIdentifier: "survey", sender: nil)//TODO: remove
+            }
+        }else if clickedCell is CallToActionTableViewCell{
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "survey", sender: nil)
+            }
         }
+        
     }
 }
 
