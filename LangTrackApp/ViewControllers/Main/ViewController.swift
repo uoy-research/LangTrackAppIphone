@@ -278,7 +278,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         if clickedCell is SurveyTableViewCell{
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "overview", sender: nil)
+                //self.performSegue(withIdentifier: "overview", sender: nil)
+                self.performSegue(withIdentifier: "survey", sender: nil)//TODO: remove
             }
         }else if clickedCell is CallToActionTableViewCell{
             DispatchQueue.main.async {
