@@ -169,8 +169,8 @@ class SurveyViewController: UIViewController {
             singleMultipleAnswers!.view.frame = surveyContainer.bounds
             singleMultipleAnswers!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             singleMultipleAnswers!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                singleMultipleAnswers!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                singleMultipleAnswers!.theAnswer = theAnswer.value
             }
             singleMultipleAnswers!.setInfo(question: theQuestion)
         }
@@ -181,8 +181,8 @@ class SurveyViewController: UIViewController {
             openEndedTextResponses!.view.frame = surveyContainer.bounds
             openEndedTextResponses!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             openEndedTextResponses!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                openEndedTextResponses!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                openEndedTextResponses!.theAnswer = theAnswer.value
             }
             //openEndedTextResponses!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             openEndedTextResponses!.setInfo(question: theQuestion)
@@ -335,6 +335,10 @@ extension SurveyViewController: QuestionListener{
     
     func sendInSurvey() {
         if !answer.isEmpty{
+            //TODO: check what answer to include, if includeIf or skip was used...
+            // then a answer could have been saved - user backed and used skip: the answer is still saved...
+            //tip: loop backwards through questions according to previous
+            //and only include the ones included
             SurveyRepository.postAnswer(answerDict: answer)
         }
         self.dismiss(animated: true, completion: nil)
