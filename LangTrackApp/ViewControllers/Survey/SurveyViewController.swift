@@ -197,7 +197,77 @@ class SurveyViewController: UIViewController {
             footer!.setInfo(question: theQuestion)
         }
     }
-
+    
+    func checkNext(current: Question){
+        print("current.index: \(current.index)")
+        if current.index + 1 < theAssignment!.survey.questions.count{
+            let next = theAssignment!.survey.questions[current.index + 1]
+            if next.includeIf != nil{
+                let includeIfIndexQuestion = theAssignment!.survey.questions[next.includeIf!.ifIndex]
+                print("includeIfIndexQuestion.index: \(includeIfIndexQuestion.index)")
+                if next.includeIf!.ifIndex == includeIfIndexQuestion.index{
+                    if let answer = self.answer[includeIfIndexQuestion.index]{
+                        switch includeIfIndexQuestion.type {
+                        case "single":
+                            if next.includeIf?.ifValue ?? -99 == answer.singleMultipleAnswer{
+                                next.previous = currentPage.index
+                                showPage(newPage: next)
+                                print("answer included in single - show next")
+                            }else{
+                                // dont show next - check following question
+                                checkNext(current: next)
+                                print("answer not included in single - check next")
+                            }
+                        case "blanks":
+                            if next.includeIf?.ifValue ?? -99 == answer.fillBlankAnswer{
+                                next.previous = currentPage.index
+                                showPage(newPage: next)
+                                print("answer included in blanks - show next")
+                            }else{
+                                // dont show next - check following question
+                                checkNext(current: next)
+                                print("answer not included in blanks - check next")
+                            }
+                        case "multi":
+                            if (answer.multipleChoiceAnswer ?? []).contains(next.includeIf?.ifValue ?? -99){
+                                next.previous = currentPage.index
+                                showPage(newPage: next)
+                                print("answer included in multi - show next")
+                            }else{
+                                // dont show next - check following question
+                                checkNext(current: next)
+                                print("answer not included in multi - check next")
+                            }
+                        default:
+                            next.previous = currentPage.index
+                            showPage(newPage: next)
+                            print("no answer-type match, show next")
+                        }
+                    }else{
+                        //current answer does not includ a answer - show next
+                        next.previous = currentPage.index
+                        showPage(newPage: next)
+                        print("current answer does not include a answer - show next")
+                    }
+                }else{
+                    //next includeIf:ifIndex is not current index - show next
+                    next.previous = currentPage.index
+                    showPage(newPage: next)
+                    print("next includeIf:ifIndex is not current index - show next")
+                }
+            }else{
+                //next does not hanve includeIf - show next
+                next.previous = currentPage.index
+                showPage(newPage: next)
+                print("next does not have includeIf - show next")
+            }
+        }else if current.index + 1 == theAssignment!.survey.questions.count{
+            //next is last (footer) - dont check, show direct
+            theAssignment!.survey.questions[current.index + 1].previous = currentPage.index
+            showPage(newPage: theAssignment!.survey.questions[current.index + 1])
+            print("next is last (footer) - dont check, show direct")
+        }
+    }
 }
 
 //MARK:- QuestionListener
@@ -264,17 +334,16 @@ extension SurveyViewController: QuestionListener{
     }
     
     func sendInSurvey() {
-        SurveyRepository.postAnswer(answerDict: answer)
+        if !answer.isEmpty{
+            SurveyRepository.postAnswer(answerDict: answer)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     func nextQuestion(current: Question) {
         if theAssignment != nil{
-            for q in theAssignment!.survey.questions {
-                if q.index == current.next{
-                    showPage(newPage: q)
-                }
-            }
+            theAssignment!.survey.questions.sort(by: {$0.index < $1.index})
+            checkNext(current: current)
         }
     }
     
