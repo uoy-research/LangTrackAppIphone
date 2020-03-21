@@ -130,8 +130,8 @@ class SurveyViewController: UIViewController {
             likertScale!.view.frame = surveyContainer.bounds
             likertScale!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             likertScale!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                likertScale!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                likertScale!.theAnswer = theAnswer.value
             }
             //likertScale!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             likertScale!.setInfo(question: theQuestion)
@@ -143,8 +143,8 @@ class SurveyViewController: UIViewController {
             fillInTheBlank!.view.frame = surveyContainer.bounds
             fillInTheBlank!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             fillInTheBlank!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                fillInTheBlank!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                fillInTheBlank!.theAnswer = theAnswer.value
             }
             //fillInTheBlank!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             fillInTheBlank!.setInfo(question: theQuestion)
@@ -156,8 +156,8 @@ class SurveyViewController: UIViewController {
             multipleChoice!.view.frame = surveyContainer.bounds
             multipleChoice!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             multipleChoice!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                multipleChoice!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                multipleChoice!.theAnswer = theAnswer.value
             }
             //multipleChoice!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             multipleChoice!.setInfo(question: theQuestion)
