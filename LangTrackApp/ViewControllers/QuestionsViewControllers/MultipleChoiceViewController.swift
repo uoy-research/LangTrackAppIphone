@@ -86,7 +86,6 @@ class MultipleChoiceViewController: UIViewController {
                 }
                 check.checkboxValueChangedBlock = {
                     tag, ison in
-                    print("value \(tag) is \(ison)")
                     self.saveAnswers()
                     self.checkCheckboxesIfSelected()
                 }

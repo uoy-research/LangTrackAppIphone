@@ -61,7 +61,6 @@ struct SurveyRepository {
                 // POST '/assignments/[assignmentID: _id]/datasets'
                 let answerUrl = "\(mockUrl)assignments/\(selectedAssignment!.id)/datasets"
                 let request = NSMutableURLRequest(url: URL(string: answerUrl)!)
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
                 request.setValue(idToken, forHTTPHeaderField: "token")
                 /*do {
                  request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
@@ -73,7 +72,6 @@ struct SurveyRepository {
                 let session = URLSession.shared
                 request.httpMethod = "POST"
                 
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                     if(error != nil){
