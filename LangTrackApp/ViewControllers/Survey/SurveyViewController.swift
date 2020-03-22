@@ -206,6 +206,7 @@ class SurveyViewController: UIViewController {
                 case "likert":
                     if skip.ifChosen == answer.likertAnswer{
                         print("skip likertAnswer matching - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
                         print("skip likertAnswer not matching")
                         return nil
@@ -213,7 +214,7 @@ class SurveyViewController: UIViewController {
                 case "single":
                     if skip.ifChosen == answer.singleMultipleAnswer{
                         print("skip singleAnswer matching - execute skip")
-                        return theAssignment?.survey.questions.first(where: { $0.index == 10})
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
                         print("skip singleAnswer not matching")
                         return nil
@@ -221,6 +222,7 @@ class SurveyViewController: UIViewController {
                 case "blanks":
                     if skip.ifChosen == answer.fillBlankAnswer{
                         print("skip blanksAnswer matching - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
                         print("skip blanksAnswer not matching")
                         return nil
@@ -228,6 +230,7 @@ class SurveyViewController: UIViewController {
                 case "multi":
                     if answer.multipleChoiceAnswer?.contains(skip.ifChosen) ?? false{
                         print("skip multiAnswer contains answer - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
                         print("skip multiAnswer do not contain answer")
                         return nil
