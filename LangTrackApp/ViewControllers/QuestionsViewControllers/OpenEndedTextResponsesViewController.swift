@@ -11,7 +11,7 @@ import UIKit
 class OpenEndedTextResponsesViewController: UIViewController {
 
     @IBOutlet weak var theIcon: UIImageView!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: NextButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var openTextLabel: UILabel!
     @IBOutlet weak var openTextView: UITextView!
@@ -35,7 +35,11 @@ class OpenEndedTextResponsesViewController: UIViewController {
         self.theQuestion = question
         openTextLabel.text = theQuestion.text
         if theAnswer?.openEndedAnswer != nil{
-            openTextView.text = theAnswer?.openEndedAnswer
+            if theAnswer?.index == theQuestion.index{
+                if theAnswer?.index == theQuestion.index{
+                    openTextView.text = theAnswer?.openEndedAnswer
+                }
+            }
         }else{
             openTextView.text = ""
         }

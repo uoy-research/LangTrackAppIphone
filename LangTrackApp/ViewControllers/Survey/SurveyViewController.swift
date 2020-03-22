@@ -130,8 +130,8 @@ class SurveyViewController: UIViewController {
             likertScale!.view.frame = surveyContainer.bounds
             likertScale!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             likertScale!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                likertScale!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                likertScale!.theAnswer = theAnswer.value
             }
             //likertScale!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             likertScale!.setInfo(question: theQuestion)
@@ -143,8 +143,8 @@ class SurveyViewController: UIViewController {
             fillInTheBlank!.view.frame = surveyContainer.bounds
             fillInTheBlank!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             fillInTheBlank!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                fillInTheBlank!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                fillInTheBlank!.theAnswer = theAnswer.value
             }
             //fillInTheBlank!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             fillInTheBlank!.setInfo(question: theQuestion)
@@ -156,8 +156,8 @@ class SurveyViewController: UIViewController {
             multipleChoice!.view.frame = surveyContainer.bounds
             multipleChoice!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             multipleChoice!.didMove(toParent: self)
-            if let theAnswer = answer[currentPage.index]{
-                multipleChoice!.theAnswer = theAnswer
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                multipleChoice!.theAnswer = theAnswer.value
             }
             //multipleChoice!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             multipleChoice!.setInfo(question: theQuestion)
@@ -198,6 +198,52 @@ class SurveyViewController: UIViewController {
         }
     }
     
+    func skipIsExecuted(current: Question) -> Question?{
+        if let skip = current.skip{
+            if let answerObj = answer.first(where: { $0.value.index == current.index}){
+                let answer = answerObj.value
+                switch current.type {
+                case "likert":
+                    if skip.ifChosen == answer.likertAnswer{
+                        print("skip likertAnswer matching - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
+                    }else{
+                        print("skip likertAnswer not matching")
+                        return nil
+                    }
+                case "single":
+                    if skip.ifChosen == answer.singleMultipleAnswer{
+                        print("skip singleAnswer matching - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
+                    }else{
+                        print("skip singleAnswer not matching")
+                        return nil
+                    }
+                case "blanks":
+                    if skip.ifChosen == answer.fillBlankAnswer{
+                        print("skip blanksAnswer matching - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
+                    }else{
+                        print("skip blanksAnswer not matching")
+                        return nil
+                    }
+                case "multi":
+                    if answer.multipleChoiceAnswer?.contains(skip.ifChosen) ?? false{
+                        print("skip multiAnswer contains answer - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
+                    }else{
+                        print("skip multiAnswer do not contain answer")
+                        return nil
+                    }
+                default:
+                    print("skip no answer-type match")
+                    return nil
+                }
+            }
+        }
+        return nil
+    }
+    
     func checkNext(current: Question){
         print("current.index: \(current.index)")
         if current.index + 1 < theAssignment!.survey.questions.count{
@@ -208,6 +254,16 @@ class SurveyViewController: UIViewController {
                 if next.includeIf!.ifIndex == includeIfIndexQuestion.index{
                     if let answer = self.answer[includeIfIndexQuestion.index]{
                         switch includeIfIndexQuestion.type {
+                        case "likert":
+                            if next.includeIf?.ifValue ?? -99 == answer.likertAnswer{
+                                next.previous = currentPage.index
+                                showPage(newPage: next)
+                                print("answer included in likert - show next")
+                            }else{
+                                // dont show next - check following question
+                                checkNext(current: next)
+                                print("answer not included in likert - check next")
+                            }
                         case "single":
                             if next.includeIf?.ifValue ?? -99 == answer.singleMultipleAnswer{
                                 next.previous = currentPage.index
@@ -339,6 +395,8 @@ extension SurveyViewController: QuestionListener{
             // then a answer could have been saved - user backed and used skip: the answer is still saved...
             //tip: loop backwards through questions according to previous
             //and only include the ones included
+            
+            //om inget är valt vsas alla...
             SurveyRepository.postAnswer(answerDict: answer)
         }
         self.dismiss(animated: true, completion: nil)
@@ -347,7 +405,14 @@ extension SurveyViewController: QuestionListener{
     func nextQuestion(current: Question) {
         if theAssignment != nil{
             theAssignment!.survey.questions.sort(by: {$0.index < $1.index})
-            checkNext(current: current)
+            if let skipGoToQuestion = skipIsExecuted(current: current){
+                print("skipIsExecuted, index: \(skipGoToQuestion.index)")
+                skipGoToQuestion.previous = currentPage.index
+                showPage(newPage: skipGoToQuestion)
+            }else{
+                print("skipIsExecuted == false")
+                checkNext(current: current)
+            }
         }
     }
     

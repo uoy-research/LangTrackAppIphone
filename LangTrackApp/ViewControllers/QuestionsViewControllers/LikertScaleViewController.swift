@@ -10,7 +10,7 @@ import UIKit
 
 class LikertScaleViewController: UIViewController {
     @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: NextButton!
     @IBOutlet weak var radioButton1: LikertRadioButton!
     @IBOutlet weak var radioButton2: LikertRadioButton!
     @IBOutlet weak var radioButton3: LikertRadioButton!
@@ -26,7 +26,7 @@ class LikertScaleViewController: UIViewController {
     
     var listener: QuestionListener?
     var theQuestion = Question()
-    var theAnswer: Answer? 
+    var theAnswer: Answer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,13 @@ class LikertScaleViewController: UIViewController {
         //radioButton3.isSelected = true
         likertTextLabel.text = theQuestion.text
         descriptionLabel.text = theQuestion.description
+        nextButton.setEnabled(enabled: false)
         if theAnswer != nil {
             if theAnswer!.likertAnswer != nil{
-                setSelected(selected: theAnswer!.likertAnswer ?? 10)
+                if theAnswer?.index == theQuestion.index{
+                    setSelected(selected: theAnswer!.likertAnswer ?? 10)
+                    nextButton.setEnabled(enabled: true)
+                }
             }
         }
     }
@@ -108,6 +112,7 @@ class LikertScaleViewController: UIViewController {
     @IBAction func likertButtonPressed(_ sender: LikertRadioButton) {
         deselectAllRadiobuttons()
         sender.isSelected = !sender.isSelected
+        nextButton.setEnabled(enabled: true)
         listener?.setLikertAnswer(selected: sender.tag)
     }
 }

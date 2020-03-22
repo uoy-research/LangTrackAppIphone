@@ -13,7 +13,7 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var tableviewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var fillTableview: UITableView!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: NextButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var questionTextLabel: UILabel!
     @IBOutlet weak var selectedWordContainer: UIView!
@@ -74,40 +74,48 @@ class FillInTheBlankViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        getTextAsList()
-        if (theSentence != nil){
-            setSentence()
+        nextButton.setEnabled(enabled: false)
+        if question.index == theQuestion.index{
+            getTextAsList()
+            if (theSentence != nil){
+                setSentence()
+            }
         }
     }
     
     func setSentence(){
         let theAttributedSentence = NSMutableAttributedString()
         if theAnswer != nil && theAnswer?.fillBlankAnswer != nil{
-            // show previous answer
-            let selectedWord = theQuestion.fillBlanksChoises?[theAnswer!.fillBlankAnswer!] ?? "_____"
-            theSentence!.listWithWords[theSentence!.indexForMissingWord] = selectedWord
-            selectedWordLabel.text = selectedWord
-            
-            
-            if selectedWord != "_____"{
-                for word in theSentence!.listWithWords{
-                    if word == selectedWord{
-                        //underline and add word
-                        theAttributedSentence.append(underLineText(text: word))
-                    }else{
-                        //just add word
-                        theAttributedSentence.append(NSAttributedString(string: word))
-                    }
-                    
-                    if word != theSentence!.listWithWords.last{
-                        theAttributedSentence.append(NSAttributedString(string: " "))
+            if theAnswer?.index == theQuestion.index{
+                // show previous answer
+                let selectedWord = theQuestion.fillBlanksChoises?[theAnswer!.fillBlankAnswer!] ?? "_____"
+                theSentence!.listWithWords[theSentence!.indexForMissingWord] = selectedWord
+                selectedWordLabel.text = selectedWord
+                
+                
+                if selectedWord != "_____"{
+                    for word in theSentence!.listWithWords{
+                        if word == selectedWord{
+                            //underline and add word
+                            theAttributedSentence.append(underLineText(text: word))
+                        }else{
+                            //just add word
+                            theAttributedSentence.append(NSAttributedString(string: word))
+                        }
+                        
+                        if word != theSentence!.listWithWords.last{
+                            theAttributedSentence.append(NSAttributedString(string: " "))
+                        }
                     }
                 }
             }
         }
         if theAttributedSentence.string == ""{
+            //no choice selected - show org
             questionTextLabel.text = theSentence?.listWithWords.joined(separator: " ")
         }else{
+            //choice made - show
+            nextButton.setEnabled(enabled: true)
             questionTextLabel.text = ""
             questionTextLabel.attributedText = theAttributedSentence
         }
@@ -209,6 +217,7 @@ extension FillInTheBlankViewController: UITableViewDelegate, UITableViewDataSour
         theAnswer = tempAnswer
         closeProjectDropDown()
         setSentence()
+        nextButton.setEnabled(enabled: true)
         listener?.setFillBlankAnswer(selected: indexPath.row)
     }
 }
