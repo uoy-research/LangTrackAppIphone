@@ -29,12 +29,12 @@ class MultipleChoiceViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
-        nextButton.setEnabled(enabled: false)
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
         multipleChoiceTextLabel.text = theQuestion.text
+        nextButton.setEnabled(enabled: false)
         fillCheckboxContainer()
     }
     

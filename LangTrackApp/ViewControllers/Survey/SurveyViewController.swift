@@ -198,6 +198,49 @@ class SurveyViewController: UIViewController {
         }
     }
     
+    func skipIsExecuted(current: Question) -> Question?{
+        if let skip = current.skip{
+            if let answerObj = answer.first(where: { $0.value.index == current.index}){
+                let answer = answerObj.value
+                switch current.type {
+                case "likert":
+                    if skip.ifChosen == answer.likertAnswer{
+                        print("skip likertAnswer matching - execute skip")
+                    }else{
+                        print("skip likertAnswer not matching")
+                        return nil
+                    }
+                case "single":
+                    if skip.ifChosen == answer.singleMultipleAnswer{
+                        print("skip singleAnswer matching - execute skip")
+                        return theAssignment?.survey.questions.first(where: { $0.index == 10})
+                    }else{
+                        print("skip singleAnswer not matching")
+                        return nil
+                    }
+                case "blanks":
+                    if skip.ifChosen == answer.fillBlankAnswer{
+                        print("skip blanksAnswer matching - execute skip")
+                    }else{
+                        print("skip blanksAnswer not matching")
+                        return nil
+                    }
+                case "multi":
+                    if answer.multipleChoiceAnswer?.contains(skip.ifChosen) ?? false{
+                        print("skip multiAnswer contains answer - execute skip")
+                    }else{
+                        print("skip multiAnswer do not contain answer")
+                        return nil
+                    }
+                default:
+                    print("skip no answer-type match")
+                    return nil
+                }
+            }
+        }
+        return nil
+    }
+    
     func checkNext(current: Question){
         print("current.index: \(current.index)")
         if current.index + 1 < theAssignment!.survey.questions.count{
@@ -208,6 +251,16 @@ class SurveyViewController: UIViewController {
                 if next.includeIf!.ifIndex == includeIfIndexQuestion.index{
                     if let answer = self.answer[includeIfIndexQuestion.index]{
                         switch includeIfIndexQuestion.type {
+                        case "likert":
+                            if next.includeIf?.ifValue ?? -99 == answer.likertAnswer{
+                                next.previous = currentPage.index
+                                showPage(newPage: next)
+                                print("answer included in likert - show next")
+                            }else{
+                                // dont show next - check following question
+                                checkNext(current: next)
+                                print("answer not included in likert - check next")
+                            }
                         case "single":
                             if next.includeIf?.ifValue ?? -99 == answer.singleMultipleAnswer{
                                 next.previous = currentPage.index
@@ -349,7 +402,14 @@ extension SurveyViewController: QuestionListener{
     func nextQuestion(current: Question) {
         if theAssignment != nil{
             theAssignment!.survey.questions.sort(by: {$0.index < $1.index})
-            checkNext(current: current)
+            if let skipGoToQuestion = skipIsExecuted(current: current){
+                print("skipIsExecuted, index: \(skipGoToQuestion.index)")
+                skipGoToQuestion.previous = currentPage.index
+                showPage(newPage: skipGoToQuestion)
+            }else{
+                print("skipIsExecuted == false")
+                checkNext(current: current)
+            }
         }
     }
     

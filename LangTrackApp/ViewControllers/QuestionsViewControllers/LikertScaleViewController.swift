@@ -34,7 +34,6 @@ class LikertScaleViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
-        nextButton.setEnabled(enabled: false)
     }
     
     func setInfo(question: Question){
@@ -42,6 +41,7 @@ class LikertScaleViewController: UIViewController {
         //radioButton3.isSelected = true
         likertTextLabel.text = theQuestion.text
         descriptionLabel.text = theQuestion.description
+        nextButton.setEnabled(enabled: false)
         if theAnswer != nil {
             if theAnswer!.likertAnswer != nil{
                 if theAnswer?.index == theQuestion.index{

@@ -41,7 +41,6 @@ class FillInTheBlankViewController: UIViewController {
         fillTableview.rowHeight = rowheight
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
-        nextButton.setEnabled(enabled: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +74,7 @@ class FillInTheBlankViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
+        nextButton.setEnabled(enabled: false)
         if question.index == theQuestion.index{
             getTextAsList()
             if (theSentence != nil){
@@ -111,8 +111,11 @@ class FillInTheBlankViewController: UIViewController {
             }
         }
         if theAttributedSentence.string == ""{
+            //no choice selected - show org
             questionTextLabel.text = theSentence?.listWithWords.joined(separator: " ")
         }else{
+            //choice made - show
+            nextButton.setEnabled(enabled: true)
             questionTextLabel.text = ""
             questionTextLabel.attributedText = theAttributedSentence
         }
