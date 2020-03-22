@@ -205,38 +205,29 @@ class SurveyViewController: UIViewController {
                 switch current.type {
                 case "likert":
                     if skip.ifChosen == answer.likertAnswer{
-                        print("skip likertAnswer matching - execute skip")
                         return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
-                        print("skip likertAnswer not matching")
                         return nil
                     }
                 case "single":
                     if skip.ifChosen == answer.singleMultipleAnswer{
-                        print("skip singleAnswer matching - execute skip")
                         return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
-                        print("skip singleAnswer not matching")
                         return nil
                     }
                 case "blanks":
                     if skip.ifChosen == answer.fillBlankAnswer{
-                        print("skip blanksAnswer matching - execute skip")
                         return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
-                        print("skip blanksAnswer not matching")
                         return nil
                     }
                 case "multi":
                     if answer.multipleChoiceAnswer?.contains(skip.ifChosen) ?? false{
-                        print("skip multiAnswer contains answer - execute skip")
                         return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
                     }else{
-                        print("skip multiAnswer do not contain answer")
                         return nil
                     }
                 default:
-                    print("skip no answer-type match")
                     return nil
                 }
             }
@@ -245,12 +236,11 @@ class SurveyViewController: UIViewController {
     }
     
     func checkNext(current: Question){
-        print("current.index: \(current.index)")
+        
         if current.index + 1 < theAssignment!.survey.questions.count{
             let next = theAssignment!.survey.questions[current.index + 1]
             if next.includeIf != nil{
                 let includeIfIndexQuestion = theAssignment!.survey.questions[next.includeIf!.ifIndex]
-                print("includeIfIndexQuestion.index: \(includeIfIndexQuestion.index)")
                 if next.includeIf!.ifIndex == includeIfIndexQuestion.index{
                     if let answer = self.answer[includeIfIndexQuestion.index]{
                         switch includeIfIndexQuestion.type {
@@ -258,70 +248,57 @@ class SurveyViewController: UIViewController {
                             if next.includeIf?.ifValue ?? -99 == answer.likertAnswer{
                                 next.previous = currentPage.index
                                 showPage(newPage: next)
-                                print("answer included in likert - show next")
                             }else{
                                 // dont show next - check following question
                                 checkNext(current: next)
-                                print("answer not included in likert - check next")
                             }
                         case "single":
                             if next.includeIf?.ifValue ?? -99 == answer.singleMultipleAnswer{
                                 next.previous = currentPage.index
                                 showPage(newPage: next)
-                                print("answer included in single - show next")
                             }else{
                                 // dont show next - check following question
                                 checkNext(current: next)
-                                print("answer not included in single - check next")
                             }
                         case "blanks":
                             if next.includeIf?.ifValue ?? -99 == answer.fillBlankAnswer{
                                 next.previous = currentPage.index
                                 showPage(newPage: next)
-                                print("answer included in blanks - show next")
                             }else{
                                 // dont show next - check following question
                                 checkNext(current: next)
-                                print("answer not included in blanks - check next")
                             }
                         case "multi":
                             if (answer.multipleChoiceAnswer ?? []).contains(next.includeIf?.ifValue ?? -99){
                                 next.previous = currentPage.index
                                 showPage(newPage: next)
-                                print("answer included in multi - show next")
                             }else{
                                 // dont show next - check following question
                                 checkNext(current: next)
-                                print("answer not included in multi - check next")
                             }
                         default:
                             next.previous = currentPage.index
                             showPage(newPage: next)
-                            print("no answer-type match, show next")
                         }
                     }else{
                         //current answer does not includ a answer - show next
                         next.previous = currentPage.index
                         showPage(newPage: next)
-                        print("current answer does not include a answer - show next")
                     }
                 }else{
                     //next includeIf:ifIndex is not current index - show next
                     next.previous = currentPage.index
                     showPage(newPage: next)
-                    print("next includeIf:ifIndex is not current index - show next")
                 }
             }else{
                 //next does not hanve includeIf - show next
                 next.previous = currentPage.index
                 showPage(newPage: next)
-                print("next does not have includeIf - show next")
             }
         }else if current.index + 1 == theAssignment!.survey.questions.count{
             //next is last (footer) - dont check, show direct
             theAssignment!.survey.questions[current.index + 1].previous = currentPage.index
             showPage(newPage: theAssignment!.survey.questions[current.index + 1])
-            print("next is last (footer) - dont check, show direct")
         }
     }
 }
@@ -391,13 +368,27 @@ extension SurveyViewController: QuestionListener{
     
     func sendInSurvey() {
         if !answer.isEmpty{
-            //TODO: check what answer to include, if includeIf or skip was used...
-            // then a answer could have been saved - user backed and used skip: the answer is still saved...
-            //tip: loop backwards through questions according to previous
-            //and only include the ones included
-            
-            //om inget är valt vsas alla...
-            SurveyRepository.postAnswer(answerDict: answer)
+            let tempList = theAssignment!.survey.questions.sorted(by: {$0.index > $1.index})
+            var answersToInclude = [Int]()
+            //begin with last
+            var counter = tempList.first?.index ?? -99
+            if counter != -99{
+                while counter > 0 {
+                    let currentQuestion = tempList.first(where: { $0.index == counter})
+                    if currentQuestion?.type ?? "header" != "header" &&
+                        currentQuestion?.type ?? "footer" != "footer"{
+                        answersToInclude.append(counter)
+                    }
+                    counter = currentQuestion?.previous ?? 0
+                }
+            }
+            var tempAnswers = [Int:Answer]()
+            for a in answersToInclude{
+                if let theAnswer = answer.first(where: {$0.value.index == a}){
+                    tempAnswers[theAnswer.value.index] = theAnswer.value
+                }
+            }
+            SurveyRepository.postAnswer(answerDict: tempAnswers)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -406,11 +397,9 @@ extension SurveyViewController: QuestionListener{
         if theAssignment != nil{
             theAssignment!.survey.questions.sort(by: {$0.index < $1.index})
             if let skipGoToQuestion = skipIsExecuted(current: current){
-                print("skipIsExecuted, index: \(skipGoToQuestion.index)")
                 skipGoToQuestion.previous = currentPage.index
                 showPage(newPage: skipGoToQuestion)
             }else{
-                print("skipIsExecuted == false")
                 checkNext(current: current)
             }
         }
