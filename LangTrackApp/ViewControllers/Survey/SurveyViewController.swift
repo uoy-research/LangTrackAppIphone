@@ -339,6 +339,8 @@ extension SurveyViewController: QuestionListener{
             // then a answer could have been saved - user backed and used skip: the answer is still saved...
             //tip: loop backwards through questions according to previous
             //and only include the ones included
+            
+            //om inget är valt vsas alla...
             SurveyRepository.postAnswer(answerDict: answer)
         }
         self.dismiss(animated: true, completion: nil)

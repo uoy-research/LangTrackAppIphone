@@ -12,7 +12,7 @@ class SingleMultipleAnswersViewController: UIViewController {
 
     @IBOutlet weak var containerBackground: UIView!
     @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: NextButton!
     @IBOutlet weak var singleMultipleTextLabel: UILabel!
     @IBOutlet weak var answersContainer: UIView!
     @IBOutlet weak var answersContainerHeightConstraint: NSLayoutConstraint!
@@ -34,6 +34,7 @@ class SingleMultipleAnswersViewController: UIViewController {
     func setInfo(question: Question){
         self.theQuestion = question
         singleMultipleTextLabel.text = theQuestion.text
+        nextButton.setEnabled(enabled: false)
         fillAnswers()
     }
     
@@ -92,9 +93,12 @@ class SingleMultipleAnswersViewController: UIViewController {
                 check.cornerRadius = check.frame.width / 2
                 check.tag = i
                 if theAnswer != nil {
-                    if theAnswer!.singleMultipleAnswer != nil{
-                        if check.tag == theAnswer!.singleMultipleAnswer!{
-                            check.setOn(true)
+                    if theAnswer?.index == theQuestion.index{
+                        if theAnswer!.singleMultipleAnswer != nil{
+                            if check.tag == theAnswer!.singleMultipleAnswer!{
+                                check.setOn(true)
+                                nextButton.setEnabled(enabled: true)
+                            }
                         }
                     }
                 }
@@ -102,6 +106,7 @@ class SingleMultipleAnswersViewController: UIViewController {
                     tag, ison in
                     if ison{
                         self.markSelectedAnswer(selected: tag)
+                        self.nextButton.setEnabled(enabled: true)
                     }
                 }
                 let containerWidth = Int(containerBackground.frame.width * 0.92) - size - spacer

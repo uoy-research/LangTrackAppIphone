@@ -10,7 +10,7 @@ import UIKit
 
 class MultipleChoiceViewController: UIViewController {
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: NextButton!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var multipleChoiceTextLabel: UILabel!
     @IBOutlet weak var choicesContainer: UIView!
@@ -29,6 +29,7 @@ class MultipleChoiceViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
+        nextButton.setEnabled(enabled: false)
     }
     
     func setInfo(question: Question){
@@ -47,6 +48,19 @@ class MultipleChoiceViewController: UIViewController {
         }
     }
     
+    func checkCheckboxesIfSelected(){
+        for v in choicesContainer.subviews{
+            if let theCheckbox = v as? VKCheckbox{
+                if theCheckbox.isOn{
+                    nextButton.setEnabled(enabled: true)
+                    break
+                }else{
+                    nextButton.setEnabled(enabled: false)
+                }
+            }
+        }
+    }
+    
     func fillCheckboxContainer(){
         emptyCheckboxContainer()
         let spacer = 10
@@ -61,9 +75,12 @@ class MultipleChoiceViewController: UIViewController {
                 check.borderWidth = 1.5
                 check.tag = i
                 if theAnswer != nil {
-                    if theAnswer!.multipleChoiceAnswer != nil{
-                        if theAnswer!.multipleChoiceAnswer!.contains(check.tag){
-                            check.setOn(true)
+                    if theAnswer?.index == theQuestion.index{
+                        if theAnswer!.multipleChoiceAnswer != nil{
+                            if theAnswer!.multipleChoiceAnswer!.contains(check.tag){
+                                check.setOn(true)
+                                nextButton.setEnabled(enabled: true)
+                            }
                         }
                     }
                 }
@@ -71,6 +88,7 @@ class MultipleChoiceViewController: UIViewController {
                     tag, ison in
                     print("value \(tag) is \(ison)")
                     self.saveAnswers()
+                    self.checkCheckboxesIfSelected()
                 }
                 let containerWidth = Int(containerBackground.frame.width * 0.92) - size - spacer
                 let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: containerWidth, height: size))
