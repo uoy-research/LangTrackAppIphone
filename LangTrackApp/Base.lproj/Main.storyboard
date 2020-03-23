@@ -676,10 +676,10 @@
                                 <rect key="frame" x="0.0" y="207.5" width="414" height="594.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="sV0-5B-e51">
-                                        <rect key="frame" x="0.0" y="148" width="414" height="150"/>
+                                        <rect key="frame" x="0.0" y="138.5" width="414" height="169"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMd-0B-AqQ">
-                                                <rect key="frame" x="30" y="54" width="354" height="19.5"/>
+                                                <rect key="frame" x="30" y="59" width="354" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                                 <color key="textColor" name="lta_grey"/>
                                                 <nil key="highlightedColor"/>
@@ -691,7 +691,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-pR-6wd">
-                                                <rect key="frame" x="10" y="83.5" width="394" height="66.5"/>
+                                                <rect key="frame" x="10" y="102.5" width="394" height="66.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-Q9-2b4" customClass="LikertRadioButton" customModule="Lang_Track_App" customModuleProvider="target">
                                                         <rect key="frame" x="5" y="5" width="73" height="30"/>
@@ -858,15 +858,33 @@
                                                     <constraint firstItem="F66-Cc-zBV" firstAttribute="top" secondItem="v2D-Q9-2b4" secondAttribute="bottom" constant="5" id="ziT-Ca-9QP"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwj-LR-JI5">
+                                                <rect key="frame" x="30" y="80.5" width="174.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                                <color key="textColor" name="lta_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pQ-kq-x18">
+                                                <rect key="frame" x="209.5" y="80.5" width="174.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                                <color key="textColor" name="lta_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="F2X-pR-6wd" firstAttribute="top" secondItem="eMd-0B-AqQ" secondAttribute="bottom" constant="10" id="9sp-Ou-3YE"/>
+                                            <constraint firstItem="fwj-LR-JI5" firstAttribute="top" secondItem="eMd-0B-AqQ" secondAttribute="bottom" constant="2" id="1Lx-d1-kHt"/>
+                                            <constraint firstItem="0pQ-kq-x18" firstAttribute="width" secondItem="fwj-LR-JI5" secondAttribute="width" id="4el-Rv-BO3"/>
+                                            <constraint firstItem="0pQ-kq-x18" firstAttribute="centerY" secondItem="fwj-LR-JI5" secondAttribute="centerY" id="9DS-Tj-TKJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="0pQ-kq-x18" secondAttribute="trailing" constant="30" id="Dgn-06-9bE"/>
                                             <constraint firstAttribute="trailing" secondItem="eMd-0B-AqQ" secondAttribute="trailing" constant="30" id="H7i-w9-hE7"/>
                                             <constraint firstItem="eMd-0B-AqQ" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="30" id="IFw-Vp-Da9"/>
                                             <constraint firstItem="F2X-pR-6wd" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="10" id="LCa-G4-mai"/>
                                             <constraint firstItem="tIR-57-dKU" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="30" id="Q2M-va-cne"/>
                                             <constraint firstAttribute="trailing" secondItem="F2X-pR-6wd" secondAttribute="trailing" constant="10" id="WwB-34-cSx"/>
-                                            <constraint firstItem="eMd-0B-AqQ" firstAttribute="top" secondItem="tIR-57-dKU" secondAttribute="bottom" constant="20" id="hww-ce-Fp8"/>
+                                            <constraint firstItem="F2X-pR-6wd" firstAttribute="top" secondItem="fwj-LR-JI5" secondAttribute="bottom" constant="4" id="YlK-7k-1GH"/>
+                                            <constraint firstItem="eMd-0B-AqQ" firstAttribute="top" secondItem="tIR-57-dKU" secondAttribute="bottom" constant="25" id="hww-ce-Fp8"/>
+                                            <constraint firstItem="fwj-LR-JI5" firstAttribute="leading" secondItem="sV0-5B-e51" secondAttribute="leading" constant="30" id="mbz-Rv-Zlx"/>
+                                            <constraint firstItem="0pQ-kq-x18" firstAttribute="leading" secondItem="fwj-LR-JI5" secondAttribute="trailing" constant="5" id="n5i-m7-iz2"/>
                                             <constraint firstItem="tIR-57-dKU" firstAttribute="top" secondItem="sV0-5B-e51" secondAttribute="top" constant="10" id="tVc-yI-7qB"/>
                                             <constraint firstAttribute="trailing" secondItem="tIR-57-dKU" secondAttribute="trailing" constant="30" id="ukZ-qx-e0g"/>
                                             <constraint firstAttribute="bottom" secondItem="F2X-pR-6wd" secondAttribute="bottom" id="va1-JC-aLg"/>
@@ -909,6 +927,8 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="eMd-0B-AqQ" id="f3u-jl-dae"/>
                         <outlet property="likertContainer" destination="sV0-5B-e51" id="lsK-q1-RX9"/>
+                        <outlet property="likertMaxLabel" destination="0pQ-kq-x18" id="yoq-Yj-3NC"/>
+                        <outlet property="likertMinLabel" destination="fwj-LR-JI5" id="UJk-Sy-HU1"/>
                         <outlet property="likertTextLabel" destination="tIR-57-dKU" id="G4X-Dx-fBg"/>
                         <outlet property="nextButton" destination="eNh-k7-bAJ" id="6it-Lp-5Me"/>
                         <outlet property="previousButton" destination="rhZ-CS-Oxl" id="i4O-l3-EWM"/>
