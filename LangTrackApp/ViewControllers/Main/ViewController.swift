@@ -50,9 +50,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableviewContainer: UIView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var userView: UIView!
-    @IBOutlet weak var aboutButton: UIButton!
-    @IBOutlet weak var instructionsButton: UIButton!
-    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var sideMenuContainer: UIView!
+    @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var sideMenuLeftConstraint: NSLayoutConstraint!
     
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
@@ -62,6 +63,8 @@ class ViewController: UIViewController {
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     var latestFetchMilli: Int64 = 0
     var idTokenChangeListener: IDTokenDidChangeListenerHandle?
+    var menuOut: CGFloat = -250
+    let menuIn: CGFloat = 0
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -72,18 +75,6 @@ class ViewController: UIViewController {
         theTableView.estimatedRowHeight = 175
         theTableView.delegate = self
 //        theTableView.layer.cornerRadius = 8
-        
-        aboutButton.layer.cornerRadius = 8
-        aboutButton.layer.borderWidth = 0.35
-        aboutButton.layer.borderColor = UIColor.lightGray.cgColor
-        
-        instructionsButton.layer.cornerRadius = 8
-        instructionsButton.layer.borderWidth = 0.35
-        instructionsButton.layer.borderColor = UIColor.lightGray.cgColor
-        
-        contactButton.layer.cornerRadius = 8
-        contactButton.layer.borderWidth = 0.35
-        contactButton.layer.borderColor = UIColor.lightGray.cgColor
         
         //print("secondsFromGMT: \(secondsFromGMT)")
         //print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
@@ -101,6 +92,13 @@ class ViewController: UIViewController {
             setIdTokenListener()
         }
         
+        //Menu
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        sideMenuContainerWidthConstraint.constant = screenWidth / 1.45 //how far in sidemenu shows
+        menuOut = -(sideMenuContainerWidthConstraint.constant)
+        self.sideMenuLeftConstraint.constant = self.menuOut
+        //self.menuDimBackground.alpha = 0
     }
     
     deinit {
@@ -179,6 +177,40 @@ class ViewController: UIViewController {
             fetchAssignmentsAndSetUserName()
         }
     }
+    
+    //MARK: Menu
+    
+    func showMenu(){
+            //menuDimBackground.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: {
+                self.sideMenuLeftConstraint.constant = self.menuIn
+                //self.menuDimBackground.alpha = 0.7
+                self.view.layoutIfNeeded()
+                self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+            })
+        }
+        
+        func hideMenu(){
+    //        sideMenu?.hideChangeInfoView()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.sideMenuLeftConstraint.constant = self.menuOut
+                //self.menuDimBackground.alpha = 0
+                self.view.layoutIfNeeded()
+                self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
+            }){ _ in
+                //self.menuDimBackground.isHidden = true
+            }
+        }
+    
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        if(sideMenuLeftConstraint.constant == menuOut){
+            showMenu()
+        }else{
+            hideMenu()
+        }
+    }
+    
     @IBAction func logOutButtonPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         if firebaseAuth.currentUser != nil{

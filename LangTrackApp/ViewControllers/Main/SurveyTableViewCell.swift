@@ -28,7 +28,8 @@ class SurveyTableViewCell: UITableViewCell {
     
     func setSurveyInfo(assignment: Assignment)  {
         surveyTitle.text = assignment.survey.title
-        dateLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
+        dateLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: assignment.published)!)
+        //dateLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
         if assignment.dataset == nil{
             answeredLabel.text = "Obesvarad"
         }else{
