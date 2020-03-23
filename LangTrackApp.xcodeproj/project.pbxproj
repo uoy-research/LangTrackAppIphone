@@ -50,6 +50,7 @@
 		F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752923E41C30003D16D1 /* QuestionListener.swift */; };
 		F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314172418EA0F0036A5D3 /* Assignment.swift */; };
 		F183141A2418F1690036A5D3 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314192418F1690036A5D3 /* Dataset.swift */; };
+		F18E2D3F2429066100B33E53 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E2D3E2429066100B33E53 /* SideMenu.swift */; };
 		F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1963208240922AE00A0D8D2 /* VKCheckbox.swift */; };
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
@@ -134,6 +135,7 @@
 		F178752923E41C30003D16D1 /* QuestionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListener.swift; sourceTree = "<group>"; };
 		F18314172418EA0F0036A5D3 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		F18314192418F1690036A5D3 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
+		F18E2D3E2429066100B33E53 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		F1963208240922AE00A0D8D2 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				F156587423E2DD7500EC2796 /* ViewController.swift */,
 				F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */,
 				F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */,
+				F18E2D3E2429066100B33E53 /* SideMenu.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18E2D3F2429066100B33E53 /* SideMenu.swift in Sources */,
 				F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */,
 				F183141A2418F1690036A5D3 /* Dataset.swift in Sources */,
 				F178752523E41639003D16D1 /* Survey.swift in Sources */,

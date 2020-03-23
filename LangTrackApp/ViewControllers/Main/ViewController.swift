@@ -54,6 +54,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var sideMenuLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuDimBackground: UIView!
     
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
@@ -65,6 +66,7 @@ class ViewController: UIViewController {
     var idTokenChangeListener: IDTokenDidChangeListenerHandle?
     var menuOut: CGFloat = -250
     let menuIn: CGFloat = 0
+    var sideMenu : SideMenu?
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -95,10 +97,20 @@ class ViewController: UIViewController {
         //Menu
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
-        sideMenuContainerWidthConstraint.constant = screenWidth / 1.45 //how far in sidemenu shows
+        sideMenuContainerWidthConstraint.constant = screenWidth / 1.5 //how far in sidemenu shows
         menuOut = -(sideMenuContainerWidthConstraint.constant)
         self.sideMenuLeftConstraint.constant = self.menuOut
-        //self.menuDimBackground.alpha = 0
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.clickOnBackground))
+        menuDimBackground.addGestureRecognizer(gesture)
+        menuDimBackground.alpha = 0
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        sideMenu = (storyboard.instantiateViewController(withIdentifier: "sidemenu") as! SideMenu)
+        //add menu
+        self.addChild(sideMenu!)
+        sideMenuContainer.addSubview(sideMenu!.view)
+        sideMenu!.view.frame = sideMenuContainer.bounds
+        sideMenu!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        sideMenu!.didMove(toParent: self)
     }
     
     deinit {
@@ -145,10 +157,12 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
         var username = Auth.auth().currentUser?.email
         username!.until("@")
         self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
         userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
+        sideMenu?.setInfo(name: self.theUser!.userName)
         theTableView.reloadData()
     }
     
@@ -180,25 +194,28 @@ class ViewController: UIViewController {
     
     //MARK: Menu
     
+    @objc func clickOnBackground(sender : UITapGestureRecognizer) {
+        hideMenu()
+    }
+    
     func showMenu(){
-            //menuDimBackground.isHidden = false
+            menuDimBackground.isHidden = false
             UIView.animate(withDuration: 0.3, animations: {
                 self.sideMenuLeftConstraint.constant = self.menuIn
-                //self.menuDimBackground.alpha = 0.7
+                self.menuDimBackground.alpha = 0.7
                 self.view.layoutIfNeeded()
                 self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             })
         }
         
         func hideMenu(){
-    //        sideMenu?.hideChangeInfoView()
             UIView.animate(withDuration: 0.3, animations: {
                 self.sideMenuLeftConstraint.constant = self.menuOut
-                //self.menuDimBackground.alpha = 0
+                self.menuDimBackground.alpha = 0
                 self.view.layoutIfNeeded()
                 self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
             }){ _ in
-                //self.menuDimBackground.isHidden = true
+                self.menuDimBackground.isHidden = true
             }
         }
     
