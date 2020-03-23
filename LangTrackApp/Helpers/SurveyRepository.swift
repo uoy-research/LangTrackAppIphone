@@ -303,6 +303,8 @@ struct SurveyRepository {
                                         var description = ""
                                         var title = ""
                                         var text = ""
+                                        var likertMax = ""
+                                        var likertMin = ""
                                         for questionPost in post{
                                             if questionPost.key == "index"{
                                                 index = questionPost.value as? Int ?? -99
@@ -312,6 +314,12 @@ struct SurveyRepository {
                                             }
                                             if questionPost.key == "description"{
                                                 description = questionPost.value as? String ?? ""
+                                            }
+                                            if questionPost.key == "maxAnnotation"{
+                                                likertMax = questionPost.value as? String ?? ""
+                                            }
+                                            if questionPost.key == "minAnnotation"{
+                                                likertMin = questionPost.value as? String ?? ""
                                             }
                                             if questionPost.key == "title"{
                                                 title = questionPost.value as? String ?? ""
@@ -358,6 +366,8 @@ struct SurveyRepository {
                                         tempQuestion.description = description
                                         tempQuestion.title = title
                                         tempQuestion.text = text
+                                        tempQuestion.likertMax = likertMax
+                                        tempQuestion.likertMin = likertMin
                                     }
                                     if values != nil{
                                         switch tempQuestion.type {

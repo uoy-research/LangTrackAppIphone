@@ -17,6 +17,8 @@ class Question : Codable {
     var title: String = ""
     var text: String = ""
     var description: String = ""
+    var likertMax: String = ""
+    var likertMin: String = ""
     var fillBlanksChoises: [String]? = nil
     var multipleChoisesAnswers: [String]? = nil
     var singleMultipleAnswers: [String]? = nil

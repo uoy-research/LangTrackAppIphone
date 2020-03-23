@@ -21,6 +21,8 @@ class LikertScaleViewController: UIViewController {
     @IBOutlet weak var radioButtonContainer: UIView!
     @IBOutlet weak var likertContainer: UIView!
     @IBOutlet weak var theIcon: UIImageView!
+    @IBOutlet weak var likertMinLabel: UILabel!
+    @IBOutlet weak var likertMaxLabel: UILabel!
     
     
     
@@ -40,7 +42,9 @@ class LikertScaleViewController: UIViewController {
         self.theQuestion = question
         //radioButton3.isSelected = true
         likertTextLabel.text = theQuestion.text
-        descriptionLabel.text = theQuestion.description
+        descriptionLabel.text = ""//theQuestion.description
+        likertMaxLabel.text = theQuestion.likertMax
+        likertMinLabel.text = theQuestion.likertMin
         nextButton.setEnabled(enabled: false)
         if theAnswer != nil {
             if theAnswer!.likertAnswer != nil{
