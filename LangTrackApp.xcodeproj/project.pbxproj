@@ -42,6 +42,7 @@
 		F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658AC23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift */; };
 		F15658AF23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658AE23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift */; };
 		F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15658B023E3418B00EC2796 /* FooterViewController.swift */; };
+		F1576376242A3C6C003C5F59 /* MenuListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1576375242A3C6C003C5F59 /* MenuListener.swift */; };
 		F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F595923ED91B20026430A /* LikertRadioButton.swift */; };
 		F16D557023E8238500DD92A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F16D556F23E8238500DD92A1 /* GoogleService-Info.plist */; };
 		F178752323E4160E003D16D1 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752223E4160E003D16D1 /* Type.swift */; };
@@ -127,6 +128,7 @@
 		F15658AC23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMultipleAnswersViewController.swift; sourceTree = "<group>"; };
 		F15658AE23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEndedTextResponsesViewController.swift; sourceTree = "<group>"; };
 		F15658B023E3418B00EC2796 /* FooterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewController.swift; sourceTree = "<group>"; };
+		F1576375242A3C6C003C5F59 /* MenuListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListener.swift; sourceTree = "<group>"; };
 		F15F595923ED91B20026430A /* LikertRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikertRadioButton.swift; sourceTree = "<group>"; };
 		F16D556F23E8238500DD92A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F178752223E4160E003D16D1 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				F178752923E41C30003D16D1 /* QuestionListener.swift */,
 				F11499FE2416384700DC988A /* CellTimerListener.swift */,
+				F1576375242A3C6C003C5F59 /* MenuListener.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */,
 				F183141A2418F1690036A5D3 /* Dataset.swift in Sources */,
 				F178752523E41639003D16D1 /* Survey.swift in Sources */,
+				F1576376242A3C6C003C5F59 /* MenuListener.swift in Sources */,
 				F1532DB423EB10B400171355 /* DateExtension.swift in Sources */,
 				F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */,
 				F11499F8240E8D8200DC988A /* TextViewExtension.swift in Sources */,

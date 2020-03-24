@@ -140,7 +140,7 @@ class ViewController: UIViewController {
                 // show menu
                 UIView.animate(withDuration: 0.2, animations: {
                     self.sideMenuLeftConstraint.constant = self.menuIn
-                    self.menuDimBackground.alpha = 0.7
+                    self.menuDimBackground.alpha = 0.5
                     self.view.layoutIfNeeded()
                     self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
                 }){_ in
@@ -150,14 +150,14 @@ class ViewController: UIViewController {
         } else if (translation.x > startPointX + 5) && menuIsShowing == false{
             // right
             sideMenuLeftConstraint.constant = menuOut + translation.x
-            var dimValue = 0.7 * frac
-            if(dimValue > 0.7){ dimValue = 0.7 }
+            var dimValue = 0.5 * frac
+            if(dimValue > 0.5){ dimValue = 0.5 }
             self.menuDimBackground.alpha = dimValue
             self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) * frac)
         } else if (translation.x < startPointX - 5) && menuIsShowing == true{
             // left
             sideMenuLeftConstraint.constant = 0 + translation.x
-            let dimValue = 0.7 * frac
+            let dimValue = 0.5 * frac
             self.menuDimBackground.alpha = dimValue
             self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) * frac)
         }
@@ -212,7 +212,7 @@ class ViewController: UIViewController {
         username!.until("@")
         self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
         userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
-        sideMenu?.setInfo(name: self.theUser!.userName)
+        sideMenu?.setInfo(name: self.theUser!.userName, listener: self)
         theTableView.reloadData()
     }
     
@@ -252,7 +252,7 @@ class ViewController: UIViewController {
         menuDimBackground.isHidden = false
         UIView.animate(withDuration: 0.3, animations: {
             self.sideMenuLeftConstraint.constant = self.menuIn
-            self.menuDimBackground.alpha = 0.7
+            self.menuDimBackground.alpha = 0.5
             self.view.layoutIfNeeded()
             self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
         }){_ in
@@ -397,4 +397,24 @@ extension ViewController: CellTimerListener{
         print("ViewController: CellTimerListener timerExpiered")
         theTableView.reloadData()
     }
+}
+
+extension ViewController: MenuListener{
+    func logOutSelected() {
+        print("MenuListener logOutSelected")
+    }
+    
+    func instructions() {
+        print("MenuListener instructions")
+    }
+    
+    func contact() {
+        print("MenuListener contact")
+    }
+    
+    func about() {
+        print("MenuListener about")
+    }
+    
+    
 }
