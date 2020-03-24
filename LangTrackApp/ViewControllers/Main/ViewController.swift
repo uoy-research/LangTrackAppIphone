@@ -66,6 +66,7 @@ class ViewController: UIViewController {
     var idTokenChangeListener: IDTokenDidChangeListenerHandle?
     var menuOut: CGFloat = -250
     let menuIn: CGFloat = 0
+    var menuIsShowing = false
     var sideMenu : SideMenu?
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
@@ -111,6 +112,55 @@ class ViewController: UIViewController {
         sideMenu!.view.frame = sideMenuContainer.bounds
         sideMenu!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         sideMenu!.didMove(toParent: self)
+    }
+    
+    @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        var startPointX: CGFloat = 0
+        let frac = 1 - (sideMenuLeftConstraint.constant / menuOut)
+        
+        if gesture.state == .began{
+            startPointX = translation.x
+            menuDimBackground.isHidden = false
+        }else if gesture.state == .ended{
+            if frac < 0.5{
+                
+                // hide menu
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.sideMenuLeftConstraint.constant = self.menuOut
+                    self.menuDimBackground.alpha = 0
+                    self.view.layoutIfNeeded()
+                    self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
+                }){ _ in
+                    self.menuDimBackground.isHidden = true
+                    self.menuIsShowing = false
+                }
+                
+            }else{
+                // show menu
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.sideMenuLeftConstraint.constant = self.menuIn
+                    self.menuDimBackground.alpha = 0.7
+                    self.view.layoutIfNeeded()
+                    self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+                }){_ in
+                    self.menuIsShowing = true
+                }
+            }
+        } else if (translation.x > startPointX + 5) && menuIsShowing == false{
+            // right
+            sideMenuLeftConstraint.constant = menuOut + translation.x
+            var dimValue = 0.7 * frac
+            if(dimValue > 0.7){ dimValue = 0.7 }
+            self.menuDimBackground.alpha = dimValue
+            self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) * frac)
+        } else if (translation.x < startPointX - 5) && menuIsShowing == true{
+            // left
+            sideMenuLeftConstraint.constant = 0 + translation.x
+            let dimValue = 0.7 * frac
+            self.menuDimBackground.alpha = dimValue
+            self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) * frac)
+        }
     }
     
     deinit {
@@ -199,23 +249,26 @@ class ViewController: UIViewController {
     }
     
     func showMenu(){
-            menuDimBackground.isHidden = false
-            UIView.animate(withDuration: 0.3, animations: {
-                self.sideMenuLeftConstraint.constant = self.menuIn
-                self.menuDimBackground.alpha = 0.7
-                self.view.layoutIfNeeded()
-                self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-            })
+        menuDimBackground.isHidden = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.sideMenuLeftConstraint.constant = self.menuIn
+            self.menuDimBackground.alpha = 0.7
+            self.view.layoutIfNeeded()
+            self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+        }){_ in
+            self.menuIsShowing = true
         }
-        
-        func hideMenu(){
-            UIView.animate(withDuration: 0.3, animations: {
-                self.sideMenuLeftConstraint.constant = self.menuOut
+    }
+    
+    func hideMenu(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.sideMenuLeftConstraint.constant = self.menuOut
                 self.menuDimBackground.alpha = 0
                 self.view.layoutIfNeeded()
                 self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
             }){ _ in
                 self.menuDimBackground.isHidden = true
+                self.menuIsShowing = false
             }
         }
     

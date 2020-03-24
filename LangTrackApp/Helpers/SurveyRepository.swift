@@ -58,8 +58,8 @@ struct SurveyRepository {
                 if let jsonString = String(data: bodyData, encoding: .utf8) {
                     print(jsonString)
                 }
-                // POST '/assignments/[assignmentID: _id]/datasets'
-                let answerUrl = "\(mockUrl)assignments/\(selectedAssignment!.id)/datasets"
+                // /users/u123/assignments/<assignment._id/datasets
+                let answerUrl = "\(mockUrl)users/u123/assignments/\(selectedAssignment!.id)/datasets"
                 let request = NSMutableURLRequest(url: URL(string: answerUrl)!)
                 request.setValue(idToken, forHTTPHeaderField: "token")
                 /*do {
@@ -72,7 +72,7 @@ struct SurveyRepository {
                 let session = URLSession.shared
                 request.httpMethod = "POST"
                 
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
                 let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                     if(error != nil){
                         print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
