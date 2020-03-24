@@ -50,9 +50,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableviewContainer: UIView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var userView: UIView!
-    @IBOutlet weak var aboutButton: UIButton!
-    @IBOutlet weak var instructionsButton: UIButton!
-    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var sideMenuContainer: UIView!
+    @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var sideMenuLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuDimBackground: UIView!
     
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
@@ -62,6 +64,10 @@ class ViewController: UIViewController {
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
     var latestFetchMilli: Int64 = 0
     var idTokenChangeListener: IDTokenDidChangeListenerHandle?
+    var menuOut: CGFloat = -250
+    let menuIn: CGFloat = 0
+    var menuIsShowing = false
+    var sideMenu : SideMenu?
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -72,18 +78,6 @@ class ViewController: UIViewController {
         theTableView.estimatedRowHeight = 175
         theTableView.delegate = self
 //        theTableView.layer.cornerRadius = 8
-        
-        aboutButton.layer.cornerRadius = 8
-        aboutButton.layer.borderWidth = 0.35
-        aboutButton.layer.borderColor = UIColor.lightGray.cgColor
-        
-        instructionsButton.layer.cornerRadius = 8
-        instructionsButton.layer.borderWidth = 0.35
-        instructionsButton.layer.borderColor = UIColor.lightGray.cgColor
-        
-        contactButton.layer.cornerRadius = 8
-        contactButton.layer.borderWidth = 0.35
-        contactButton.layer.borderColor = UIColor.lightGray.cgColor
         
         //print("secondsFromGMT: \(secondsFromGMT)")
         //print("localTimeZoneAbbreviation: \(localTimeZoneAbbreviation)")
@@ -101,6 +95,72 @@ class ViewController: UIViewController {
             setIdTokenListener()
         }
         
+        //Menu
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        sideMenuContainerWidthConstraint.constant = screenWidth / 1.5 //how far in sidemenu shows
+        menuOut = -(sideMenuContainerWidthConstraint.constant)
+        self.sideMenuLeftConstraint.constant = self.menuOut
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.clickOnBackground))
+        menuDimBackground.addGestureRecognizer(gesture)
+        menuDimBackground.alpha = 0
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        sideMenu = (storyboard.instantiateViewController(withIdentifier: "sidemenu") as! SideMenu)
+        //add menu
+        self.addChild(sideMenu!)
+        sideMenuContainer.addSubview(sideMenu!.view)
+        sideMenu!.view.frame = sideMenuContainer.bounds
+        sideMenu!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        sideMenu!.didMove(toParent: self)
+    }
+    
+    @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        var startPointX: CGFloat = 0
+        let frac = 1 - (sideMenuLeftConstraint.constant / menuOut)
+        
+        if gesture.state == .began{
+            startPointX = translation.x
+            menuDimBackground.isHidden = false
+        }else if gesture.state == .ended{
+            if frac < 0.5{
+                
+                // hide menu
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.sideMenuLeftConstraint.constant = self.menuOut
+                    self.menuDimBackground.alpha = 0
+                    self.view.layoutIfNeeded()
+                    self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
+                }){ _ in
+                    self.menuDimBackground.isHidden = true
+                    self.menuIsShowing = false
+                }
+                
+            }else{
+                // show menu
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.sideMenuLeftConstraint.constant = self.menuIn
+                    self.menuDimBackground.alpha = 0.5
+                    self.view.layoutIfNeeded()
+                    self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+                }){_ in
+                    self.menuIsShowing = true
+                }
+            }
+        } else if (translation.x > startPointX + 5) && menuIsShowing == false{
+            // right
+            sideMenuLeftConstraint.constant = menuOut + translation.x
+            var dimValue = 0.5 * frac
+            if(dimValue > 0.5){ dimValue = 0.5 }
+            self.menuDimBackground.alpha = dimValue
+            self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) * frac)
+        } else if (translation.x < startPointX - 5) && menuIsShowing == true{
+            // left
+            sideMenuLeftConstraint.constant = 0 + translation.x
+            let dimValue = 0.5 * frac
+            self.menuDimBackground.alpha = dimValue
+            self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2) * frac)
+        }
     }
     
     deinit {
@@ -147,10 +207,12 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
         var username = Auth.auth().currentUser?.email
         username!.until("@")
         self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
         userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
+        sideMenu?.setInfo(name: self.theUser!.userName, listener: self)
         theTableView.reloadData()
     }
     
@@ -179,6 +241,46 @@ class ViewController: UIViewController {
             fetchAssignmentsAndSetUserName()
         }
     }
+    
+    //MARK: Menu
+    
+    @objc func clickOnBackground(sender : UITapGestureRecognizer) {
+        hideMenu()
+    }
+    
+    func showMenu(){
+        menuDimBackground.isHidden = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.sideMenuLeftConstraint.constant = self.menuIn
+            self.menuDimBackground.alpha = 0.5
+            self.view.layoutIfNeeded()
+            self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+        }){_ in
+            self.menuIsShowing = true
+        }
+    }
+    
+    func hideMenu(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.sideMenuLeftConstraint.constant = self.menuOut
+                self.menuDimBackground.alpha = 0
+                self.view.layoutIfNeeded()
+                self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
+            }){ _ in
+                self.menuDimBackground.isHidden = true
+                self.menuIsShowing = false
+            }
+        }
+    
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        if(sideMenuLeftConstraint.constant == menuOut){
+            showMenu()
+        }else{
+            hideMenu()
+        }
+    }
+    
     @IBAction func logOutButtonPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         if firebaseAuth.currentUser != nil{
@@ -295,4 +397,24 @@ extension ViewController: CellTimerListener{
         print("ViewController: CellTimerListener timerExpiered")
         theTableView.reloadData()
     }
+}
+
+extension ViewController: MenuListener{
+    func logOutSelected() {
+        print("MenuListener logOutSelected")
+    }
+    
+    func instructions() {
+        print("MenuListener instructions")
+    }
+    
+    func contact() {
+        print("MenuListener contact")
+    }
+    
+    func about() {
+        print("MenuListener about")
+    }
+    
+    
 }

@@ -27,4 +27,8 @@ struct DateParser {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return dateFormatter.date(from: dateString)
     }
+    
+    static func getLocalTime(date: Date) -> String{
+        return DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short)
+    }
 }

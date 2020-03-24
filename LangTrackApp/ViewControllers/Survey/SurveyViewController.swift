@@ -297,8 +297,10 @@ class SurveyViewController: UIViewController {
             }
         }else if current.index + 1 == theAssignment!.survey.questions.count{
             //next is last (footer) - dont check, show direct
-            theAssignment!.survey.questions[current.index + 1].previous = currentPage.index
-            showPage(newPage: theAssignment!.survey.questions[current.index + 1])
+            if theAssignment!.survey.questions.count > current.index + 1{
+                theAssignment!.survey.questions[current.index + 1].previous = currentPage.index
+                showPage(newPage: theAssignment!.survey.questions[current.index + 1])
+            }
         }
     }
 }
