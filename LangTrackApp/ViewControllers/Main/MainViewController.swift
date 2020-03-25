@@ -40,16 +40,12 @@ extension Notification.Name {
 static let newNotification = Notification.Name("newNotification")
 }
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
-    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var theTableView: UITableView!
-    
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableviewContainer: UIView!
     @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var userView: UIView!
     @IBOutlet weak var sideMenuContainer: UIView!
     @IBOutlet weak var sideMenuContainerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuButton: UIButton!
@@ -114,6 +110,37 @@ class ViewController: UIViewController {
         sideMenu!.didMove(toParent: self)
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser == nil {
+            performSegue(withIdentifier: "login", sender: nil)
+        }else{
+            if self.idTokenChangeListener == nil{
+                setIdTokenListener()
+            }
+            // the user is logged in
+            // if less than 5 min ago - dont fetch
+            // -not working if logOut and logIn within 5 min-
+            /*if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
+                SurveyRepository.getSurveys() { (surveys) in
+                    if surveys != nil{
+                        DispatchQueue.main.async {
+                            //self.surveyList = self.sortSurveyList(theList: surveys!)
+                            self.theTableView.reloadData()
+                        }
+                    }
+                }
+                latestFetchMilli = Date().millisecondsSince1970
+            }*/
+            
+            fetchAssignmentsAndSetUserName()
+        }
+    }
+    
+    deinit {
+      NotificationCenter.default.removeObserver(self)
+    }
+    
     @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
         var startPointX: CGFloat = 0
@@ -163,9 +190,6 @@ class ViewController: UIViewController {
         }
     }
     
-    deinit {
-      NotificationCenter.default.removeObserver(self)
-    }
     
     @objc func receivedNewNotification(_ aps: Notification) {
         
@@ -211,35 +235,8 @@ class ViewController: UIViewController {
         var username = Auth.auth().currentUser?.email
         username!.until("@")
         self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
-        userNameLabel.text = "Inloggad som \(self.theUser!.userName)"
         sideMenu?.setInfo(name: self.theUser!.userName, listener: self)
         theTableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if Auth.auth().currentUser == nil {
-            performSegue(withIdentifier: "login", sender: nil)
-        }else{
-            if self.idTokenChangeListener == nil{
-                setIdTokenListener()
-            }
-            // the user is logged in
-            // if less than 5 min ago - dont fetch
-            // -not working if logOut and logIn within 5 min-
-            /*if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
-                SurveyRepository.getSurveys() { (surveys) in
-                    if surveys != nil{
-                        DispatchQueue.main.async {
-                            //self.surveyList = self.sortSurveyList(theList: surveys!)
-                            self.theTableView.reloadData()
-                        }
-                    }
-                }
-                latestFetchMilli = Date().millisecondsSince1970
-            }*/
-            
-            fetchAssignmentsAndSetUserName()
-        }
     }
     
     //MARK: Menu
@@ -273,43 +270,6 @@ class ViewController: UIViewController {
         }
     
     
-    @IBAction func menuButtonPressed(_ sender: Any) {
-        if(sideMenuLeftConstraint.constant == menuOut){
-            showMenu()
-        }else{
-            hideMenu()
-        }
-    }
-    
-    @IBAction func logOutButtonPressed(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        if firebaseAuth.currentUser != nil{
-            var username = firebaseAuth.currentUser?.email
-            username!.until("@")
-            DispatchQueue.main.async {
-                let popup = UIAlertController(title: "Logga ut", message: "Vill du logga ut?\n\(username ?? "")", preferredStyle: .alert)
-                popup.addAction(UIAlertAction(title: "Logga ut", style: .destructive, handler:{alert -> Void in
-                    do {
-                        try firebaseAuth.signOut()
-                        self.performSegue(withIdentifier: "login", sender: nil)
-                         #warning ("TODO: Töm listor osv")
-                        SurveyRepository.assignmentList = []
-                        self.userNameLabel.text = ""
-                        // Remove the token ID listenter.
-                        guard let tokenListener = self.idTokenChangeListener else { return }
-                        Auth.auth().removeStateDidChangeListener(tokenListener)
-                        self.idTokenChangeListener = nil
-                    } catch let signOutError as NSError {
-                        print ("Error signing out: %@", signOutError)
-                    }
-                }))
-                popup.addAction(UIAlertAction(title: "Avbryt", style: .cancel, handler: nil))
-                
-                self.present(popup, animated: true, completion: nil)
-            }
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "survey"{
             let dest = segue.destination as! SurveyViewController
@@ -326,11 +286,25 @@ class ViewController: UIViewController {
             dest.theAssignment = SurveyRepository.selectedAssignment
         }
     }
+    
+    //MARK:- Actions
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        if(sideMenuLeftConstraint.constant == menuOut){
+            showMenu()
+        }else{
+            hideMenu()
+        }
+    }
+    
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        
+    }
 }
 
 //MARK:- Tableview extension
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource{
+extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //surveyList.count
@@ -392,16 +366,44 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension ViewController: CellTimerListener{
+//MARK:- CellTimerListener
+extension MainViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
         theTableView.reloadData()
     }
 }
 
-extension ViewController: MenuListener{
+//MARK:- MenuListener
+extension MainViewController: MenuListener{
     func logOutSelected() {
-        print("MenuListener logOutSelected")
+        let firebaseAuth = Auth.auth()
+        if firebaseAuth.currentUser != nil{
+            var username = firebaseAuth.currentUser?.email
+            username!.until("@")
+            DispatchQueue.main.async {
+                let popup = UIAlertController(title: "Logga ut", message: "Vill du logga ut?\n\(username ?? "")", preferredStyle: .alert)
+                popup.addAction(UIAlertAction(title: "Logga ut", style: .destructive, handler:{alert -> Void in
+                    do {
+                        try firebaseAuth.signOut()
+                        self.performSegue(withIdentifier: "login", sender: nil)
+                        SurveyRepository.assignmentList = []
+                        self.theTableView.reloadData()
+                        // Remove the token ID listenter.
+                        guard let tokenListener = self.idTokenChangeListener else { return }
+                        Auth.auth().removeStateDidChangeListener(tokenListener)
+                        self.idTokenChangeListener = nil
+                        self.sideMenu?.userNameLabel.text = ""
+                        self.hideMenu()
+                    } catch let signOutError as NSError {
+                        print ("Error signing out: %@", signOutError)
+                    }
+                }))
+                popup.addAction(UIAlertAction(title: "Avbryt", style: .cancel, handler: nil))
+                
+                self.present(popup, animated: true, completion: nil)
+            }
+        }
     }
     
     func instructions() {
