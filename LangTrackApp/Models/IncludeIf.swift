@@ -9,6 +9,6 @@
 import Foundation
 
 class IncludeIf : Codable {
-    var ifIndex: Int = 0
-    var ifValue: Int = 0
+    var ifIndex: Int = -99
+    var ifValue: Int = -99
 }
