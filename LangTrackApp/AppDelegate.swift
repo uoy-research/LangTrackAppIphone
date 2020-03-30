@@ -131,7 +131,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        SurveyRepository.postDeviceToken(deviceToken: token)
+        SurveyRepository.deviceToken = token
+        var username = Auth.auth().currentUser?.email
+        username!.until("@")
+        SurveyRepository.userId = username ?? ""
+        SurveyRepository.postDeviceToken()
     }
     
     func application(
