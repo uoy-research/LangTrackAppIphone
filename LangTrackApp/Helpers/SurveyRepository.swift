@@ -8,70 +8,81 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 
 struct SurveyRepository {
     
     //sista nollan ska ändras till etta vid hämtning från dropbox
     //static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
-    static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
+    //static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
+    static let ltaUrl = "http://ht-lang-track.ht.lu.se/api/"
     
     static var idToken = ""
+    static var deviceToken = ""
     static var localTimeZoneIdentifier = ""
     static var assignmentList: [Assignment] = []
     static var selectedAssignment: Assignment?
     static let tempuserId = "u123"
+    static var userId = ""
     
     static func setIdToken(token: String){
         self.idToken = token
     }
     
     static func postAnswer(answerDict: [Int: Answer]){
-        
-        var answers = [AnswerBody]()
-        for answer in answerDict.values{
-            var body = AnswerBody()
-            body.index = answer.index
-            body.type = answer.type
-            switch answer.type {
-            case "likert":
-                body.intValue = answer.likertAnswer
-            case "single":
-                body.intValue = answer.singleMultipleAnswer
-            case "blanks":
-                body.intValue = answer.fillBlankAnswer
-            case "multi":
-                body.multiValue = answer.multipleChoiceAnswer
-            case "open":
-                body.stringValue = answer.openEndedAnswer
-            default:
-                print("answersDict, no match in switch")
-            }
-            if body.index != -99{
-                answers.append(body)
-            }
-        }
-        let theBody = ["answers": answers]
-        let encoder = JSONEncoder()
-        if selectedAssignment?.id ?? "" != ""{
-            if let bodyData = try? encoder.encode(theBody) {
-                if let jsonString = String(data: bodyData, encoding: .utf8) {
-                    print(jsonString)
+        if userId != ""{
+            var answers = [AnswerBody]()
+            for answer in answerDict.values{
+                var body = AnswerBody()
+                body.index = answer.index
+                body.type = answer.type
+                switch answer.type {
+                case "likert":
+                    body.intValue = answer.likertAnswer
+                case "single":
+                    body.intValue = answer.singleMultipleAnswer
+                case "blanks":
+                    body.intValue = answer.fillBlankAnswer
+                case "multi":
+                    body.multiValue = answer.multipleChoiceAnswer
+                case "open":
+                    body.stringValue = answer.openEndedAnswer
+                default:
+                    print("answersDict, no match in switch")
                 }
-                // /users/u123/assignments/<assignment._id/datasets
-                let answerUrl = "\(mockUrl)users/u123/assignments/\(selectedAssignment!.id)/datasets"
+                if body.index != -99{
+                    answers.append(body)
+                }
+            }
+            let theBody = ["answers": answers]
+            if selectedAssignment?.id ?? "" != ""{
+                let headers: HTTPHeaders = [
+                    "token": idToken,
+                    "Content-Type":"application/json"
+                ]
+                let answerUrl = "\(ltaUrl)users/\(userId)/assignments/\(selectedAssignment!.id)/datasets"
+                AF.request(answerUrl,
+                           method: .post,
+                           parameters: theBody,
+                           encoder: JSONParameterEncoder.default,
+                           headers: headers).response { response in
+                    debugPrint(response)
+                }
+                /*
+                // http://ht-lang-track.ht.lu.se/api/users/394zwp/assignments/5e7ee4b713ab1c0022f65873/datasets
+                let answerUrl = "\(ltaUrl)users/\(userId)/assignments/\(selectedAssignment!.id)/datasets"
                 let request = NSMutableURLRequest(url: URL(string: answerUrl)!)
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: theBody, options: .prettyPrinted)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
                 request.setValue(idToken, forHTTPHeaderField: "token")
-                /*do {
-                 request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
-                 } catch let error {
-                 print(error.localizedDescription)
-                 }*/
-                request.httpBody = bodyData
                 
                 let session = URLSession.shared
                 request.httpMethod = "POST"
-                
+                //application/json; charset=utf-8
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
                 let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                     if(error != nil){
@@ -81,7 +92,7 @@ struct SurveyRepository {
                         print("postAnswer response: \(response.debugDescription)")
                     }
                 })
-                task.resume()
+                task.resume()*/
             }
         }
     }
@@ -93,7 +104,7 @@ struct SurveyRepository {
         ]
         if selectedAssignment != nil{
             if selectedAssignment!.id != ""{
-                let deviceTokenUrl = "\(mockUrl)assignments/\(selectedAssignment!.id)/opened"//TODO: set correct url
+                let deviceTokenUrl = "\(ltaUrl)assignments/\(selectedAssignment!.id)/opened"//TODO: set correct url
                 let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
                 request.setValue(idToken, forHTTPHeaderField: "token")
@@ -127,105 +138,112 @@ struct SurveyRepository {
         }
     }
     
-    static func postDeviceToken(deviceToken: String){
-    
+    static func postDeviceToken(){
+        
         /*
          /users/u123
          
          {
-             "timezone": "Europe/Stockholm",
-             "deviceToken": "qwerty12345qwert23456"
+         "timezone": "Europe/Stockholm",
+         "deviceToken": "qwerty12345qwert23456"
          }
          */
-        let param = [
-            "timezone": localTimeZoneIdentifier,
-            "deviceToken": deviceToken
-        ]
-        
-        let deviceTokenUrl = "\(mockUrl)user/\(tempuserId)"
-        let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(idToken, forHTTPHeaderField: "token")
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        let session = URLSession.shared
-        request.httpMethod = "PUT"
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        /**
-         the params are json, please check with the server if it requires form data then change the content type e.g. request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"*/
-        
-        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            if(error != nil){
-                print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
-                return
-            }else{
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("postAnswer response statusCode: \(httpResponse.statusCode)")
-                }
+        if userId != "" && deviceToken != ""{
+            let param = [
+                "timezone": localTimeZoneIdentifier,
+                "deviceToken": deviceToken
+            ]
+            
+            let deviceTokenUrl = "\(ltaUrl)users/\(userId)"
+            let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue(idToken, forHTTPHeaderField: "token")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
             }
-        })
-        task.resume()
+            
+            let session = URLSession.shared
+            request.httpMethod = "PUT"
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            /**
+             the params are json, please check with the server if it requires form data then change the content type e.g. request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"*/
+            
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+                if(error != nil){
+                    print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
+                    return
+                }else{
+                    if let httpResponse = response as? HTTPURLResponse {
+                        print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                    }
+                }
+            })
+            task.resume()
+        }
         
     }
     
     static func getSurveys( completionhandler: @escaping (_ result: [Assignment]?) -> Void){
-        
-        let assignmentsTokenUrl = "\(mockUrl)user/\(tempuserId)/assignments"
-        let request = NSMutableURLRequest(url: URL(string: assignmentsTokenUrl)!)
-        
-        // Set HTTP Request Header
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(idToken, forHTTPHeaderField: "token")
-
-        let session = URLSession.shared
-        request.httpMethod = "GET"
-        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData//to refresh...
-        
-        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-            if(error != nil){
-                print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
-                completionhandler(nil)
-                return
-            }
-            /*do {
-                // Read all HTTP Response Headers
-                if let response = response as? HTTPURLResponse {
-                    print("All headers: \(response.allHeaderFields)")
-                    // Read a specific HTTP Response Header by name
-             print("Specific header: \(response.value(forHTTPHeaderField: "Content-Type") ?? " header not found")")
-             }
-             }*/
-            if data != nil{
-                let listWithAssignments = createAssignmentsFromData(data: data!)
-                if listWithAssignments != nil{
-                    for assignment in listWithAssignments!{
-                        for question in assignment.survey.questions{
-                            if question.index == 0{
-                                question.previous = 0
-                                question.next = question.index + 1
-                            }else if question.index < assignment.survey.questions.count - 1{
-                                question.next = question.index + 1
-                                question.previous = question.index - 1
-                            }else{
-                                question.next = 0
-                                question.previous = question.index - 1
+        print("getSurveys, userId: \(userId)")
+        if userId != ""{
+            //http://ht-lang-track.ht.lu.se/api/users/alicia/assignments
+            let assignmentsTokenUrl = "\(ltaUrl)users/\(userId)/assignments"
+            let request = NSMutableURLRequest(url: URL(string: assignmentsTokenUrl)!)
+            
+            // Set HTTP Request Header
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue(idToken, forHTTPHeaderField: "token")
+            
+            let session = URLSession.shared
+            request.httpMethod = "GET"
+            request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData//to refresh...
+            
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+                if(error != nil){
+                    print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
+                    completionhandler(nil)
+                    return
+                }
+                /*do {
+                 // Read all HTTP Response Headers
+                 if let response = response as? HTTPURLResponse {
+                 print("All headers: \(response.allHeaderFields)")
+                 // Read a specific HTTP Response Header by name
+                 print("Specific header: \(response.value(forHTTPHeaderField: "Content-Type") ?? " header not found")")
+                 }
+                 }*/
+                if data != nil{
+                    let listWithAssignments = createAssignmentsFromData(data: data!)
+                    if listWithAssignments != nil{
+                        for assignment in listWithAssignments!{
+                            for question in assignment.survey.questions{
+                                if question.index == 0{
+                                    question.previous = 0
+                                    question.next = question.index + 1
+                                }else if question.index < assignment.survey.questions.count - 1{
+                                    question.next = question.index + 1
+                                    question.previous = question.index - 1
+                                }else{
+                                    question.next = 0
+                                    question.previous = question.index - 1
+                                }
                             }
                         }
                     }
+                    if listWithAssignments != nil{
+                        assignmentList = listWithAssignments!
+                    }
                 }
-                assignmentList = listWithAssignments!
-            }
-            
-            completionhandler(assignmentList)
-        })
-        task.resume()
+                
+                completionhandler(assignmentList)
+            })
+            task.resume()
+        }
     }
     
     static func sortAssignmentList(theList : [Assignment]) -> [Assignment]{

@@ -17,6 +17,8 @@
  fixa och visa svarade/osvarade/utgångna/ osv i listan
  
  info: testsurvey från dropbox med 7 questions är ca 2000 bytes
+ 
+ nytt repository
 */
 /*TODO:
  *Hämta telefonens tidszoon och spara i settings för appen
@@ -64,6 +66,7 @@ class MainViewController: UIViewController {
     let menuIn: CGFloat = 0
     var menuIsShowing = false
     var sideMenu : SideMenu?
+    private var pullControl = UIRefreshControl()
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -73,6 +76,13 @@ class MainViewController: UIViewController {
         theTableView.rowHeight = UITableView.automaticDimension
         theTableView.estimatedRowHeight = 175
         theTableView.delegate = self
+        //pullControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            theTableView.refreshControl = pullControl
+        } else {
+            theTableView.addSubview(pullControl)
+        }
 //        theTableView.layer.cornerRadius = 8
         
         //print("secondsFromGMT: \(secondsFromGMT)")
@@ -132,7 +142,6 @@ class MainViewController: UIViewController {
                 }
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
-            
             fetchAssignmentsAndSetUserName()
         }
     }
@@ -222,7 +231,9 @@ class MainViewController: UIViewController {
     }
     
     func fetchAssignmentsAndSetUserName(){
-        self.theTableView.reloadData()
+        var username = Auth.auth().currentUser?.email
+        username!.until("@")
+        SurveyRepository.userId = username ?? ""
         SurveyRepository.getSurveys() { (assignments) in
             if assignments != nil{
                 DispatchQueue.main.async {
@@ -231,9 +242,6 @@ class MainViewController: UIViewController {
                 }
             }
         }
-        
-        var username = Auth.auth().currentUser?.email
-        username!.until("@")
         self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
         sideMenu?.setInfo(name: self.theUser!.userName, listener: self)
         theTableView.reloadData()
@@ -288,6 +296,20 @@ class MainViewController: UIViewController {
     }
     
     //MARK:- Actions
+    
+    @objc private func refreshListData(_ sender: Any) {
+        SurveyRepository.getSurveys() { (assignments) in
+            DispatchQueue.main.async {
+                self.pullControl.endRefreshing()
+            }
+            if assignments != nil{
+                DispatchQueue.main.async {
+                    //self.surveyList = self.sortSurveyList(theList: surveys!)
+                    self.theTableView.reloadData()
+                }
+            }
+        }
+    }
     
     @IBAction func menuButtonPressed(_ sender: Any) {
         if(sideMenuLeftConstraint.constant == menuOut){
