@@ -50,9 +50,7 @@ class OpenEndedTextResponsesViewController: UIViewController {
     }
     
     func saveAnswer(){
-        if !openTextView.text.isEmpty{
-            listener?.setOpenEndedAnswer(text: openTextView.text)
-        }
+        listener?.setOpenEndedAnswer(text: openTextView.text)
     }
     
     @objc func tapDone(sender: Any) {

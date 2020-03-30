@@ -235,6 +235,13 @@ class SurveyViewController: UIViewController {
         return nil
     }
     
+    func deleteAnswerFor(question: Question){
+        let ind = self.answer.index(forKey: question.index)
+        if ind != nil{
+            self.answer.remove(at: ind!)
+        }
+    }
+    
     func checkNext(current: Question){
         
         if current.index + 1 < theAssignment!.survey.questions.count{
@@ -242,7 +249,7 @@ class SurveyViewController: UIViewController {
             if next.includeIf != nil{
                 let includeIfIndexQuestion = theAssignment!.survey.questions[next.includeIf!.ifIndex]
                 if next.includeIf!.ifIndex == includeIfIndexQuestion.index{
-                    if let answer = self.answer[includeIfIndexQuestion.index]{
+                    let answer = self.answer[includeIfIndexQuestion.index] ?? Answer(type: includeIfIndexQuestion.type, index: includeIfIndexQuestion.index)
                         switch includeIfIndexQuestion.type {
                         case "likert":
                             if next.includeIf?.ifValue ?? -99 == answer.likertAnswer{
@@ -250,6 +257,7 @@ class SurveyViewController: UIViewController {
                                 showPage(newPage: next)
                             }else{
                                 // dont show next - check following question
+                                deleteAnswerFor(question: next)
                                 checkNext(current: next)
                             }
                         case "single":
@@ -258,6 +266,7 @@ class SurveyViewController: UIViewController {
                                 showPage(newPage: next)
                             }else{
                                 // dont show next - check following question
+                                deleteAnswerFor(question: next)
                                 checkNext(current: next)
                             }
                         case "blanks":
@@ -266,6 +275,7 @@ class SurveyViewController: UIViewController {
                                 showPage(newPage: next)
                             }else{
                                 // dont show next - check following question
+                                deleteAnswerFor(question: next)
                                 checkNext(current: next)
                             }
                         case "multi":
@@ -274,17 +284,18 @@ class SurveyViewController: UIViewController {
                                 showPage(newPage: next)
                             }else{
                                 // dont show next - check following question
+                                deleteAnswerFor(question: next)
                                 checkNext(current: next)
                             }
                         default:
                             next.previous = currentPage.index
                             showPage(newPage: next)
                         }
-                    }else{
-                        //current answer does not includ a answer - show next
-                        next.previous = currentPage.index
-                        showPage(newPage: next)
-                    }
+//                    }else{
+//                        //current answer does not includ a answer - show next
+//                        next.previous = currentPage.index
+//                        showPage(newPage: next)
+//                    }
                 }else{
                     //next includeIf:ifIndex is not current index - show next
                     next.previous = currentPage.index
