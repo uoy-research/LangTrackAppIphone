@@ -142,6 +142,15 @@ class MainViewController: UIViewController {
                 }
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
+            var username = Auth.auth().currentUser?.email
+            username!.until("@")
+            if username != nil{
+                if username! != ""{
+                    Messaging.messaging().subscribe(toTopic: username!) { error in
+                        print("Messaging subscribed to \(username!)")
+                    }
+                }
+            }
             fetchAssignmentsAndSetUserName()
         }
     }
@@ -403,11 +412,20 @@ extension MainViewController: MenuListener{
         if firebaseAuth.currentUser != nil{
             var username = firebaseAuth.currentUser?.email
             username!.until("@")
+            
             DispatchQueue.main.async {
                 let popup = UIAlertController(title: "Logga ut", message: "Vill du logga ut?\n\(username ?? "")", preferredStyle: .alert)
                 popup.addAction(UIAlertAction(title: "Logga ut", style: .destructive, handler:{alert -> Void in
                     do {
                         try firebaseAuth.signOut()
+                        if username != nil{
+                            if username! != ""{
+                                Messaging.messaging().unsubscribe(fromTopic: username!)
+                                { error in
+                                    print("Messaging unsubscribed to \(username!)")
+                                }
+                            }
+                        }
                         self.performSegue(withIdentifier: "login", sender: nil)
                         SurveyRepository.assignmentList = []
                         self.theTableView.reloadData()
