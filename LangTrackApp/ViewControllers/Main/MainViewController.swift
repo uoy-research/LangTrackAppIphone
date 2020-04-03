@@ -56,7 +56,6 @@ class MainViewController: UIViewController {
     
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
-    var theUser: User?
     //var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     //var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
@@ -142,6 +141,15 @@ class MainViewController: UIViewController {
                 }
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
+            var username = Auth.auth().currentUser?.email
+            username!.until("@")
+            if username != nil{
+                if username! != ""{
+                    Messaging.messaging().subscribe(toTopic: username!) { error in
+                        print("Messaging subscribed to \(username!)")
+                    }
+                }
+            }
             fetchAssignmentsAndSetUserName()
         }
     }
@@ -242,8 +250,8 @@ class MainViewController: UIViewController {
                 }
             }
         }
-        self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
-        sideMenu?.setInfo(name: self.theUser!.userName, listener: self)
+        SurveyRepository.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
+        sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
         theTableView.reloadData()
     }
     
@@ -284,7 +292,7 @@ class MainViewController: UIViewController {
             dest.modalPresentationStyle = .fullScreen
             //dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
             dest.theAssignment = SurveyRepository.selectedAssignment
-            dest.theUser = self.theUser
+            dest.theUser = SurveyRepository.theUser
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
             dest.modalPresentationStyle = .fullScreen
@@ -403,11 +411,20 @@ extension MainViewController: MenuListener{
         if firebaseAuth.currentUser != nil{
             var username = firebaseAuth.currentUser?.email
             username!.until("@")
+            
             DispatchQueue.main.async {
                 let popup = UIAlertController(title: "Logga ut", message: "Vill du logga ut?\n\(username ?? "")", preferredStyle: .alert)
                 popup.addAction(UIAlertAction(title: "Logga ut", style: .destructive, handler:{alert -> Void in
                     do {
                         try firebaseAuth.signOut()
+                        if username != nil{
+                            if username! != ""{
+                                Messaging.messaging().unsubscribe(fromTopic: username!)
+                                { error in
+                                    print("Messaging unsubscribed to \(username!)")
+                                }
+                            }
+                        }
                         self.performSegue(withIdentifier: "login", sender: nil)
                         SurveyRepository.assignmentList = []
                         self.theTableView.reloadData()

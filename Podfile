@@ -9,6 +9,7 @@ target 'LangTrackApp' do
 pod 'Firebase/Auth'
 pod 'SwiftyJSON', '~> 4.0'
 pod 'Alamofire', '~> 5.0'
+pod 'Firebase/Messaging'
 
   target 'LangTrackAppTests' do
     inherit! :search_paths

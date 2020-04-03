@@ -17,16 +17,17 @@ enum Identifiers {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 
+    let gcmMessageIDKey = "gcm.message_id"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         
         //om appen är stängd och man får en notis så visas alert, men ingen funktion körs... man måste hantera badge via notisen, man måste hålla räkningen i backend!!
-        registerForPushNotifications()
+        //registerForPushNotifications()
         print("makeNewItem in didFinishLaunchingWithOptions1")
         
         // Kolla om appen startas genom klick på notifikation, här hanteras notifikation om appen inte är igång
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          Kolla om värdet UIApplication.LaunchOptionsKey.remoteNotification existerar i launchOptions. Om det gör det är appen uppstartad genom att användaren klickade på en notifikation.
          .remoteNotification innehåller det skickade meddelandet
          */
-        let notificationOption = launchOptions?[.remoteNotification]
+        /*let notificationOption = launchOptions?[.remoteNotification]
         print("running didFinishLaunchingWithOptions...")
         
         // 1
@@ -45,8 +46,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 2
             //setBadge()
             print("makeNewItem in didFinishLaunchingWithOptions2")
-        }
+        }*/
         FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
+
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        } else {
+          let settings: UIUserNotificationSettings =
+          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+        
         return true
     }
 
@@ -57,96 +75,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-    /*
-     Registrera appen för push, görs i slutet av didFinishLaunchingWithOptions
-     Här väljer man vilken typ av notiser man vill använda:
-     
-     .badge: Visar en siffra i hörnet på ikonen.
-     .sound: Spelar upp en signal.
-     .alert: Visar text.
-     .carPlay: Visas notifikation i CarPlay.
-     .provisional: Icke störande notifikation. Användaren frågas inte efter tillstånd när man använder detta val, men notisen visas endast tyst i Notiscenter.
-     .providesAppNotificationSettings: Indikerar att appen har eget UI för notification settings.
-     .criticalAlert: Ignorerar mute switch och Do Not Disturb. Man behöver särskilt tillstånd från Apple för att använda detta då detta val är menat att använda endast när det är absolut nödvändigt.
-     */
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                [weak self] granted, error in
-                
-                print("Notification Permission granted: \(granted)")
-                guard granted else { return }
-                
-                // 1
-                let viewAction = UNNotificationAction(
-                    identifier: Identifiers.viewAction, title: "View",
-                    options: [.foreground])
-                let viewAction2 = UNNotificationAction(
-                    identifier: Identifiers.viewAction2, title: "View2",
-                    options: [.foreground])
-                
-                // 2
-                let newsCategory = UNNotificationCategory(
-                    identifier: Identifiers.newsCategory, actions: [viewAction, viewAction2],
-                    intentIdentifiers: [], options: [])
-                
-                // 3
-                UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
-                
-                self?.getNotificationSettings()
-        }
-    }
     
-    func getNotificationSettings() {
-        //This method returns the settings the user has granted.
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            //print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-                //Now that you have permissions, you’ll now actually register for remote notifications
-                UIApplication.shared.registerForRemoteNotifications()
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+        SurveyRepository.deviceToken = fcmToken
+        var username = Auth.auth().currentUser?.email
+        if username != nil{
+            if username! != ""{
+                username!.until("@")
+                SurveyRepository.userId = username ?? ""
             }
         }
     }
-    
-    /*
-     det två följande metoderna hanterar svaret efter man kört registerForRemoteNotifications()
-     */
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-        /*
-         här hanteras appens token (installationens)
-         Denna bör sparas i backend för att kunna skicka notiser till just denna installation
-         Sparas tillsammans med användarinfo för att rikta notiser
-         Uppdatera token om ändrad. Token följer installation så om användaren avinstallerar appen och installerar på nytt får den installationen ett nytt token, som måste på nytt sparas med användareinfo
-         */
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        let token = tokenParts.joined()
-        SurveyRepository.deviceToken = token
-        var username = Auth.auth().currentUser?.email
-        username!.until("@")
-        SurveyRepository.userId = username ?? ""
-        SurveyRepository.postDeviceToken()
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("didReceiveRemoteNotification Message ID: \(messageID)")
+        }
+        //send notification to update surveys
+        NotificationCenter.default.post(
+            name: .newNotification,
+            object: nil)
+        
+        completionHandler(UIBackgroundFetchResult.newData)
     }
-    
-    func application(
-        _ application: UIApplication,
-        didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register: \(error)")
-    }
-    
     
     //här hanteras notifikation om appen är igång
-    func application(
+    /*func application(
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completionHandler:
@@ -163,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             name: .newNotification,
             object: nil)
         completionHandler(.newData)
-    }
+    }*/
     
     /*func setBadge()  {
         var ind = 0
@@ -205,11 +174,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 print("du valde viewAction2")
             }*/
             //send notification with notification info, to update surveys
-            NotificationCenter.default.post(
-                name: .newNotification,
-                object: nil)
+            
         }
-        
+        NotificationCenter.default.post(
+        name: .newNotification,
+        object: nil)
         
         
         // 4
