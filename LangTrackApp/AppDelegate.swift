@@ -49,10 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }*/
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        // Register for remote notifications. This shows a permission dialog on first run, to
-        // show the dialog at a more appropriate time move this registration accordingly.
-        // [START register_for_notifications]
-        /*if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self
 
@@ -64,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
           let settings: UIUserNotificationSettings =
           UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
           application.registerUserNotificationSettings(settings)
-        }*/
+        }
 
         application.registerForRemoteNotifications()
         
@@ -88,9 +85,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         SurveyRepository.deviceToken = fcmToken
         var username = Auth.auth().currentUser?.email
-        username!.until("@")
-        SurveyRepository.userId = username ?? ""
-        SurveyRepository.postDeviceToken()
+        if username != nil{
+            if username! != ""{
+                username!.until("@")
+                SurveyRepository.userId = username ?? ""
+            }
+        }
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],

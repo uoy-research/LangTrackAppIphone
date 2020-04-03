@@ -56,7 +56,6 @@ class MainViewController: UIViewController {
     
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
-    var theUser: User?
     //var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     //var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     var localTimeZoneIdentifier: String { return TimeZone.current.identifier }
@@ -251,8 +250,8 @@ class MainViewController: UIViewController {
                 }
             }
         }
-        self.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
-        sideMenu?.setInfo(name: self.theUser!.userName, listener: self)
+        SurveyRepository.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
+        sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
         theTableView.reloadData()
     }
     
@@ -293,7 +292,7 @@ class MainViewController: UIViewController {
             dest.modalPresentationStyle = .fullScreen
             //dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
             dest.theAssignment = SurveyRepository.selectedAssignment
-            dest.theUser = self.theUser
+            dest.theUser = SurveyRepository.theUser
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
             dest.modalPresentationStyle = .fullScreen

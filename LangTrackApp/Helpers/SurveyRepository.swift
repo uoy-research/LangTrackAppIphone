@@ -9,6 +9,8 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import Firebase
+
 
 
 struct SurveyRepository {
@@ -19,7 +21,20 @@ struct SurveyRepository {
     static let ltaUrl = "http://ht-lang-track.ht.lu.se/api/"
     
     static var idToken = ""
-    static var deviceToken = ""
+    static var deviceToken = ""{
+        didSet{
+            if oldValue != deviceToken{
+                postDeviceToken()
+            }
+        }
+    }
+    static var theUser: User?{
+        willSet{
+            if newValue?.userEmail != theUser?.userEmail || newValue?.userName != theUser?.userName{
+                postDeviceToken()
+            }
+        }
+    }
     static var localTimeZoneIdentifier = ""
     static var assignmentList: [Assignment] = []
     static var selectedAssignment: Assignment?
@@ -28,6 +43,17 @@ struct SurveyRepository {
     
     static func setIdToken(token: String){
         self.idToken = token
+    }
+    
+    static func checkDeviceToken(completionhandler: @escaping (_ result: String?) -> Void){
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+                completionhandler(nil)
+            } else if let result = result {
+                completionhandler(result.token)
+            }
+        }
     }
     
     static func postAnswer(answerDict: [Int: Answer]){
@@ -69,30 +95,6 @@ struct SurveyRepository {
                            headers: headers).response { response in
                     debugPrint(response)
                 }
-                /*
-                // http://ht-lang-track.ht.lu.se/api/users/394zwp/assignments/5e7ee4b713ab1c0022f65873/datasets
-                let answerUrl = "\(ltaUrl)users/\(userId)/assignments/\(selectedAssignment!.id)/datasets"
-                let request = NSMutableURLRequest(url: URL(string: answerUrl)!)
-                do {
-                    request.httpBody = try JSONSerialization.data(withJSONObject: theBody, options: .prettyPrinted)
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-                request.setValue(idToken, forHTTPHeaderField: "token")
-                
-                let session = URLSession.shared
-                request.httpMethod = "POST"
-                //application/json; charset=utf-8
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
-                let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
-                    if(error != nil){
-                        print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
-                        return
-                    }else{
-                        print("postAnswer response: \(response.debugDescription)")
-                    }
-                })
-                task.resume()*/
             }
         }
     }
@@ -139,15 +141,6 @@ struct SurveyRepository {
     }
     
     static func postDeviceToken(){
-        
-        /*
-         /users/u123
-         
-         {
-         "timezone": "Europe/Stockholm",
-         "deviceToken": "qwerty12345qwert23456"
-         }
-         */
         if userId != "" && deviceToken != ""{
             let param = [
                 "timezone": localTimeZoneIdentifier,
@@ -170,16 +163,14 @@ struct SurveyRepository {
             
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            /**
-             the params are json, please check with the server if it requires form data then change the content type e.g. request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"*/
             
             let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                 if(error != nil){
-                    print("ERROR, task = session.dataTask: \(error!.localizedDescription)")
+                    print("postDeviceToken ERROR, task = session.dataTask: \(error!.localizedDescription)")
                     return
                 }else{
                     if let httpResponse = response as? HTTPURLResponse {
-                        print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                        print("postDeviceToken response statusCode: \(httpResponse.statusCode)")
                     }
                 }
             })
