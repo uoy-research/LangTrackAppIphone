@@ -49,6 +49,9 @@
 		F178752523E41639003D16D1 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752423E41639003D16D1 /* Survey.swift */; };
 		F178752723E41654003D16D1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752623E41654003D16D1 /* Question.swift */; };
 		F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178752923E41C30003D16D1 /* QuestionListener.swift */; };
+		F17F34822437343100CD64BB /* SingleItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17F34812437343100CD64BB /* SingleItem.xib */; };
+		F17F34842437344C00CD64BB /* SingleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F34832437344C00CD64BB /* SingleItem.swift */; };
+		F17F3486243757AC00CD64BB /* SingleItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F3485243757AC00CD64BB /* SingleItemTableViewCell.swift */; };
 		F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314172418EA0F0036A5D3 /* Assignment.swift */; };
 		F183141A2418F1690036A5D3 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18314192418F1690036A5D3 /* Dataset.swift */; };
 		F18E2D3F2429066100B33E53 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E2D3E2429066100B33E53 /* SideMenu.swift */; };
@@ -135,6 +138,9 @@
 		F178752423E41639003D16D1 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		F178752623E41654003D16D1 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		F178752923E41C30003D16D1 /* QuestionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListener.swift; sourceTree = "<group>"; };
+		F17F34812437343100CD64BB /* SingleItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleItem.xib; sourceTree = "<group>"; };
+		F17F34832437344C00CD64BB /* SingleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleItem.swift; sourceTree = "<group>"; };
+		F17F3485243757AC00CD64BB /* SingleItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleItemTableViewCell.swift; sourceTree = "<group>"; };
 		F18314172418EA0F0036A5D3 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		F18314192418F1690036A5D3 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		F18E2D3E2429066100B33E53 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -333,6 +339,7 @@
 				F15658AC23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift */,
 				F15658AE23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift */,
 				F15658B023E3418B00EC2796 /* FooterViewController.swift */,
+				F17F3485243757AC00CD64BB /* SingleItemTableViewCell.swift */,
 			);
 			path = QuestionsViewControllers;
 			sourceTree = "<group>";
@@ -370,6 +377,8 @@
 				F15F595923ED91B20026430A /* LikertRadioButton.swift */,
 				F1963208240922AE00A0D8D2 /* VKCheckbox.swift */,
 				F1DB199E24275D810068F49E /* NextButton.swift */,
+				F17F34812437343100CD64BB /* SingleItem.xib */,
+				F17F34832437344C00CD64BB /* SingleItem.swift */,
 			);
 			path = CustonViews;
 			sourceTree = "<group>";
@@ -502,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17F34822437343100CD64BB /* SingleItem.xib in Resources */,
 				F156587D23E2DD7600EC2796 /* LaunchScreen.storyboard in Resources */,
 				F10B84B423E46025003CAC76 /* Colors.xcassets in Resources */,
 				F16D557023E8238500DD92A1 /* GoogleService-Info.plist in Resources */,
@@ -621,6 +631,7 @@
 				F178752723E41654003D16D1 /* Question.swift in Sources */,
 				F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */,
 				F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */,
+				F17F34842437344C00CD64BB /* SingleItem.swift in Sources */,
 				F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */,
 				F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */,
 				F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */,
@@ -628,6 +639,7 @@
 				F10136EA23E85F3B00B36CF0 /* StringExtension.swift in Sources */,
 				F10B84B623E46400003CAC76 /* TestSurvey.swift in Sources */,
 				F1532DB223EAC67C00171355 /* EncodableExtension.swift in Sources */,
+				F17F3486243757AC00CD64BB /* SingleItemTableViewCell.swift in Sources */,
 				F11499F6240E543300DC988A /* ViewExtension.swift in Sources */,
 				F15658A923E33DE500EC2796 /* FillInTheBlankViewController.swift in Sources */,
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,

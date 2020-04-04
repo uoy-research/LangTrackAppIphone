@@ -10,18 +10,26 @@ import UIKit
 
 class SingleMultipleAnswersViewController: UIViewController {
 
+    @IBOutlet weak var singleMultipleContainer: UIView!
     @IBOutlet weak var containerBackground: UIView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: NextButton!
-    @IBOutlet weak var singleMultipleTextLabel: UILabel!
+    //@IBOutlet weak var singleMultipleTextLabel: UILabel!
     @IBOutlet weak var answersContainer: UIView!
     @IBOutlet weak var answersContainerHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var answersContainerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var theIcon: UIImageView!
+    @IBOutlet weak var singleTableView: UITableView!
+    @IBOutlet weak var singleMultipleTextView: UITextView!
+    
+    @IBOutlet weak var singleMultipleTextViewHeightConstraint: NSLayoutConstraint!
+    
+    
+    var selectedAnswer = -99
     var listener: QuestionListener?
     var theQuestion = Question()
-    var theAnswer: Answer? 
+    var theAnswer: Answer?
+    let fontInCell = UIFont.systemFont(ofSize: 19)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +37,85 @@ class SingleMultipleAnswersViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
+        singleTableView.delegate = self
+        singleTableView.rowHeight = UITableView.automaticDimension
+        singleTableView.estimatedRowHeight = 60
+        singleTableView.separatorStyle = .none
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setHeightAndWidthOfTableview()
+        setHeightOfTextView()
+    }
+    
+    func setHeightOfTextView(){
+        let textheight = theQuestion.text.height(withConstrainedWidth: singleMultipleTextView.frame.width, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 40
+        if textheight > 84{
+            singleMultipleTextViewHeightConstraint.constant = 84//3 rows
+        }else{
+            singleMultipleTextViewHeightConstraint.constant = textheight
+        }
+    }
+    
+    func setHeightAndWidthOfTableview(){
+        if theQuestion.singleMultipleAnswers != nil{
+            var tableviewHeight: CGFloat = 0
+            
+            //width
+            let longest = theQuestion.singleMultipleAnswers!.sorted(by: {$0.count > $1.count}).first ?? ""
+            let longestTextSize = longest.width(withConstrainedHeight: 21, font: fontInCell) + 100
+            
+            if longestTextSize > containerBackground.frame.width{
+                answersContainerWidthConstraint.constant = containerBackground.frame.width
+            }else{
+                answersContainerWidthConstraint.constant = longestTextSize
+            }
+            
+            //height
+            for (index, _) in theQuestion.singleMultipleAnswers!.enumerated() {
+                if let theCell = singleTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SingleItemTableViewCell{
+                    let cellHeight = theCell.choiceLabel.intrinsicContentSize.height + 36
+                    tableviewHeight += cellHeight
+                }
+            }
+            if tableviewHeight != 0{
+                print("singleMultipleContainer.frame.height: \(singleMultipleContainer.frame.height)")
+                print("tableviewHeight: \(tableviewHeight)")
+                if tableviewHeight > (self.view.frame.height * 0.45){
+                    answersContainerHeightConstraint.constant = self.view.frame.height * 0.44
+                }else{
+                    answersContainerHeightConstraint.constant = tableviewHeight
+                }
+            }
+        }
+    }
+    
     
     func setInfo(question: Question){
         self.theQuestion = question
-        singleMultipleTextLabel.text = theQuestion.text
+        singleMultipleTextView.text = theQuestion.text
         nextButton.setEnabled(enabled: false)
-        fillAnswers()
+        setSelectedAnswer()
+        singleTableView.reloadData()
+        setHeightAndWidthOfTableview()
     }
     
     func setListener(listener: QuestionListener) {
         self.listener = listener
     }
     
-    func markSelectedAnswer(selected: Int){
+    func setSelectedAnswer(){
+        if theAnswer != nil {
+            if theAnswer?.index == theQuestion.index{
+                if theAnswer!.singleMultipleAnswer != nil{
+                    selectedAnswer = theAnswer!.singleMultipleAnswer!
+                    nextButton.setEnabled(enabled: true)
+                }
+            }
+        }
+    }
+    
+    /*func markSelectedAnswer(selected: Int){
         for v in answersContainer.subviews{
             if v is VKCheckbox{
                 let check = v as! VKCheckbox
@@ -51,9 +124,9 @@ class SingleMultipleAnswersViewController: UIViewController {
                 }
             }
         }
-    }
+    }*/
     
-    func getSelected() -> Int?{
+    /*func getSelected() -> Int?{
         for v in answersContainer.subviews{
             if v is VKCheckbox{
                 if (v as! VKCheckbox).isOn{
@@ -62,22 +135,25 @@ class SingleMultipleAnswersViewController: UIViewController {
             }
         }
         return nil
-    }
+    }*/
     
     func saveAnswer(){
-        let answer = getSelected()
-        if answer != nil{
-            listener?.setSingleMultipleAnswer(selected: answer!)
+//        let answer = getSelected()
+//        if answer != nil{
+//            listener?.setSingleMultipleAnswer(selected: answer!)
+//        }
+        if selectedAnswer != -99{
+            listener?.setSingleMultipleAnswer(selected: selectedAnswer)
         }
     }
     
-    func emptyAnswers(){
+    /*func emptyAnswers(){
         for v in answersContainer.subviews{
             v.removeFromSuperview()
         }
-    }
+    }*/
     
-    func fillAnswers(){
+    /*func fillAnswers(){
         emptyAnswers()
         if theQuestion.singleMultipleAnswers != nil{
             let spacer = 10
@@ -129,16 +205,56 @@ class SingleMultipleAnswersViewController: UIViewController {
                 answersContainerWidthConstraint.constant = containerBackground.frame.width
             }
         }
-    }
+    }*/
     
     @IBAction func previousButtonPressed(_ sender: Any) {
         saveAnswer()
+        selectedAnswer = -99
         listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         saveAnswer()
+        selectedAnswer = -99
         listener?.nextQuestion(current: theQuestion)
     }
+    
+}
+
+extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return theQuestion.singleMultipleAnswers?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)
+        
+        if let cell = cell as? SingleItemTableViewCell{
+            cell.choiceLabel.text = theQuestion.singleMultipleAnswers?[indexPath.row]
+            cell.choiceLabel.font = fontInCell
+            cell.checkBox.bgColorSelected = UIColor(named: "lta_blue") ?? .black
+            cell.checkBox.color = .white
+            cell.checkBox.borderWidth = 1.5
+            cell.checkBox.line = .thin
+            cell.checkBox.cornerRadius = cell.checkBox.frame.width / 2
+            cell.tag = indexPath.row
+            cell.selectionStyle = .none
+            if selectedAnswer == indexPath.row{
+                cell.setCheck(enabled: true)
+                nextButton.setEnabled(enabled: true)
+            }else{
+                cell.setCheck(enabled: false)
+            }
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedAnswer = indexPath.row
+        self.nextButton.setEnabled(enabled: true)
+        singleTableView.reloadData()
+    }
+    
     
 }
