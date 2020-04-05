@@ -14,6 +14,7 @@ class SingleItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkBox: VKCheckbox!
     @IBOutlet weak var choiceLabel: UILabel!
+    @IBOutlet weak var cellWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

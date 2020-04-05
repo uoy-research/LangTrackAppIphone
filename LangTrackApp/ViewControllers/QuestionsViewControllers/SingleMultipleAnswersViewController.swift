@@ -10,19 +10,11 @@ import UIKit
 
 class SingleMultipleAnswersViewController: UIViewController {
 
-    @IBOutlet weak var singleMultipleContainer: UIView!
-    @IBOutlet weak var containerBackground: UIView!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: NextButton!
-    //@IBOutlet weak var singleMultipleTextLabel: UILabel!
-    @IBOutlet weak var answersContainer: UIView!
-    @IBOutlet weak var answersContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var answersContainerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var theIcon: UIImageView!
-    @IBOutlet weak var singleTableView: UITableView!
-    @IBOutlet weak var singleMultipleTextView: UITextView!
-    
-    @IBOutlet weak var singleMultipleTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var singleTableView: SelfSizedTableView!
+    @IBOutlet weak var tableviewContainer: UIView!
     
     
     var selectedAnswer = -99
@@ -30,6 +22,7 @@ class SingleMultipleAnswersViewController: UIViewController {
     var theQuestion = Question()
     var theAnswer: Answer?
     let fontInCell = UIFont.systemFont(ofSize: 19)
+    var cellWidth: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,60 +37,18 @@ class SingleMultipleAnswersViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setHeightAndWidthOfTableview()
-        setHeightOfTextView()
+        singleTableView.maxHeight = tableviewContainer.frame.height
+        singleTableView.reloadData()
     }
-    
-    func setHeightOfTextView(){
-        let textheight = theQuestion.text.height(withConstrainedWidth: singleMultipleTextView.frame.width, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 40
-        if textheight > 84{
-            singleMultipleTextViewHeightConstraint.constant = 84//3 rows
-        }else{
-            singleMultipleTextViewHeightConstraint.constant = textheight
-        }
-    }
-    
-    func setHeightAndWidthOfTableview(){
-        if theQuestion.singleMultipleAnswers != nil{
-            var tableviewHeight: CGFloat = 0
-            
-            //width
-            let longest = theQuestion.singleMultipleAnswers!.sorted(by: {$0.count > $1.count}).first ?? ""
-            let longestTextSize = longest.width(withConstrainedHeight: 21, font: fontInCell) + 100
-            
-            if longestTextSize > containerBackground.frame.width{
-                answersContainerWidthConstraint.constant = containerBackground.frame.width
-            }else{
-                answersContainerWidthConstraint.constant = longestTextSize
-            }
-            
-            //height
-            for (index, _) in theQuestion.singleMultipleAnswers!.enumerated() {
-                if let theCell = singleTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SingleItemTableViewCell{
-                    let cellHeight = theCell.choiceLabel.intrinsicContentSize.height + 36
-                    tableviewHeight += cellHeight
-                }
-            }
-            if tableviewHeight != 0{
-                print("singleMultipleContainer.frame.height: \(singleMultipleContainer.frame.height)")
-                print("tableviewHeight: \(tableviewHeight)")
-                if tableviewHeight > (self.view.frame.height * 0.45){
-                    answersContainerHeightConstraint.constant = self.view.frame.height * 0.44
-                }else{
-                    answersContainerHeightConstraint.constant = tableviewHeight
-                }
-            }
-        }
-    }
-    
     
     func setInfo(question: Question){
         self.theQuestion = question
-        singleMultipleTextView.text = theQuestion.text
+        setTableviewWidth()
         nextButton.setEnabled(enabled: false)
+        singleTableView.maxHeight = 3
         setSelectedAnswer()
         singleTableView.reloadData()
-        setHeightAndWidthOfTableview()
+        self.view.layoutIfNeeded()
     }
     
     func setListener(listener: QuestionListener) {
@@ -115,97 +66,21 @@ class SingleMultipleAnswersViewController: UIViewController {
         }
     }
     
-    /*func markSelectedAnswer(selected: Int){
-        for v in answersContainer.subviews{
-            if v is VKCheckbox{
-                let check = v as! VKCheckbox
-                if check.tag != selected{
-                    check.setOn(false, animated: true)
-                }
-            }
+    func setTableviewWidth(){
+        let longest = theQuestion.singleMultipleAnswers?.sorted(by: {$0.count > $1.count}).first
+        let longestWidth = (longest?.width(withConstrainedHeight: 21, font: UIFont.systemFont(ofSize: 18, weight: .regular)) ?? 0) + 100
+        if longestWidth > tableviewContainer.frame.width{
+            cellWidth = tableviewContainer.frame.width
+        }else{
+            cellWidth = longestWidth
         }
-    }*/
-    
-    /*func getSelected() -> Int?{
-        for v in answersContainer.subviews{
-            if v is VKCheckbox{
-                if (v as! VKCheckbox).isOn{
-                    return v.tag
-                }
-            }
-        }
-        return nil
-    }*/
+    }
     
     func saveAnswer(){
-//        let answer = getSelected()
-//        if answer != nil{
-//            listener?.setSingleMultipleAnswer(selected: answer!)
-//        }
         if selectedAnswer != -99{
             listener?.setSingleMultipleAnswer(selected: selectedAnswer)
         }
     }
-    
-    /*func emptyAnswers(){
-        for v in answersContainer.subviews{
-            v.removeFromSuperview()
-        }
-    }*/
-    
-    /*func fillAnswers(){
-        emptyAnswers()
-        if theQuestion.singleMultipleAnswers != nil{
-            let spacer = 10
-            let size = 29
-            var maxIntrinsicWidth: CGFloat = 100
-            for (i, answer) in theQuestion.singleMultipleAnswers!.enumerated() {
-                let check = VKCheckbox(frame: CGRect(x: 0, y: ((size + spacer) * i), width: size, height: size))
-                //check.bgColorSelected = .white
-                check.bgColorSelected = UIColor(named: "lta_blue") ?? .black
-                check.color = .white
-                check.borderWidth = 1.5
-                check.line = .thin
-                check.cornerRadius = check.frame.width / 2
-                check.tag = i
-                if theAnswer != nil {
-                    if theAnswer?.index == theQuestion.index{
-                        if theAnswer!.singleMultipleAnswer != nil{
-                            if check.tag == theAnswer!.singleMultipleAnswer!{
-                                check.setOn(true)
-                                nextButton.setEnabled(enabled: true)
-                            }
-                        }
-                    }
-                }
-                check.checkboxValueChangedBlock = {
-                    tag, ison in
-                    if ison{
-                        self.markSelectedAnswer(selected: tag)
-                        self.nextButton.setEnabled(enabled: true)
-                    }
-                }
-                let containerWidth = Int(containerBackground.frame.width * 0.92) - size - spacer
-                let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: containerWidth, height: size))
-                text.text = answer
-                text.textAlignment = .left
-                text.font = text.font.withSize(18)
-                text.contentMode = .center
-                text.numberOfLines = 0
-                if text.intrinsicContentSize.width > maxIntrinsicWidth{
-                    maxIntrinsicWidth = text.intrinsicContentSize.width
-                }
-                answersContainer.addSubview(check)
-                answersContainer.addSubview(text)
-                answersContainerHeightConstraint.constant = CGFloat((size + spacer) * (i+1))
-            }
-            if (maxIntrinsicWidth + CGFloat(size + spacer)) < containerBackground.frame.width{
-                answersContainerWidthConstraint.constant = maxIntrinsicWidth + CGFloat(size + spacer)
-            }else{
-                answersContainerWidthConstraint.constant = containerBackground.frame.width
-            }
-        }
-    }*/
     
     @IBAction func previousButtonPressed(_ sender: Any) {
         saveAnswer()
@@ -245,6 +120,7 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
             }else{
                 cell.setCheck(enabled: false)
             }
+            cell.cellWidthConstraint.constant = self.cellWidth
         }
         
         return cell
@@ -255,6 +131,24 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
         self.nextButton.setEnabled(enabled: true)
         singleTableView.reloadData()
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let theTitle = theQuestion.text
+        let s = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 8
+        return s
+    }
     
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let vw = UILabel()
+        vw.numberOfLines = 0
+        vw.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        vw.textAlignment = .center
+        vw.text = theQuestion.text
+        vw.backgroundColor = UIColor.white
+
+        return vw
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Section \(section)"
+    }
 }
