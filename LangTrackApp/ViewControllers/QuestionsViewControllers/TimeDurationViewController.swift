@@ -13,12 +13,15 @@ class TimeDurationViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var durationTextLabel: UILabel!
-    @IBOutlet weak var durationPicker: UIDatePicker!
     
+    @IBOutlet weak var minutesPickerView: UIPickerView!
+    @IBOutlet weak var hourPickerView: UIPickerView!
     var theUser: User?
     var listener: QuestionListener?
     var theQuestion = Question()
     var theAnswer: Answer?
+    let hours = ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
+    let minutes = ["00","05","10","15","20","25","30","35","40","45","50","55"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +29,17 @@ class TimeDurationViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
+        hourPickerView.delegate = self
+        minutesPickerView.delegate = self
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
-        durationTextLabel.text = theQuestion.text
+        durationTextLabel.text = "Hur lång tid tog det?"//theQuestion.text
     }
     
     func setListener(listener: QuestionListener) {
         self.listener = listener
-    }
-    @IBAction func durationPickerChanged(_ sender: UIDatePicker) {
-        //get seconds
-        print("sender.countDownDuration: \(sender.countDownDuration)")
-        
-        //get minutes and hours
-        let calendar = Calendar.current
-        let comp = calendar.dateComponents([.hour, .minute], from: sender.date)
-        let hour = comp.hour
-        let minute = comp.minute
-        print("durationPickerChanged hour: \(hour ?? 0), minute: \(minute ?? 0)")
     }
     
 
@@ -57,4 +51,53 @@ class TimeDurationViewController: UIViewController {
         listener?.nextQuestion(current: theQuestion)
     }
     
+}
+
+extension TimeDurationViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView.tag == 0{
+            return hours.count
+        }else if pickerView.tag == 1{
+            return minutes.count
+        }else{
+            return 0
+        }
+            
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return hours[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let hourwidth = hourPickerView.frame.width
+        let minutewidth = minutesPickerView.frame.width
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 35)
+        if pickerView.tag == 0{
+            view.frame = CGRect(x: 0, y: 0, width: Int(hourwidth), height: 45)
+            view.textAlignment = .right
+            view.text = hours[row]
+        }else{
+            view.frame = CGRect(x: 0, y: 0, width: Int(minutewidth), height: 45)
+            view.textAlignment = .left
+            view.text = minutes[row]
+        }
+        return view
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 45
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 0{
+            print("you selected \(hours[row]) hours")
+        }else if pickerView.tag == 1{
+            print("you selected \(minutes[row]) minutes")
+        }
+    }
 }
