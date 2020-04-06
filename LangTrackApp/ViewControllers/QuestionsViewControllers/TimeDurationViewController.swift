@@ -13,6 +13,7 @@ class TimeDurationViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var durationTextLabel: UILabel!
+    @IBOutlet weak var durationPicker: UIDatePicker!
     
     var theUser: User?
     var listener: QuestionListener?
@@ -35,10 +36,21 @@ class TimeDurationViewController: UIViewController {
     func setListener(listener: QuestionListener) {
         self.listener = listener
     }
+    @IBAction func durationPickerChanged(_ sender: UIDatePicker) {
+        //get seconds
+        print("sender.countDownDuration: \(sender.countDownDuration)")
+        
+        //get minutes and hours
+        let calendar = Calendar.current
+        let comp = calendar.dateComponents([.hour, .minute], from: sender.date)
+        let hour = comp.hour
+        let minute = comp.minute
+        print("durationPickerChanged hour: \(hour ?? 0), minute: \(minute ?? 0)")
+    }
     
 
     @IBAction func previousButtonPressed(_ sender: Any) {
-        listener?.closeSurvey()
+        listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {

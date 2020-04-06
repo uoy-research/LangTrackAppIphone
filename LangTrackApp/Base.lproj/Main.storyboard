@@ -1023,7 +1023,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_likert_light" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-5b-w28">
-                                <rect key="frame" x="157" y="99.5" width="100" height="100"/>
+                                <rect key="frame" x="157" y="99.5" width="100" height="100.00000000000011"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="RFd-d6-8M7"/>
                                     <constraint firstAttribute="height" constant="100" id="umz-mr-MDX"/>
@@ -1789,34 +1789,31 @@
                                 <rect key="frame" x="0.0" y="207.5" width="414" height="594.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Sd-0x-8nG">
-                                        <rect key="frame" x="0.0" y="79" width="414" height="139"/>
+                                        <rect key="frame" x="0.0" y="21" width="414" height="255"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xne-9c-lfg">
-                                                <rect key="frame" x="31" y="39" width="352" height="100"/>
-                                                <color key="backgroundColor" name="lta_light_grey"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="fd2-VL-Ozj"/>
-                                                </constraints>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-yX-W1h">
                                                 <rect key="frame" x="30" y="0.0" width="354" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJb-Bn-ROZ">
+                                                <rect key="frame" x="5" y="39" width="404" height="216"/>
+                                                <locale key="locale" localeIdentifier="sv_SE"/>
+                                                <connections>
+                                                    <action selector="durationPickerChanged:" destination="UGs-qz-TAY" eventType="valueChanged" id="KIj-gx-zuK"/>
+                                                </connections>
+                                            </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Xne-9c-lfg" secondAttribute="bottom" id="Czy-7k-D4Y"/>
                                             <constraint firstItem="FqD-yX-W1h" firstAttribute="top" secondItem="2Sd-0x-8nG" secondAttribute="top" id="FpT-6f-e6k"/>
-                                            <constraint firstItem="Xne-9c-lfg" firstAttribute="width" secondItem="2Sd-0x-8nG" secondAttribute="width" multiplier="0.85" id="GNY-yH-nSg"/>
+                                            <constraint firstAttribute="trailing" secondItem="cJb-Bn-ROZ" secondAttribute="trailing" constant="5" id="Fsd-0L-lYt"/>
                                             <constraint firstItem="FqD-yX-W1h" firstAttribute="leading" secondItem="2Sd-0x-8nG" secondAttribute="leading" constant="30" id="QKq-HO-HpG"/>
                                             <constraint firstAttribute="trailing" secondItem="FqD-yX-W1h" secondAttribute="trailing" constant="30" id="Wgb-pl-GBZ"/>
-                                            <constraint firstItem="Xne-9c-lfg" firstAttribute="top" secondItem="FqD-yX-W1h" secondAttribute="bottom" constant="15" id="njM-gb-G6B"/>
-                                            <constraint firstItem="Xne-9c-lfg" firstAttribute="centerX" secondItem="2Sd-0x-8nG" secondAttribute="centerX" id="rey-nV-Vlg"/>
+                                            <constraint firstItem="cJb-Bn-ROZ" firstAttribute="leading" secondItem="2Sd-0x-8nG" secondAttribute="leading" constant="5" id="eAB-Bd-HxG"/>
+                                            <constraint firstAttribute="bottom" secondItem="cJb-Bn-ROZ" secondAttribute="bottom" id="lEY-SG-lj3"/>
+                                            <constraint firstItem="cJb-Bn-ROZ" firstAttribute="top" secondItem="FqD-yX-W1h" secondAttribute="bottom" constant="15" id="z5K-BA-5YT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1847,6 +1844,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="durationPicker" destination="cJb-Bn-ROZ" id="09K-N5-uaU"/>
                         <outlet property="durationTextLabel" destination="FqD-yX-W1h" id="Aev-JE-Ae0"/>
                         <outlet property="nextButton" destination="qmh-Gk-RIJ" id="god-6R-TK3"/>
                         <outlet property="previousButton" destination="BLk-8S-07U" id="APc-6A-Nj9"/>
@@ -1855,7 +1853,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zda-xY-oFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="1533"/>
+            <point key="canvasLocation" x="2628.985507246377" y="1532.8125"/>
         </scene>
     </scenes>
     <resources>
