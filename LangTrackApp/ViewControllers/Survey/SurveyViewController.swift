@@ -22,6 +22,7 @@ class SurveyViewController: UIViewController {
     var multipleChoice: MultipleChoiceViewController?
     var singleMultipleAnswers: SingleMultipleAnswersViewController?
     var openEndedTextResponses: OpenEndedTextResponsesViewController?
+    var timeDuration: TimeDurationViewController?
     var footer: FooterViewController?
     
     override func viewDidLoad() {
@@ -43,6 +44,9 @@ class SurveyViewController: UIViewController {
         
         singleMultipleAnswers = storyboard.instantiateViewController(withIdentifier: "singleMultipleAnswer") as? SingleMultipleAnswersViewController
         singleMultipleAnswers?.setListener(listener: self)
+        
+        timeDuration = storyboard.instantiateViewController(withIdentifier: "timeDuration") as? TimeDurationViewController
+        timeDuration?.setListener(listener: self)
         
         openEndedTextResponses = storyboard.instantiateViewController(withIdentifier: "openEndedTextResponses") as? OpenEndedTextResponsesViewController
         openEndedTextResponses?.setListener(listener: self)
@@ -104,6 +108,12 @@ class SurveyViewController: UIViewController {
             openEndedTextResponses!.willMove(toParent: nil)
             openEndedTextResponses!.view.removeFromSuperview()
             openEndedTextResponses!.removeFromParent()
+        }
+        if(currentPage.type == Type.timeDuration.rawValue)
+        {
+            timeDuration!.willMove(toParent: nil)
+            timeDuration!.view.removeFromSuperview()
+            timeDuration!.removeFromParent()
         }
         if(currentPage.type == Type.footer.rawValue)
         {
@@ -184,8 +194,19 @@ class SurveyViewController: UIViewController {
             if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
                 openEndedTextResponses!.theAnswer = theAnswer.value
             }
-            //openEndedTextResponses!.theAnswer = theAssignment!.dataset?.answers.first(where: {$0.index == currentPage.index})
             openEndedTextResponses!.setInfo(question: theQuestion)
+        }
+        if(currentPage.type == Type.timeDuration.rawValue)
+        {
+            self.addChild(timeDuration!)
+            surveyContainer.addSubview(timeDuration!.view)
+            timeDuration!.view.frame = surveyContainer.bounds
+            timeDuration!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            timeDuration!.didMove(toParent: self)
+            if let theAnswer = answer.first(where: { $0.value.index == currentPage.index}){
+                timeDuration!.theAnswer = theAnswer.value
+            }
+            timeDuration!.setInfo(question: theQuestion)
         }
         if(currentPage.type == Type.footer.rawValue)
         {
@@ -318,6 +339,8 @@ class SurveyViewController: UIViewController {
 
 //MARK:- QuestionListener
 extension SurveyViewController: QuestionListener{
+    
+    
     func setOpenEndedAnswer(text: String) {
         answer[currentPage.index] = Answer(
             type: "open",
@@ -326,7 +349,8 @@ extension SurveyViewController: QuestionListener{
             fillBlankAnswer: nil,
             multipleChoiceAnswer: nil,
             singleMultipleAnswer: nil,
-            openEndedAnswer: text)
+            openEndedAnswer: text,
+            timeDurationAnswer: nil)
     }
     
     func setFillBlankAnswer(selected: Int) {
@@ -337,7 +361,8 @@ extension SurveyViewController: QuestionListener{
             fillBlankAnswer: selected,
             multipleChoiceAnswer: nil,
             singleMultipleAnswer: nil,
-            openEndedAnswer: nil)
+            openEndedAnswer: nil,
+            timeDurationAnswer: nil)
     }
     
     func setLikertAnswer(selected: Int) {
@@ -348,7 +373,8 @@ extension SurveyViewController: QuestionListener{
             fillBlankAnswer: nil,
             multipleChoiceAnswer: nil,
             singleMultipleAnswer: nil,
-            openEndedAnswer: nil)
+            openEndedAnswer: nil,
+            timeDurationAnswer: nil)
     }
     
     func setMultipleAnswersAnswer(selected: [Int]) {
@@ -359,7 +385,8 @@ extension SurveyViewController: QuestionListener{
             fillBlankAnswer: nil,
             multipleChoiceAnswer: selected,
             singleMultipleAnswer: nil,
-            openEndedAnswer: nil)
+            openEndedAnswer: nil,
+            timeDurationAnswer: nil)
     }
     
     
@@ -371,7 +398,20 @@ extension SurveyViewController: QuestionListener{
             fillBlankAnswer: nil,
             multipleChoiceAnswer: nil,
             singleMultipleAnswer: selected,
-            openEndedAnswer: nil)
+            openEndedAnswer: nil,
+            timeDurationAnswer: nil)
+    }
+    
+    func setTimeDurationAnswer(selected: DurationAnswer) {
+        answer[currentPage.index] = Answer(
+            type: "duration",
+            index: currentPage.index,
+            likertAnswer: nil,
+            fillBlankAnswer: nil,
+            multipleChoiceAnswer: nil,
+            singleMultipleAnswer: nil,
+            openEndedAnswer: nil,
+            timeDurationAnswer: selected)
     }
     
     

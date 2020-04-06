@@ -22,6 +22,7 @@
 		F11499FB2414257F00DC988A /* CallToActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */; };
 		F11499FD241575DA00DC988A /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */; };
 		F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FE2416384700DC988A /* CellTimerListener.swift */; };
+		F13AED2D243B1EED0070EF26 /* TimeDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
 		F1532DB023EABA4D00171355 /* SurveyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* SurveyRepository.swift */; };
 		F1532DB223EAC67C00171355 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DB123EAC67C00171355 /* EncodableExtension.swift */; };
@@ -107,6 +108,7 @@
 		F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToActionTableViewCell.swift; sourceTree = "<group>"; };
 		F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		F11499FE2416384700DC988A /* CellTimerListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTimerListener.swift; sourceTree = "<group>"; };
+		F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDurationViewController.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1532DAF23EABA4D00171355 /* SurveyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyRepository.swift; sourceTree = "<group>"; };
 		F1532DB123EAC67C00171355 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				F15658B023E3418B00EC2796 /* FooterViewController.swift */,
 				F17F3485243757AC00CD64BB /* SingleItemTableViewCell.swift */,
 				F17F348D243A51E400CD64BB /* MultiItemTableViewCell.swift */,
+				F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */,
 			);
 			path = QuestionsViewControllers;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
 				F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */,
 				F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */,
+				F13AED2D243B1EED0070EF26 /* TimeDurationViewController.swift in Sources */,
 				F1DB199F24275D810068F49E /* NextButton.swift in Sources */,
 				F15658AB23E33DF900EC2796 /* MultipleChoiceViewController.swift in Sources */,
 				F178752323E4160E003D16D1 /* Type.swift in Sources */,

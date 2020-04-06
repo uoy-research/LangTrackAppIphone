@@ -40,7 +40,6 @@ class LikertScaleViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        //radioButton3.isSelected = true
         likertTextLabel.text = theQuestion.text
         descriptionLabel.text = ""//theQuestion.description
         likertMaxLabel.text = theQuestion.likertMax

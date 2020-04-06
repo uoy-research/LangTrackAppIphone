@@ -19,4 +19,5 @@ protocol QuestionListener{
     func setLikertAnswer(selected: Int)
     func setOpenEndedAnswer(text: String)
     func setFillBlankAnswer(selected: Int)
+    func setTimeDurationAnswer(selected: DurationAnswer)
 }

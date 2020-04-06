@@ -15,5 +15,6 @@ enum Type: String,  Codable {
     case multipleChoice = "multi"
     case singleMultipleAnswers = "single"
     case openEndedTextResponses = "open"
+    case timeDuration = "duration"
     case footer = "footer"
 }

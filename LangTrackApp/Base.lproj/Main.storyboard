@@ -1740,13 +1740,129 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7E1-gz-oSy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="1545"/>
+            <point key="canvasLocation" x="3383" y="1534"/>
+        </scene>
+        <!--Time Duration View Controller-->
+        <scene sceneID="DWd-rq-fXe">
+            <objects>
+                <viewController storyboardIdentifier="timeDuration" id="UGs-qz-TAY" customClass="TimeDurationViewController" customModule="Lang_Track_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fKe-nm-dvL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmh-Gk-RIJ" customClass="NextButton" customModule="Lang_Track_App" customModuleProvider="target">
+                                <rect key="frame" x="217" y="802" width="177" height="50"/>
+                                <color key="backgroundColor" name="lta_blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="o9B-2I-0CR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="UGs-qz-TAY" eventType="touchUpInside" id="sFM-FO-xXn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLk-8S-07U">
+                                <rect key="frame" x="20" y="802" width="177" height="50"/>
+                                <color key="backgroundColor" name="lta_blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Xdw-j5-H8h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="UGs-qz-TAY" eventType="touchUpInside" id="c1P-8X-XML"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_duration_light" translatesAutoresizingMaskIntoConstraints="NO" id="7kb-kh-bRe">
+                                <rect key="frame" x="157" y="99.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="fSv-JY-1Qa"/>
+                                    <constraint firstAttribute="height" constant="100" id="xjc-mH-ahC"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvX-na-goj">
+                                <rect key="frame" x="0.0" y="207.5" width="414" height="594.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Sd-0x-8nG">
+                                        <rect key="frame" x="0.0" y="79" width="414" height="139"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xne-9c-lfg">
+                                                <rect key="frame" x="31" y="39" width="352" height="100"/>
+                                                <color key="backgroundColor" name="lta_light_grey"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="fd2-VL-Ozj"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-yX-W1h">
+                                                <rect key="frame" x="30" y="0.0" width="354" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Xne-9c-lfg" secondAttribute="bottom" id="Czy-7k-D4Y"/>
+                                            <constraint firstItem="FqD-yX-W1h" firstAttribute="top" secondItem="2Sd-0x-8nG" secondAttribute="top" id="FpT-6f-e6k"/>
+                                            <constraint firstItem="Xne-9c-lfg" firstAttribute="width" secondItem="2Sd-0x-8nG" secondAttribute="width" multiplier="0.85" id="GNY-yH-nSg"/>
+                                            <constraint firstItem="FqD-yX-W1h" firstAttribute="leading" secondItem="2Sd-0x-8nG" secondAttribute="leading" constant="30" id="QKq-HO-HpG"/>
+                                            <constraint firstAttribute="trailing" secondItem="FqD-yX-W1h" secondAttribute="trailing" constant="30" id="Wgb-pl-GBZ"/>
+                                            <constraint firstItem="Xne-9c-lfg" firstAttribute="top" secondItem="FqD-yX-W1h" secondAttribute="bottom" constant="15" id="njM-gb-G6B"/>
+                                            <constraint firstItem="Xne-9c-lfg" firstAttribute="centerX" secondItem="2Sd-0x-8nG" secondAttribute="centerX" id="rey-nV-Vlg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="2Sd-0x-8nG" firstAttribute="leading" secondItem="vvX-na-goj" secondAttribute="leading" id="mfS-0C-FTj"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Sd-0x-8nG" secondAttribute="trailing" id="smk-8p-LlZ"/>
+                                    <constraint firstItem="2Sd-0x-8nG" firstAttribute="centerY" secondItem="vvX-na-goj" secondAttribute="centerY" multiplier="2:4" id="vgo-s2-GdF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ksm-IF-pth" firstAttribute="bottom" secondItem="BLk-8S-07U" secondAttribute="bottom" constant="10" id="4ce-7g-ESo"/>
+                            <constraint firstItem="qmh-Gk-RIJ" firstAttribute="width" secondItem="BLk-8S-07U" secondAttribute="width" id="8np-Dc-2d7"/>
+                            <constraint firstItem="qmh-Gk-RIJ" firstAttribute="top" secondItem="vvX-na-goj" secondAttribute="bottom" id="H4F-li-0KH"/>
+                            <constraint firstItem="vvX-na-goj" firstAttribute="top" secondItem="7kb-kh-bRe" secondAttribute="bottom" constant="8" symbolic="YES" id="RPW-ht-948"/>
+                            <constraint firstAttribute="trailing" secondItem="qmh-Gk-RIJ" secondAttribute="trailing" constant="20" id="TtC-jm-On3"/>
+                            <constraint firstItem="Ksm-IF-pth" firstAttribute="bottom" secondItem="qmh-Gk-RIJ" secondAttribute="bottom" constant="10" id="VYI-Jz-TaE"/>
+                            <constraint firstItem="BLk-8S-07U" firstAttribute="leading" secondItem="Ksm-IF-pth" secondAttribute="leading" constant="20" id="cUR-tt-ekW"/>
+                            <constraint firstItem="7kb-kh-bRe" firstAttribute="centerY" secondItem="fKe-nm-dvL" secondAttribute="centerY" multiplier="1:3" id="lN4-ha-20B"/>
+                            <constraint firstItem="vvX-na-goj" firstAttribute="leading" secondItem="Ksm-IF-pth" secondAttribute="leading" id="q33-sZ-h5p"/>
+                            <constraint firstItem="vvX-na-goj" firstAttribute="trailing" secondItem="Ksm-IF-pth" secondAttribute="trailing" id="xgc-Fa-HfU"/>
+                            <constraint firstItem="7kb-kh-bRe" firstAttribute="centerX" secondItem="fKe-nm-dvL" secondAttribute="centerX" id="yUM-Cn-VpA"/>
+                            <constraint firstItem="qmh-Gk-RIJ" firstAttribute="leading" secondItem="BLk-8S-07U" secondAttribute="trailing" constant="20" id="znR-65-B16"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ksm-IF-pth"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="durationTextLabel" destination="FqD-yX-W1h" id="Aev-JE-Ae0"/>
+                        <outlet property="nextButton" destination="qmh-Gk-RIJ" id="god-6R-TK3"/>
+                        <outlet property="previousButton" destination="BLk-8S-07U" id="APc-6A-Nj9"/>
+                        <outlet property="theIcon" destination="7kb-kh-bRe" id="I8Z-GJ-I3g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zda-xY-oFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="1533"/>
         </scene>
     </scenes>
     <resources>
         <image name="hamburger_menu2" width="1024" height="1024"/>
         <image name="lta_icon_blank_light" width="507" height="506"/>
         <image name="lta_icon_done_light" width="507" height="506"/>
+        <image name="lta_icon_duration_light" width="507" height="506"/>
         <image name="lta_icon_likert_light" width="507" height="506"/>
         <image name="lta_icon_multiple_choice_light" width="507" height="506"/>
         <image name="lta_icon_open_light" width="507" height="506"/>
