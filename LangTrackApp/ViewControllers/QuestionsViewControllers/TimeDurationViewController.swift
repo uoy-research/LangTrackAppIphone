@@ -20,6 +20,8 @@ class TimeDurationViewController: UIViewController {
     var listener: QuestionListener?
     var theQuestion = Question()
     var theAnswer: Answer?
+    var selectedHour = 0
+    var selectedMinutes = 0
     let hours = ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
     let minutes = ["00","05","10","15","20","25","30","35","40","45","50","55"]
     
@@ -35,19 +37,51 @@ class TimeDurationViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        durationTextLabel.text = "Hur lång tid tog det?"//theQuestion.text
+        durationTextLabel.text = theQuestion.text
+        setTimePickers()
+    }
+    
+    func setTimePickers(){
+        if self.theAnswer?.timeDurationAnswer != nil{
+            let seconds = self.theAnswer!.timeDurationAnswer ?? 0
+            if seconds != 0 {
+                selectedHour = seconds / (60 * 60)
+                selectedMinutes = (seconds - (selectedHour * 60 * 60)) / 60
+                
+                let hoursInString = String(selectedHour)
+                var minutesInString = String(selectedMinutes)
+                if minutesInString == "0"{
+                    minutesInString = "00"
+                }else if minutesInString == "5"{
+                    minutesInString = "05"
+                }
+                hourPickerView.selectRow(hours.firstIndex(of: hoursInString) ?? 0, inComponent: 0, animated: false)
+                minutesPickerView.selectRow(minutes.firstIndex(of: minutesInString) ?? 0, inComponent: 0, animated: false)
+            }
+        }
     }
     
     func setListener(listener: QuestionListener) {
         self.listener = listener
     }
     
+    func setAnswer() -> Int{
+        //hours and minutes to seconds
+        var tempDuration = 0
+        tempDuration += (selectedHour * 60 * 60)
+        tempDuration += (selectedMinutes * 60)
+        print("tempDuration: \(tempDuration)")
+        return tempDuration
+    }
+    
 
     @IBAction func previousButtonPressed(_ sender: Any) {
+        listener?.setTimeDurationAnswer(selected: setAnswer())
         listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        listener?.setTimeDurationAnswer(selected: setAnswer())
         listener?.nextQuestion(current: theQuestion)
     }
     
@@ -95,9 +129,11 @@ extension TimeDurationViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0{
-            print("you selected \(hours[row]) hours")
+            selectedHour = Int.init(hours[row]) ?? 0
+            print("you selected \(selectedHour) hours")
         }else if pickerView.tag == 1{
-            print("you selected \(minutes[row]) minutes")
+            selectedMinutes = Int.init(minutes[row]) ?? 0
+            print("you selected \(selectedMinutes) minutes")
         }
     }
 }

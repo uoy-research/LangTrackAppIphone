@@ -402,7 +402,7 @@ extension SurveyViewController: QuestionListener{
             timeDurationAnswer: nil)
     }
     
-    func setTimeDurationAnswer(selected: DurationAnswer) {
+    func setTimeDurationAnswer(selected: Int) {
         answer[currentPage.index] = Answer(
             type: "duration",
             index: currentPage.index,

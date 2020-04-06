@@ -16,7 +16,7 @@ class Answer : Codable{
     var multipleChoiceAnswer: [Int]? = nil
     var singleMultipleAnswer: Int? = nil
     var openEndedAnswer: String? = nil
-    var timeDurationAnswer: DurationAnswer? = nil
+    var timeDurationAnswer: Int? = nil // in seconds
     
     init(type: String,
         index: Int,
@@ -25,7 +25,7 @@ class Answer : Codable{
          multipleChoiceAnswer: [Int]? = nil,
          singleMultipleAnswer: Int? = nil,
          openEndedAnswer: String? = nil,
-         timeDurationAnswer: DurationAnswer? = nil) {
+         timeDurationAnswer: Int? = nil) {
         self.type = type
         self.index = index
         self.likertAnswer = likertAnswer
@@ -48,9 +48,4 @@ class Answer : Codable{
             return false
         }
     }
-}
-
-class DurationAnswer: Codable{
-    var hours: Int = 0
-    var minutes: Int = 0
 }
