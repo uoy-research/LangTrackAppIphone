@@ -12,16 +12,16 @@ class MultipleChoiceViewController: UIViewController {
     
     @IBOutlet weak var nextButton: NextButton!
     @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var multipleChoiceTextLabel: UILabel!
-    @IBOutlet weak var choicesContainer: UIView!
-    @IBOutlet weak var checkboxContainerHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var containerBackground: UIView!
-    @IBOutlet weak var checkboxContainerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var multiTableView: SelfSizedTableView!
     @IBOutlet weak var theIcon: UIImageView!
+    @IBOutlet weak var tableviewContainer: UIView!
+    
     var listener: QuestionListener?
     var theQuestion = Question()
-    var theAnswer: Answer? 
+    var theAnswer: Answer?
+    var selectedAnswers = [Int]()
+    let fontInCell = UIFont.systemFont(ofSize: 19)
+    var cellWidth: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,108 +29,129 @@ class MultipleChoiceViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
+        multiTableView.delegate = self
+        multiTableView.rowHeight = UITableView.automaticDimension
+        multiTableView.estimatedRowHeight = 60
+        multiTableView.separatorStyle = .none
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        multiTableView.maxHeight = tableviewContainer.frame.height
+        multiTableView.reloadData()
     }
     
     func setInfo(question: Question){
         self.theQuestion = question
-        multipleChoiceTextLabel.text = theQuestion.text
+        setTableviewWidth()
         nextButton.setEnabled(enabled: false)
-        fillCheckboxContainer()
+        setSelectedAnswer()
+        multiTableView.reloadData()
+        self.view.layoutIfNeeded()
     }
     
     func setListener(listener: QuestionListener) {
         self.listener = listener
     }
     
-    func emptyCheckboxContainer(){
-        for v in choicesContainer.subviews{
-            v.removeFromSuperview()
-        }
-    }
-    
-    func checkCheckboxesIfSelected(){
-        for v in choicesContainer.subviews{
-            if let theCheckbox = v as? VKCheckbox{
-                if theCheckbox.isOn{
+    func setSelectedAnswer(){
+        if theAnswer != nil {
+            if theAnswer?.index == theQuestion.index{
+                if theAnswer!.multipleChoiceAnswer != nil{
+                    selectedAnswers = theAnswer!.multipleChoiceAnswer!
                     nextButton.setEnabled(enabled: true)
-                    break
-                }else{
-                    nextButton.setEnabled(enabled: false)
                 }
             }
         }
     }
     
-    func fillCheckboxContainer(){
-        emptyCheckboxContainer()
-        let spacer = 10
-        let size = 29
-        var maxIntrinsicWidth: CGFloat = 100
-        if theQuestion.multipleChoisesAnswers != nil{
-            for (i, choice) in theQuestion.multipleChoisesAnswers!.enumerated() {
-                let check = VKCheckbox(frame: CGRect(x: 0, y: ((size + spacer) * i), width: size, height: size))
-                //check.bgColorSelected = .white
-                check.bgColorSelected = UIColor(named: "lta_blue") ?? .black
-                check.color = .white
-                check.borderWidth = 1.5
-                check.tag = i
-                if theAnswer != nil {
-                    if theAnswer?.index == theQuestion.index{
-                        if theAnswer!.multipleChoiceAnswer != nil{
-                            if theAnswer!.multipleChoiceAnswer!.contains(check.tag){
-                                check.setOn(true)
-                                nextButton.setEnabled(enabled: true)
-                            }
-                        }
-                    }
-                }
-                check.checkboxValueChangedBlock = {
-                    tag, ison in
-                    self.saveAnswers()
-                    self.checkCheckboxesIfSelected()
-                }
-                let containerWidth = Int(containerBackground.frame.width * 0.92) - size - spacer
-                let text = UILabel(frame: CGRect(x: size + spacer, y: ((size + spacer) * i), width: containerWidth, height: size))
-                text.text = choice
-                text.textAlignment = .left
-                text.font = text.font.withSize(19)
-                text.contentMode = .center
-                text.numberOfLines = 0
-                if text.intrinsicContentSize.width > maxIntrinsicWidth{
-                    maxIntrinsicWidth = text.intrinsicContentSize.width
-                }
-                choicesContainer.addSubview(check)
-                choicesContainer.addSubview(text)
-                checkboxContainerHeightConstraint.constant = CGFloat((size + spacer) * (i+1))
-            }
-            if (maxIntrinsicWidth + CGFloat(size + spacer)) < containerBackground.frame.width{
-                checkboxContainerWidthConstraint.constant = maxIntrinsicWidth + CGFloat(size + spacer)
-            }else{
-                checkboxContainerWidthConstraint.constant = containerBackground.frame.width
-            }
+    func setTableviewWidth(){
+        let longest = theQuestion.multipleChoisesAnswers?.sorted(by: {$0.count > $1.count}).first
+        let longestWidth = (longest?.width(withConstrainedHeight: 21, font: UIFont.systemFont(ofSize: 18, weight: .regular)) ?? 0) + 100
+        print("tableviewContainer.frame.width: \(tableviewContainer.frame.width)")
+        print("longestWidth: \(longestWidth)")
+        print("cellWidth: \(cellWidth)")
+        if longestWidth > tableviewContainer.frame.width{
+            cellWidth = tableviewContainer.frame.width - 25
+        }else{
+            cellWidth = longestWidth
         }
     }
     
     func saveAnswers(){
-        var answers = [Int]()
-        for v in choicesContainer.subviews{
-            if v is VKCheckbox{
-                let check = v as! VKCheckbox
-                if check.isOn{
-                    if !answers.contains(check.tag){
-                        answers.append(check.tag)
-                    }
-                }
-            }
-        }
-        listener?.setMultipleAnswersAnswer(selected: answers)
+        listener?.setMultipleAnswersAnswer(selected: selectedAnswers)
     }
 
     @IBAction func previousButtonPressed(_ sender: Any) {
+        saveAnswers()
+        selectedAnswers.removeAll()
         listener?.previousQuestion(current: theQuestion)
     }
 
     @IBAction func nextButtonPressed(_ sender: Any) {
+        saveAnswers()
+        selectedAnswers.removeAll()
         listener?.nextQuestion(current: theQuestion)
     }
+}
+
+extension MultipleChoiceViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return theQuestion.multipleChoisesAnswers?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "multi", for: indexPath)
+        
+        if let cell = cell as? MultiItemTableViewCell{
+            
+            cell.choiceLabel.text = theQuestion.multipleChoisesAnswers?[indexPath.row]
+            cell.choiceLabel.font = fontInCell
+            cell.checkBox.bgColorSelected = UIColor(named: "lta_blue") ?? .black
+            cell.checkBox.color = .white
+            cell.checkBox.borderWidth = 1.5
+            cell.tag = indexPath.row
+            cell.selectionStyle = .none
+            if selectedAnswers.contains(indexPath.row){
+                cell.setCheck(enabled: true)
+                nextButton.setEnabled(enabled: true)
+            }else{
+                cell.setCheck(enabled: false)
+            }
+            cell.cellWithConstraint.constant = self.cellWidth
+        }
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !selectedAnswers.contains(indexPath.row){
+            selectedAnswers.append(indexPath.row)
+        }else{
+            selectedAnswers.removeAll(where: {$0 == indexPath.row})
+        }
+        if selectedAnswers.isEmpty{
+            self.nextButton.setEnabled(enabled: false)
+        }else{
+            self.nextButton.setEnabled(enabled: true)
+        }
+        multiTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let theTitle = theQuestion.text
+        let s = theTitle.height(withConstrainedWidth: multiTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
+        return s
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let tempLabel = UILabel()
+        tempLabel.numberOfLines = 0
+        tempLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        tempLabel.textAlignment = .center
+        tempLabel.contentMode = .top
+        tempLabel.text = theQuestion.text
+        tempLabel.backgroundColor = UIColor.white
+
+        return tempLabel
+    }
+    
 }
