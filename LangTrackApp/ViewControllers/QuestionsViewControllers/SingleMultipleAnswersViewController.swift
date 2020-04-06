@@ -45,7 +45,6 @@ class SingleMultipleAnswersViewController: UIViewController {
         self.theQuestion = question
         setTableviewWidth()
         nextButton.setEnabled(enabled: false)
-        singleTableView.maxHeight = 3
         setSelectedAnswer()
         singleTableView.reloadData()
         self.view.layoutIfNeeded()
@@ -70,7 +69,7 @@ class SingleMultipleAnswersViewController: UIViewController {
         let longest = theQuestion.singleMultipleAnswers?.sorted(by: {$0.count > $1.count}).first
         let longestWidth = (longest?.width(withConstrainedHeight: 21, font: UIFont.systemFont(ofSize: 18, weight: .regular)) ?? 0) + 100
         if longestWidth > tableviewContainer.frame.width{
-            cellWidth = tableviewContainer.frame.width
+            cellWidth = tableviewContainer.frame.width - 25
         }else{
             cellWidth = longestWidth
         }
@@ -134,7 +133,7 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let theTitle = theQuestion.text
-        let s = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 8
+        let s = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
         return s
     }
     
@@ -143,12 +142,10 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
         vw.numberOfLines = 0
         vw.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         vw.textAlignment = .center
+        vw.contentMode = .top
         vw.text = theQuestion.text
         vw.backgroundColor = UIColor.white
 
         return vw
-    }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
     }
 }
