@@ -21,7 +21,7 @@ class SingleMultipleAnswersViewController: UIViewController {
     var listener: QuestionListener?
     var theQuestion = Question()
     var theAnswer: Answer?
-    let fontInCell = UIFont.systemFont(ofSize: 19)
+    let fontInCell = UIFont.systemFont(ofSize: 18)
     var cellWidth: CGFloat = 100
     
     override func viewDidLoad() {
@@ -48,6 +48,8 @@ class SingleMultipleAnswersViewController: UIViewController {
         setSelectedAnswer()
         singleTableView.reloadData()
         self.view.layoutIfNeeded()
+        setTableviewWidth()
+        singleTableView.reloadData()
     }
     
     func setListener(listener: QuestionListener) {

@@ -74,6 +74,8 @@ struct SurveyRepository {
                     body.multiValue = answer.multipleChoiceAnswer
                 case "open":
                     body.stringValue = answer.openEndedAnswer
+                case "duration":
+                    body.intValue = answer.timeDurationAnswer
                 default:
                     print("answersDict, no match in switch")
                 }
@@ -93,6 +95,7 @@ struct SurveyRepository {
                            parameters: theBody,
                            encoder: JSONParameterEncoder.default,
                            headers: headers).response { response in
+                            print(response)
                     debugPrint(response)
                 }
             }
@@ -436,15 +439,59 @@ struct SurveyRepository {
                                         }
                                         switch type {
                                         case "likert":
-                                            tempAnswers.append(Answer(type: "likert",index: index, likertAnswer: intValue, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "likert",
+                                                                      index: index,
+                                                                      likertAnswer: intValue,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: nil))
                                         case "single":
-                                            tempAnswers.append(Answer(type: "single",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: intValue, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "single",
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: intValue,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: nil))
                                         case "multi":
-                                            tempAnswers.append(Answer(type: "multi",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: multiValue, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "multi",
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: multiValue,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: nil))
                                         case "blanks":
-                                            tempAnswers.append(Answer(type: "blanks",index: index, likertAnswer: nil, fillBlankAnswer: intValue, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: nil))
+                                            tempAnswers.append(Answer(type: "blanks",
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: intValue,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: nil))
                                         case "open":
-                                            tempAnswers.append(Answer(type: "open",index: index, likertAnswer: nil, fillBlankAnswer: nil, multipleChoiceAnswer: nil, singleMultipleAnswer: nil, openEndedAnswer: stringValue))
+                                            tempAnswers.append(Answer(type: "open",
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: stringValue,
+                                                                      timeDurationAnswer: nil))
+                                        case "duration":
+                                            tempAnswers.append(Answer(type: "duration",
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: intValue))
                                         default:
                                             print("answersDict, no match in switch")
                                         }

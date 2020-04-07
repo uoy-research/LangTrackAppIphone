@@ -37,6 +37,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         authHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
             print("auth addStateDidChangeListener email: \(auth.currentUser?.email ?? "nil")")
             if auth.currentUser != nil{
+                var username = auth.currentUser?.email
+                username!.until("@")
+                if username != nil{
+                    if username! != ""{
+                        Messaging.messaging().subscribe(toTopic: username!) { error in
+                            if error != nil{
+                                print("messaging().subscribe ERROR: \(error.debugDescription)")
+                            }else{
+                                print("Messaging subscribed to \(username!)")
+                            }
+                        }
+                    }
+                }
                 self.close()
             }
         }

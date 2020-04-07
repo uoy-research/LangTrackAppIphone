@@ -141,15 +141,7 @@ class MainViewController: UIViewController {
                 }
                 latestFetchMilli = Date().millisecondsSince1970
             }*/
-            var username = Auth.auth().currentUser?.email
-            username!.until("@")
-            if username != nil{
-                if username! != ""{
-                    Messaging.messaging().subscribe(toTopic: username!) { error in
-                        print("Messaging subscribed to \(username!)")
-                    }
-                }
-            }
+            
             fetchAssignmentsAndSetUserName()
         }
     }
