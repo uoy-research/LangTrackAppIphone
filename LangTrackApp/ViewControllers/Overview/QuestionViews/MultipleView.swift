@@ -8,10 +8,10 @@
 
 import UIKit
 
-class LikertView: UIView {
+class MultipleView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var choiceLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,12 +22,12 @@ class LikertView: UIView {
         commonInit()
     }
     
-    func setInfo(question: Question){
-        testLabel.text = String(question.index)
+    func setInfo(choice: String){
+        choiceLabel.text = choice
     }
     
     func commonInit(){
-        Bundle.main.loadNibNamed("LikertView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("MultipleView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

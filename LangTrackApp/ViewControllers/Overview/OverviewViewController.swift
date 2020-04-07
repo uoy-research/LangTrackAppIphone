@@ -80,48 +80,56 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         case Type.multipleChoice.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         case Type.singleMultipleAnswers.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)
             if let cell = cell as? OverviewSingleTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         case Type.timeDuration.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "duration", for: indexPath)
             if let cell = cell as? OverviewDurationTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         case Type.openEndedTextResponses.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         case Type.fillInTheBlank.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         case Type.footer.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         default://header
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
                 cell.setValues(item: listObject)
+                cell.selectionStyle = .none
             }
             return cell
         }

@@ -853,13 +853,41 @@
                                             <outlet property="durationTextLabel" destination="yH7-07-A2j" id="pSA-43-y6Q"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="single" rowHeight="150" id="wNS-jW-p5g" customClass="OverviewSingleTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="304.5" width="414" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="single" rowHeight="100" id="wNS-jW-p5g" customClass="OverviewSingleTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="304.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wNS-jW-p5g" id="fdj-va-pdd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfi-MO-YHv">
+                                                    <rect key="frame" x="32" y="19" width="350" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lKV-Qn-QOl">
+                                                    <rect key="frame" x="35" y="60.5" width="344" height="28.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28.5" id="kXC-Ax-yi1"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lKV-Qn-QOl" firstAttribute="top" secondItem="Wfi-MO-YHv" secondAttribute="bottom" constant="20" id="9V4-bP-BEK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lKV-Qn-QOl" secondAttribute="trailing" constant="15" id="Odq-CM-K5W"/>
+                                                <constraint firstItem="Wfi-MO-YHv" firstAttribute="top" secondItem="fdj-va-pdd" secondAttribute="topMargin" constant="8" id="hIS-If-SBl"/>
+                                                <constraint firstItem="Wfi-MO-YHv" firstAttribute="leading" secondItem="fdj-va-pdd" secondAttribute="leadingMargin" constant="12" id="ibh-YM-Wbx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lKV-Qn-QOl" secondAttribute="bottom" id="mJe-v0-2GV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wfi-MO-YHv" secondAttribute="trailing" constant="12" id="rjS-42-8DY"/>
+                                                <constraint firstItem="lKV-Qn-QOl" firstAttribute="leading" secondItem="fdj-va-pdd" secondAttribute="leadingMargin" constant="15" id="y81-oW-W7r"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="singleStackView" destination="lKV-Qn-QOl" id="1QS-DK-BUg"/>
+                                            <outlet property="singleStackViewHeightConstraint" destination="kXC-Ax-yi1" id="s0U-4b-RPd"/>
+                                            <outlet property="singleTextLabel" destination="Wfi-MO-YHv" id="AmX-g7-ZgJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

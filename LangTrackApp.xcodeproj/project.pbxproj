@@ -25,6 +25,8 @@
 		F1399CD9243C6EC800545D47 /* OverviewLikertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CD8243C6EC800545D47 /* OverviewLikertTableViewCell.swift */; };
 		F1399CDB243CACA700545D47 /* OverviewDurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */; };
 		F1399CDD243CC00D00545D47 /* OverviewSingleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */; };
+		F1399CDF243D0D9400545D47 /* SingleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1399CDE243D0D9400545D47 /* SingleView.xib */; };
+		F1399CE1243D0DA600545D47 /* SingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CE0243D0DA600545D47 /* SingleView.swift */; };
 		F13AED2D243B1EED0070EF26 /* TimeDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
 		F1532DB023EABA4D00171355 /* SurveyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* SurveyRepository.swift */; };
@@ -65,8 +67,8 @@
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
-		F1DB19992424CD480068F49E /* LikertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB19982424CD480068F49E /* LikertView.xib */; };
-		F1DB199B2424CD610068F49E /* LikertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199A2424CD610068F49E /* LikertView.swift */; };
+		F1DB19992424CD480068F49E /* MultipleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB19982424CD480068F49E /* MultipleView.xib */; };
+		F1DB199B2424CD610068F49E /* MultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199A2424CD610068F49E /* MultipleView.swift */; };
 		F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199C2424FEC10068F49E /* IncludeIf.swift */; };
 		F1DB199F24275D810068F49E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199E24275D810068F49E /* NextButton.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +116,8 @@
 		F1399CD8243C6EC800545D47 /* OverviewLikertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewLikertTableViewCell.swift; sourceTree = "<group>"; };
 		F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDurationTableViewCell.swift; sourceTree = "<group>"; };
 		F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSingleTableViewCell.swift; sourceTree = "<group>"; };
+		F1399CDE243D0D9400545D47 /* SingleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleView.xib; sourceTree = "<group>"; };
+		F1399CE0243D0DA600545D47 /* SingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleView.swift; sourceTree = "<group>"; };
 		F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDurationViewController.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1532DAF23EABA4D00171355 /* SurveyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyRepository.swift; sourceTree = "<group>"; };
@@ -160,8 +164,8 @@
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
-		F1DB19982424CD480068F49E /* LikertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikertView.xib; sourceTree = "<group>"; };
-		F1DB199A2424CD610068F49E /* LikertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikertView.swift; sourceTree = "<group>"; };
+		F1DB19982424CD480068F49E /* MultipleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleView.xib; sourceTree = "<group>"; };
+		F1DB199A2424CD610068F49E /* MultipleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleView.swift; sourceTree = "<group>"; };
 		F1DB199C2424FEC10068F49E /* IncludeIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeIf.swift; sourceTree = "<group>"; };
 		F1DB199E24275D810068F49E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -413,8 +417,10 @@
 		F1DB19972424CCDB0068F49E /* QuestionViews */ = {
 			isa = PBXGroup;
 			children = (
-				F1DB19982424CD480068F49E /* LikertView.xib */,
-				F1DB199A2424CD610068F49E /* LikertView.swift */,
+				F1DB19982424CD480068F49E /* MultipleView.xib */,
+				F1DB199A2424CD610068F49E /* MultipleView.swift */,
+				F1399CDE243D0D9400545D47 /* SingleView.xib */,
+				F1399CE0243D0DA600545D47 /* SingleView.swift */,
 			);
 			path = QuestionViews;
 			sourceTree = "<group>";
@@ -533,9 +539,10 @@
 				F156587D23E2DD7600EC2796 /* LaunchScreen.storyboard in Resources */,
 				F10B84B423E46025003CAC76 /* Colors.xcassets in Resources */,
 				F16D557023E8238500DD92A1 /* GoogleService-Info.plist in Resources */,
+				F1399CDF243D0D9400545D47 /* SingleView.xib in Resources */,
 				F156587A23E2DD7600EC2796 /* Assets.xcassets in Resources */,
 				F156587823E2DD7500EC2796 /* Main.storyboard in Resources */,
-				F1DB19992424CD480068F49E /* LikertView.xib in Resources */,
+				F1DB19992424CD480068F49E /* MultipleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +669,7 @@
 				F17F3486243757AC00CD64BB /* SingleItemTableViewCell.swift in Sources */,
 				F11499F6240E543300DC988A /* ViewExtension.swift in Sources */,
 				F15658A923E33DE500EC2796 /* FillInTheBlankViewController.swift in Sources */,
+				F1399CE1243D0DA600545D47 /* SingleView.swift in Sources */,
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
 				F1399CDB243CACA700545D47 /* OverviewDurationTableViewCell.swift in Sources */,
 				F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */,
@@ -676,7 +684,7 @@
 				F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */,
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,
-				F1DB199B2424CD610068F49E /* LikertView.swift in Sources */,
+				F1DB199B2424CD610068F49E /* MultipleView.swift in Sources */,
 				F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */,
 				F13C4B1023E968F80028F912 /* User.swift in Sources */,
 			);
