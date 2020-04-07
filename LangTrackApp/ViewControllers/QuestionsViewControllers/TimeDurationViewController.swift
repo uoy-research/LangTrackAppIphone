@@ -70,7 +70,6 @@ class TimeDurationViewController: UIViewController {
         var tempDuration = 0
         tempDuration += (selectedHour * 60 * 60)
         tempDuration += (selectedMinutes * 60)
-        print("tempDuration: \(tempDuration)")
         return tempDuration
     }
     
@@ -130,10 +129,8 @@ extension TimeDurationViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0{
             selectedHour = Int.init(hours[row]) ?? 0
-            print("you selected \(selectedHour) hours")
         }else if pickerView.tag == 1{
             selectedMinutes = Int.init(minutes[row]) ?? 0
-            print("you selected \(selectedMinutes) minutes")
         }
     }
 }

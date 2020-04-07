@@ -20,7 +20,7 @@ class MultipleChoiceViewController: UIViewController {
     var theQuestion = Question()
     var theAnswer: Answer?
     var selectedAnswers = [Int]()
-    let fontInCell = UIFont.systemFont(ofSize: 19)
+    let fontInCell = UIFont.systemFont(ofSize: 18)
     var cellWidth: CGFloat = 100
     
     override func viewDidLoad() {
@@ -47,6 +47,8 @@ class MultipleChoiceViewController: UIViewController {
         setSelectedAnswer()
         multiTableView.reloadData()
         self.view.layoutIfNeeded()
+        setTableviewWidth()
+        multiTableView.reloadData()
     }
     
     func setListener(listener: QuestionListener) {
@@ -67,9 +69,6 @@ class MultipleChoiceViewController: UIViewController {
     func setTableviewWidth(){
         let longest = theQuestion.multipleChoisesAnswers?.sorted(by: {$0.count > $1.count}).first
         let longestWidth = (longest?.width(withConstrainedHeight: 21, font: UIFont.systemFont(ofSize: 18, weight: .regular)) ?? 0) + 100
-        print("tableviewContainer.frame.width: \(tableviewContainer.frame.width)")
-        print("longestWidth: \(longestWidth)")
-        print("cellWidth: \(cellWidth)")
         if longestWidth > tableviewContainer.frame.width{
             cellWidth = tableviewContainer.frame.width - 25
         }else{
