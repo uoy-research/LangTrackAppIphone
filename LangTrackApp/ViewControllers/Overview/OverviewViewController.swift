@@ -73,8 +73,8 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let listObject = questionsWithAnswers.first(where: {$0.question.index == indexPath.row})
-        switch theAssignment?.survey.questions[indexPath.row].type {
+        let listObject = questionsWithAnswers[indexPath.row]
+        switch questionsWithAnswers[indexPath.row].question.type {
             
         case Type.likertScales.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
@@ -85,43 +85,43 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
         case Type.multipleChoice.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+                cell.setValues(item: listObject)
             }
             return cell
         case Type.singleMultipleAnswers.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
-            if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)
+            if let cell = cell as? OverviewSingleTableViewCell{
+                cell.setValues(item: listObject)
             }
             return cell
         case Type.timeDuration.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
-            if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "duration", for: indexPath)
+            if let cell = cell as? OverviewDurationTableViewCell{
+                cell.setValues(item: listObject)
             }
             return cell
         case Type.openEndedTextResponses.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+                cell.setValues(item: listObject)
             }
             return cell
         case Type.fillInTheBlank.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+                cell.setValues(item: listObject)
             }
             return cell
         case Type.footer.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+                cell.setValues(item: listObject)
             }
             return cell
         default://header
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: nil)
+                cell.setValues(item: listObject)
             }
             return cell
         }

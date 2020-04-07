@@ -818,6 +818,49 @@
                                             <outlet property="likertTextLabel" destination="Rhh-uW-ybQ" id="1dB-DA-jyo"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="duration" id="GSa-qv-p0f" customClass="OverviewDurationTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="188" width="414" height="116.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GSa-qv-p0f" id="KBg-p9-s4C">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH7-07-A2j">
+                                                    <rect key="frame" x="32" y="19" width="350" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 timmar 0 minurer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvB-kf-jqC">
+                                                    <rect key="frame" x="32" y="66" width="350" height="27.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EvB-kf-jqC" firstAttribute="leading" secondItem="KBg-p9-s4C" secondAttribute="leadingMargin" constant="12" id="92w-XZ-X7Z"/>
+                                                <constraint firstItem="yH7-07-A2j" firstAttribute="leading" secondItem="KBg-p9-s4C" secondAttribute="leadingMargin" constant="12" id="B9A-f0-8Yg"/>
+                                                <constraint firstItem="EvB-kf-jqC" firstAttribute="top" secondItem="yH7-07-A2j" secondAttribute="bottom" constant="25" id="UQ8-Dp-XeU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yH7-07-A2j" secondAttribute="trailing" constant="12" id="ZRE-sR-a5K"/>
+                                                <constraint firstItem="yH7-07-A2j" firstAttribute="top" secondItem="KBg-p9-s4C" secondAttribute="topMargin" constant="8" id="a1Y-Yq-KcM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="EvB-kf-jqC" secondAttribute="trailing" constant="12" id="apz-7q-d3c"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EvB-kf-jqC" secondAttribute="bottom" constant="12" id="qdp-Ur-3li"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="answerTextLabel" destination="EvB-kf-jqC" id="cPw-wD-1S0"/>
+                                            <outlet property="durationTextLabel" destination="yH7-07-A2j" id="pSA-43-y6Q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="single" rowHeight="150" id="wNS-jW-p5g" customClass="OverviewSingleTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="304.5" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wNS-jW-p5g" id="fdj-va-pdd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="0ah-7w-ZGC" id="Lel-3V-o8O"/>

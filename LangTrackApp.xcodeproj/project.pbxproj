@@ -24,6 +24,7 @@
 		F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11499FE2416384700DC988A /* CellTimerListener.swift */; };
 		F1399CD9243C6EC800545D47 /* OverviewLikertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CD8243C6EC800545D47 /* OverviewLikertTableViewCell.swift */; };
 		F1399CDB243CACA700545D47 /* OverviewDurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */; };
+		F1399CDD243CC00D00545D47 /* OverviewSingleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */; };
 		F13AED2D243B1EED0070EF26 /* TimeDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
 		F1532DB023EABA4D00171355 /* SurveyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* SurveyRepository.swift */; };
@@ -112,6 +113,7 @@
 		F11499FE2416384700DC988A /* CellTimerListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTimerListener.swift; sourceTree = "<group>"; };
 		F1399CD8243C6EC800545D47 /* OverviewLikertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewLikertTableViewCell.swift; sourceTree = "<group>"; };
 		F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDurationTableViewCell.swift; sourceTree = "<group>"; };
+		F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSingleTableViewCell.swift; sourceTree = "<group>"; };
 		F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDurationViewController.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1532DAF23EABA4D00171355 /* SurveyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyRepository.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				F1DB19952424B8A60068F49E /* OverviewViewController.swift */,
 				F1399CD8243C6EC800545D47 /* OverviewLikertTableViewCell.swift */,
 				F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */,
+				F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				F15658AF23E3417700EC2796 /* OpenEndedTextResponsesViewController.swift in Sources */,
 				F178752723E41654003D16D1 /* Question.swift in Sources */,
 				F15658A223E33D1400EC2796 /* SurveyViewController.swift in Sources */,
+				F1399CDD243CC00D00545D47 /* OverviewSingleTableViewCell.swift in Sources */,
 				F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */,
 				F17F34842437344C00CD64BB /* SingleItem.swift in Sources */,
 				F15658B123E3418B00EC2796 /* FooterViewController.swift in Sources */,
