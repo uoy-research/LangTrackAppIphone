@@ -67,8 +67,6 @@
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
-		F1DB19992424CD480068F49E /* MultipleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DB19982424CD480068F49E /* MultipleView.xib */; };
-		F1DB199B2424CD610068F49E /* MultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199A2424CD610068F49E /* MultipleView.swift */; };
 		F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199C2424FEC10068F49E /* IncludeIf.swift */; };
 		F1DB199F24275D810068F49E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199E24275D810068F49E /* NextButton.swift */; };
 /* End PBXBuildFile section */
@@ -164,8 +162,6 @@
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
-		F1DB19982424CD480068F49E /* MultipleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleView.xib; sourceTree = "<group>"; };
-		F1DB199A2424CD610068F49E /* MultipleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleView.swift; sourceTree = "<group>"; };
 		F1DB199C2424FEC10068F49E /* IncludeIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeIf.swift; sourceTree = "<group>"; };
 		F1DB199E24275D810068F49E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -417,8 +413,6 @@
 		F1DB19972424CCDB0068F49E /* QuestionViews */ = {
 			isa = PBXGroup;
 			children = (
-				F1DB19982424CD480068F49E /* MultipleView.xib */,
-				F1DB199A2424CD610068F49E /* MultipleView.swift */,
 				F1399CDE243D0D9400545D47 /* SingleView.xib */,
 				F1399CE0243D0DA600545D47 /* SingleView.swift */,
 			);
@@ -542,7 +536,6 @@
 				F1399CDF243D0D9400545D47 /* SingleView.xib in Resources */,
 				F156587A23E2DD7600EC2796 /* Assets.xcassets in Resources */,
 				F156587823E2DD7500EC2796 /* Main.storyboard in Resources */,
-				F1DB19992424CD480068F49E /* MultipleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,7 +677,6 @@
 				F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */,
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,
-				F1DB199B2424CD610068F49E /* MultipleView.swift in Sources */,
 				F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */,
 				F13C4B1023E968F80028F912 /* User.swift in Sources */,
 			);

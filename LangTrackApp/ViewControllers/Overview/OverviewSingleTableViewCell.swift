@@ -30,11 +30,16 @@ class OverviewSingleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setValues(item: OverviewListItem?){
+    func setValues(item: OverviewListItem?, single: Bool){
         self.question = item?.question
         self.answer = item?.answer
-        let selectedChoice = self.answer?.singleMultipleAnswer
-        fillAnswers(answer: selectedChoice ?? -99)
+        if single {
+            let selectedChoice = self.answer?.singleMultipleAnswer
+            fillAnswers(answer: selectedChoice ?? -99)
+        }else{
+            let selectedChoices = self.answer?.multipleChoiceAnswer
+            fillAnswersMulti(answer: selectedChoices ?? [])
+        }
         singleTextLabel.text = item?.question.text
     }
     
@@ -58,7 +63,29 @@ class OverviewSingleTableViewCell: UITableViewCell {
                         isSelectedAnswer = true
                     }
                     heightCounter += Int(height + 20)
-                    singleView.setInfo(choice: choice, selected: isSelectedAnswer)
+                    singleView.setInfo(choice: choice, selected: isSelectedAnswer, single: true)
+                    singleStackView.addSubview(singleView)
+                    singleStackViewHeightConstraint.constant = CGFloat(heightCounter)
+                }
+            }
+        }
+    }
+    
+    func fillAnswersMulti(answer: [Int]){
+        emptyStackView()
+        if question != nil{
+            if question!.multipleChoisesAnswers != nil{
+                let viewWidth = Int((singleStackView.frame.width) - 20)
+                var heightCounter = 0
+                for (i, choice) in question!.multipleChoisesAnswers!.enumerated() {
+                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19))
+                    let singleView = SingleView(frame: CGRect(x: 0, y: heightCounter, width: viewWidth, height: Int(height + 20)))
+                    var isSelectedAnswer = false
+                    if answer.contains(i){
+                        isSelectedAnswer = true
+                    }
+                    heightCounter += Int(height + 20)
+                    singleView.setInfo(choice: choice, selected: isSelectedAnswer, single: false)
                     singleStackView.addSubview(singleView)
                     singleStackViewHeightConstraint.constant = CGFloat(heightCounter)
                 }

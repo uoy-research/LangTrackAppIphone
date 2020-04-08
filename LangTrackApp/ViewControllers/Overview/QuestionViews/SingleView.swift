@@ -24,7 +24,12 @@ class SingleView: UIView{
         commonInit()
     }
     
-    func setInfo(choice: String, selected: Bool){
+    func setInfo(choice: String, selected: Bool, single: Bool){
+        if single{
+            checkBoxView.layer.cornerRadius = checkBoxView.frame.width / 2
+        }else{
+            checkBoxView.layer.cornerRadius = 4
+        }
         choiceLabel.text = choice
         if selected{
             checkBoxView.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
@@ -36,7 +41,6 @@ class SingleView: UIView{
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        checkBoxView.layer.cornerRadius = checkBoxView.frame.width / 2
         checkBoxView.layer.borderWidth = 0.5
         checkBoxView.backgroundColor = UIColor.white
     }

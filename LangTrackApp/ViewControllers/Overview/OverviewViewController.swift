@@ -46,20 +46,22 @@ class OverviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         topViewContainer.layer.cornerRadius = 7
-        if theAssignment != nil{
-            for que in theAssignment!.survey.questions{
-                if que.type != Type.header.rawValue &&
-                    que.type != Type.footer.rawValue{
-                    if let answers = theAssignment!.dataset?.answers{
-                        if let answer = answers.first(where: {$0.index == que.index}){
-                            questionsWithAnswers.append(OverviewListItem(question: que, answer: answer))
+        if questionsWithAnswers.isEmpty{
+            if theAssignment != nil{
+                for que in theAssignment!.survey.questions{
+                    if que.type != Type.header.rawValue &&
+                        que.type != Type.footer.rawValue{
+                        if let answers = theAssignment!.dataset?.answers{
+                            if let answer = answers.first(where: {$0.index == que.index}){
+                                questionsWithAnswers.append(OverviewListItem(question: que, answer: answer))
+                            }
                         }
                     }
                 }
             }
+            topViewNumberOfQuestionsLabel.text = "Totalt \(theAssignment!.survey.questions.count - 2), besvarade \(questionsWithAnswers.count)"
+            overviewTableview.reloadData()
         }
-        topViewNumberOfQuestionsLabel.text = "Totalt \(theAssignment!.survey.questions.count - 2), besvarade \(questionsWithAnswers.count)"
-        overviewTableview.reloadData()
     }
     
     /*func showSurvey(){
@@ -98,16 +100,16 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         case Type.multipleChoice.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
-            if let cell = cell as? OverviewLikertTableViewCell{
-                cell.setValues(item: listObject)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)
+            if let cell = cell as? OverviewSingleTableViewCell{
+                cell.setValues(item: listObject, single: false)
                 cell.selectionStyle = .none
             }
             return cell
         case Type.singleMultipleAnswers.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)
             if let cell = cell as? OverviewSingleTableViewCell{
-                cell.setValues(item: listObject)
+                cell.setValues(item: listObject, single: true)
                 cell.selectionStyle = .none
             }
             return cell
