@@ -290,7 +290,7 @@ class MainViewController: UIViewController {
             dest.modalPresentationStyle = .fullScreen
         }else if segue.identifier == "overview"{
             let dest = segue.destination as! OverviewViewController
-            dest.modalPresentationStyle = .fullScreen
+            //dest.modalPresentationStyle = .fullScreen
             dest.theAssignment = SurveyRepository.selectedAssignment
         }
     }
@@ -376,8 +376,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         
         if clickedCell is SurveyTableViewCell{
             DispatchQueue.main.async {
-                //self.performSegue(withIdentifier: "overview", sender: nil)
-                self.performSegue(withIdentifier: "survey", sender: nil)//TODO: remove
+                self.performSegue(withIdentifier: "overview", sender: nil)
+                //self.performSegue(withIdentifier: "survey", sender: nil)//TODO: remove
             }
         }else if clickedCell is CallToActionTableViewCell{
             DispatchQueue.main.async {
