@@ -53,7 +53,7 @@ class OverviewSingleTableViewCell: UITableViewCell {
         emptyStackView()
         if question != nil{
             if question!.singleMultipleAnswers != nil{
-                let viewWidth = Int((singleStackView.frame.width) - 20)
+                let viewWidth = Int((singleStackView.frame.width) - 5)
                 var heightCounter = 0
                 for (i, choice) in question!.singleMultipleAnswers!.enumerated() {
                     let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19))

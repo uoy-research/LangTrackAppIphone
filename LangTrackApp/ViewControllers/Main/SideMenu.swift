@@ -48,4 +48,7 @@ class SideMenu: UIViewController {
         listener?.instructions()
     }
     
+    @IBAction func testingSwitch(_ sender: UISwitch) {
+        listener?.setTestMode(to: sender.isOn)
+    }
 }
