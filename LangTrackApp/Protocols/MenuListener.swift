@@ -13,4 +13,5 @@ protocol MenuListener{
     func instructions()
     func contact()
     func about()
+    func setTestMode(to: Bool)
 }

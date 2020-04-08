@@ -66,6 +66,7 @@ class MainViewController: UIViewController {
     var menuIsShowing = false
     var sideMenu : SideMenu?
     private var pullControl = UIRefreshControl()
+    var inTestMode = false
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -374,14 +375,36 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         SurveyRepository.selectedAssignment = SurveyRepository.assignmentList[indexPath.row]
         let clickedCell = tableView.cellForRow(at: indexPath)
         
-        if clickedCell is SurveyTableViewCell{
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "overview", sender: nil)
-                //self.performSegue(withIdentifier: "survey", sender: nil)//TODO: remove
-            }
-        }else if clickedCell is CallToActionTableViewCell{
+        if inTestMode{
+            // in testmode - show survey
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "survey", sender: nil)
+            }
+        }else{
+            if clickedCell is SurveyTableViewCell{
+                
+                if SurveyRepository.selectedAssignment?.dataset == nil{
+                    // contains no answer - show popup
+                    
+                    let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "unansweredPopup") as! UnansweredPopupViewController
+                    
+                    self.addChild(popOverVC)
+                    popOverVC.view.frame = self.view.frame
+                    self.view.addSubview(popOverVC.view)
+                    popOverVC.didMove(toParent: self)
+                    
+                }else{
+                    DispatchQueue.main.async {
+                        // contains answer - show overview
+                        self.performSegue(withIdentifier: "overview", sender: nil)
+                        //self.performSegue(withIdentifier: "survey", sender: nil)//TODO: remove
+                    }
+                }
+            }else if clickedCell is CallToActionTableViewCell{
+                // is active - show survey
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "survey", sender: nil)
+                }
             }
         }
         
@@ -398,6 +421,12 @@ extension MainViewController: CellTimerListener{
 
 //MARK:- MenuListener
 extension MainViewController: MenuListener{
+    func setTestMode(to: Bool) {
+        #warning ("TODO: remove after testing")
+        self.inTestMode = to
+        print("inTestMode: \(inTestMode)")
+    }
+    
     func logOutSelected() {
         let firebaseAuth = Auth.auth()
         if firebaseAuth.currentUser != nil{

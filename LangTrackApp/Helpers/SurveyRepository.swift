@@ -95,8 +95,8 @@ struct SurveyRepository {
                            parameters: theBody,
                            encoder: JSONParameterEncoder.default,
                            headers: headers).response { response in
-                            print(response)
-                    debugPrint(response)
+                            
+                            debugPrint(response)
                 }
             }
         }
