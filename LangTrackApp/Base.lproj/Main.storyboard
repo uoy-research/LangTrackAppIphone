@@ -1016,6 +1016,44 @@
                                             <outlet property="blanksTextLabel" destination="Res-eg-f0H" id="6zA-wS-4Gf"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="open" id="bZU-uT-xjh" customClass="OverviewOpenTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="488.5" width="414" height="92.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bZU-uT-xjh" id="OLu-Fw-Wlj">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="92.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9K-HB-bjd">
+                                                    <rect key="frame" x="32" y="19" width="350" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="250" constant="21" id="OiC-3X-5xm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoD-Ob-F7E">
+                                                    <rect key="frame" x="32" y="60.5" width="350" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" name="lta_blue"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w9K-HB-bjd" firstAttribute="top" secondItem="OLu-Fw-Wlj" secondAttribute="topMargin" constant="8" id="4WH-wT-Cqm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="UoD-Ob-F7E" secondAttribute="trailing" constant="12" id="6Wu-lb-3ie"/>
+                                                <constraint firstItem="UoD-Ob-F7E" firstAttribute="top" secondItem="w9K-HB-bjd" secondAttribute="bottom" constant="20" id="9jp-6Y-2Lc"/>
+                                                <constraint firstAttribute="bottom" secondItem="UoD-Ob-F7E" secondAttribute="bottom" constant="10" id="R38-Qx-ifs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="w9K-HB-bjd" secondAttribute="trailing" constant="12" id="ovH-9v-aI1"/>
+                                                <constraint firstItem="UoD-Ob-F7E" firstAttribute="leading" secondItem="OLu-Fw-Wlj" secondAttribute="leadingMargin" constant="12" id="ufk-IT-QkJ"/>
+                                                <constraint firstItem="w9K-HB-bjd" firstAttribute="leading" secondItem="OLu-Fw-Wlj" secondAttribute="leadingMargin" constant="12" id="xtL-yF-Nmf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="openAnswerLabel" destination="UoD-Ob-F7E" id="Q8I-7a-DkU"/>
+                                            <outlet property="openTextLabel" destination="w9K-HB-bjd" id="abi-Ns-2U5"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="0ah-7w-ZGC" id="Lel-3V-o8O"/>

@@ -107,7 +107,7 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         case Type.singleMultipleAnswers.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "single", for: indexPath)//multi
             if let cell = cell as? OverviewSingleTableViewCell{
                 cell.setValues(item: listObject, single: true)
                 cell.selectionStyle = .none
@@ -121,8 +121,8 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         case Type.openEndedTextResponses.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
-            if let cell = cell as? OverviewLikertTableViewCell{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "open", for: indexPath)
+            if let cell = cell as? OverviewOpenTableViewCell{
                 cell.setValues(item: listObject)
                 cell.selectionStyle = .none
             }

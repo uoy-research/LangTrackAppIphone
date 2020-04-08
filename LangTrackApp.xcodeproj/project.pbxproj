@@ -28,6 +28,7 @@
 		F1399CDF243D0D9400545D47 /* SingleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1399CDE243D0D9400545D47 /* SingleView.xib */; };
 		F1399CE1243D0DA600545D47 /* SingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CE0243D0DA600545D47 /* SingleView.swift */; };
 		F1399CE9243DDD6E00545D47 /* OverviewBlanksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CE8243DDD6E00545D47 /* OverviewBlanksTableViewCell.swift */; };
+		F1399CEB243DE7BF00545D47 /* OverviewOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1399CEA243DE7BF00545D47 /* OverviewOpenTableViewCell.swift */; };
 		F13AED2D243B1EED0070EF26 /* TimeDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */; };
 		F13C4B1023E968F80028F912 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C4B0F23E968F80028F912 /* User.swift */; };
 		F1532DB023EABA4D00171355 /* SurveyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1532DAF23EABA4D00171355 /* SurveyRepository.swift */; };
@@ -118,6 +119,7 @@
 		F1399CDE243D0D9400545D47 /* SingleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleView.xib; sourceTree = "<group>"; };
 		F1399CE0243D0DA600545D47 /* SingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleView.swift; sourceTree = "<group>"; };
 		F1399CE8243DDD6E00545D47 /* OverviewBlanksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewBlanksTableViewCell.swift; sourceTree = "<group>"; };
+		F1399CEA243DE7BF00545D47 /* OverviewOpenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewOpenTableViewCell.swift; sourceTree = "<group>"; };
 		F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDurationViewController.swift; sourceTree = "<group>"; };
 		F13C4B0F23E968F80028F912 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1532DAF23EABA4D00171355 /* SurveyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyRepository.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */,
 				F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */,
 				F1399CE8243DDD6E00545D47 /* OverviewBlanksTableViewCell.swift */,
+				F1399CEA243DE7BF00545D47 /* OverviewOpenTableViewCell.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				F183141A2418F1690036A5D3 /* Dataset.swift in Sources */,
 				F178752523E41639003D16D1 /* Survey.swift in Sources */,
 				F1576376242A3C6C003C5F59 /* MenuListener.swift in Sources */,
+				F1399CEB243DE7BF00545D47 /* OverviewOpenTableViewCell.swift in Sources */,
 				F1532DB423EB10B400171355 /* DateExtension.swift in Sources */,
 				F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */,
 				F11499F8240E8D8200DC988A /* TextViewExtension.swift in Sources */,
