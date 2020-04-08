@@ -33,7 +33,7 @@ class OverviewViewController: UIViewController {
         overviewTableview.delegate = self
         overviewTableview.rowHeight = UITableView.automaticDimension
         overviewTableview.estimatedRowHeight = 60
-        overviewTableview.separatorStyle = .none
+        overviewTableview.separatorStyle = .singleLine
         
         topViewTitleLabel.text = theAssignment?.survey.title
         if theAssignment != nil{
@@ -128,8 +128,8 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         case Type.fillInTheBlank.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
-            if let cell = cell as? OverviewLikertTableViewCell{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "blanks", for: indexPath)
+            if let cell = cell as? OverviewBlanksTableViewCell{
                 cell.setValues(item: listObject)
                 cell.selectionStyle = .none
             }

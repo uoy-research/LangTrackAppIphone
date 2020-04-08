@@ -979,6 +979,43 @@
                                             <outlet property="singleTextLabel" destination="Wfi-MO-YHv" id="AmX-g7-ZgJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="blanks" id="kLx-yO-vbx" customClass="OverviewBlanksTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="404.5" width="414" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kLx-yO-vbx" id="duZ-m0-CBt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Res-eg-f0H">
+                                                    <rect key="frame" x="32" y="19" width="350" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQg-ri-R2U">
+                                                    <rect key="frame" x="70" y="53" width="274" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="n7e-Cf-TSC"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HQg-ri-R2U" firstAttribute="top" secondItem="Res-eg-f0H" secondAttribute="bottom" constant="12" id="5XN-Ve-GUX"/>
+                                                <constraint firstItem="Res-eg-f0H" firstAttribute="top" secondItem="duZ-m0-CBt" secondAttribute="topMargin" constant="8" id="A4a-xY-k4J"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HQg-ri-R2U" secondAttribute="trailing" constant="50" id="AeO-fR-CSe"/>
+                                                <constraint firstItem="Res-eg-f0H" firstAttribute="leading" secondItem="duZ-m0-CBt" secondAttribute="leadingMargin" constant="12" id="Pzl-kT-XWP"/>
+                                                <constraint firstItem="HQg-ri-R2U" firstAttribute="bottom" secondItem="duZ-m0-CBt" secondAttribute="bottomMargin" id="e86-Yz-Ode"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Res-eg-f0H" secondAttribute="trailing" constant="12" id="lDL-C3-NMg"/>
+                                                <constraint firstItem="HQg-ri-R2U" firstAttribute="leading" secondItem="duZ-m0-CBt" secondAttribute="leadingMargin" constant="50" id="ncm-hR-COa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="blanksChoicecContainer" destination="HQg-ri-R2U" id="gbo-Sm-tnD"/>
+                                            <outlet property="blanksChoicecContainerHeightConstraint" destination="n7e-Cf-TSC" id="4Uc-El-hLQ"/>
+                                            <outlet property="blanksTextLabel" destination="Res-eg-f0H" id="6zA-wS-4Gf"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="0ah-7w-ZGC" id="Lel-3V-o8O"/>
