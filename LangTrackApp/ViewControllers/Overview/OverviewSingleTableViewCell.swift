@@ -38,13 +38,20 @@ class OverviewSingleTableViewCell: UITableViewCell {
         singleTextLabel.text = item?.question.text
     }
     
+    func emptyStackView(){
+        for v in singleStackView.subviews{
+            v.removeFromSuperview()
+        }
+    }
+    
     func fillAnswers(answer: Int){
+        emptyStackView()
         if question != nil{
             if question!.singleMultipleAnswers != nil{
-                let viewWidth = Int(singleStackView.frame.width - 20)
+                let viewWidth = Int((singleStackView.frame.width) - 20)
                 var heightCounter = 0
                 for (i, choice) in question!.singleMultipleAnswers!.enumerated() {
-                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 40), font: UIFont.systemFont(ofSize: 18))
+                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19))
                     let singleView = SingleView(frame: CGRect(x: 0, y: heightCounter, width: viewWidth, height: Int(height + 20)))
                     var isSelectedAnswer = false
                     if answer == i{

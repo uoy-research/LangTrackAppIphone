@@ -15,6 +15,11 @@ struct OverviewListItem {
 
 class OverviewViewController: UIViewController {
     
+    @IBOutlet weak var topViewNumberOfQuestionsLabel: UILabel!
+    @IBOutlet weak var topViewAnsweredLabel: UILabel!
+    @IBOutlet weak var topViewPublishedLabel: UILabel!
+    @IBOutlet weak var topViewTitleLabel: UILabel!
+    @IBOutlet weak var topViewContainer: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var overviewTableview: UITableView!
@@ -29,10 +34,18 @@ class OverviewViewController: UIViewController {
         overviewTableview.rowHeight = UITableView.automaticDimension
         overviewTableview.estimatedRowHeight = 60
         overviewTableview.separatorStyle = .none
+        
+        topViewTitleLabel.text = theAssignment?.survey.title
+        if theAssignment != nil{
+            topViewPublishedLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.published)!)
+            if theAssignment!.dataset != nil{
+                topViewAnsweredLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //showSurvey()
+        topViewContainer.layer.cornerRadius = 7
         if theAssignment != nil{
             for que in theAssignment!.survey.questions{
                 if que.type != Type.header.rawValue &&
@@ -45,6 +58,7 @@ class OverviewViewController: UIViewController {
                 }
             }
         }
+        topViewNumberOfQuestionsLabel.text = "Totalt \(theAssignment!.survey.questions.count - 2), besvarade \(questionsWithAnswers.count)"
         overviewTableview.reloadData()
     }
     

@@ -290,7 +290,7 @@ class MainViewController: UIViewController {
             dest.modalPresentationStyle = .fullScreen
         }else if segue.identifier == "overview"{
             let dest = segue.destination as! OverviewViewController
-            dest.modalPresentationStyle = .fullScreen
+            //dest.modalPresentationStyle = .fullScreen
             dest.theAssignment = SurveyRepository.selectedAssignment
         }
     }
