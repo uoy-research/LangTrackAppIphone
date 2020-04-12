@@ -11,6 +11,7 @@ import UIKit
 class OverviewSingleTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var singleStackViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var singleStackView: UIStackView!
     @IBOutlet weak var singleTextLabel: UILabel!
@@ -41,6 +42,13 @@ class OverviewSingleTableViewCell: UITableViewCell {
             fillAnswersMulti(answer: selectedChoices ?? [])
         }
         singleTextLabel.text = item?.question.text
+        if question?.type == Type.singleMultipleAnswers.rawValue{
+            theIcon.image = #imageLiteral(resourceName: "lta_icon_single_marked_light")
+        }
+        
+        if question?.type == Type.multipleChoice.rawValue{
+            theIcon.image = #imageLiteral(resourceName: "lta_icon_multiple_choice_light")
+        }
     }
     
     func emptyStackView(){
@@ -56,13 +64,13 @@ class OverviewSingleTableViewCell: UITableViewCell {
                 let viewWidth = Int((singleStackView.frame.width) - 5)
                 var heightCounter = 0
                 for (i, choice) in question!.singleMultipleAnswers!.enumerated() {
-                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19))
-                    let singleView = SingleView(frame: CGRect(x: 0, y: heightCounter, width: viewWidth, height: Int(height + 20)))
+                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19)) + 12
+                    let singleView = SingleView(frame: CGRect(x: 0, y: heightCounter, width: viewWidth, height: Int(height)))
                     var isSelectedAnswer = false
                     if answer == i{
                         isSelectedAnswer = true
                     }
-                    heightCounter += Int(height + 20)
+                    heightCounter += Int(height)
                     singleView.setInfo(choice: choice, selected: isSelectedAnswer, single: true)
                     singleStackView.addSubview(singleView)
                     singleStackViewHeightConstraint.constant = CGFloat(heightCounter)
@@ -78,13 +86,13 @@ class OverviewSingleTableViewCell: UITableViewCell {
                 let viewWidth = Int((singleStackView.frame.width) - 20)
                 var heightCounter = 0
                 for (i, choice) in question!.multipleChoisesAnswers!.enumerated() {
-                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19))
-                    let singleView = SingleView(frame: CGRect(x: 0, y: heightCounter, width: viewWidth, height: Int(height + 20)))
+                    let height = choice.height(withConstrainedWidth: CGFloat(viewWidth - 30), font: UIFont.systemFont(ofSize: 19)) + 12
+                    let singleView = SingleView(frame: CGRect(x: 0, y: heightCounter, width: viewWidth, height: Int(height)))
                     var isSelectedAnswer = false
                     if answer.contains(i){
                         isSelectedAnswer = true
                     }
-                    heightCounter += Int(height + 20)
+                    heightCounter += Int(height)
                     singleView.setInfo(choice: choice, selected: isSelectedAnswer, single: false)
                     singleStackView.addSubview(singleView)
                     singleStackViewHeightConstraint.constant = CGFloat(heightCounter)

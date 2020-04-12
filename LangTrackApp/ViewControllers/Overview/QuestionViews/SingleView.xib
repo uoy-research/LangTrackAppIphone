@@ -20,15 +20,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4r2-Ot-vGw">
-                    <rect key="frame" x="8" y="35.5" width="29" height="29"/>
+                    <rect key="frame" x="8" y="37.5" width="25" height="25"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="29" id="iUY-il-aZn"/>
-                        <constraint firstAttribute="height" constant="29" id="qyf-uE-rwE"/>
+                        <constraint firstAttribute="width" constant="25" id="iUY-il-aZn"/>
+                        <constraint firstAttribute="height" constant="25" id="qyf-uE-rwE"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFc-5Z-HRd">
-                    <rect key="frame" x="47" y="8" width="362" height="84"/>
+                    <rect key="frame" x="43" y="3" width="366" height="94"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -39,9 +39,9 @@
                 <constraint firstItem="xFc-5Z-HRd" firstAttribute="leading" secondItem="4r2-Ot-vGw" secondAttribute="trailing" constant="10" id="AF0-AH-YUG"/>
                 <constraint firstItem="4r2-Ot-vGw" firstAttribute="centerY" secondItem="xFc-5Z-HRd" secondAttribute="centerY" id="AMD-FW-9d6"/>
                 <constraint firstItem="4r2-Ot-vGw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Apf-ok-mfd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xFc-5Z-HRd" secondAttribute="bottom" constant="8" id="ftT-OP-7ss"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xFc-5Z-HRd" secondAttribute="bottom" constant="3" id="ftT-OP-7ss"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xFc-5Z-HRd" secondAttribute="trailing" constant="5" id="hbS-XF-O37"/>
-                <constraint firstItem="xFc-5Z-HRd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="i82-Kb-FLO"/>
+                <constraint firstItem="xFc-5Z-HRd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="i82-Kb-FLO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
