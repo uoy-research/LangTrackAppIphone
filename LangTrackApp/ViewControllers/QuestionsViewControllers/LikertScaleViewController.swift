@@ -39,6 +39,7 @@ class LikertScaleViewController: UIViewController {
     }
     
     func setInfo(question: Question){
+        setSelected(selected: -99)
         self.theQuestion = question
         likertTextLabel.text = theQuestion.text
         descriptionLabel.text = ""//theQuestion.description
@@ -88,6 +89,11 @@ class LikertScaleViewController: UIViewController {
             radioButton4.isSelected = false
             radioButton5.isSelected = true
         default:
+            radioButton1.isSelected = false
+            radioButton2.isSelected = false
+            radioButton3.isSelected = false
+            radioButton4.isSelected = false
+            radioButton5.isSelected = false
             print("likert setSelected: \(selected)")
         }
     }
@@ -106,10 +112,12 @@ class LikertScaleViewController: UIViewController {
     
     @IBAction func previousButtonPressed(_ sender: Any) {
         listener?.previousQuestion(current: theQuestion)
+        theAnswer = nil
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         listener?.nextQuestion(current: theQuestion)
+        theAnswer = nil
     }
     
     @IBAction func likertButtonPressed(_ sender: LikertRadioButton) {
