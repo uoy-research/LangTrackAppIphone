@@ -73,6 +73,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //to update list everytime app enters foreground
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground),
+                                               name: UIApplication.willEnterForegroundNotification,
+        object: nil)
         theTableView.rowHeight = UITableView.automaticDimension
         theTableView.estimatedRowHeight = 175
         theTableView.delegate = self
@@ -120,6 +124,10 @@ class MainViewController: UIViewController {
         sideMenu!.didMove(toParent: self)
     }
     
+    @objc func willEnterForeground() {
+       
+       updateAssignments()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
@@ -128,21 +136,6 @@ class MainViewController: UIViewController {
             if self.idTokenChangeListener == nil{
                 setIdTokenListener()
             }
-            // the user is logged in
-            // if less than 5 min ago - dont fetch
-            // -not working if logOut and logIn within 5 min-
-            /*if latestFetchMilli + (1000 * 60 * 5) < Date().millisecondsSince1970{
-                SurveyRepository.getSurveys() { (surveys) in
-                    if surveys != nil{
-                        DispatchQueue.main.async {
-                            //self.surveyList = self.sortSurveyList(theList: surveys!)
-                            self.theTableView.reloadData()
-                        }
-                    }
-                }
-                latestFetchMilli = Date().millisecondsSince1970
-            }*/
-            
             fetchAssignmentsAndSetUserName()
         }
     }
@@ -206,7 +199,9 @@ class MainViewController: UIViewController {
         // here is the aps if app is running
         // or if user clicked notification to start app
         print("receivedNewNotification")
-        fetchAssignmentsAndSetUserName()
+        if Auth.auth().currentUser != nil{
+            updateAssignments()
+        }
     }
     
     
@@ -235,17 +230,22 @@ class MainViewController: UIViewController {
         var username = Auth.auth().currentUser?.email
         username!.until("@")
         SurveyRepository.userId = username ?? ""
+        SurveyRepository.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
+        updateAssignments()
+        sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
+        theTableView.reloadData()
+    }
+    
+    func updateAssignments(){
         SurveyRepository.getSurveys() { (assignments) in
             if assignments != nil{
                 DispatchQueue.main.async {
-                    //self.surveyList = self.sortSurveyList(theList: surveys!)
                     self.theTableView.reloadData()
                 }
+            }else{
+                //MARK: TODO show info to user
             }
         }
-        SurveyRepository.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
-        sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
-        theTableView.reloadData()
     }
     
     //MARK: Menu
