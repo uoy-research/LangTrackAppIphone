@@ -497,12 +497,12 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Användarnamn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-PS-ENe">
                                 <rect key="frame" x="30" y="138.5" width="354" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lösenord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fDO-qC-QP6">
                                 <rect key="frame" x="30" y="192.5" width="354" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcT-t1-pRW">
@@ -744,7 +744,7 @@
             <objects>
                 <viewController id="0ah-7w-ZGC" customClass="OverviewViewController" customModule="Lang_Track_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zaw-vS-Ywy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TJ-aR-6cC">
@@ -861,7 +861,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1gh-8g-UO2">
-                                <rect key="frame" x="0.0" y="193.5" width="414" height="614.5"/>
+                                <rect key="frame" x="0.0" y="193.5" width="414" height="918.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="likert" id="TXt-3l-ukF" customClass="OverviewLikertTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
@@ -1266,6 +1266,49 @@
                                             <outlet property="openTextLabel" destination="w9K-HB-bjd" id="abi-Ns-2U5"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" id="bch-vF-OZI" customClass="OverviewHeaderTableViewCell" customModule="Lang_Track_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="602" width="414" height="194"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bch-vF-OZI" id="eOU-ke-MQi">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="194"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbv-ja-mw9">
+                                                    <rect key="frame" x="25" y="142" width="364" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lundsuniversitet_logo" translatesAutoresizingMaskIntoConstraints="NO" id="i0u-b6-9rE">
+                                                    <rect key="frame" x="161" y="16" width="92" height="92"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="92" id="5Lb-Qa-CKl"/>
+                                                        <constraint firstAttribute="height" constant="92" id="ed9-Q8-P95"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanistlaboratoriet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3X-Hz-zrI">
+                                                    <rect key="frame" x="10" y="100" width="394" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <color key="textColor" name="lta_blue"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="l3X-Hz-zrI" firstAttribute="top" secondItem="i0u-b6-9rE" secondAttribute="bottom" constant="-8" id="2ef-hv-4ga"/>
+                                                <constraint firstAttribute="bottom" secondItem="Sbv-ja-mw9" secondAttribute="bottom" constant="30" id="BML-WM-fC0"/>
+                                                <constraint firstItem="i0u-b6-9rE" firstAttribute="top" secondItem="eOU-ke-MQi" secondAttribute="topMargin" constant="5" id="J61-PD-laK"/>
+                                                <constraint firstItem="Sbv-ja-mw9" firstAttribute="top" secondItem="l3X-Hz-zrI" secondAttribute="bottom" constant="25" id="NHW-FE-8el"/>
+                                                <constraint firstItem="Sbv-ja-mw9" firstAttribute="leading" secondItem="eOU-ke-MQi" secondAttribute="leading" constant="25" id="Su2-Q2-Zfn"/>
+                                                <constraint firstAttribute="trailing" secondItem="l3X-Hz-zrI" secondAttribute="trailing" constant="10" id="Zab-9N-eY3"/>
+                                                <constraint firstItem="l3X-Hz-zrI" firstAttribute="leading" secondItem="eOU-ke-MQi" secondAttribute="leading" constant="10" id="dOK-mh-eKY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sbv-ja-mw9" secondAttribute="trailing" constant="25" id="hbK-9s-DP0"/>
+                                                <constraint firstItem="i0u-b6-9rE" firstAttribute="centerX" secondItem="eOU-ke-MQi" secondAttribute="centerX" id="jJp-qJ-7NP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headerTextLabel" destination="Sbv-ja-mw9" id="0dd-iV-Z38"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="0ah-7w-ZGC" id="Lel-3V-o8O"/>
@@ -1286,6 +1329,7 @@
                         <viewLayoutGuide key="safeArea" id="fL7-SV-7xX"/>
                     </view>
                     <navigationItem key="navigationItem" id="ReP-3V-EVT"/>
+                    <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="closeButton" destination="3Ix-nn-mHt" id="v0x-vS-MCZ"/>
                         <outlet property="overviewTableview" destination="1gh-8g-UO2" id="KQj-Zs-i6N"/>
@@ -1299,7 +1343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCn-4d-Y23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1869.5652173913045" y="-573.21428571428567"/>
+            <point key="canvasLocation" x="1869.5652173913045" y="-675"/>
         </scene>
         <!--Header View Controller-->
         <scene sceneID="ZdL-uf-VDu">
