@@ -21,7 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 
     let gcmMessageIDKey = "gcm.message_id"
+    var window: UIWindow?
 
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        if #available(iOS 13.0, *) {
+            // In iOS 13 setup is done in SceneDelegate
+        } else {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            self.window = window
+            
+            let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier: "main") as! MainViewController
+            window.rootViewController = newViewcontroller
+        }
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
@@ -64,6 +79,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
 
         application.registerForRemoteNotifications()
+        
+        if #available(iOS 13.0, *) {
+            // In iOS 13 setup is done in SceneDelegate
+        } else {
+            self.window?.makeKeyAndVisible()
+        }
         
         return true
     }

@@ -96,7 +96,6 @@ public class LikertRadioButton: UIButton {
         innerCircleLayer.fillColor = UIColor.clear.cgColor
         innerCircleLayer.strokeColor = UIColor.clear.cgColor
         layer.addSublayer(innerCircleLayer)
-        
         setFillState()
     }
     

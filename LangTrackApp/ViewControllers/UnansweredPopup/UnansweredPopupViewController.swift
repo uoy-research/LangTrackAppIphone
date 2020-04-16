@@ -26,9 +26,9 @@ class UnansweredPopupViewController: UIViewController {
 
         let backgroundClickRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.backgroundClicked))
         backgroundView.addGestureRecognizer(backgroundClickRecognizer)
-        popupContainer.layer.cornerRadius = 12
+        popupContainer.layer.cornerRadius = 8
         popupContainer.layer.borderWidth = 2
-        popupContainer.layer.borderColor = UIColor(named: "lta_blue")?.cgColor ?? UIColor.blue.cgColor
+        popupContainer.layer.borderColor = UIColor.white.cgColor
         
         if let current = SurveyRepository.selectedAssignment{
             popupTitle.text = current.survey.title

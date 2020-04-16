@@ -49,7 +49,7 @@ class OverviewViewController: UIViewController {
         if questionsWithAnswers.isEmpty{
             if theAssignment != nil{
                 if let header = theAssignment!.survey.questions.first(where: { $0.type == Type.header.rawValue}){
-                    let answer = Answer(type: Type.header.rawValue, index: 0)
+                    let answer = Answer(type: Type.header.rawValue, index: header.index)
                     questionsWithAnswers.append(OverviewListItem(question: header, answer: answer))
                 }
                 for que in theAssignment!.survey.questions{
@@ -62,9 +62,10 @@ class OverviewViewController: UIViewController {
                         }
                     }
                 }
+                //MARK: add footer too?
             }
             questionsWithAnswers.sort(by: {$0.question.index < $1.question.index})
-            topViewNumberOfQuestionsLabel.text = "Totalt \(theAssignment!.survey.questions.count - 2), besvarade \(questionsWithAnswers.count)"
+            topViewNumberOfQuestionsLabel.text = "Totalt \(theAssignment!.survey.questions.count - 2), besvarade \(questionsWithAnswers.count - 1)"
             overviewTableview.reloadData()
         }
     }

@@ -246,8 +246,8 @@ struct SurveyRepository {
         var activeList = theList.filter {$0.dataset == nil && DateParser.getDate(dateString: $0.expiry) ?? now > now}
         //if the assignment is not active or the dataset exists
         var unActiveList = theList.filter {$0.dataset != nil || DateParser.getDate(dateString: $0.expiry) ?? now < now}
-        activeList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
-        unActiveList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() < DateParser.getDate(dateString: $1.survey.published) ?? Date()}
+        activeList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() > DateParser.getDate(dateString: $1.survey.published) ?? Date()}
+        unActiveList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() > DateParser.getDate(dateString: $1.survey.published) ?? Date()}
         var finallist = [Assignment]()
         finallist.append(contentsOf: activeList)
         finallist.append(contentsOf: unActiveList)
