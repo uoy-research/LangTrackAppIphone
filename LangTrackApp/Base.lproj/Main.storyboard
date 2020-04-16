@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -199,7 +200,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Lang_Track_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="MainViewController" customModule="Lang_Track_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -610,101 +611,103 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVX-t5-G5z">
-                                        <rect key="frame" x="31" y="328" width="352" height="240"/>
+                                        <rect key="frame" x="20.5" y="343.5" width="373" height="209.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7v-i3-M8a">
-                                                <rect key="frame" x="159" y="196" width="34" height="44"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
-                                                <state key="normal" title="Ok">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Obesvarad enkät" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whz-M9-R61">
+                                                <rect key="frame" x="114.5" y="18" width="144.5" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Hq-QQk">
+                                                <rect key="frame" x="10" y="61" width="353" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <color key="textColor" name="lta_menu_blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWk-3i-zIq">
+                                                <rect key="frame" x="117" y="168" width="246" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWC-H8-tbc">
+                                                <rect key="frame" x="117" y="113" width="246" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antal frågor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1j-uz-0xa">
+                                                <rect key="frame" x="12" y="114" width="90" height="19.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="Cl4-JN-LOI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utgången:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-Lo-lTd">
+                                                <rect key="frame" x="12" y="169" width="90" height="19.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="XDR-nn-Wa2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publicerad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-Nj-9n0">
+                                                <rect key="frame" x="12" y="141.5" width="90" height="19.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="iFb-fD-3dO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8Q-VO-zO8">
+                                                <rect key="frame" x="117" y="140.5" width="246" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" name="lta_light_grey"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7v-i3-M8a">
+                                                <rect key="frame" x="12" y="12" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="Mfs-7z-V74"/>
+                                                    <constraint firstAttribute="height" constant="35" id="ltY-4R-e3S"/>
+                                                </constraints>
+                                                <state key="normal" image="close_icon">
                                                     <color key="titleColor" name="lta_blue"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="closeButtonPressed:" destination="1vd-1N-oYj" eventType="touchUpInside" id="Sb3-g5-GAJ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utgången enkät" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whz-M9-R61">
-                                                <rect key="frame" x="10" y="14" width="332" height="22"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfa-Hq-QQk">
-                                                <rect key="frame" x="10" y="51" width="332" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWk-3i-zIq">
-                                                <rect key="frame" x="115" y="154.5" width="227" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWC-H8-tbc">
-                                                <rect key="frame" x="115" y="99.5" width="227" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antal frågor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1j-uz-0xa">
-                                                <rect key="frame" x="10" y="100.5" width="90" height="19.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="Cl4-JN-LOI"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utgången:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-Lo-lTd">
-                                                <rect key="frame" x="10" y="155.5" width="90" height="19.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="XDR-nn-Wa2"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publicerad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-Nj-9n0">
-                                                <rect key="frame" x="10" y="128" width="90" height="19.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="iFb-fD-3dO"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8Q-VO-zO8">
-                                                <rect key="frame" x="115" y="127" width="227" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" name="lta_grey"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" name="lta_blue"/>
                                         <constraints>
+                                            <constraint firstItem="s7v-i3-M8a" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="12" id="4dj-tQ-knU"/>
                                             <constraint firstItem="XgO-Nj-9n0" firstAttribute="top" secondItem="m1j-uz-0xa" secondAttribute="bottom" constant="8" id="5L7-mn-uJL"/>
                                             <constraint firstItem="ddg-Lo-lTd" firstAttribute="top" secondItem="XgO-Nj-9n0" secondAttribute="bottom" constant="8" id="6VV-86-brb"/>
-                                            <constraint firstItem="ddg-Lo-lTd" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="10" id="9Gm-cj-piX"/>
-                                            <constraint firstItem="s7v-i3-M8a" firstAttribute="centerX" secondItem="JVX-t5-G5z" secondAttribute="centerX" id="DaT-rw-Q5Y"/>
-                                            <constraint firstItem="XWC-H8-tbc" firstAttribute="top" secondItem="bfa-Hq-QQk" secondAttribute="bottom" constant="23" id="Ec4-Rv-bee"/>
+                                            <constraint firstItem="ddg-Lo-lTd" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="12" id="9Gm-cj-piX"/>
+                                            <constraint firstItem="XWC-H8-tbc" firstAttribute="top" secondItem="bfa-Hq-QQk" secondAttribute="bottom" constant="28" id="Ec4-Rv-bee"/>
                                             <constraint firstItem="M8Q-VO-zO8" firstAttribute="leading" secondItem="XgO-Nj-9n0" secondAttribute="trailing" constant="15" id="Fa7-ke-M8b"/>
                                             <constraint firstItem="XWC-H8-tbc" firstAttribute="leading" secondItem="m1j-uz-0xa" secondAttribute="trailing" constant="15" id="IWa-sq-4YQ"/>
-                                            <constraint firstItem="s7v-i3-M8a" firstAttribute="top" secondItem="JWk-3i-zIq" secondAttribute="bottom" constant="20" id="M4g-8y-Tcp"/>
-                                            <constraint firstItem="bfa-Hq-QQk" firstAttribute="top" secondItem="Whz-M9-R61" secondAttribute="bottom" constant="15" id="OD6-8H-1KK"/>
+                                            <constraint firstItem="s7v-i3-M8a" firstAttribute="top" secondItem="JVX-t5-G5z" secondAttribute="top" constant="12" id="Nqv-ja-fHy"/>
+                                            <constraint firstItem="bfa-Hq-QQk" firstAttribute="top" secondItem="Whz-M9-R61" secondAttribute="bottom" constant="20" id="OD6-8H-1KK"/>
                                             <constraint firstAttribute="trailing" secondItem="bfa-Hq-QQk" secondAttribute="trailing" constant="10" id="Rof-WO-J2v"/>
-                                            <constraint firstAttribute="trailing" secondItem="Whz-M9-R61" secondAttribute="trailing" constant="10" id="Sip-db-chW"/>
                                             <constraint firstAttribute="trailing" secondItem="JWk-3i-zIq" secondAttribute="trailing" constant="10" id="Uuq-Gj-cvR"/>
-                                            <constraint firstItem="XgO-Nj-9n0" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="10" id="cCU-z9-Bg3"/>
-                                            <constraint firstAttribute="bottom" secondItem="s7v-i3-M8a" secondAttribute="bottom" id="eK8-aL-mJu"/>
-                                            <constraint firstItem="Whz-M9-R61" firstAttribute="top" secondItem="JVX-t5-G5z" secondAttribute="top" constant="14" id="eWU-dh-RnZ"/>
+                                            <constraint firstItem="XgO-Nj-9n0" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="12" id="cCU-z9-Bg3"/>
                                             <constraint firstItem="bfa-Hq-QQk" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="10" id="eZJ-ee-Kmr"/>
                                             <constraint firstAttribute="trailing" secondItem="M8Q-VO-zO8" secondAttribute="trailing" constant="10" id="fGn-F0-p7U"/>
+                                            <constraint firstItem="Whz-M9-R61" firstAttribute="centerY" secondItem="s7v-i3-M8a" secondAttribute="centerY" id="fm6-4o-U05"/>
                                             <constraint firstItem="M8Q-VO-zO8" firstAttribute="centerY" secondItem="XgO-Nj-9n0" secondAttribute="centerY" id="geG-dZ-PRR"/>
                                             <constraint firstAttribute="trailing" secondItem="XWC-H8-tbc" secondAttribute="trailing" constant="10" id="hCK-yd-y8T"/>
-                                            <constraint firstItem="m1j-uz-0xa" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="10" id="iAt-vv-3oR"/>
+                                            <constraint firstItem="m1j-uz-0xa" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="12" id="iAt-vv-3oR"/>
                                             <constraint firstItem="JWk-3i-zIq" firstAttribute="leading" secondItem="ddg-Lo-lTd" secondAttribute="trailing" constant="15" id="iiX-de-aQX"/>
+                                            <constraint firstAttribute="bottom" secondItem="JWk-3i-zIq" secondAttribute="bottom" constant="20" id="pMZ-0m-reK"/>
                                             <constraint firstItem="JWk-3i-zIq" firstAttribute="centerY" secondItem="ddg-Lo-lTd" secondAttribute="centerY" id="s04-2A-aH8"/>
-                                            <constraint firstItem="Whz-M9-R61" firstAttribute="leading" secondItem="JVX-t5-G5z" secondAttribute="leading" constant="10" id="tmo-7A-SPe"/>
+                                            <constraint firstItem="Whz-M9-R61" firstAttribute="centerX" secondItem="JVX-t5-G5z" secondAttribute="centerX" id="uWv-iv-1RC"/>
                                             <constraint firstItem="XWC-H8-tbc" firstAttribute="centerY" secondItem="m1j-uz-0xa" secondAttribute="centerY" id="wmB-71-SCr"/>
                                         </constraints>
                                     </view>
@@ -712,7 +715,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="JVX-t5-G5z" firstAttribute="centerX" secondItem="OnH-ox-Po6" secondAttribute="centerX" id="BKL-l1-dIv"/>
-                                    <constraint firstItem="JVX-t5-G5z" firstAttribute="width" secondItem="OnH-ox-Po6" secondAttribute="width" multiplier="0.85" id="m66-Es-QIV"/>
+                                    <constraint firstItem="JVX-t5-G5z" firstAttribute="width" secondItem="OnH-ox-Po6" secondAttribute="width" multiplier="0.9" id="m66-Es-QIV"/>
                                     <constraint firstItem="JVX-t5-G5z" firstAttribute="centerY" secondItem="OnH-ox-Po6" secondAttribute="centerY" id="vJ6-nz-a1G"/>
                                 </constraints>
                             </view>
@@ -888,7 +891,7 @@
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iu5-9O-QRY">
                                                                             <rect key="frame" x="10" y="0.0" width="25" height="25"/>
-                                                                            <color key="backgroundColor" name="lta_blue"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="4B8-hH-xZl"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="Ylj-gL-20D"/>
@@ -916,7 +919,7 @@
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWX-7Z-wHd">
                                                                             <rect key="frame" x="10" y="0.0" width="25" height="25"/>
-                                                                            <color key="backgroundColor" name="lta_blue"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="tGn-ku-QtV"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="wzi-Qd-q8M"/>
@@ -944,7 +947,7 @@
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXM-nK-9V2">
                                                                             <rect key="frame" x="10" y="0.0" width="25" height="25"/>
-                                                                            <color key="backgroundColor" name="lta_blue"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="NQr-MN-jaI"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="dp0-9u-9Xw"/>
@@ -972,7 +975,7 @@
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFK-EU-EKb">
                                                                             <rect key="frame" x="10" y="0.0" width="25" height="25"/>
-                                                                            <color key="backgroundColor" name="lta_blue"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="Q8o-a3-6tJ"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="apU-ho-MkF"/>
@@ -1000,7 +1003,7 @@
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRE-qr-Wnf">
                                                                             <rect key="frame" x="10" y="0.0" width="25" height="25"/>
-                                                                            <color key="backgroundColor" name="lta_blue"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="2fJ-Od-FKM"/>
                                                                                 <constraint firstAttribute="width" constant="25" id="LUj-2N-0r0"/>
@@ -1513,6 +1516,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-Q9-2b4" customClass="LikertRadioButton" customModule="Lang_Track_App" customModuleProvider="target">
                                                         <rect key="frame" x="5" y="5" width="73" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
                                                                 <color key="value" name="lta_blue"/>
@@ -1533,6 +1537,7 @@
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liH-Vh-sj5" customClass="LikertRadioButton" customModule="Lang_Track_App" customModuleProvider="target">
                                                         <rect key="frame" x="83" y="5" width="72.5" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
                                                                 <color key="value" name="lta_blue"/>
@@ -1553,6 +1558,7 @@
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-s2-IIn" customClass="LikertRadioButton" customModule="Lang_Track_App" customModuleProvider="target">
                                                         <rect key="frame" x="160.5" y="5" width="73" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
                                                                 <color key="value" name="lta_blue"/>
@@ -1573,6 +1579,7 @@
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE6-XY-EwL" customClass="LikertRadioButton" customModule="Lang_Track_App" customModuleProvider="target">
                                                         <rect key="frame" x="238.5" y="5" width="72.5" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
                                                                 <color key="value" name="lta_blue"/>
@@ -1593,6 +1600,7 @@
                                                     </button>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqY-w5-jmK" customClass="LikertRadioButton" customModule="Lang_Track_App" customModuleProvider="target">
                                                         <rect key="frame" x="316" y="5" width="73" height="30"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
                                                                 <color key="value" name="lta_blue"/>
