@@ -467,6 +467,7 @@ extension MainViewController: MenuListener{
     }
     
     func instructions() {
+        showToast(message: "Ingen kontakt med server", font: UIFont.systemFont(ofSize: 18))
         print("MenuListener instructions")
     }
     
