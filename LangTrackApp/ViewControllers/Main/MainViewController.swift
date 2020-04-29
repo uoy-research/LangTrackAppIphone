@@ -237,14 +237,27 @@ class MainViewController: UIViewController {
     }
     
     func updateAssignments(){
-        SurveyRepository.getSurveys() { (assignments) in
-            if assignments != nil{
-                DispatchQueue.main.async {
-                    self.theTableView.reloadData()
+        SurveyRepository.apiIsAlive { (alive) in
+            if alive {
+                SurveyRepository.getSurveys() { (assignments) in
+                    if assignments != nil{
+                        DispatchQueue.main.async {
+                            self.theTableView.reloadData()
+                        }
+                    }else{
+                        self.showServerErrorMessage()
+                    }
                 }
             }else{
-                //MARK: TODO show info to user
+                self.showServerErrorMessage()
             }
+        }
+        
+    }
+    
+    func showServerErrorMessage(){
+        DispatchQueue.main.async {
+            self.showToast(message: "Ingen kontakt med server", font: UIFont.systemFont(ofSize: 18))
         }
     }
     
@@ -298,16 +311,31 @@ class MainViewController: UIViewController {
     
     //MARK:- Actions
     
+    //when pull to refresh
     @objc private func refreshListData(_ sender: Any) {
-        SurveyRepository.getSurveys() { (assignments) in
-            DispatchQueue.main.async {
-                self.pullControl.endRefreshing()
-            }
-            if assignments != nil{
-                DispatchQueue.main.async {
-                    //self.surveyList = self.sortSurveyList(theList: surveys!)
-                    self.theTableView.reloadData()
+        SurveyRepository.apiIsAlive { (alive) in
+            if alive{
+                SurveyRepository.getSurveys() { (assignments) in
+                    DispatchQueue.main.async {
+                        self.pullControl.endRefreshing()
+                    }
+                    if assignments != nil{
+                        DispatchQueue.main.async {
+                            //self.surveyList = self.sortSurveyList(theList: surveys!)
+                            self.theTableView.reloadData()
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            self.pullControl.endRefreshing()
+                        }
+                        self.showServerErrorMessage()
+                    }
                 }
+            }else{
+                DispatchQueue.main.async {
+                    self.pullControl.endRefreshing()
+                }
+                self.showServerErrorMessage()
             }
         }
     }
@@ -318,10 +346,6 @@ class MainViewController: UIViewController {
         }else{
             hideMenu()
         }
-    }
-    
-    @IBAction func logOutButtonPressed(_ sender: Any) {
-        
     }
 }
 
@@ -401,9 +425,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
                     }
                 }
             }else if clickedCell is CallToActionTableViewCell{
-                // is active - show survey
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "survey", sender: nil)
+                SurveyRepository.apiIsAlive { (alive) in
+                    if alive{
+                        // is active - show survey
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "survey", sender: nil)
+                        }
+                    }else{
+                        self.showServerErrorMessage()
+                    }
                 }
             }
         }
@@ -467,7 +497,6 @@ extension MainViewController: MenuListener{
     }
     
     func instructions() {
-        showToast(message: "Ingen kontakt med server", font: UIFont.systemFont(ofSize: 18))
         print("MenuListener instructions")
     }
     
