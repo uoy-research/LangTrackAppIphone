@@ -143,6 +143,26 @@ struct SurveyRepository {
         }
     }
     
+    static func apiIsAlive(completionHandler: @escaping (_ result: Bool) -> Void){
+        let pingUrl = "\(ltaUrl)ping"
+        let request = NSMutableURLRequest(url: URL(string: pingUrl)!)
+        let session = URLSession.shared
+        request.httpMethod = "GET"
+        let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200{
+                    completionHandler(true)
+                }else{
+                    completionHandler(false)
+                }
+            }else{
+                completionHandler(false)
+            }
+            return
+        })
+        task.resume()
+    }
+    
     static func postDeviceToken(){
         if userId != "" && deviceToken != ""{
             let param = [
