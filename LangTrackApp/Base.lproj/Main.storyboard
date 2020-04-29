@@ -1244,7 +1244,7 @@
                                                     <color key="textColor" name="lta_blue"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_blank_light" translatesAutoresizingMaskIntoConstraints="NO" id="Yg9-wl-Pu9">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_open_light" translatesAutoresizingMaskIntoConstraints="NO" id="Yg9-wl-Pu9">
                                                     <rect key="frame" x="30" y="11.5" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="SK9-QX-pgI"/>
@@ -1869,6 +1869,13 @@
                                             <constraint firstItem="dCv-sV-tB8" firstAttribute="top" secondItem="KkM-rA-HLK" secondAttribute="top" constant="10" id="yLj-nV-pGI"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mc3-TZ-UBd">
+                                        <rect key="frame" x="83" y="259" width="248" height="16"/>
+                                        <color key="backgroundColor" name="lta_light_grey"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="I48-zF-pmC"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="09h-dB-tiR">
                                         <rect key="frame" x="83" y="265" width="248" height="150"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1917,7 +1924,10 @@
                                     <constraint firstItem="09h-dB-tiR" firstAttribute="centerX" secondItem="xo0-bK-Bcv" secondAttribute="centerX" id="80C-mC-0co"/>
                                     <constraint firstItem="09h-dB-tiR" firstAttribute="width" secondItem="xo0-bK-Bcv" secondAttribute="width" multiplier="0.6" id="8aa-TB-lgP"/>
                                     <constraint firstItem="KkM-rA-HLK" firstAttribute="leading" secondItem="xo0-bK-Bcv" secondAttribute="leading" id="Tw6-I1-zQy"/>
+                                    <constraint firstItem="Mc3-TZ-UBd" firstAttribute="centerX" secondItem="xo0-bK-Bcv" secondAttribute="centerX" id="cUU-2D-shA"/>
                                     <constraint firstAttribute="trailing" secondItem="KkM-rA-HLK" secondAttribute="trailing" id="cd9-Iy-puU"/>
+                                    <constraint firstItem="Mc3-TZ-UBd" firstAttribute="width" secondItem="LWP-YC-nTj" secondAttribute="width" id="d0a-GR-sWY"/>
+                                    <constraint firstItem="Mc3-TZ-UBd" firstAttribute="top" secondItem="KkM-rA-HLK" secondAttribute="bottom" constant="-6" id="p2E-e0-RLP"/>
                                     <constraint firstItem="09h-dB-tiR" firstAttribute="top" secondItem="KkM-rA-HLK" secondAttribute="bottom" id="ykn-n0-7Ar"/>
                                 </constraints>
                             </view>
@@ -1947,6 +1957,7 @@
                         <outlet property="nextButton" destination="Kpw-J1-1Gs" id="WaB-Un-Wr4"/>
                         <outlet property="previousButton" destination="fv8-aK-s2C" id="PEU-xq-Xvu"/>
                         <outlet property="questionTextLabel" destination="dCv-sV-tB8" id="anO-Rk-d1K"/>
+                        <outlet property="selectedWordBottomView" destination="Mc3-TZ-UBd" id="5C1-pP-zjO"/>
                         <outlet property="selectedWordContainer" destination="LWP-YC-nTj" id="brV-Fo-ew1"/>
                         <outlet property="selectedWordLabel" destination="c9w-eu-TBZ" id="sxu-gc-Xgg"/>
                         <outlet property="tableviewHeightConstraint" destination="7k7-59-0ZU" id="6y2-SR-HXn"/>

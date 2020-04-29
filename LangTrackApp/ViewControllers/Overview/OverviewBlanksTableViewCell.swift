@@ -39,7 +39,14 @@ class OverviewBlanksTableViewCell: UITableViewCell {
         }
     }
     
+    func emptyContainer(){
+        for v in blanksChoicecContainer.subviews{
+            v.removeFromSuperview()
+        }
+    }
+    
     func fillWordContainer(){
+        emptyContainer()
         let selectedWord = theSentence!.listWithWords[theSentence!.indexForMissingWord]
         let width = Int(blanksChoicecContainer.frame.width - 50)
         let height = 25
@@ -51,7 +58,7 @@ class OverviewBlanksTableViewCell: UITableViewCell {
                 text.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             }else{
                 text.textColor = UIColor.black
-                text.font = UIFont.systemFont(ofSize: 18, weight: .thin)
+                text.font = UIFont.systemFont(ofSize: 18, weight: .light)
             }
             blanksChoicecContainer.addSubview(text)
             blanksChoicecContainerHeightConstraint.constant = CGFloat(height * (i + 1))
