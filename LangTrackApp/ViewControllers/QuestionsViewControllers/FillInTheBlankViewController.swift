@@ -20,6 +20,7 @@ class FillInTheBlankViewController: UIViewController {
     @IBOutlet weak var containerArrow: UILabel!
     @IBOutlet weak var selectedWordLabel: UILabel!
     @IBOutlet weak var arrowTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var selectedWordBottomView: UIView!
     
     var listener: QuestionListener?
     var theQuestion = Question()
@@ -41,6 +42,7 @@ class FillInTheBlankViewController: UIViewController {
         fillTableview.rowHeight = rowheight
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
+        selectedWordBottomView.layer.cornerRadius = 8
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +81,7 @@ class FillInTheBlankViewController: UIViewController {
             getTextAsList()
             if (theSentence != nil){
                 setSentence()
+                fillTableview.reloadData()
             }
         }
     }
@@ -143,6 +146,7 @@ class FillInTheBlankViewController: UIViewController {
             self.tableviewHeightConstraint.constant = dropDownHeight
             self.selectedWordLabel.alpha = 0
             self.arrowTrailingConstraint.constant = arrowCenter
+            self.fillTableview.alpha = 1
             self.view.layoutIfNeeded()
         }){_ in
             self.dropDownOpen = true
@@ -155,6 +159,7 @@ class FillInTheBlankViewController: UIViewController {
             self.tableviewHeightConstraint.constant = self.radious
             self.selectedWordLabel.alpha = 1
             self.arrowTrailingConstraint.constant = 10
+            self.fillTableview.alpha = 0
             self.view.layoutIfNeeded()
         }){_ in
             self.dropDownOpen = false
@@ -185,12 +190,27 @@ class FillInTheBlankViewController: UIViewController {
         }
     }
     
+    func resetBlankView(){
+        theQuestion = Question()
+        theAnswer = nil
+        selectedWordLabel.text = "Välj ord i listan"
+        if self.tableviewHeightConstraint.constant != self.radious{
+            closeProjectDropDown()
+        }
+    }
+    
     @IBAction func previousButtonPressed(_ sender: Any) {
-        listener?.previousQuestion(current: theQuestion)
+        let temp = theQuestion
+        resetBlankView()
+        listener?.previousQuestion(current: temp)
+        fillTableview.reloadData()
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        listener?.nextQuestion(current: theQuestion)
+        let temp = theQuestion
+        resetBlankView()
+        listener?.nextQuestion(current: temp)
+        fillTableview.reloadData()
     }
     
 }
