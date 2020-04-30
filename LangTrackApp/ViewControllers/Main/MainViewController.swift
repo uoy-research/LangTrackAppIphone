@@ -253,10 +253,12 @@ class MainViewController: UIViewController {
                     if assignments != nil{
                         DispatchQueue.main.async {
                             self.theTableView.reloadData()
-                            self.hideOrShowEmptyListInfo()
                         }
                     }else{
                         self.showServerErrorMessage()
+                    }
+                    DispatchQueue.main.async {
+                        self.hideOrShowEmptyListInfo()
                     }
                 }
             }else{

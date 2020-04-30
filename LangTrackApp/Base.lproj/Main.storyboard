@@ -10,6 +10,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Instructions View Controller-->
+        <scene sceneID="9c7-Jd-F4u">
+            <objects>
+                <viewController id="fIM-Xv-IIW" customClass="InstructionsViewController" customModule="Lang_Track_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nQ1-mQ-YER">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1S-H6-L1Q">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ4-Nb-YdB">
+                                        <rect key="frame" x="10" y="10" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="NEr-db-0fM"/>
+                                            <constraint firstAttribute="width" constant="35" id="t7Y-Nq-3T5"/>
+                                        </constraints>
+                                        <state key="normal" image="close_icon">
+                                            <color key="titleColor" name="lta_menu_blue"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButton:" destination="fIM-Xv-IIW" eventType="touchUpInside" id="s85-2Z-VA7"/>
+                                            <action selector="closeButtonPressed:" destination="0ah-7w-ZGC" eventType="touchUpInside" id="xHc-0E-bxB"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instruktioner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIN-hl-4GV">
+                                        <rect key="frame" x="148.5" y="15.5" width="117.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" name="lta_light_grey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="lta_blue"/>
+                                <constraints>
+                                    <constraint firstItem="IJ4-Nb-YdB" firstAttribute="top" secondItem="y1S-H6-L1Q" secondAttribute="top" constant="10" id="3xH-eU-mWu"/>
+                                    <constraint firstItem="QIN-hl-4GV" firstAttribute="centerX" secondItem="y1S-H6-L1Q" secondAttribute="centerX" id="JWj-Ha-jLa"/>
+                                    <constraint firstAttribute="height" constant="180" id="WUD-rs-ACt"/>
+                                    <constraint firstItem="QIN-hl-4GV" firstAttribute="centerY" secondItem="IJ4-Nb-YdB" secondAttribute="centerY" id="WjH-cY-ads"/>
+                                    <constraint firstItem="IJ4-Nb-YdB" firstAttribute="leading" secondItem="y1S-H6-L1Q" secondAttribute="leading" constant="10" id="ri4-Hw-8qU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6VD-m8-bdJ" firstAttribute="trailing" secondItem="y1S-H6-L1Q" secondAttribute="trailing" id="Ivh-yE-vMb"/>
+                            <constraint firstItem="y1S-H6-L1Q" firstAttribute="leading" secondItem="6VD-m8-bdJ" secondAttribute="leading" id="Kdr-dc-yeP"/>
+                            <constraint firstItem="y1S-H6-L1Q" firstAttribute="top" secondItem="6VD-m8-bdJ" secondAttribute="top" id="kyK-BO-H2x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6VD-m8-bdJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kbd-SD-Pls"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UoH-fq-7j5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="898"/>
+        </scene>
         <!--Side Menu-->
         <scene sceneID="n0v-az-FUq">
             <objects>
@@ -82,6 +138,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="instructionsButtonPressed:" destination="Vfm-N0-Hq0" eventType="touchUpInside" id="4cm-Ep-6z3"/>
+                                                    <segue destination="fIM-Xv-IIW" kind="show" id="HEf-zF-AqW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVi-VN-xSf">
@@ -589,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2u-az-oFY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="955.58035714285711"/>
+            <point key="canvasLocation" x="1868" y="898"/>
         </scene>
         <!--Survey View Controller-->
         <scene sceneID="o6J-g2-O2Z">
