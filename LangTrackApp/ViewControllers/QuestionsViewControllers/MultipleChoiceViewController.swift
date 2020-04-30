@@ -91,9 +91,13 @@ class MultipleChoiceViewController: UIViewController {
     func setSelectedAnswer(){
         if theAnswer != nil {
             if theAnswer?.index == theQuestion.index{
-                if theAnswer!.multipleChoiceAnswer != nil{
+                if theAnswer!.multipleChoiceAnswer != nil {
                     selectedAnswers = theAnswer!.multipleChoiceAnswer!
-                    nextButton.setEnabled(enabled: true)
+                    if theAnswer!.multipleChoiceAnswer?.isEmpty ?? false {
+                        nextButton.setEnabled(enabled: false)
+                    }else{
+                        nextButton.setEnabled(enabled: true)
+                    }
                 }
             }
         }
