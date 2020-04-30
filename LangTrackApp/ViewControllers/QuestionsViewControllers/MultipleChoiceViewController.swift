@@ -107,8 +107,8 @@ class MultipleChoiceViewController: UIViewController {
         }else{
             cellWidth = longestWidth
         }
-        topViewWidthConstraint.constant = cellWidth * 0.88
-        bottomViewWidthConstraint.constant = cellWidth * 0.88
+        topViewWidthConstraint.constant = cellWidth * 0.9
+        bottomViewWidthConstraint.constant = cellWidth * 0.9
     }
     
     func saveAnswers(){

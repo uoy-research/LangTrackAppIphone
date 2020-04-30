@@ -15,6 +15,11 @@ class SingleMultipleAnswersViewController: UIViewController {
     @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var singleTableView: SelfSizedTableView!
     @IBOutlet weak var tableviewContainer: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewBottomConstraint: NSLayoutConstraint!
     
     
     var selectedAnswer = -99
@@ -24,8 +29,8 @@ class SingleMultipleAnswersViewController: UIViewController {
     let fontInCell = UIFont.systemFont(ofSize: 18)
     var cellWidth: CGFloat = 100
     var showingTopShadow = false
-    var showigBottomShadow = false
-    var headerLabel : UILabel? = nil
+    var showingBottomShadow = false
+    var headerHeight: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +45,7 @@ class SingleMultipleAnswersViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        singleTableView.maxHeight = tableviewContainer.frame.height
+        singleTableView.maxHeight = tableviewContainer.frame.height - 26
         singleTableView.reloadData()
     }
     
@@ -53,6 +58,31 @@ class SingleMultipleAnswersViewController: UIViewController {
         self.view.layoutIfNeeded()
         setTableviewWidth()
         singleTableView.reloadData()
+        bottomView.setSmallBottomViewShadow()
+        DispatchQueue.main.async {
+            if self.singleTableView.maxHeight < self.singleTableView.contentSize.height - 2{
+                if (self.singleTableView.contentOffset.y + self.singleTableView.maxHeight) >= (self.singleTableView.contentSize.height){
+                    self.bottomView.removeShadow()
+                    self.showingBottomShadow = false
+                }else{
+                    if !self.showingBottomShadow{
+                        self.bottomView.setSmallBottomViewShadow()
+                        self.showingBottomShadow = true
+                    }
+                }
+            }else{
+                self.bottomView.removeShadow()
+                self.showingBottomShadow = false
+            }
+            if self.singleTableView.contentOffset.y < 5{
+                self.topView.removeShadow()
+                self.showingTopShadow = false
+            }else{
+                self.topView.setLabelShadow()
+                self.showingTopShadow = true
+            }
+        }
+        topViewBottomConstraint.constant = -headerHeight
     }
     
     func setListener(listener: QuestionListener) {
@@ -78,6 +108,8 @@ class SingleMultipleAnswersViewController: UIViewController {
         }else{
             cellWidth = longestWidth
         }
+        topViewWidthConstraint.constant = cellWidth * 0.9
+        bottomViewWidthConstraint.constant = cellWidth * 0.9
     }
     
     func saveAnswer(){
@@ -89,12 +121,20 @@ class SingleMultipleAnswersViewController: UIViewController {
     
     
     @IBAction func previousButtonPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.bottomView.removeShadow()
+            self.topView.removeShadow()
+        }
         saveAnswer()
         selectedAnswer = -99
         listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.bottomView.removeShadow()
+            self.topView.removeShadow()
+        }
         saveAnswer()
         selectedAnswer = -99
         listener?.nextQuestion(current: theQuestion)
@@ -105,16 +145,25 @@ class SingleMultipleAnswersViewController: UIViewController {
 extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if headerLabel != nil{
         if scrollView.contentOffset.y > 5{
             if !showingTopShadow {
-                headerLabel!.setLabelShadow()
+                topView.setLabelShadow()
                 showingTopShadow = true
             }
         }else{
-            //headerLabel!.removeLabelShadow()
+            topView.removeShadow()
             showingTopShadow = false
         }
+        
+        //bottom
+        if (scrollView.contentOffset.y + singleTableView.maxHeight) >= (scrollView.contentSize.height){
+            self.bottomView.removeShadow()
+            showingBottomShadow = false
+        }else{
+            if !showingBottomShadow{
+                bottomView.setSmallBottomViewShadow()
+                showingBottomShadow = true
+            }
         }
     }
     
@@ -155,18 +204,18 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let theTitle = theQuestion.text
-        let s = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
-        return s
+        headerHeight = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
+        return headerHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        headerLabel = UILabel()
-        headerLabel!.numberOfLines = 0
-        headerLabel!.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        headerLabel!.textAlignment = .center
-        headerLabel!.contentMode = .top
-        headerLabel!.text = theQuestion.text
-        headerLabel!.backgroundColor = UIColor.white
+        let headerLabel = UILabel()
+        headerLabel.numberOfLines = 0
+        headerLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        headerLabel.textAlignment = .center
+        headerLabel.contentMode = .top
+        headerLabel.text = theQuestion.text
+        headerLabel.backgroundColor = UIColor.white
 
         return headerLabel
     }

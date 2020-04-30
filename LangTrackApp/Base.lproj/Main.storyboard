@@ -2266,12 +2266,52 @@
                                             <outlet property="delegate" destination="zVO-vs-pXH" id="bE5-vs-eMc"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTh-kz-ROj">
+                                        <rect key="frame" x="111.5" y="580.5" width="191" height="7"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="7" id="Txk-Lr-89h"/>
+                                            <constraint firstAttribute="width" constant="191" id="lO8-IO-0BX"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hm-nY-sjX">
+                                        <rect key="frame" x="32" y="580.5" width="350" height="12"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="fnF-kP-cHc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFM-qT-80h">
+                                        <rect key="frame" x="87" y="42" width="240" height="4"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="K8k-2W-j8v"/>
+                                            <constraint firstAttribute="height" constant="4" id="Sob-7i-ArT"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahw-xg-6dq">
+                                        <rect key="frame" x="33" y="34" width="350" height="12"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="nWJ-Xt-8qX"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="SFM-qT-80h" firstAttribute="top" secondItem="ahw-xg-6dq" secondAttribute="bottom" constant="-4" id="Av2-DK-gH1"/>
                                     <constraint firstItem="HZD-Gv-kxo" firstAttribute="leading" secondItem="kGG-7q-ai8" secondAttribute="leading" constant="15" id="RZR-uG-W3A"/>
+                                    <constraint firstItem="ahw-xg-6dq" firstAttribute="width" secondItem="HZD-Gv-kxo" secondAttribute="width" multiplier="0.9" id="S1G-0t-z3i"/>
+                                    <constraint firstItem="8hm-nY-sjX" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" id="SJu-tU-zmL"/>
                                     <constraint firstItem="HZD-Gv-kxo" firstAttribute="centerY" secondItem="kGG-7q-ai8" secondAttribute="centerY" id="XmI-Vx-rmJ"/>
+                                    <constraint firstItem="SFM-qT-80h" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" id="f2B-yG-vS4"/>
+                                    <constraint firstItem="oTh-kz-ROj" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" id="flv-cp-ZVZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="8hm-nY-sjX" secondAttribute="bottom" id="jVg-As-jG1"/>
                                     <constraint firstAttribute="trailing" secondItem="HZD-Gv-kxo" secondAttribute="trailing" constant="10" id="mjv-IT-uZ9"/>
+                                    <constraint firstItem="8hm-nY-sjX" firstAttribute="width" secondItem="HZD-Gv-kxo" secondAttribute="width" multiplier="0.9" id="r8g-Pn-tQ2"/>
+                                    <constraint firstItem="HZD-Gv-kxo" firstAttribute="top" secondItem="SFM-qT-80h" secondAttribute="bottom" id="uPq-NM-aJN"/>
+                                    <constraint firstAttribute="bottom" secondItem="oTh-kz-ROj" secondAttribute="bottom" constant="5" id="yKb-pq-aNf"/>
+                                    <constraint firstItem="ahw-xg-6dq" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" constant="1" id="zrs-tj-12p"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2294,11 +2334,16 @@
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="bottomView" destination="oTh-kz-ROj" id="C1j-Ia-gXV"/>
+                        <outlet property="bottomViewWidthConstraint" destination="lO8-IO-0BX" id="Fpe-d2-7zK"/>
                         <outlet property="nextButton" destination="Yxy-Zg-DwB" id="9Ut-lZ-MpG"/>
                         <outlet property="previousButton" destination="KHw-YL-1Oc" id="Iq1-sG-WAo"/>
                         <outlet property="singleTableView" destination="HZD-Gv-kxo" id="q0S-6A-bSe"/>
                         <outlet property="tableviewContainer" destination="kGG-7q-ai8" id="7Sm-Yy-bpG"/>
                         <outlet property="theIcon" destination="tWd-yx-3lG" id="CvQ-oR-Sye"/>
+                        <outlet property="topView" destination="SFM-qT-80h" id="Bwc-tF-gKW"/>
+                        <outlet property="topViewBottomConstraint" destination="uPq-NM-aJN" id="Y6D-vU-BGh"/>
+                        <outlet property="topViewWidthConstraint" destination="K8k-2W-j8v" id="IwG-Oj-y5C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81v-Xk-pRD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
