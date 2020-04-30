@@ -25,6 +25,26 @@ extension UIView{
         self.layer.shadowRadius = 2.0
         self.layer.shadowOpacity = 1
     }
+    
+    func setSmallBottomViewShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: -2.5, height: -1.0)
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowOpacity = 0.5
+    }
+    
+    func removeShadow(){
+        self.layer.shadowColor = UIColor.clear.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 0.0
+        self.layer.shadowOpacity = 0.0
+    }
+    func setLabelShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: -2.5, height: 1.0)
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowOpacity = 0.5
+    }
 }
 
 extension UIViewController {

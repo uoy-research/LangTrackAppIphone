@@ -23,6 +23,9 @@ class SingleMultipleAnswersViewController: UIViewController {
     var theAnswer: Answer?
     let fontInCell = UIFont.systemFont(ofSize: 18)
     var cellWidth: CGFloat = 100
+    var showingTopShadow = false
+    var showigBottomShadow = false
+    var headerLabel : UILabel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,8 @@ class SingleMultipleAnswersViewController: UIViewController {
         }
     }
     
+    
+    
     @IBAction func previousButtonPressed(_ sender: Any) {
         saveAnswer()
         selectedAnswer = -99
@@ -97,7 +102,22 @@ class SingleMultipleAnswersViewController: UIViewController {
     
 }
 
-extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewDataSource{
+extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if headerLabel != nil{
+        if scrollView.contentOffset.y > 5{
+            if !showingTopShadow {
+                headerLabel!.setLabelShadow()
+                showingTopShadow = true
+            }
+        }else{
+            //headerLabel!.removeLabelShadow()
+            showingTopShadow = false
+        }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return theQuestion.singleMultipleAnswers?.count ?? 0
     }
@@ -140,14 +160,14 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let vw = UILabel()
-        vw.numberOfLines = 0
-        vw.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        vw.textAlignment = .center
-        vw.contentMode = .top
-        vw.text = theQuestion.text
-        vw.backgroundColor = UIColor.white
+        headerLabel = UILabel()
+        headerLabel!.numberOfLines = 0
+        headerLabel!.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        headerLabel!.textAlignment = .center
+        headerLabel!.contentMode = .top
+        headerLabel!.text = theQuestion.text
+        headerLabel!.backgroundColor = UIColor.white
 
-        return vw
+        return headerLabel
     }
 }

@@ -1976,41 +1976,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-8H-6e5">
-                                <rect key="frame" x="20" y="802" width="177" height="50"/>
-                                <color key="backgroundColor" name="lta_blue"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="BCm-HV-6F3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="previousButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="DAO-uI-B04"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-LP-7JH" customClass="NextButton" customModule="Lang_Track_App" customModuleProvider="target">
-                                <rect key="frame" x="217" y="802" width="177" height="50"/>
-                                <color key="backgroundColor" name="lta_blue"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hfX-tz-Hy0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="dTA-Mo-NEt"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_multiple_choice_light" translatesAutoresizingMaskIntoConstraints="NO" id="Oum-1e-AxN">
-                                <rect key="frame" x="157" y="99.5" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="B5X-Rq-vTJ"/>
-                                    <constraint firstAttribute="height" constant="100" id="uTJ-6h-Yc8"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWQ-wS-MtF">
                                 <rect key="frame" x="0.0" y="209.5" width="414" height="592.5"/>
                                 <subviews>
@@ -2075,14 +2040,89 @@
                                             <outlet property="delegate" destination="Isb-tK-m6n" id="rnj-iu-wQd"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEF-j2-AkV">
+                                        <rect key="frame" x="12.5" y="42" width="389" height="4"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="4" id="GSu-Fb-7Uv"/>
+                                            <constraint firstAttribute="width" constant="389" id="wWV-Fa-bZ8"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Pe-r1-AKQ">
+                                        <rect key="frame" x="12.5" y="34" width="389" height="12"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="2Oi-jz-TIh"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-0Y-d2K">
+                                        <rect key="frame" x="22" y="546" width="370" height="7"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="370" id="828-ht-tmT"/>
+                                            <constraint firstAttribute="height" constant="7" id="bvD-wp-aMH"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bj6-ty-0aX">
+                                        <rect key="frame" x="12.5" y="546" width="389" height="12"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="cxs-5t-ldi"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="9Pe-r1-AKQ" firstAttribute="width" secondItem="nNk-bC-HbR" secondAttribute="width" id="4tj-Yb-lpk"/>
+                                    <constraint firstItem="nNk-bC-HbR" firstAttribute="top" secondItem="pEF-j2-AkV" secondAttribute="bottom" id="CEb-rT-j9s"/>
+                                    <constraint firstItem="Yba-0Y-d2K" firstAttribute="centerX" secondItem="rWQ-wS-MtF" secondAttribute="centerX" id="Drl-rW-fcr"/>
                                     <constraint firstAttribute="trailing" secondItem="nNk-bC-HbR" secondAttribute="trailing" constant="10" id="NON-KJ-5Tn"/>
                                     <constraint firstItem="nNk-bC-HbR" firstAttribute="leading" secondItem="rWQ-wS-MtF" secondAttribute="leading" constant="15" id="PgM-qo-5lg"/>
+                                    <constraint firstItem="Yba-0Y-d2K" firstAttribute="top" secondItem="nNk-bC-HbR" secondAttribute="bottom" id="RZX-jA-vb7"/>
                                     <constraint firstItem="nNk-bC-HbR" firstAttribute="centerY" secondItem="rWQ-wS-MtF" secondAttribute="centerY" id="VJ5-On-Dy1"/>
+                                    <constraint firstItem="9Pe-r1-AKQ" firstAttribute="centerX" secondItem="rWQ-wS-MtF" secondAttribute="centerX" id="WkP-Ie-USr"/>
+                                    <constraint firstItem="bj6-ty-0aX" firstAttribute="top" secondItem="nNk-bC-HbR" secondAttribute="bottom" id="XnN-JI-Txm"/>
+                                    <constraint firstItem="bj6-ty-0aX" firstAttribute="centerX" secondItem="rWQ-wS-MtF" secondAttribute="centerX" id="em5-K2-UEI"/>
+                                    <constraint firstItem="pEF-j2-AkV" firstAttribute="centerX" secondItem="rWQ-wS-MtF" secondAttribute="centerX" id="lEC-Bk-2nl"/>
+                                    <constraint firstItem="pEF-j2-AkV" firstAttribute="top" secondItem="9Pe-r1-AKQ" secondAttribute="bottom" constant="-4" id="vvX-pF-MDf"/>
+                                    <constraint firstItem="bj6-ty-0aX" firstAttribute="width" secondItem="nNk-bC-HbR" secondAttribute="width" id="wNN-iZ-1sq"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-8H-6e5">
+                                <rect key="frame" x="20" y="802" width="177" height="50"/>
+                                <color key="backgroundColor" name="lta_blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BCm-HV-6F3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Föregående">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="previousButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="DAO-uI-B04"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-LP-7JH" customClass="NextButton" customModule="Lang_Track_App" customModuleProvider="target">
+                                <rect key="frame" x="217" y="802" width="177" height="50"/>
+                                <color key="backgroundColor" name="lta_blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hfX-tz-Hy0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Nästa">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="Isb-tK-m6n" eventType="touchUpInside" id="dTA-Mo-NEt"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lta_icon_multiple_choice_light" translatesAutoresizingMaskIntoConstraints="NO" id="Oum-1e-AxN">
+                                <rect key="frame" x="157" y="99.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="B5X-Rq-vTJ"/>
+                                    <constraint firstAttribute="height" constant="100" id="uTJ-6h-Yc8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -2103,11 +2143,16 @@
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
+                        <outlet property="bottomView" destination="Yba-0Y-d2K" id="Kn9-8u-RUu"/>
+                        <outlet property="bottomViewWidthConstraint" destination="828-ht-tmT" id="hsm-ll-y6h"/>
                         <outlet property="multiTableView" destination="nNk-bC-HbR" id="qmX-gM-4xC"/>
                         <outlet property="nextButton" destination="1s7-LP-7JH" id="wsM-8X-ime"/>
                         <outlet property="previousButton" destination="AjW-8H-6e5" id="1Ef-ZO-tO0"/>
                         <outlet property="tableviewContainer" destination="rWQ-wS-MtF" id="wqx-aB-KYh"/>
                         <outlet property="theIcon" destination="Oum-1e-AxN" id="vZh-g4-BLv"/>
+                        <outlet property="topView" destination="pEF-j2-AkV" id="Y7j-05-z8V"/>
+                        <outlet property="topViewBottomConstraint" destination="CEb-rT-j9s" id="nmW-Hs-yKa"/>
+                        <outlet property="topViewWidthConstraint" destination="wWV-Fa-bZ8" id="nyE-dw-EE1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5R-Ht-iwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
