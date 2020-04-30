@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var sideMenuLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuDimBackground: UIView!
+    @IBOutlet weak var emptyListInfoLabel: UILabel!
     
     //var surveyList = [Survey]()
     //var selectedSurvey: Survey?
@@ -204,7 +205,15 @@ class MainViewController: UIViewController {
         }
     }
     
-    
+    func hideOrShowEmptyListInfo(){
+        if SurveyRepository.assignmentList.isEmpty{
+            emptyListInfoLabel.isHidden = false
+            emptyListInfoLabel.text = "Här var det tomt…\nNär humlab tilldelar dig en enkät kommer den att hamna här"
+        }else{
+            emptyListInfoLabel.isHidden = true
+            emptyListInfoLabel.text = ""
+        }
+    }
     
     func setIdTokenListener(){
         self.idTokenChangeListener = Auth.auth().addIDTokenDidChangeListener() { (auth, user) in
@@ -244,6 +253,7 @@ class MainViewController: UIViewController {
                     if assignments != nil{
                         DispatchQueue.main.async {
                             self.theTableView.reloadData()
+                            self.hideOrShowEmptyListInfo()
                         }
                     }else{
                         self.showServerErrorMessage()
@@ -253,7 +263,7 @@ class MainViewController: UIViewController {
                 self.showServerErrorMessage()
             }
         }
-        
+        hideOrShowEmptyListInfo()
     }
     
     func showServerErrorMessage(){

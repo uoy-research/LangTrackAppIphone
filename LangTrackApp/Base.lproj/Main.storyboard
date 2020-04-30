@@ -349,13 +349,22 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="hcf-GZ-QZY"/>
                                         </connections>
                                     </tableView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGO-GI-Qua">
+                                        <rect key="frame" x="30" y="294" width="354" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="TeJ-kA-god" firstAttribute="top" secondItem="mVm-aI-omc" secondAttribute="topMargin" id="8DG-Nx-HYe"/>
                                     <constraint firstItem="TeJ-kA-god" firstAttribute="leading" secondItem="mVm-aI-omc" secondAttribute="leading" constant="5" id="OJF-Ue-u4a"/>
+                                    <constraint firstItem="hGO-GI-Qua" firstAttribute="centerY" secondItem="mVm-aI-omc" secondAttribute="centerY" id="X97-kf-g28"/>
+                                    <constraint firstAttribute="trailing" secondItem="hGO-GI-Qua" secondAttribute="trailing" constant="30" id="aCA-kg-eWe"/>
                                     <constraint firstAttribute="trailing" secondItem="TeJ-kA-god" secondAttribute="trailing" constant="5" id="f0y-cS-29X"/>
                                     <constraint firstAttribute="bottom" secondItem="TeJ-kA-god" secondAttribute="bottom" id="pMQ-YO-8KN"/>
+                                    <constraint firstItem="hGO-GI-Qua" firstAttribute="leading" secondItem="mVm-aI-omc" secondAttribute="leading" constant="30" id="poj-Tn-izt"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="8" right="8"/>
                             </view>
@@ -466,6 +475,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="K0z-u1-3Vb"/>
                     <connections>
+                        <outlet property="emptyListInfoLabel" destination="hGO-GI-Qua" id="WeE-xc-6zz"/>
                         <outlet property="menuButton" destination="8bb-2P-f4D" id="v7s-o0-F2a"/>
                         <outlet property="menuDimBackground" destination="vC9-bJ-PTC" id="ZnY-jg-Wn5"/>
                         <outlet property="sideMenuContainer" destination="Pa5-oZ-pfA" id="0Z1-MZ-Eyg"/>
