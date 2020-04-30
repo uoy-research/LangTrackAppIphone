@@ -58,6 +58,9 @@ class TimeDurationViewController: UIViewController {
                 hourPickerView.selectRow(hours.firstIndex(of: hoursInString) ?? 0, inComponent: 0, animated: false)
                 minutesPickerView.selectRow(minutes.firstIndex(of: minutesInString) ?? 0, inComponent: 0, animated: false)
             }
+        }else{
+            hourPickerView.selectRow(0, inComponent: 0, animated: false)
+            minutesPickerView.selectRow(0, inComponent: 0, animated: false)
         }
     }
     
