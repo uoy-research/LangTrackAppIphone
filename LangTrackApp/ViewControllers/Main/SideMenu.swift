@@ -16,6 +16,8 @@ class SideMenu: UIViewController {
     @IBOutlet weak var instructionsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var testView: UIView!
+    @IBOutlet weak var versionInfoLabel: UILabel!
     
     var listener: MenuListener?
 
@@ -25,6 +27,25 @@ class SideMenu: UIViewController {
         menuBackground.layer.cornerRadius = 12
         menuBackground.layer.borderWidth = 2
         menuBackground.layer.borderColor = UIColor(named: "lta_blue")?.cgColor
+        
+        let version = UIApplication.appVersion
+        if version != nil{
+            versionInfoLabel.text = "Version \(version ?? "")"
+        }else{
+            versionInfoLabel.text = ""
+        }
+    }
+    
+    func setTestView(userName: String){
+        if userName == "stephan" ||
+            userName == "josef" ||
+            userName == "marianne" ||
+            userName == "jonas" ||
+            userName == "henriette"  {
+            testView.isHidden = false
+        }else{
+            testView.isHidden = true
+        }
     }
     
     func setInfo(name: String, listener: MenuListener){

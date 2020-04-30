@@ -230,6 +230,7 @@ class MainViewController: UIViewController {
         var username = Auth.auth().currentUser?.email
         username!.until("@")
         SurveyRepository.userId = username ?? ""
+        sideMenu?.setTestView(userName: username ?? "")
         SurveyRepository.theUser = User(userName: username ?? "noName", mail: Auth.auth().currentUser?.email ?? "noMail")
         updateAssignments()
         sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
