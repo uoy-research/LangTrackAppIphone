@@ -15,6 +15,11 @@ class MultipleChoiceViewController: UIViewController {
     @IBOutlet weak var multiTableView: SelfSizedTableView!
     @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var tableviewContainer: UIView!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewBottomConstraint: NSLayoutConstraint!
     
     var listener: QuestionListener?
     var theQuestion = Question()
@@ -22,6 +27,9 @@ class MultipleChoiceViewController: UIViewController {
     var selectedAnswers = [Int]()
     let fontInCell = UIFont.systemFont(ofSize: 18)
     var cellWidth: CGFloat = 100
+    var showingTopShadow = false
+    var showingBottomShadow = false
+    var headerHeight: CGFloat = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +44,7 @@ class MultipleChoiceViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        multiTableView.maxHeight = tableviewContainer.frame.height
+        multiTableView.maxHeight = tableviewContainer.frame.height - 26
         multiTableView.reloadData()
     }
     
@@ -49,6 +57,31 @@ class MultipleChoiceViewController: UIViewController {
         self.view.layoutIfNeeded()
         setTableviewWidth()
         multiTableView.reloadData()
+        bottomView.setSmallBottomViewShadow()
+        DispatchQueue.main.async {
+            if self.multiTableView.maxHeight < self.multiTableView.contentSize.height - 2{
+                if (self.multiTableView.contentOffset.y + self.multiTableView.maxHeight) >= (self.multiTableView.contentSize.height){
+                    self.bottomView.removeShadow()
+                    self.showingBottomShadow = false
+                }else{
+                    if !self.showingBottomShadow{
+                        self.bottomView.setSmallBottomViewShadow()
+                        self.showingBottomShadow = true
+                    }
+                }
+            }else{
+                self.bottomView.removeShadow()
+                self.showingBottomShadow = false
+            }
+            if self.multiTableView.contentOffset.y < 5{
+                self.topView.removeShadow()
+                self.showingTopShadow = false
+            }else{
+                self.topView.setLabelShadow()
+                self.showingTopShadow = true
+            }
+        }
+        topViewBottomConstraint.constant = -headerHeight
     }
     
     func setListener(listener: QuestionListener) {
@@ -74,6 +107,8 @@ class MultipleChoiceViewController: UIViewController {
         }else{
             cellWidth = longestWidth
         }
+        topViewWidthConstraint.constant = cellWidth * 0.9
+        bottomViewWidthConstraint.constant = cellWidth * 0.9
     }
     
     func saveAnswers(){
@@ -81,19 +116,51 @@ class MultipleChoiceViewController: UIViewController {
     }
 
     @IBAction func previousButtonPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.bottomView.removeShadow()
+            self.topView.removeShadow()
+        }
         saveAnswers()
         selectedAnswers.removeAll()
         listener?.previousQuestion(current: theQuestion)
     }
 
     @IBAction func nextButtonPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.bottomView.removeShadow()
+            self.topView.removeShadow()
+        }
         saveAnswers()
         selectedAnswers.removeAll()
         listener?.nextQuestion(current: theQuestion)
     }
 }
 
-extension MultipleChoiceViewController: UITableViewDelegate, UITableViewDataSource{
+extension MultipleChoiceViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 5{
+            if !showingTopShadow {
+                topView.setLabelShadow()
+                showingTopShadow = true
+            }
+        }else{
+            topView.removeShadow()
+            showingTopShadow = false
+        }
+        
+        //bottom
+        if (scrollView.contentOffset.y + multiTableView.maxHeight) >= (scrollView.contentSize.height){
+            self.bottomView.removeShadow()
+            showingBottomShadow = false
+        }else{
+            if !showingBottomShadow{
+                bottomView.setSmallBottomViewShadow()
+                showingBottomShadow = true
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return theQuestion.multipleChoisesAnswers?.count ?? 0
     }
@@ -137,20 +204,20 @@ extension MultipleChoiceViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let theTitle = theQuestion.text
-        let s = theTitle.height(withConstrainedWidth: multiTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
-        return s
+        headerHeight = theTitle.height(withConstrainedWidth: multiTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
+        return headerHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let tempLabel = UILabel()
-        tempLabel.numberOfLines = 0
-        tempLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        tempLabel.textAlignment = .center
-        tempLabel.contentMode = .top
-        tempLabel.text = theQuestion.text
-        tempLabel.backgroundColor = UIColor.white
+        let headerLabel = UILabel()
+        headerLabel.numberOfLines = 0
+        headerLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        headerLabel.textAlignment = .center
+        headerLabel.contentMode = .top
+        headerLabel.text = theQuestion.text
+        headerLabel.backgroundColor = UIColor.white
 
-        return tempLabel
+        return headerLabel
     }
     
 }
