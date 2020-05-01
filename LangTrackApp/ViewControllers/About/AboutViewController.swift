@@ -1,5 +1,5 @@
 //
-//  InstructionsViewController.swift
+//  AboutViewController.swift
 //  LangTrackApp
 //
 //  Created by Stephan Björck on 2020-04-30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InstructionsViewController: UIViewController, UIScrollViewDelegate {
+class AboutViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
@@ -51,9 +51,8 @@ class InstructionsViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
+    
     @IBAction func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
 }
