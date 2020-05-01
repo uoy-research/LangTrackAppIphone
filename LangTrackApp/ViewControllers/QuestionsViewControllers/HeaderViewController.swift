@@ -29,7 +29,7 @@ class HeaderViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        userNameLabel.text = "Inloggad som\n\(theUser?.userName ?? "noName")"
+        userNameLabel.text = ""//"Inloggad som\n\(theUser?.userName ?? "noName")"
         greetingsLabel.text = question.text
         subTitleLabel.text = question.title
     }
