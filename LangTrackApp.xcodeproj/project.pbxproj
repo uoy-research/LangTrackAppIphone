@@ -69,6 +69,7 @@
 		F18E2D3F2429066100B33E53 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18E2D3E2429066100B33E53 /* SideMenu.swift */; };
 		F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1963208240922AE00A0D8D2 /* VKCheckbox.swift */; };
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
+		F1BAF78E245C44A400621F7F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAF78D245C44A400621F7F /* LabelExtension.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
 		F1CA5B8D245B11D00024450B /* applicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA5B8C245B11D00024450B /* applicationExtension.swift */; };
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
@@ -172,6 +173,7 @@
 		F18E2D3E2429066100B33E53 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		F1963208240922AE00A0D8D2 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
+		F1BAF78D245C44A400621F7F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
 		F1CA5B8C245B11D00024450B /* applicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applicationExtension.swift; sourceTree = "<group>"; };
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				F11499F7240E8D8200DC988A /* TextViewExtension.swift */,
 				F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */,
 				F1CA5B8C245B11D00024450B /* applicationExtension.swift */,
+				F1BAF78D245C44A400621F7F /* LabelExtension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				F17F3486243757AC00CD64BB /* SingleItemTableViewCell.swift in Sources */,
 				F11499F6240E543300DC988A /* ViewExtension.swift in Sources */,
 				F15658A923E33DE500EC2796 /* FillInTheBlankViewController.swift in Sources */,
+				F1BAF78E245C44A400621F7F /* LabelExtension.swift in Sources */,
 				F1399CE1243D0DA600545D47 /* SingleView.swift in Sources */,
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
 				F1399CDB243CACA700545D47 /* OverviewDurationTableViewCell.swift in Sources */,
