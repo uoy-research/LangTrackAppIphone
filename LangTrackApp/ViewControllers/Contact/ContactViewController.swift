@@ -12,9 +12,6 @@ class ContactViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var linkView: UIView!
     @IBOutlet weak var view2: UIView!
-    @IBOutlet weak var view3: UIView!
-    @IBOutlet weak var view4: UIView!
-    @IBOutlet weak var view5: UIView!
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var theScrollview: UIScrollView!
@@ -29,15 +26,9 @@ class ContactViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         linkView.layer.cornerRadius = 12
-        linkView.setLabelShadow()
+        linkView.setLargeViewShadow()
         view2.layer.cornerRadius = 12
-        view2.setLabelShadow()
-        view3.layer.cornerRadius = 12
-        view3.setLabelShadow()
-        view4.layer.cornerRadius = 12
-        view4.setLabelShadow()
-        view5.layer.cornerRadius = 12
-        view5.setLabelShadow()
+        view2.setLargeViewShadow()
         
         theScrollview.delegate = self
         
@@ -73,6 +64,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate {
                     UIApplication.shared.open(url, options: [:])
         }
     }
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 5{

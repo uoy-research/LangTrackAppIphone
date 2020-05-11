@@ -465,9 +465,7 @@ extension MainViewController: CellTimerListener{
 //MARK:- MenuListener
 extension MainViewController: MenuListener{
     func setTestMode(to: Bool) {
-        #warning ("TODO: remove after testing")
         self.inTestMode = to
-        print("inTestMode: \(inTestMode)")
     }
     
     func logOutSelected() {
@@ -507,10 +505,6 @@ extension MainViewController: MenuListener{
                 self.present(popup, animated: true, completion: nil)
             }
         }
-    }
-    
-    func instructions() {
-        print("MenuListener instructions")
     }
     
     func contact() {

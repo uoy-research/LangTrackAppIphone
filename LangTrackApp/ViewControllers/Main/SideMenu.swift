@@ -13,7 +13,6 @@ class SideMenu: UIViewController {
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var instructionsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var testView: UIView!
@@ -63,10 +62,6 @@ class SideMenu: UIViewController {
     
     @IBAction func aboutButtonPressed(_ sender: Any) {
         listener?.about()
-    }
-    
-    @IBAction func instructionsButtonPressed(_ sender: Any) {
-        listener?.instructions()
     }
     
     @IBAction func testingSwitch(_ sender: UISwitch) {
