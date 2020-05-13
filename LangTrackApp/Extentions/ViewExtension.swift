@@ -14,9 +14,9 @@ extension UIView{
     
     func setLargeViewShadow(){
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: -5.0, height: 5.0)
-        self.layer.shadowRadius = 4.0
-        self.layer.shadowOpacity = 1
+        self.layer.shadowOffset = CGSize(width: -2, height: 2)
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOpacity = 0.55
     }
     
     func setSmallViewShadow(){

@@ -8,12 +8,22 @@
 
 import UIKit
 
+let attributeLtaBlueHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
+                                   NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
+
+let attributeLtaRedHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
+                                   NSAttributedString.Key.foregroundColor: UIColor(named: "lta_red") ?? UIColor.red ]
+
+let attributeLtaBlueText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17),
+                             NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
+
+let attributeSmallText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+
 class SideMenu: UIViewController {
     
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var instructionsButton: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var testView: UIView!
@@ -55,18 +65,6 @@ class SideMenu: UIViewController {
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
         listener?.logOutSelected()
-    }
-    
-    @IBAction func contactButtonPressed(_ sender: Any) {
-        listener?.contact()
-    }
-    
-    @IBAction func aboutButtonPressed(_ sender: Any) {
-        listener?.about()
-    }
-    
-    @IBAction func instructionsButtonPressed(_ sender: Any) {
-        listener?.instructions()
     }
     
     @IBAction func testingSwitch(_ sender: UISwitch) {
