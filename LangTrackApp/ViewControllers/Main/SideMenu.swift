@@ -8,6 +8,17 @@
 
 import UIKit
 
+let attributeLtaBlueHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
+                                   NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
+
+let attributeLtaRedHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
+                                   NSAttributedString.Key.foregroundColor: UIColor(named: "lta_red") ?? UIColor.red ]
+
+let attributeLtaBlueText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17),
+                             NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
+
+let attributeSmallText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+
 class SideMenu: UIViewController {
     
     @IBOutlet weak var menuBackground: UIView!
@@ -54,14 +65,6 @@ class SideMenu: UIViewController {
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
         listener?.logOutSelected()
-    }
-    
-    @IBAction func contactButtonPressed(_ sender: Any) {
-        listener?.contact()
-    }
-    
-    @IBAction func aboutButtonPressed(_ sender: Any) {
-        listener?.about()
     }
     
     @IBAction func testingSwitch(_ sender: UISwitch) {

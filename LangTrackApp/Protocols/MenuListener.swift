@@ -10,7 +10,5 @@ import Foundation
 
 protocol MenuListener{
     func logOutSelected()
-    func contact()
-    func about()
     func setTestMode(to: Bool)
 }

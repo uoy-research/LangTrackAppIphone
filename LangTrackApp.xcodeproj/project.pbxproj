@@ -77,7 +77,6 @@
 		F1DB199F24275D810068F49E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199E24275D810068F49E /* NextButton.swift */; };
 		F1F77720245B67B200B93D8D /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7771F245B67B200B93D8D /* ContactViewController.swift */; };
 		F1F77723245B691200B93D8D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F77722245B691200B93D8D /* AboutViewController.swift */; };
-		F1F7F134245B645B00C6B631 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7F133245B645B00C6B631 /* InstructionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,7 +180,6 @@
 		F1DB199E24275D810068F49E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		F1F7771F245B67B200B93D8D /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		F1F77722245B691200B93D8D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		F1F7F133245B645B00C6B631 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,7 +360,6 @@
 			children = (
 				F1F77721245B68F600B93D8D /* About */,
 				F1F7771E245B679700B93D8D /* Contact */,
-				F1F7F132245B642C00C6B631 /* Instructions */,
 				F1399CEC243E09F800545D47 /* UnansweredPopup */,
 				F1DB19942424B87C0068F49E /* Overview */,
 				F10136E523E836FF00B36CF0 /* Login */,
@@ -468,14 +465,6 @@
 				F1F77722245B691200B93D8D /* AboutViewController.swift */,
 			);
 			path = About;
-			sourceTree = "<group>";
-		};
-		F1F7F132245B642C00C6B631 /* Instructions */ = {
-			isa = PBXGroup;
-			children = (
-				F1F7F133245B645B00C6B631 /* InstructionsViewController.swift */,
-			);
-			path = Instructions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,7 +734,6 @@
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,
 				F11499FF2416384700DC988A /* CellTimerListener.swift in Sources */,
-				F1F7F134245B645B00C6B631 /* InstructionsViewController.swift in Sources */,
 				F13C4B1023E968F80028F912 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

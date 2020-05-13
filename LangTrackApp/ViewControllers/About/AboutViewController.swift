@@ -19,16 +19,6 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var theScrollview: UIScrollView!
     
     var showingTopShadow = false
-    let attributeLtaBlueHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
-                                       NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
-    
-    let attributeLtaRedHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
-                                       NSAttributedString.Key.foregroundColor: UIColor(named: "lta_red") ?? UIColor.red ]
-    
-    let attributeLtaBlueText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17),
-                                 NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
-    
-    let attributeSmallText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -506,14 +506,4 @@ extension MainViewController: MenuListener{
             }
         }
     }
-    
-    func contact() {
-        print("MenuListener contact")
-    }
-    
-    func about() {
-        print("MenuListener about")
-    }
-    
-    
 }
