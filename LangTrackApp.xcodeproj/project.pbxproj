@@ -120,6 +120,8 @@
 		F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToActionTableViewCell.swift; sourceTree = "<group>"; };
 		F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		F11499FE2416384700DC988A /* CellTimerListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTimerListener.swift; sourceTree = "<group>"; };
+		F128D855246FE81E009E3EB9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		F128D856246FE81E009E3EB9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F1399CD8243C6EC800545D47 /* OverviewLikertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewLikertTableViewCell.swift; sourceTree = "<group>"; };
 		F1399CDA243CACA700545D47 /* OverviewDurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDurationTableViewCell.swift; sourceTree = "<group>"; };
 		F1399CDC243CC00D00545D47 /* OverviewSingleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSingleTableViewCell.swift; sourceTree = "<group>"; };
@@ -284,6 +286,13 @@
 			path = Survey;
 			sourceTree = "<group>";
 		};
+		F128D857246FE86F009E3EB9 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
 		F1399CEC243E09F800545D47 /* UnansweredPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +326,7 @@
 		F156586F23E2DD7500EC2796 /* LangTrackApp */ = {
 			isa = PBXGroup;
 			children = (
+				F128D857246FE86F009E3EB9 /* Localizations */,
 				F11499F9241155DC00DC988A /* LangTrackApp.entitlements */,
 				F1B05A1723ED9766004B8BB6 /* CustonViews */,
 				F10136E823E85F2200B36CF0 /* Extentions */,
@@ -559,6 +569,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = F156586423E2DD7500EC2796;
 			productRefGroup = F156586E23E2DD7500EC2796 /* Products */;
@@ -774,6 +785,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F156587723E2DD7500EC2796 /* Base */,
+				F128D855246FE81E009E3EB9 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -782,6 +794,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F156587C23E2DD7600EC2796 /* Base */,
+				F128D856246FE81E009E3EB9 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -793,6 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -853,6 +867,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
