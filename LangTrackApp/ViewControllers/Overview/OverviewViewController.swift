@@ -65,7 +65,7 @@ class OverviewViewController: UIViewController {
                 //MARK: add footer too?
             }
             questionsWithAnswers.sort(by: {$0.question.index < $1.question.index})
-            topViewNumberOfQuestionsLabel.text = "Totalt \(theAssignment!.survey.questions.count - 2), besvarade \(questionsWithAnswers.count - 1)"
+            topViewNumberOfQuestionsLabel.text = String(questionsWithAnswers.count - 1)//minus header...
             overviewTableview.reloadData()
         }
     }

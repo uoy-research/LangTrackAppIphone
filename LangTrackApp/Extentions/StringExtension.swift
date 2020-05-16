@@ -11,6 +11,10 @@ import UIKit
 
 extension String {
     
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+    }
+    
     mutating func until(_ string: String) {
         let components = self.components(separatedBy: string)
         self = components[0]

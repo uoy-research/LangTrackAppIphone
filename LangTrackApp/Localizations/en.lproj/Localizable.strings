@@ -1,0 +1,55 @@
+
+
+/*
+Localizable.strings (English)
+LangTrackApp
+ 
+Created by Stephan Björck on 2020-05-16.
+Copyright © 2020 Stephan Björck. All rights reserved.
+*/
+
+
+//Main
+
+//Login
+"Info" = "Info";
+"The Lang Track App is an app developed by" = "The Lang Track App is an app developed by the Humanities Lab at Lund University for research purposes.\n\nLog in with the username and password assigned to you by Humlab Lund University";
+"Login error" = "Login error";
+"Invalid username or password" = "Invalid username or password";
+"Incorrect entry" = "Incorrect entry";
+"Please enter your username and password and try again" = "Please enter your username and password and try again";
+
+// Menu
+"Log out" = "Log out";
+"Do you want to log out?" = "Do you want to log out?";
+"Cancel" = "Cancel";
+"Time left:" = "Time left:";
+"and" = "and";
+"minutes" = "minutes";
+"minute" = "minute";
+"hours" = "hours";
+"hour" = "hour";
+"Unanswered" = "Unanswered";
+"Answered" = "Answered";
+
+// main
+"Here it was empty" = "Here it was empty ...\nWhen Humlab assigns you a survey, it will end up here";
+"numberEnding" = "";
+
+// Contact
+"Contact" = "Contact";
+"contact text 1" = "Here you can get in touch with the team behind the Lang-Track-App.";
+"contact text 2" = "Do you have questions about your participation in the study, opinions about the content or similar. ";
+"Click here" = "Click here ";
+"contact text 3" = "to get in touch with those responsible for the study.";
+"contact text 4" = "Do you have questions or opinions about the app, push notifications or maybe you have found something that is not working properly. ";
+"contact text 5" = "to get in touch with the developers.";
+"tech mail subject" = "Concerning Lang-Track-App development";
+"tech mail body" = "-Here you can write to the developer team for Lang-Track-App-";
+"reserch mail body" = "-Here you can write to the researchers for Lang-Track-App-";
+"No Email Client popup title" = "No Email Client";
+"No Email Client popup text" = "E-mail does not seem to be possible. Click on the link to the Humanities Lab below and contact that way instead.";
+"Links" = "Links";
+"Lang-Track-App project" = "Lang-Track-App project";
+"Humanities Lab" = "Humanities Lab";
+"Lund University" = "Lund University";

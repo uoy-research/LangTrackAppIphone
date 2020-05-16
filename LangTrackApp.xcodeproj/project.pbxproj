@@ -77,6 +77,8 @@
 		F1DB199F24275D810068F49E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199E24275D810068F49E /* NextButton.swift */; };
 		F1F77720245B67B200B93D8D /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7771F245B67B200B93D8D /* ContactViewController.swift */; };
 		F1F77723245B691200B93D8D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F77722245B691200B93D8D /* AboutViewController.swift */; };
+		F1F7D1DC246FEE57003D881B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F7D1DE246FEE57003D881B /* Localizable.strings */; };
+		F1F7D1E1246FEEDC003D881B /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7D1E0246FEEDC003D881B /* TranslatedStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,9 @@
 		F1DB199E24275D810068F49E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		F1F7771F245B67B200B93D8D /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		F1F77722245B691200B93D8D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		F1F7D1DD246FEE57003D881B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F1F7D1DF246FEE8B003D881B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F1F7D1E0246FEEDC003D881B /* TranslatedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedStrings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +294,8 @@
 		F128D857246FE86F009E3EB9 /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
+				F1F7D1DE246FEE57003D881B /* Localizable.strings */,
+				F1F7D1E0246FEEDC003D881B /* TranslatedStrings.swift */,
 			);
 			path = Localizations;
 			sourceTree = "<group>";
@@ -593,6 +600,7 @@
 				F10B84B423E46025003CAC76 /* Colors.xcassets in Resources */,
 				F16D557023E8238500DD92A1 /* GoogleService-Info.plist in Resources */,
 				F1399CDF243D0D9400545D47 /* SingleView.xib in Resources */,
+				F1F7D1DC246FEE57003D881B /* Localizable.strings in Resources */,
 				F156587A23E2DD7600EC2796 /* Assets.xcassets in Resources */,
 				F156587823E2DD7500EC2796 /* Main.storyboard in Resources */,
 			);
@@ -731,6 +739,7 @@
 				F1399CE1243D0DA600545D47 /* SingleView.swift in Sources */,
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
 				F1399CDB243CACA700545D47 /* OverviewDurationTableViewCell.swift in Sources */,
+				F1F7D1E1246FEEDC003D881B /* TranslatedStrings.swift in Sources */,
 				F102725224460EEF00203711 /* OverviewHeaderTableViewCell.swift in Sources */,
 				F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */,
 				F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */,
@@ -797,6 +806,15 @@
 				F128D856246FE81E009E3EB9 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F1F7D1DE246FEE57003D881B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1F7D1DD246FEE57003D881B /* sv */,
+				F1F7D1DF246FEE8B003D881B /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -15,16 +15,25 @@ extension TimeInterval{
         let minutes = (time / 60) % 60
         let hours = (time / 3600)
         
+        var minutesString = translatedMinutes
+        if minutes == 1{
+            minutesString = translatedMinute
+        }
+        var hourString = translatedHours
+        if hours == 1{
+            hourString = translatedHour
+        }
+        
         var formatString = ""
         if hours == 0 {
             if(minutes < 10) {
-                formatString = "%2d minuter"
+                formatString = "%2d \(minutesString)"
             }else {
-                formatString = "%0.2d minuter"
+                formatString = "%0.2d \(minutesString)"
             }
             return String(format: formatString,minutes)
         }else {
-            formatString = "%2d timmar och %0.2d minuter"
+            formatString = "%2d \(hourString) \(translatedAnd) %0.2d \(minutesString)"
             return String(format: formatString,hours,minutes)
         }
     }

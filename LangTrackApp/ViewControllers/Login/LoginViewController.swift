@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let password = passwordTextField.text
         if (username ?? "" == "") || (password ?? "" == ""){
             DispatchQueue.main.async {
-                let popup = UIAlertController(title: "Fel inmatning", message: "Ange användarnamn och lösenord och försök igen", preferredStyle: .alert)
+                let popup = UIAlertController(title: translatedIncorrectEntry, message: translatedPleaseEnterYourUsernameAndPasswordAndTryAgain, preferredStyle: .alert)
                 popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 
                 self.present(popup, animated: true, completion: nil)
@@ -95,7 +95,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.activityIndicator.stopAnimating()
                     print("auth signIn ERROR: \(error?.localizedDescription ?? "")")
                     DispatchQueue.main.async {
-                        let popup = UIAlertController(title: "Fel vid inloggning", message: "Ogiltigt användarnamn eller lösenord ", preferredStyle: .alert)
+                        let popup = UIAlertController(title: translatedErrorLogin, message: translatedInvalidUsernameOrPassword, preferredStyle: .alert)
                         popup.addAction(UIAlertAction(title: "OK", style: .default, handler:{alert -> Void in
                             self.userNameTextField.becomeFirstResponder()
                         }))
@@ -119,7 +119,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func helpButtonPressed(_ sender: Any) {
         DispatchQueue.main.async {
-            let popup = UIAlertController(title: "Info", message: "The Lang Track App är en app som utvecklats av humanistlaboratoriet på Lunds Universitet i forskningssyfte.\n\nLogga in med det användarnamn och lösenord som du tilldelats från Humlab Lunds Universitet", preferredStyle: .alert)
+            let popup = UIAlertController(title: translatedInfo, message: translatedDevelopedBy, preferredStyle: .alert)
             popup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
             self.present(popup, animated: true, completion: nil)

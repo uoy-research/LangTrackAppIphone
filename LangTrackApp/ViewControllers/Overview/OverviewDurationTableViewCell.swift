@@ -35,21 +35,21 @@ class OverviewDurationTableViewCell: UITableViewCell {
         setHoursAndMinutes()
         durationTextLabel.text = question?.text
         if answeredMinutes == 0 && answeredHour == 0{
-            answerTextLabel.text = "0:0"
+            answerTextLabel.text = "0 \(translatedHours) \(translatedAnd) 0 \(translatedMinutes)"
         }else if answeredMinutes == 0{
             if answeredHour == 1{
-                answerTextLabel.text = "\(answeredHour) timme"
+                answerTextLabel.text = "\(answeredHour) \(translatedHour)"
             }else{
-                answerTextLabel.text = "\(answeredHour) timmar"
+                answerTextLabel.text = "\(answeredHour) \(translatedMinutes)"
             }
         }else{
             if answeredHour == 0{
-                answerTextLabel.text = "\(answeredMinutes) minuter"
+                answerTextLabel.text = "\(answeredMinutes) \(translatedMinutes)"
             }else{
                 if answeredHour == 1{
-                    answerTextLabel.text = "\(answeredHour) timme och \(answeredMinutes) minuter"
+                    answerTextLabel.text = "\(answeredHour) \(translatedHour) \(translatedAnd) \(answeredMinutes) \(translatedMinutes)"
                 }else{
-                    answerTextLabel.text = "\(answeredHour) timmar och \(answeredMinutes) minuter"
+                    answerTextLabel.text = "\(answeredHour) \(translatedHours) \(translatedAnd) \(answeredMinutes) \(translatedMinutes)"
                 }
             }
         }

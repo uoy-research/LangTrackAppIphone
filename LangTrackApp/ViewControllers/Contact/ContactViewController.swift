@@ -51,18 +51,18 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     func setContactText(){
-        let theHeader = "Kontakt\n\n"
+        let theHeader = "\(translatedContact)\n\n"
         let finalString = NSMutableAttributedString(string: theHeader, attributes: attributeLtaBlueHeaderText)
         
-        let contactInfoText = "Här kan du komma i kontakt med teamet bakom Lang-Track-App.\n\n"
+        let contactInfoText = "\(translatedReserchText1)\n\n"
         let attrcontactInfoText = NSMutableAttributedString(string: contactInfoText, attributes: attributeLtaBlueText)
         finalString.append(attrcontactInfoText)
         
-        let reserchText1 = "Har du frågor om din medverkan i underökningen, åsikter om innehållet eller liknande. "
+        let reserchText1 = translatedReserchText2
         let attrreserchText1 = NSMutableAttributedString(string: reserchText1, attributes: attributeLtaBlueText)
         finalString.append(attrreserchText1)
         
-        let reserchLink = "Klicka här "
+        let reserchLink = translatedClickHere
         let myreserchRange = NSRange(location: 0, length: reserchLink.count)
         let attrreserchText2 = NSMutableAttributedString(string: reserchLink, attributes: attributeLtaBlueText)
         attrreserchText2.addAttribute(NSAttributedString.Key.link,
@@ -70,15 +70,15 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
                                       range: myreserchRange)
         finalString.append(attrreserchText2)
         
-        let reserchText3 = "för att komma i kontakt med ansvariga/forskare för undersökningen.\n\n"
+        let reserchText3 = "\(translatedReserchText3)\n\n"
         let attrreserchText3 = NSMutableAttributedString(string: reserchText3, attributes: attributeLtaBlueText)
         finalString.append(attrreserchText3)
         
-        let techText1 = "Har du frågor eller åsikter om appen, push notifikationer eller kanske du har hittat något som inte fungerar som det ska. "
+        let techText1 = translatedTechText1
         let attrtechText1 = NSMutableAttributedString(string: techText1, attributes: attributeLtaBlueText)
         finalString.append(attrtechText1)
         
-        let techLink = "Klicka här "
+        let techLink = translatedClickHere
         let mytechRange = NSRange(location: 0, length: techLink.count)
         let attrtechText2 = NSMutableAttributedString(string: techLink, attributes: attributeLtaBlueText)
         attrtechText2.addAttribute(NSAttributedString.Key.link,
@@ -86,7 +86,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
                                       range: mytechRange)
         finalString.append(attrtechText2)
         
-        let techText3 = "för att komma i kontakt med utvecklarna."
+        let techText3 = translatedTechText2
         let attrtechText3 = NSMutableAttributedString(string: techText3, attributes: attributeLtaBlueText)
         finalString.append(attrtechText3)
         
@@ -94,22 +94,22 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     func setLinkText(){
-        let theHeader = "Länkar\n\n"
+        let theHeader = "\(translatedLinks)\n\n"
         let finalString = NSMutableAttributedString(string: theHeader, attributes: attributeLtaBlueHeaderText)
         
-        let linkText1 = "Lang-Track-App projekt\n\n"
+        let linkText1 = "\(translatedLangTrackAppProject)\n\n"
         let attrText1 = NSMutableAttributedString(string: linkText1, attributes: attributeLtaBlueText)
         let myRange = NSRange(location: 0, length: attrText1.length)
         attrText1.addAttributes([NSAttributedString.Key.link: URL(string: "https://portal.research.lu.se/portal/en/projects/the-langtrackapp-studying-exposure-to-and-use-of-a-new-language-using-smartphone-technology(4e734940-981f-4dd0-841a-eb6ac760af0c).html")!], range: myRange)
         finalString.append(attrText1)
         
-        let linkText2 = "Humanistlaboratoriet\n\n"
+        let linkText2 = "\(translatedHumanitiesLab)\n\n"
         let attrText2 = NSMutableAttributedString(string: linkText2, attributes: attributeLtaBlueText)
         let myRange2 = NSRange(location: 0, length: attrText2.length)
         attrText2.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.humlab.lu.se/en/")!], range: myRange2)
         finalString.append(attrText2)
         
-        let linkText3 = "Lunds Universitet"
+        let linkText3 = translatedLundUniversity
         let attrText3 = NSMutableAttributedString(string: linkText3, attributes: attributeLtaBlueText)
         let myRange3 = NSRange(location: 0, length: attrText3.length)
         attrText3.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.lu.se/")!], range: myRange3)
@@ -123,8 +123,8 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             // mail to dev
             
             let recipientEmail = "humlablu@gmail.com"
-            let subject = "Angående Lang-Track-App utveckling"
-            let body = "-Här kan du skriva till utvecklarteamet för Lang-Track-App-"
+            let subject = translatedSubject
+            let body = translatedTechBody
 
             // Show default mail composer
             if MFMailComposeViewController.canSendMail() {
@@ -143,8 +143,8 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
             // mail to Henriette
             
             let recipientEmail = "humlablu@gmail.com"//TODO: change mail
-            let subject = "Angående Lang-Track-App projekt"
-            let body = "-Här kan du skriva till ansvariga/forskare bakom Lang-Track-App-"
+            let subject = translatedSubject
+            let body = translatedReserchBody
 
             // Show default mail composer
             if MFMailComposeViewController.canSendMail() {
@@ -164,7 +164,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     func showCantSendMailAlert(){
-        let alert = UIAlertController.init(title: "Ingen e-postklient", message: "Det verkar inte som att det går att skicka e-post. Klicka på länken till humanistlaboratoriet nedan och ta kontakt den vägen istället.", preferredStyle: .alert)
+        let alert = UIAlertController.init(title: translatedCantSendEmailPopupTitle, message: translatedCantSendEmailPopupText, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

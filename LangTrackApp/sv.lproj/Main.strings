@@ -174,7 +174,7 @@
 "bfa-Hq-QQk.text" = "Titel";
 
 /* Class = "UILabel"; text = "Välj ord i listan"; ObjectID = "c9w-eu-TBZ"; */
-"c9w-eu-TBZ.text" = "Välj ord i listan";
+"c9w-eu-TBZ.text" = "_____";
 
 /* Class = "UILabel"; text = "timmar"; ObjectID = "cIE-W1-jID"; */
 "cIE-W1-jID.text" = "timmar";

@@ -1,0 +1,54 @@
+
+/*
+Localizable.strings (Swedish)
+LangTrackApp
+ 
+Created by Stephan Björck on 2020-05-16.
+Copyright © 2020 Stephan Björck. All rights reserved.
+*/
+
+
+//Main
+
+//Login
+"Info" = "Info";
+"The Lang Track App is an app developed by" = "The Lang Track App är en app som utvecklats av Humanistlaboratoriet på Lunds Universitet i forskningssyfte.\n\nLogga in med det användarnamn och lösenord som du tilldelats från Humlab Lunds Universitet";
+"Login error" = "Fel vid inloggning";
+"Invalid username or password" = "Ogiltigt användarnamn eller lösenord";
+"Incorrect entry" = "Fel inmatning";
+"Please enter your username and password and try again" = "Ange användarnamn och lösenord och försök igen";
+
+// Menu
+"Log out" = "Logga ut";
+"Do you want to log out?" = "Vill du logga ut?";
+"Cancel" = "Avbryt";
+"Time left:" = "Tid kvar:";
+"and" = "och";
+"minutes" = "minuter";
+"minute" = "minut";
+"hours" = "timmar";
+"hour" = "timme";
+"Unanswered" = "Obesvarad";
+"Answered" = "Besvarad";
+
+// main
+"Here it was empty" = "Här var det tomt…\nNär Humlab tilldelar dig en enkät kommer den att hamna här";
+"numberEnding" = "st";
+
+// Contact
+"Contact" = "Kontakt";
+"contact text 1" = "Här kan du komma i kontakt med teamet bakom Lang-Track-App.";
+"contact text 2" = "Har du frågor om din medverkan i underökningen, åsikter om innehållet eller liknande. ";
+"Click here" = "Klicka här ";
+"contact text 3" = "för att komma i kontakt med ansvariga för undersökningen.";
+"contact text 4" = "Har du frågor eller åsikter om appen, push notifikationer eller kanske du har hittat något som inte fungerar som det ska. ";
+"contact text 5" = "för att komma i kontakt med utvecklarna.";
+"tech mail subject" = "Angående Lang-Track-App utveckling";
+"tech mail body" = "-Här kan du skriva till utvecklarteamet för Lang-Track-App-";
+"reserch mail body" = "-Här kan du skriva till forskarna bakom Lang-Track-App-";
+"No Email Client popup title" = "Ingen e-postklient";
+"No Email Client popup text" = "Det verkar inte som att det går att skicka e-post. Klicka på länken till humanistlaboratoriet nedan och ta kontakt den vägen istället.";
+"Links" = "Länkar";
+"Lang-Track-App project" = "Lang-Track-App projekt";
+"Humanities Lab" = "Humanistlaboratoriet";
+"Lund University" = "Lunds Universitet";
