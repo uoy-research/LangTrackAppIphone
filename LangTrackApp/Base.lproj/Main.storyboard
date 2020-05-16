@@ -104,8 +104,8 @@
                                             <action selector="closeButton:" destination="3fw-cZ-oP3" eventType="touchUpInside" id="kj6-Qv-9Pu"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kontakt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQ3-31-fgN">
-                                        <rect key="frame" x="164.5" y="75.5" width="85.5" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQ3-31-fgN">
+                                        <rect key="frame" x="163.5" y="75.5" width="87.5" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" name="lta_light_grey"/>
                                         <nil key="highlightedColor"/>
@@ -159,7 +159,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0G7-dx-B8Z">
                                 <rect key="frame" x="10" y="5" width="285" height="785"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWW-Cm-MXi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWW-Cm-MXi">
                                         <rect key="frame" x="20" y="20" width="245" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2xk-Ib-G3p"/>
@@ -168,7 +168,7 @@
                                         <color key="textColor" name="lta_blue"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inloggad som" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-oF-ftA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-oF-ftA">
                                         <rect key="frame" x="15" y="80" width="258" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="mNT-DE-6rv"/>
@@ -192,7 +192,7 @@
                                             <constraint firstAttribute="width" constant="65" id="Knd-is-q5m"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                        <state key="normal" title="Logga ut">
+                                        <state key="normal" title="Log out">
                                             <color key="titleColor" name="lta_blue"/>
                                         </state>
                                         <connections>
@@ -215,7 +215,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="2eP-Aw-tOU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <state key="normal" title="Kontakt">
+                                                <state key="normal" title="Contact">
                                                     <color key="titleColor" name="lta_blue"/>
                                                 </state>
                                                 <connections>
@@ -228,7 +228,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="wgj-bY-50B"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <state key="normal" title="Om">
+                                                <state key="normal" title="About">
                                                     <color key="titleColor" name="lta_blue"/>
                                                 </state>
                                                 <connections>
@@ -421,7 +421,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRS-w5-SNT">
                                                             <rect key="frame" x="5" y="20" width="394" height="130"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enkät att besvara" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-DP-nOO">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey to answer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-DP-nOO">
                                                                     <rect key="frame" x="28" y="18" width="338" height="72"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -501,7 +501,7 @@
                                                 <color key="textColor" name="lta_blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanistlaboratoriet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAF-P2-oxc">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanities Lab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAF-P2-oxc">
                                                 <rect key="frame" x="45" y="48.5" width="324" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" name="lta_blue"/>
@@ -634,25 +634,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ange dina inloggningsuppgifter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuE-8c-e4f">
-                                <rect key="frame" x="87.5" y="88" width="239.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your login details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuE-8c-e4f">
+                                <rect key="frame" x="119.5" y="88" width="175" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Användarnamn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-PS-ENe">
-                                <rect key="frame" x="30" y="138.5" width="354" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kNy-PS-ENe">
+                                <rect key="frame" x="30" y="139" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lösenord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fDO-qC-QP6">
-                                <rect key="frame" x="30" y="192.5" width="354" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fDO-qC-QP6">
+                                <rect key="frame" x="30" y="193" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcT-t1-pRW">
-                                <rect key="frame" x="177.5" y="246.5" width="59" height="30"/>
-                                <state key="normal" title="Logga in"/>
+                                <rect key="frame" x="183.5" y="247" width="47" height="30"/>
+                                <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="logInButtonPressed:" destination="bw0-s6-Uhz" eventType="touchUpInside" id="YvP-f8-ZMy"/>
                                 </connections>
@@ -755,10 +755,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVX-t5-G5z">
-                                        <rect key="frame" x="20.5" y="343.5" width="373" height="209.5"/>
+                                        <rect key="frame" x="20.5" y="343" width="373" height="210.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Obesvarad enkät" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whz-M9-R61">
-                                                <rect key="frame" x="114.5" y="18" width="144.5" height="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unanswered survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whz-M9-R61">
+                                                <rect key="frame" x="102.5" y="18" width="168" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
@@ -770,28 +770,28 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWk-3i-zIq">
-                                                <rect key="frame" x="117" y="168" width="246" height="21.5"/>
+                                                <rect key="frame" x="117" y="169" width="246" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWC-H8-tbc">
-                                                <rect key="frame" x="117" y="113" width="246" height="21.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWC-H8-tbc">
+                                                <rect key="frame" x="183.5" y="113" width="179.5" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antal frågor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1j-uz-0xa">
-                                                <rect key="frame" x="12" y="114" width="90" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of questions:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1j-uz-0xa">
+                                                <rect key="frame" x="12" y="113.5" width="156.5" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="Cl4-JN-LOI"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="Cl4-JN-LOI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utgången:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-Lo-lTd">
-                                                <rect key="frame" x="12" y="169" width="90" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expired:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddg-Lo-lTd">
+                                                <rect key="frame" x="12" y="169.5" width="90" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="XDR-nn-Wa2"/>
                                                 </constraints>
@@ -799,8 +799,8 @@
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publicerad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-Nj-9n0">
-                                                <rect key="frame" x="12" y="141.5" width="90" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-Nj-9n0">
+                                                <rect key="frame" x="12" y="141.5" width="90" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="iFb-fD-3dO"/>
                                                 </constraints>
@@ -809,7 +809,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8Q-VO-zO8">
-                                                <rect key="frame" x="117" y="140.5" width="246" height="21.5"/>
+                                                <rect key="frame" x="117" y="141" width="246" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
@@ -919,7 +919,7 @@
                                                 <color key="textColor" name="lta_menu_blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publicerad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK1-0R-RzW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SK1-0R-RzW">
                                                 <rect key="frame" x="10" y="114.5" width="90" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="2JM-2r-kVq"/>
@@ -928,16 +928,16 @@
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antal frågor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqM-rM-xzY">
-                                                <rect key="frame" x="10" y="87" width="90" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of questions:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqM-rM-xzY">
+                                                <rect key="frame" x="10" y="87" width="156.5" height="19.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="cVd-0B-ox3"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="cVd-0B-ox3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Besvarad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dF-hm-jiz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dF-hm-jiz">
                                                 <rect key="frame" x="10" y="142" width="90" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="nZN-Xq-pHG"/>
@@ -952,8 +952,8 @@
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-n4-qAa">
-                                                <rect key="frame" x="115" y="86" width="283" height="21.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-n4-qAa">
+                                                <rect key="frame" x="181.5" y="86" width="216.5" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
@@ -964,8 +964,8 @@
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Besvarad enkät" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgD-fw-Wio">
-                                                <rect key="frame" x="138.5" y="16" width="131" height="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answered survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgD-fw-Wio">
+                                                <rect key="frame" x="131" y="16" width="146" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" name="lta_light_grey"/>
                                                 <nil key="highlightedColor"/>
@@ -1433,7 +1433,7 @@
                                                         <constraint firstAttribute="height" constant="92" id="ed9-Q8-P95"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanistlaboratoriet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3X-Hz-zrI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humanities Lab" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3X-Hz-zrI">
                                                     <rect key="frame" x="10" y="100" width="394" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <color key="textColor" name="lta_blue"/>
@@ -1507,7 +1507,7 @@
                                     <constraint firstAttribute="height" constant="50" id="NHC-32-ts2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Stäng">
+                                <state key="normal" title="Close">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1521,7 +1521,7 @@
                                     <constraint firstAttribute="height" constant="50" id="cR5-so-f72"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Starta">
+                                <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1616,7 +1616,7 @@
                                     <constraint firstAttribute="height" constant="50" id="BTC-EV-TYg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1630,7 +1630,7 @@
                                     <constraint firstAttribute="height" constant="50" id="FxI-5b-ipb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1930,7 +1930,7 @@
                                     <constraint firstAttribute="height" constant="50" id="cbS-BI-ogf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1944,7 +1944,7 @@
                                     <constraint firstAttribute="height" constant="50" id="eqm-wH-EJr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1973,7 +1973,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWP-YC-nTj">
                                                 <rect key="frame" x="83" y="44" width="248" height="40"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Välj ord i listan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9w-eu-TBZ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9w-eu-TBZ">
                                                         <rect key="frame" x="34.5" y="7" width="179" height="33"/>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -2239,7 +2239,7 @@
                                     <constraint firstAttribute="height" constant="50" id="BCm-HV-6F3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2253,7 +2253,7 @@
                                     <constraint firstAttribute="height" constant="50" id="hfX-tz-Hy0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2318,7 +2318,7 @@
                                     <constraint firstAttribute="height" constant="50" id="nmY-Ho-Jvn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2332,7 +2332,7 @@
                                     <constraint firstAttribute="height" constant="50" id="oEL-Bh-sAq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2419,7 +2419,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hm-nY-sjX">
-                                        <rect key="frame" x="32" y="580.5" width="350" height="12"/>
+                                        <rect key="frame" x="12.5" y="580.5" width="389" height="12"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="fnF-kP-cHc"/>
@@ -2434,7 +2434,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahw-xg-6dq">
-                                        <rect key="frame" x="33" y="34" width="350" height="12"/>
+                                        <rect key="frame" x="13.5" y="34" width="389" height="12"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="nWJ-Xt-8qX"/>
@@ -2445,14 +2445,14 @@
                                 <constraints>
                                     <constraint firstItem="SFM-qT-80h" firstAttribute="top" secondItem="ahw-xg-6dq" secondAttribute="bottom" constant="-4" id="Av2-DK-gH1"/>
                                     <constraint firstItem="HZD-Gv-kxo" firstAttribute="leading" secondItem="kGG-7q-ai8" secondAttribute="leading" constant="15" id="RZR-uG-W3A"/>
-                                    <constraint firstItem="ahw-xg-6dq" firstAttribute="width" secondItem="HZD-Gv-kxo" secondAttribute="width" multiplier="0.9" id="S1G-0t-z3i"/>
+                                    <constraint firstItem="ahw-xg-6dq" firstAttribute="width" secondItem="HZD-Gv-kxo" secondAttribute="width" id="S1G-0t-z3i"/>
                                     <constraint firstItem="8hm-nY-sjX" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" id="SJu-tU-zmL"/>
                                     <constraint firstItem="HZD-Gv-kxo" firstAttribute="centerY" secondItem="kGG-7q-ai8" secondAttribute="centerY" id="XmI-Vx-rmJ"/>
                                     <constraint firstItem="SFM-qT-80h" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" id="f2B-yG-vS4"/>
                                     <constraint firstItem="oTh-kz-ROj" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" id="flv-cp-ZVZ"/>
                                     <constraint firstAttribute="bottom" secondItem="8hm-nY-sjX" secondAttribute="bottom" id="jVg-As-jG1"/>
                                     <constraint firstAttribute="trailing" secondItem="HZD-Gv-kxo" secondAttribute="trailing" constant="10" id="mjv-IT-uZ9"/>
-                                    <constraint firstItem="8hm-nY-sjX" firstAttribute="width" secondItem="HZD-Gv-kxo" secondAttribute="width" multiplier="0.9" id="r8g-Pn-tQ2"/>
+                                    <constraint firstItem="8hm-nY-sjX" firstAttribute="width" secondItem="HZD-Gv-kxo" secondAttribute="width" id="r8g-Pn-tQ2"/>
                                     <constraint firstItem="HZD-Gv-kxo" firstAttribute="top" secondItem="SFM-qT-80h" secondAttribute="bottom" id="uPq-NM-aJN"/>
                                     <constraint firstAttribute="bottom" secondItem="oTh-kz-ROj" secondAttribute="bottom" constant="5" id="yKb-pq-aNf"/>
                                     <constraint firstItem="ahw-xg-6dq" firstAttribute="centerX" secondItem="kGG-7q-ai8" secondAttribute="centerX" constant="1" id="zrs-tj-12p"/>
@@ -2509,7 +2509,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Rt0-FE-as0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2523,7 +2523,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ZZc-SE-160"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2631,7 +2631,7 @@
                                     <constraint firstAttribute="height" constant="50" id="i2n-J2-1fs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2645,7 +2645,7 @@
                                     <constraint firstAttribute="height" constant="50" id="rfe-mL-hFC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Skicka in">
+                                <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2704,7 +2704,7 @@
                                     <constraint firstAttribute="height" constant="50" id="o9B-2I-0CR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Nästa">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2718,7 +2718,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Xdw-j5-H8h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Föregående">
+                                <state key="normal" title="Previous">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2931,8 +2931,8 @@
                                             <action selector="closeButton:" destination="B0U-Zq-I3I" eventType="touchUpInside" id="fuc-MZ-49y"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qp-Um-7Fy">
-                                        <rect key="frame" x="187.5" y="75.5" width="39" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qp-Um-7Fy">
+                                        <rect key="frame" x="173.5" y="75.5" width="67" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" name="lta_light_grey"/>
                                         <nil key="highlightedColor"/>

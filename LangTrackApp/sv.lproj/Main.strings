@@ -1,0 +1,282 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "01k-fC-L9h"; */
+"01k-fC-L9h.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0pQ-kq-x18"; */
+"0pQ-kq-x18.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Nästa"; ObjectID = "1s7-LP-7JH"; */
+"1s7-LP-7JH.normalTitle" = "Nästa";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2zd-sq-Aem"; */
+"2zd-sq-Aem.text" = "Label";
+
+/* Class = "UILabel"; text = "Lang-Track-App"; ObjectID = "38C-8R-DMu"; */
+"38C-8R-DMu.text" = "Lang-Track-App";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "3YR-aa-9yK"; */
+"3YR-aa-9yK.text" = "-";
+
+/* Class = "UILabel"; text = "Besvarad:"; ObjectID = "3dF-hm-jiz"; */
+"3dF-hm-jiz.text" = "Besvarad:";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "5n9-8Z-4rO"; */
+"5n9-8Z-4rO.text" = ":";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "72Y-QF-TEK"; */
+"72Y-QF-TEK.text" = "Label";
+
+/* Class = "UILabel"; text = "Om"; ObjectID = "7Qp-Um-7Fy"; */
+"7Qp-Um-7Fy.text" = "Om";
+
+/* Class = "UILabel"; text = "Inloggad som"; ObjectID = "7vG-oF-ftA"; */
+"7vG-oF-ftA.text" = "Inloggad som";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "8Oj-ko-O5g"; */
+"8Oj-ko-O5g.normalTitle" = "Föregående";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "Ady-cx-WpX"; */
+"Ady-cx-WpX.text" = "4";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "AjW-8H-6e5"; */
+"AjW-8H-6e5.normalTitle" = "Föregående";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "BLk-8S-07U"; */
+"BLk-8S-07U.normalTitle" = "Föregående";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "C8E-ag-TKj"; */
+"C8E-ag-TKj.text" = "2";
+
+/* Class = "UIButton"; normalTitle = "Logga ut"; ObjectID = "C9o-z7-sxd"; */
+"C9o-z7-sxd.normalTitle" = "Logga ut";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Cjl-Xo-cZf"; */
+"Cjl-Xo-cZf.text" = "Label";
+
+/* Class = "UILabel"; text = "0 timmar 0 minurer"; ObjectID = "EvB-kf-jqC"; */
+"EvB-kf-jqC.text" = "0 timmar 0 minurer";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "F66-Cc-zBV"; */
+"F66-Cc-zBV.text" = "1";
+
+/* Class = "UILabel"; text = "▽"; ObjectID = "Fcb-Ub-2k0"; */
+"Fcb-Ub-2k0.text" = "▽";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FqD-yX-W1h"; */
+"FqD-yX-W1h.text" = "Label";
+
+/* Class = "UILabel"; text = "Kontakt"; ObjectID = "HQ3-31-fgN"; */
+"HQ3-31-fgN.text" = "Kontakt";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "JWk-3i-zIq"; */
+"JWk-3i-zIq.text" = "-";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "JbZ-nB-WXU"; */
+"JbZ-nB-WXU.text" = "4";
+
+/* Class = "UILabel"; text = "Antal frågor:"; ObjectID = "JqM-rM-xzY"; */
+"JqM-rM-xzY.text" = "Antal frågor:";
+
+/* Class = "UILabel"; text = "Ange dina inloggningsuppgifter"; ObjectID = "JuE-8c-e4f"; */
+"JuE-8c-e4f.text" = "Ange dina inloggningsuppgifter";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "KHw-YL-1Oc"; */
+"KHw-YL-1Oc.normalTitle" = "Föregående";
+
+/* Class = "UILabel"; text = "Version 0.9"; ObjectID = "Kak-EI-0N0"; */
+"Kak-EI-0N0.text" = "Version 0.9";
+
+/* Class = "UIButton"; normalTitle = "Nästa"; ObjectID = "Kpw-J1-1Gs"; */
+"Kpw-J1-1Gs.normalTitle" = "Nästa";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "M8Q-VO-zO8"; */
+"M8Q-VO-zO8.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "Starta"; ObjectID = "NOs-aw-GyH"; */
+"NOs-aw-GyH.normalTitle" = "Starta";
+
+/* Class = "UIButton"; normalTitle = "Stäng"; ObjectID = "O0Q-Wm-Cyc"; */
+"O0Q-Wm-Cyc.normalTitle" = "Stäng";
+
+/* Class = "UILabel"; text = "Nu är det dags att svara på frågor om din språkinlärning!"; ObjectID = "OMh-uF-qgT"; */
+"OMh-uF-qgT.text" = "Nu är det dags att svara på frågor om din språkinlärning!";
+
+/* Class = "UILabel"; text = "THE LANG TRACK APP"; ObjectID = "OcI-9e-raM"; */
+"OcI-9e-raM.text" = "THE LANG TRACK APP";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Res-eg-f0H"; */
+"Res-eg-f0H.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Rhh-uW-ybQ"; */
+"Rhh-uW-ybQ.text" = "Label";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "Rot-W8-jHt"; */
+"Rot-W8-jHt.text" = "3";
+
+/* Class = "UILabel"; text = "Publicerad:"; ObjectID = "SK1-0R-RzW"; */
+"SK1-0R-RzW.text" = "Publicerad:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Sbv-ja-mw9"; */
+"Sbv-ja-mw9.text" = "Label";
+
+/* Class = "UILabel"; text = "Besvarad enkät"; ObjectID = "TgD-fw-Wio"; */
+"TgD-fw-Wio.text" = "Besvarad enkät";
+
+/* Class = "UILabel"; text = "Humanistlaboratoriet"; ObjectID = "Tjz-Uh-RzL"; */
+"Tjz-Uh-RzL.text" = "Humanistlaboratoriet";
+
+/* Class = "UIButton"; normalTitle = "Om"; ObjectID = "U3A-IQ-9UK"; */
+"U3A-IQ-9UK.normalTitle" = "Om";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UoD-Ob-F7E"; */
+"UoD-Ob-F7E.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Wfi-MO-YHv"; */
+"Wfi-MO-YHv.text" = "Label";
+
+/* Class = "UILabel"; text = "Obesvarad enkät"; ObjectID = "Whz-M9-R61"; */
+"Whz-M9-R61.text" = "Obesvarad enkät";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Wkp-sr-RjI"; */
+"Wkp-sr-RjI.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "XWC-H8-tbc"; */
+"XWC-H8-tbc.text" = "-";
+
+/* Class = "UILabel"; text = "Publicerad:"; ObjectID = "XgO-Nj-9n0"; */
+"XgO-Nj-9n0.text" = "Publicerad:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Y4A-Mg-mXj"; */
+"Y4A-Mg-mXj.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Kontakt"; ObjectID = "YVi-VN-xSf"; */
+"YVi-VN-xSf.normalTitle" = "Kontakt";
+
+/* Class = "UIButton"; normalTitle = "Logga in"; ObjectID = "YcT-t1-pRW"; */
+"YcT-t1-pRW.normalTitle" = "Logga in";
+
+/* Class = "UILabel"; text = "Footer"; ObjectID = "Ycy-gS-j3w"; */
+"Ycy-gS-j3w.text" = "Footer";
+
+/* Class = "UIButton"; normalTitle = "Nästa"; ObjectID = "Yxy-Zg-DwB"; */
+"Yxy-Zg-DwB.normalTitle" = "Nästa";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "ZIx-tQ-7LP"; */
+"ZIx-tQ-7LP.text" = "2";
+
+/* Class = "UILabel"; text = " namn"; ObjectID = "Zaf-fj-Yty"; */
+"Zaf-fj-Yty.text" = " namn";
+
+/* Class = "UILabel"; text = "Humanistlaboratoriet"; ObjectID = "aAF-P2-oxc"; */
+"aAF-P2-oxc.text" = "Humanistlaboratoriet";
+
+/* Class = "UILabel"; text = "Titel"; ObjectID = "bfa-Hq-QQk"; */
+"bfa-Hq-QQk.text" = "Titel";
+
+/* Class = "UILabel"; text = "Välj ord i listan"; ObjectID = "c9w-eu-TBZ"; */
+"c9w-eu-TBZ.text" = "_____";
+
+/* Class = "UILabel"; text = "timmar"; ObjectID = "cIE-W1-jID"; */
+"cIE-W1-jID.text" = "timmar";
+
+/* Class = "UILabel"; text = "Fill In The Blank"; ObjectID = "dCv-sV-tB8"; */
+"dCv-sV-tB8.text" = "Fill In The Blank";
+
+/* Class = "UILabel"; text = "Utgången:"; ObjectID = "ddg-Lo-lTd"; */
+"ddg-Lo-lTd.text" = "Utgången:";
+
+/* Class = "UILabel"; text = "minuter"; ObjectID = "eKp-us-TRq"; */
+"eKp-us-TRq.text" = "minuter";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eMd-0B-AqQ"; */
+"eMd-0B-AqQ.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Nästa"; ObjectID = "eNh-k7-bAJ"; */
+"eNh-k7-bAJ.normalTitle" = "Nästa";
+
+/* Class = "UIButton"; normalTitle = "Skicka in"; ObjectID = "ePr-KY-St8"; */
+"ePr-KY-St8.normalTitle" = "Skicka in";
+
+/* Class = "UITextField"; placeholder = "Lösenord"; ObjectID = "fDO-qC-QP6"; */
+"fDO-qC-QP6.placeholder" = "Lösenord";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "fv8-aK-s2C"; */
+"fv8-aK-s2C.normalTitle" = "Föregående";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fwj-LR-JI5"; */
+"fwj-LR-JI5.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "g0h-DB-yLV"; */
+"g0h-DB-yLV.text" = "Label";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "gMY-Lt-qYi"; */
+"gMY-Lt-qYi.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Titel"; ObjectID = "i4J-Pg-lc9"; */
+"i4J-Pg-lc9.text" = "Titel";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "iqU-Kp-ygx"; */
+"iqU-Kp-ygx.text" = "5";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "jtd-n4-qAa"; */
+"jtd-n4-qAa.text" = "-";
+
+/* Class = "UITextField"; placeholder = "Användarnamn"; ObjectID = "kNy-PS-ENe"; */
+"kNy-PS-ENe.placeholder" = "Användarnamn";
+
+/* Class = "UIButton"; normalTitle = "?"; ObjectID = "ka1-96-HVq"; */
+"ka1-96-HVq.normalTitle" = "?";
+
+/* Class = "UILabel"; text = "Humanistlaboratoriet"; ObjectID = "l3X-Hz-zrI"; */
+"l3X-Hz-zrI.text" = "Humanistlaboratoriet";
+
+/* Class = "UILabel"; text = "Antal frågor:"; ObjectID = "m1j-uz-0xa"; */
+"m1j-uz-0xa.text" = "Antal frågor:";
+
+/* Class = "UILabel"; text = "Test mode"; ObjectID = "nfY-tV-m2n"; */
+"nfY-tV-m2n.text" = "Test mode";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "pci-sV-XuJ"; */
+"pci-sV-XuJ.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "qHl-Ef-67p"; */
+"qHl-Ef-67p.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "Nästa"; ObjectID = "qmh-Gk-RIJ"; */
+"qmh-Gk-RIJ.normalTitle" = "Nästa";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "rKY-KD-z7c"; */
+"rKY-KD-z7c.text" = "3";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "rhZ-CS-Oxl"; */
+"rhZ-CS-Oxl.normalTitle" = "Föregående";
+
+/* Class = "UIButton"; normalTitle = "Föregående"; ObjectID = "s14-UN-bn1"; */
+"s14-UN-bn1.normalTitle" = "Föregående";
+
+/* Class = "UILabel"; text = "Likert scale"; ObjectID = "tIR-57-dKU"; */
+"tIR-57-dKU.text" = "Likert scale";
+
+/* Class = "UILabel"; text = "Enkät att besvara"; ObjectID = "uZY-DP-nOO"; */
+"uZY-DP-nOO.text" = "Enkät att besvara";
+
+/* Class = "UIButton"; normalTitle = "Nästa"; ObjectID = "w7x-B8-pvH"; */
+"w7x-B8-pvH.normalTitle" = "Nästa";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "w9K-HB-bjd"; */
+"w9K-HB-bjd.text" = "Label";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "wbs-Qm-hDI"; */
+"wbs-Qm-hDI.text" = "5";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yH7-07-A2j"; */
+"yH7-07-A2j.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yOO-nn-ar4"; */
+"yOO-nn-ar4.text" = "Label";
+
+/* Class = "UILabel"; text = "Meny"; ObjectID = "yWW-Cm-MXi"; */
+"yWW-Cm-MXi.text" = "Meny";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "zJl-fC-F64"; */
+"zJl-fC-F64.text" = "-";

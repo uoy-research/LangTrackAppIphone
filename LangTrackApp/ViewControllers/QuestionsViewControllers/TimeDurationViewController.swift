@@ -79,11 +79,15 @@ class TimeDurationViewController: UIViewController {
 
     @IBAction func previousButtonPressed(_ sender: Any) {
         listener?.setTimeDurationAnswer(selected: setAnswer())
+        selectedHour = 0
+        selectedMinutes = 0
         listener?.previousQuestion(current: theQuestion)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         listener?.setTimeDurationAnswer(selected: setAnswer())
+        selectedHour = 0
+        selectedMinutes = 0
         listener?.nextQuestion(current: theQuestion)
     }
     

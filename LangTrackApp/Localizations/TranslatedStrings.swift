@@ -1,0 +1,45 @@
+//
+//  TranslatedStrings.swift
+//  LangTrackApp
+//
+//  Created by Stephan Björck on 2020-05-16.
+//  Copyright © 2020 Stephan Björck. All rights reserved.
+//
+
+import Foundation
+
+let translatedInfo = "Info".localized
+let translatedDevelopedBy = "The Lang Track App is an app developed by".localized
+let translatedErrorLogin = "Login error".localized
+let translatedInvalidUsernameOrPassword = "Invalid username or password".localized
+let translatedIncorrectEntry = "Incorrect entry".localized
+let translatedPleaseEnterYourUsernameAndPasswordAndTryAgain = "Please enter your username and password and try again".localized
+let translatedLogOut = "Log out".localized
+let translatedDoYouWantToLogOut = "Do you want to log out?".localized
+let translatedCancel = "Cancel".localized
+let translatedTimeLeft = "Time left:".localized
+let translatedAnd = "and".localized
+let translatedMinutes = "minutes".localized
+let translatedMinute = "minute".localized
+let translatedHours = "hours".localized
+let translatedHour = "hour".localized
+let translatedUnanswered = "Unanswered".localized
+let translatedAnswered = "Answered".localized
+let translatedHereItWasEmpty = "Here it was empty".localized
+let translatedNumberEnding = "numberEnding".localized
+let translatedContact = "Contact".localized
+let translatedReserchText1 = "contact text 1".localized
+let translatedReserchText2 = "contact text 2".localized
+let translatedClickHere = "Click here".localized
+let translatedReserchText3 = "contact text 3".localized
+let translatedTechText1 = "contact text 4".localized
+let translatedTechText2 = "contact text 5".localized
+let translatedSubject = "tech mail subject".localized
+let translatedTechBody = "tech mail body".localized
+let translatedReserchBody = "reserch mail body".localized
+let translatedCantSendEmailPopupTitle = "No Email Client".localized
+let translatedCantSendEmailPopupText = "No Email Client popup text".localized
+let translatedLinks = "Links".localized
+let translatedLangTrackAppProject = "Lang-Track-App project".localized
+let translatedHumanitiesLab = "Humanities Lab".localized
+let translatedLundUniversity = "Lund University".localized

@@ -47,19 +47,8 @@ class SingleMultipleAnswersViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         singleTableView.maxHeight = tableviewContainer.frame.height - 26
         singleTableView.reloadData()
-    }
-    
-    func setInfo(question: Question){
-        self.theQuestion = question
-        setTableviewWidth()
-        nextButton.setEnabled(enabled: false)
-        setSelectedAnswer()
-        singleTableView.reloadData()
-        self.view.layoutIfNeeded()
-        setTableviewWidth()
-        singleTableView.reloadData()
-        bottomView.setSmallBottomViewShadow()
         DispatchQueue.main.async {
+            self.bottomView.setSmallBottomViewShadow()
             if self.singleTableView.maxHeight < self.singleTableView.contentSize.height - 2{
                 if (self.singleTableView.contentOffset.y + self.singleTableView.maxHeight) >= (self.singleTableView.contentSize.height){
                     self.bottomView.removeShadow()
@@ -82,6 +71,18 @@ class SingleMultipleAnswersViewController: UIViewController {
                 self.showingTopShadow = true
             }
         }
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        setTableviewWidth()
+        nextButton.setEnabled(enabled: false)
+        setSelectedAnswer()
+        singleTableView.reloadData()
+        self.view.layoutIfNeeded()
+        setTableviewWidth()
+        singleTableView.reloadData()
+        
         topViewBottomConstraint.constant = -headerHeight
     }
     

@@ -46,19 +46,8 @@ class MultipleChoiceViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         multiTableView.maxHeight = tableviewContainer.frame.height - 26
         multiTableView.reloadData()
-    }
-    
-    func setInfo(question: Question){
-        self.theQuestion = question
-        setTableviewWidth()
-        nextButton.setEnabled(enabled: false)
-        setSelectedAnswer()
-        multiTableView.reloadData()
-        self.view.layoutIfNeeded()
-        setTableviewWidth()
-        multiTableView.reloadData()
-        bottomView.setSmallBottomViewShadow()
         DispatchQueue.main.async {
+            self.bottomView.setSmallBottomViewShadow()
             if self.multiTableView.maxHeight < self.multiTableView.contentSize.height - 2{
                 if (self.multiTableView.contentOffset.y + self.multiTableView.maxHeight) >= (self.multiTableView.contentSize.height){
                     self.bottomView.removeShadow()
@@ -81,6 +70,18 @@ class MultipleChoiceViewController: UIViewController {
                 self.showingTopShadow = true
             }
         }
+    }
+    
+    func setInfo(question: Question){
+        self.theQuestion = question
+        setTableviewWidth()
+        nextButton.setEnabled(enabled: false)
+        setSelectedAnswer()
+        multiTableView.reloadData()
+        self.view.layoutIfNeeded()
+        setTableviewWidth()
+        multiTableView.reloadData()
+        
         topViewBottomConstraint.constant = -headerHeight
     }
     

@@ -208,7 +208,7 @@ class MainViewController: UIViewController {
     func hideOrShowEmptyListInfo(){
         if SurveyRepository.assignmentList.isEmpty{
             emptyListInfoLabel.isHidden = false
-            emptyListInfoLabel.text = "Här var det tomt…\nNär humlab tilldelar dig en enkät kommer den att hamna här"
+            emptyListInfoLabel.text = translatedHereItWasEmpty
         }else{
             emptyListInfoLabel.isHidden = true
             emptyListInfoLabel.text = ""
@@ -475,8 +475,8 @@ extension MainViewController: MenuListener{
             username!.until("@")
             
             DispatchQueue.main.async {
-                let popup = UIAlertController(title: "Logga ut", message: "Vill du logga ut?\n\(username ?? "")", preferredStyle: .alert)
-                popup.addAction(UIAlertAction(title: "Logga ut", style: .destructive, handler:{alert -> Void in
+                let popup = UIAlertController(title: translatedLogOut, message: "\(translatedDoYouWantToLogOut)\n\(username ?? "")", preferredStyle: .alert)
+                popup.addAction(UIAlertAction(title: translatedLogOut, style: .destructive, handler:{alert -> Void in
                     do {
                         try firebaseAuth.signOut()
                         if username != nil{
@@ -500,7 +500,7 @@ extension MainViewController: MenuListener{
                         print ("Error signing out: %@", signOutError)
                     }
                 }))
-                popup.addAction(UIAlertAction(title: "Avbryt", style: .cancel, handler: nil))
+                popup.addAction(UIAlertAction(title: translatedCancel, style: .cancel, handler: nil))
                 
                 self.present(popup, animated: true, completion: nil)
             }

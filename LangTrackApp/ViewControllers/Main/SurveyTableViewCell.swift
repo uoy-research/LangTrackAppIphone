@@ -31,9 +31,9 @@ class SurveyTableViewCell: UITableViewCell {
         dateLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: assignment.published)!)
         //dateLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
         if assignment.dataset == nil{
-            answeredLabel.text = "Obesvarad"
+            answeredLabel.text = translatedUnanswered
         }else{
-            answeredLabel.text = "Besvarad"
+            answeredLabel.text = translatedAnswered
         }
     }
 }

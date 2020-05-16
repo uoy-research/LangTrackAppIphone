@@ -34,7 +34,7 @@ class UnansweredPopupViewController: UIViewController {
             popupTitle.text = current.survey.title
             publishedLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: current.published)!)
             expiredLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: current.expiry)!)
-            numberQuestionsLabel.text = "\(current.survey.questions.count) st"
+            numberQuestionsLabel.text = "\(current.survey.questions.count) \(translatedNumberEnding)"
         }
     }
     
