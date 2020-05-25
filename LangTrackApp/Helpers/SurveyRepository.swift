@@ -232,11 +232,6 @@ struct SurveyRepository {
                 if data != nil{
                     let listWithAssignments = createAssignmentsFromData(data: data!)
                     if listWithAssignments != nil{
-
-                        for assignment in listWithAssignments!{
-                            print("assignment, published: \(assignment.published)")
-                            print("assignment, DateParser: \(DateParser.getDate(dateString: assignment.published) ?? Date())\n")
-                        }
                         for assignment in listWithAssignments!{
                             for question in assignment.survey.questions{
                                 if question.index == 0{

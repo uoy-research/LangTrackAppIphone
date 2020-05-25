@@ -47,3 +47,7 @@ let translatedHenrietteInfo = "HenrietteInfo".localized
 let translatedJosefInfo = "JosefInfo".localized
 let translatedStephanInfo = "StephanInfo".localized
 let translatedTeam = "Team".localized
+let translatedInstructions = "Instructions".localized
+let translatedInstructionsText1 = "instructionsText1".localized
+let translatedDataHeader = "Data processing".localized
+let translatedDataProcessing = "dataProcessing1".localized

@@ -71,8 +71,7 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
     
     func setTeamText(){
         
-        let theHeader = translatedTeam
-        let finalString = NSMutableAttributedString(string: "\(theHeader)\n\n", attributes: attributeLtaBlueHeaderText)
+        let finalString = NSMutableAttributedString(string: "\(translatedTeam)\n\n", attributes: attributeLtaBlueHeaderText)
         
         
         let thename1 = "Marianne Gullberg"
