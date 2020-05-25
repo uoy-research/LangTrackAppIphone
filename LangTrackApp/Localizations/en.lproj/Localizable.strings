@@ -13,7 +13,7 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 
 //Login
 "Info" = "Info";
-"The Lang Track App is an app developed by" = "The Lang Track App is an app developed by the Humanities Lab at Lund University for research purposes.\n\nLog in with the username and password assigned to you by Humlab Lund University";
+"The Lang Track App is an app developed by" = "The Lang Track App is an app developed by Lund University Humanities Lab for research purposes.\n\nLog in with the username and password assigned to you by Lund University Humanities Lab";
 "Login error" = "Login error";
 "Invalid username or password" = "Invalid username or password";
 "Incorrect entry" = "Incorrect entry";
@@ -33,18 +33,15 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Answered" = "Answered";
 
 // main
-"Here it was empty" = "Here it was empty ...\nWhen Humlab assigns you a survey, it will end up here";
+"Here it was empty" = "There's nothing here...\nWhen Humlab assigns you a survey, you will see it here.";
 "numberEnding" = "";
+"No contact with server" = "No contact with server";
 
 // Contact
 "Contact" = "Contact";
-"contact text 1" = "Here you can get in touch with the team behind the Lang-Track-App.";
-"contact text 2" = "Do you have questions about your participation in the study, opinions about the content or similar. ";
-"Click here" = "Click here ";
-"contact text 3" = "to get in touch with those responsible for the study.";
-"contact text 4" = "Do you have questions or opinions about the app, push notifications or maybe you have found something that is not working properly. ";
-"contact text 5" = "to get in touch with the developers.";
-"tech mail subject" = "Concerning Lang-Track-App development";
+"contact text 1" = "If you are experiencing any technical issues, please contact Stephan Björck.";
+"contact text 4" = "If you have questions or comments about the content of the survey, please email Henriette Arndt.";
+"tech mail subject" = "Concerning Lang-Track-App";
 "tech mail body" = "-Here you can write to the developer team for Lang-Track-App-";
 "reserch mail body" = "-Here you can write to the researchers for Lang-Track-App-";
 "No Email Client popup title" = "No Email Client";
@@ -53,3 +50,12 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Lang-Track-App project" = "Lang-Track-App project";
 "Humanities Lab" = "Humanities Lab";
 "Lund University" = "Lund University";
+
+//about
+"aboutText1" = "We developed the Lang-Track-App to study when, where, and how often language learners are in contact with different foreign languages in everyday life. This crucial to improving our understanding of the challenges of language learning outside of classrooms.\n\nThe project is a collaboration between the Lund University Centre for Languages and Literature and Lund University Humanities Lab.";
+"MarianneInfo" = "Professor of Psycholinguistics, Centre for Languages and Literature";
+"JonasInfo" = "Professor of French Linguistics, Centre for Languages and Literature";
+"HenrietteInfo" = "Postdoctoral Research Fellow, LU Humanities Lab";
+"JosefInfo" = "Systems Developer, LU Humanities Lab";
+"StephanInfo" = "Systems Developer, LU Humanities Lab";
+"Team" = "Team";

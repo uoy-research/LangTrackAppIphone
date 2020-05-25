@@ -205,7 +205,7 @@ extension SingleMultipleAnswersViewController: UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let theTitle = theQuestion.text
-        headerHeight = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
+        headerHeight = theTitle.height(withConstrainedWidth: singleTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 25
         return headerHeight
     }
     

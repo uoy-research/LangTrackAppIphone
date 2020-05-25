@@ -23,9 +23,7 @@ struct SurveyRepository {
     static var idToken = ""
     static var deviceToken = ""{
         didSet{
-            if oldValue != deviceToken{
-                postDeviceToken()
-            }
+            postDeviceToken()
         }
     }
     static var theUser: User?{
@@ -234,6 +232,11 @@ struct SurveyRepository {
                 if data != nil{
                     let listWithAssignments = createAssignmentsFromData(data: data!)
                     if listWithAssignments != nil{
+
+                        for assignment in listWithAssignments!{
+                            print("assignment, published: \(assignment.published)")
+                            print("assignment, DateParser: \(DateParser.getDate(dateString: assignment.published) ?? Date())\n")
+                        }
                         for assignment in listWithAssignments!{
                             for question in assignment.survey.questions{
                                 if question.index == 0{
@@ -264,10 +267,11 @@ struct SurveyRepository {
         let now = Date()
         //if the assignment is active and the dataset is empty
         var activeList = theList.filter {$0.dataset == nil && DateParser.getDate(dateString: $0.expiry) ?? now > now}
+        
         //if the assignment is not active or the dataset exists
         var unActiveList = theList.filter {$0.dataset != nil || DateParser.getDate(dateString: $0.expiry) ?? now < now}
-        activeList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() > DateParser.getDate(dateString: $1.survey.published) ?? Date()}
-        unActiveList.sort {DateParser.getDate(dateString: $0.survey.published) ?? Date() > DateParser.getDate(dateString: $1.survey.published) ?? Date()}
+        activeList.sort {DateParser.getDate(dateString: $0.published) ?? Date() > DateParser.getDate(dateString: $1.published) ?? Date()}
+        unActiveList.sort {DateParser.getDate(dateString: $0.published) ?? Date() > DateParser.getDate(dateString: $1.published) ?? Date()}
         var finallist = [Assignment]()
         finallist.append(contentsOf: activeList)
         finallist.append(contentsOf: unActiveList)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -168,7 +168,7 @@
                                         <color key="textColor" name="lta_blue"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-oF-ftA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-oF-ftA">
                                         <rect key="frame" x="15" y="80" width="258" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="mNT-DE-6rv"/>
@@ -207,10 +207,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owp-oY-Sxt">
-                                        <rect key="frame" x="20" y="150.5" width="260" height="115"/>
+                                        <rect key="frame" x="20" y="150.5" width="260" height="170"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVi-VN-xSf">
-                                                <rect key="frame" x="0.0" y="20" width="260" height="40"/>
+                                                <rect key="frame" x="0.0" y="75" width="260" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="2eP-Aw-tOU"/>
                                                 </constraints>
@@ -222,8 +222,18 @@
                                                     <segue destination="3fw-cZ-oP3" kind="show" id="05T-CR-Jmn"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIz-TM-uHw">
+                                                <rect key="frame" x="0.0" y="20" width="260" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="CpB-UU-tQR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <state key="normal" title="Contact">
+                                                    <color key="titleColor" name="lta_blue"/>
+                                                </state>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3A-IQ-9UK">
-                                                <rect key="frame" x="0.0" y="75" width="260" height="40"/>
+                                                <rect key="frame" x="0.0" y="130" width="260" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="wgj-bY-50B"/>
                                                 </constraints>
@@ -238,13 +248,16 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="hIz-TM-uHw" firstAttribute="top" secondItem="owp-oY-Sxt" secondAttribute="top" constant="20" id="4ek-wg-OUg"/>
+                                            <constraint firstAttribute="trailing" secondItem="hIz-TM-uHw" secondAttribute="trailing" id="5xU-0G-utS"/>
+                                            <constraint firstItem="hIz-TM-uHw" firstAttribute="leading" secondItem="owp-oY-Sxt" secondAttribute="leading" id="7yV-gW-PJM"/>
                                             <constraint firstItem="U3A-IQ-9UK" firstAttribute="leading" secondItem="owp-oY-Sxt" secondAttribute="leading" id="LOW-CG-eiJ"/>
                                             <constraint firstAttribute="trailing" secondItem="U3A-IQ-9UK" secondAttribute="trailing" id="Qpd-D4-EJh"/>
                                             <constraint firstItem="U3A-IQ-9UK" firstAttribute="top" secondItem="YVi-VN-xSf" secondAttribute="bottom" constant="15" id="WdK-Qq-iU4"/>
                                             <constraint firstAttribute="trailing" secondItem="YVi-VN-xSf" secondAttribute="trailing" id="ZH2-n5-8XV"/>
                                             <constraint firstAttribute="bottom" secondItem="U3A-IQ-9UK" secondAttribute="bottom" id="cUx-vg-Gnt"/>
                                             <constraint firstItem="YVi-VN-xSf" firstAttribute="leading" secondItem="owp-oY-Sxt" secondAttribute="leading" id="d86-ON-s0q"/>
-                                            <constraint firstItem="YVi-VN-xSf" firstAttribute="top" secondItem="owp-oY-Sxt" secondAttribute="top" constant="20" id="vzd-NR-t3u"/>
+                                            <constraint firstItem="YVi-VN-xSf" firstAttribute="top" secondItem="hIz-TM-uHw" secondAttribute="bottom" constant="15" id="f8U-MW-zWJ"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 0.9" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kak-EI-0N0">
@@ -651,8 +664,9 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcT-t1-pRW">
-                                <rect key="frame" x="183.5" y="247" width="47" height="30"/>
-                                <state key="normal" title="Sign in"/>
+                                <rect key="frame" x="182.5" y="247" width="49" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="logInButtonPressed:" destination="bw0-s6-Uhz" eventType="touchUpInside" id="YvP-f8-ZMy"/>
                                 </connections>
