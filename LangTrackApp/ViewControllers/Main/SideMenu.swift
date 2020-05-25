@@ -21,6 +21,7 @@ let attributeSmallText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize
 
 class SideMenu: UIViewController {
     
+    @IBOutlet weak var instructionsButton: UIButton!
     @IBOutlet weak var menuBackground: UIView!
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -44,6 +45,7 @@ class SideMenu: UIViewController {
         }else{
             versionInfoLabel.text = ""
         }
+        instructionsButton.setTitle(translatedInstructions, for: .normal)
     }
     
     func setTestView(userName: String){

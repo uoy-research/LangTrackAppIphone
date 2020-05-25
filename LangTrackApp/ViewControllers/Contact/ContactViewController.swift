@@ -51,44 +51,32 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
     }
     
     func setContactText(){
-        let theHeader = "\(translatedContact)\n\n"
+        let theHeader = ""
         let finalString = NSMutableAttributedString(string: theHeader, attributes: attributeLtaBlueHeaderText)
         
-        let contactInfoText = "\(translatedReserchText1)\n\n"
+        let contactInfoText = "\(translatedReserchText1)\n"
         let attrcontactInfoText = NSMutableAttributedString(string: contactInfoText, attributes: attributeLtaBlueText)
         finalString.append(attrcontactInfoText)
         
-        let reserchText1 = translatedReserchText2
-        let attrreserchText1 = NSMutableAttributedString(string: reserchText1, attributes: attributeLtaBlueText)
-        finalString.append(attrreserchText1)
-        
-        let reserchLink = translatedClickHere
+        let reserchLink = "stephan.bjorck@humlab.lu.se"
         let myreserchRange = NSRange(location: 0, length: reserchLink.count)
         let attrreserchText2 = NSMutableAttributedString(string: reserchLink, attributes: attributeLtaBlueText)
         attrreserchText2.addAttribute(NSAttributedString.Key.link,
-                                      value: "reserch",
+                                      value: "tech",
                                       range: myreserchRange)
         finalString.append(attrreserchText2)
         
-        let reserchText3 = "\(translatedReserchText3)\n\n"
-        let attrreserchText3 = NSMutableAttributedString(string: reserchText3, attributes: attributeLtaBlueText)
-        finalString.append(attrreserchText3)
+        let techText3 = "\n\n\(translatedTechText1)\n"
+        let attrtechText3 = NSMutableAttributedString(string: techText3, attributes: attributeLtaBlueText)
+        finalString.append(attrtechText3)
         
-        let techText1 = translatedTechText1
-        let attrtechText1 = NSMutableAttributedString(string: techText1, attributes: attributeLtaBlueText)
-        finalString.append(attrtechText1)
-        
-        let techLink = translatedClickHere
+        let techLink = "henriette.arndt@humlab.lu.se"
         let mytechRange = NSRange(location: 0, length: techLink.count)
         let attrtechText2 = NSMutableAttributedString(string: techLink, attributes: attributeLtaBlueText)
         attrtechText2.addAttribute(NSAttributedString.Key.link,
-                                      value: "tech",
+                                      value: "reserch",
                                       range: mytechRange)
         finalString.append(attrtechText2)
-        
-        let techText3 = translatedTechText2
-        let attrtechText3 = NSMutableAttributedString(string: techText3, attributes: attributeLtaBlueText)
-        finalString.append(attrtechText3)
         
         contactsTextView.attributedText = finalString
     }
@@ -122,9 +110,9 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         if theURL.absoluteString == "tech"{
             // mail to dev
             
-            let recipientEmail = "humlablu@gmail.com"
+            let recipientEmail = "stephan.bjorck@humlab.lu.se"
             let subject = translatedSubject
-            let body = translatedTechBody
+            //let body = translatedTechBody
 
             // Show default mail composer
             if MFMailComposeViewController.canSendMail() {
@@ -132,7 +120,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
                 mail.mailComposeDelegate = self
                 mail.setToRecipients([recipientEmail])
                 mail.setSubject(subject)
-                mail.setMessageBody(body, isHTML: false)
+                //mail.setMessageBody(body, isHTML: false)
 
                 present(mail, animated: true)
 
@@ -142,9 +130,9 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         }else if theURL.absoluteString == "reserch"{
             // mail to Henriette
             
-            let recipientEmail = "humlablu@gmail.com"//TODO: change mail
+            let recipientEmail = "henriette.arndt@humlab.lu.se"//TODO: change mail
             let subject = translatedSubject
-            let body = translatedReserchBody
+            //let body = translatedReserchBody
 
             // Show default mail composer
             if MFMailComposeViewController.canSendMail() {
@@ -152,7 +140,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
                 mail.mailComposeDelegate = self
                 mail.setToRecipients([recipientEmail])
                 mail.setSubject(subject)
-                mail.setMessageBody(body, isHTML: false)
+                //mail.setMessageBody(body, isHTML: false)
 
                 present(mail, animated: true)
 

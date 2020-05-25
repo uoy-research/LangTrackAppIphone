@@ -71,6 +71,7 @@
 		F198D7AC23F548AE008B85AA /* SkipLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198D7AB23F548AE008B85AA /* SkipLogic.swift */; };
 		F1BAF78E245C44A400621F7F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAF78D245C44A400621F7F /* LabelExtension.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
+		F1C886F4247BC98000AA64C0 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */; };
 		F1CA5B8D245B11D00024450B /* applicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA5B8C245B11D00024450B /* applicationExtension.swift */; };
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
 		F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199C2424FEC10068F49E /* IncludeIf.swift */; };
@@ -178,6 +179,7 @@
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
 		F1BAF78D245C44A400621F7F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
+		F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		F1CA5B8C245B11D00024450B /* applicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applicationExtension.swift; sourceTree = "<group>"; };
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		F1DB199C2424FEC10068F49E /* IncludeIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeIf.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 		F15658A023E33CE200EC2796 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1C886F2247BC96000AA64C0 /* Instructions */,
 				F1F77721245B68F600B93D8D /* About */,
 				F1F7771E245B679700B93D8D /* Contact */,
 				F1399CEC243E09F800545D47 /* UnansweredPopup */,
@@ -442,6 +445,14 @@
 				F17F34872439A99900CD64BB /* SelfSizedTableView.swift */,
 			);
 			path = CustonViews;
+			sourceTree = "<group>";
+		};
+		F1C886F2247BC96000AA64C0 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */,
+			);
+			path = Instructions;
 			sourceTree = "<group>";
 		};
 		F1DB19942424B87C0068F49E /* Overview */ = {
@@ -750,6 +761,7 @@
 				F178752323E4160E003D16D1 /* Type.swift in Sources */,
 				F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */,
 				F17F34882439A99900CD64BB /* SelfSizedTableView.swift in Sources */,
+				F1C886F4247BC98000AA64C0 /* InstructionsViewController.swift in Sources */,
 				F15F595A23ED91B20026430A /* LikertRadioButton.swift in Sources */,
 				F178752A23E41C30003D16D1 /* QuestionListener.swift in Sources */,
 				F1963209240922AE00A0D8D2 /* VKCheckbox.swift in Sources */,

@@ -260,6 +260,7 @@ class MainViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.hideOrShowEmptyListInfo()
                     }
+                    self.setBadge()
                 }
             }else{
                 self.showServerErrorMessage()
@@ -268,9 +269,11 @@ class MainViewController: UIViewController {
         hideOrShowEmptyListInfo()
     }
     
+    
+    
     func showServerErrorMessage(){
         DispatchQueue.main.async {
-            self.showToast(message: "Ingen kontakt med server", font: UIFont.systemFont(ofSize: 18))
+            self.showToast(message: translatedNoContactWithServer, font: UIFont.systemFont(ofSize: 18))
         }
     }
     
@@ -358,6 +361,27 @@ class MainViewController: UIViewController {
             showMenu()
         }else{
             hideMenu()
+        }
+    }
+    
+    func setBadge(){
+        var numberOfActive = 0
+        for assignment in SurveyRepository.assignmentList {
+            let now = Date()
+            let expiary = DateParser.getDate(dateString: assignment.expiry) ?? now
+            if assignment.dataset == nil{
+                if now < expiary{
+                    //assigmnent is active
+                    numberOfActive += 1
+                }else{
+                    //assignment is NOT active
+                }
+            }else{
+                //assignment is NOT active
+            }
+        }
+        DispatchQueue.main.async {
+            UIApplication.shared.applicationIconBadgeNumber = numberOfActive
         }
     }
 }
@@ -459,6 +483,7 @@ extension MainViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
         theTableView.reloadData()
+        setBadge()
     }
 }
 

@@ -209,7 +209,7 @@ extension MultipleChoiceViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let theTitle = theQuestion.text
-        headerHeight = theTitle.height(withConstrainedWidth: multiTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 15
+        headerHeight = theTitle.height(withConstrainedWidth: multiTableView.frame.width - 10, font: UIFont.systemFont(ofSize: 20, weight: .medium)) + 25
         return headerHeight
     }
     
