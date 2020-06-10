@@ -41,8 +41,6 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "contact text 1" = "Om du har tekniska problem, kontakta Stephan Björck.";
 "contact text 4" = "Om du har frågor eller kommentarer om innehållet i enkäterna, mejla Henriette Arndt.";
 "tech mail subject" = "Angående Lang-Track-App";
-"tech mail body" = "-Här kan du skriva till utvecklarteamet för Lang-Track-App-";
-"reserch mail body" = "-Här kan du skriva till forskarna bakom Lang-Track-App-";
 "No Email Client popup title" = "Ingen e-postklient";
 "No Email Client popup text" = "Det verkar inte som att det går att skicka e-post. Klicka på länken till humanistlaboratoriet nedan och ta kontakt den vägen istället.";
 "Links" = "Länkar";

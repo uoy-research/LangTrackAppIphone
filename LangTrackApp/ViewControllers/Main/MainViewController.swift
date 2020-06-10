@@ -244,6 +244,7 @@ class MainViewController: UIViewController {
         updateAssignments()
         sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
         theTableView.reloadData()
+        self.sideMenu?.setUserCharts()
     }
     
     func updateAssignments(){
@@ -253,6 +254,7 @@ class MainViewController: UIViewController {
                     if assignments != nil{
                         DispatchQueue.main.async {
                             self.theTableView.reloadData()
+                            self.sideMenu?.setUserCharts()
                         }
                     }else{
                         self.showServerErrorMessage()
@@ -339,6 +341,7 @@ class MainViewController: UIViewController {
                         DispatchQueue.main.async {
                             //self.surveyList = self.sortSurveyList(theList: surveys!)
                             self.theTableView.reloadData()
+                            self.sideMenu?.setUserCharts()
                         }
                     }else{
                         DispatchQueue.main.async {

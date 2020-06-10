@@ -295,6 +295,19 @@
                                             <constraint firstAttribute="bottom" secondItem="3LF-FN-ZiJ" secondAttribute="bottom" constant="5" id="xey-CS-qdE"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qw6-ny-h09" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="445" width="285" height="220"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="ztQ-dB-Hwn"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Besvarade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhL-Lu-H3s">
+                                        <rect key="frame" x="5" y="431" width="275" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="lta_menu_blue"/>
                                 <constraints>
@@ -307,19 +320,25 @@
                                     <constraint firstItem="7vG-oF-ftA" firstAttribute="top" secondItem="yWW-Cm-MXi" secondAttribute="bottom" constant="20" id="IEi-07-myO"/>
                                     <constraint firstAttribute="trailing" secondItem="Kak-EI-0N0" secondAttribute="trailing" constant="10" id="Ixd-3X-AN2"/>
                                     <constraint firstAttribute="trailing" secondItem="gOp-GA-nEH" secondAttribute="trailing" constant="20" id="KBb-p1-EeH"/>
+                                    <constraint firstItem="qw6-ny-h09" firstAttribute="top" secondItem="UhL-Lu-H3s" secondAttribute="bottom" constant="-10" id="MZ9-oe-D4L"/>
                                     <constraint firstAttribute="bottom" secondItem="Kak-EI-0N0" secondAttribute="bottom" constant="10" id="Nu8-pV-jKR"/>
                                     <constraint firstAttribute="trailing" secondItem="yWW-Cm-MXi" secondAttribute="trailing" constant="20" symbolic="YES" id="PLe-u8-IcJ"/>
                                     <constraint firstItem="7vG-oF-ftA" firstAttribute="leading" secondItem="0G7-dx-B8Z" secondAttribute="leading" constant="15" id="QnD-xb-XoU"/>
                                     <constraint firstItem="gOp-GA-nEH" firstAttribute="leading" secondItem="0G7-dx-B8Z" secondAttribute="leading" constant="20" id="Sun-Xw-iX9"/>
                                     <constraint firstItem="Kak-EI-0N0" firstAttribute="top" secondItem="dgK-1w-ZBf" secondAttribute="bottom" constant="10" id="V8u-NC-CWO"/>
                                     <constraint firstItem="C9o-z7-sxd" firstAttribute="centerY" secondItem="pcu-c9-yLb" secondAttribute="centerY" id="WV2-Q5-Kp3"/>
+                                    <constraint firstItem="qw6-ny-h09" firstAttribute="leading" secondItem="0G7-dx-B8Z" secondAttribute="leading" id="YfI-6O-2Rh"/>
                                     <constraint firstItem="yWW-Cm-MXi" firstAttribute="top" secondItem="0G7-dx-B8Z" secondAttribute="top" constant="20" id="YoM-SU-sHe"/>
+                                    <constraint firstAttribute="trailing" secondItem="qw6-ny-h09" secondAttribute="trailing" id="a69-7C-lsL"/>
                                     <constraint firstItem="yWW-Cm-MXi" firstAttribute="leading" secondItem="0G7-dx-B8Z" secondAttribute="leading" constant="20" symbolic="YES" id="bId-D8-yE7"/>
                                     <constraint firstItem="owp-oY-Sxt" firstAttribute="top" secondItem="gOp-GA-nEH" secondAttribute="bottom" constant="10" id="goq-RA-PDb"/>
+                                    <constraint firstAttribute="trailing" secondItem="UhL-Lu-H3s" secondAttribute="trailing" constant="5" id="jmq-lF-HU5"/>
                                     <constraint firstItem="dgK-1w-ZBf" firstAttribute="centerX" secondItem="0G7-dx-B8Z" secondAttribute="centerX" id="kfj-P4-YYK"/>
+                                    <constraint firstItem="UhL-Lu-H3s" firstAttribute="leading" secondItem="0G7-dx-B8Z" secondAttribute="leading" constant="5" id="sqH-8W-c4b"/>
                                     <constraint firstAttribute="trailing" secondItem="7vG-oF-ftA" secondAttribute="trailing" constant="12" id="uiP-9m-7Ha"/>
                                     <constraint firstItem="pcu-c9-yLb" firstAttribute="top" secondItem="7vG-oF-ftA" secondAttribute="bottom" constant="8" id="vPe-hz-5Vb"/>
                                     <constraint firstItem="owp-oY-Sxt" firstAttribute="leading" secondItem="0G7-dx-B8Z" secondAttribute="leading" constant="20" id="xSz-zt-WwF"/>
+                                    <constraint firstItem="dgK-1w-ZBf" firstAttribute="top" secondItem="qw6-ny-h09" secondAttribute="bottom" constant="10" id="xVS-Bp-QYl"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -339,7 +358,9 @@
                         <outlet property="instructionsButton" destination="hIz-TM-uHw" id="Pa5-gn-ERZ"/>
                         <outlet property="logOutButton" destination="C9o-z7-sxd" id="c4j-iO-XXs"/>
                         <outlet property="menuBackground" destination="0G7-dx-B8Z" id="7IX-LE-BQb"/>
+                        <outlet property="pieChartView" destination="qw6-ny-h09" id="nCg-he-PPA"/>
                         <outlet property="testView" destination="dgK-1w-ZBf" id="fbQ-8g-3sd"/>
+                        <outlet property="testViewBottomConstraint" destination="V8u-NC-CWO" id="V4x-8W-6hY"/>
                         <outlet property="userNameLabel" destination="pcu-c9-yLb" id="LJn-dg-T8Z"/>
                         <outlet property="versionInfoLabel" destination="Kak-EI-0N0" id="6Ze-4I-pdB"/>
                     </connections>
