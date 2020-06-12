@@ -268,6 +268,7 @@ class SurveyViewController: UIViewController {
         
         if current.index + 1 < theAssignment!.survey.questions.count{
             let next = theAssignment!.survey.questions[current.index + 1]
+            var showNext = false
             if next.includeIf != nil{
                 let includeIfIndexQuestion = theAssignment!.survey.questions[next.includeIf!.ifIndex]
                 if next.includeIf!.ifIndex == includeIfIndexQuestion.index{
@@ -275,53 +276,38 @@ class SurveyViewController: UIViewController {
                     switch includeIfIndexQuestion.type {
                     case "likert":
                         if next.includeIf?.ifValue ?? -99 == answer.likertAnswer{
-                            next.previous = currentPage.index
-                            showPage(newPage: next)
-                        }else{
-                            // dont show next - check following question
-                            deleteAnswerFor(question: next)
-                            checkNext(current: next)
+                            showNext = true
                         }
                     case "single":
                         if next.includeIf?.ifValue ?? -99 == answer.singleMultipleAnswer{
-                            next.previous = currentPage.index
-                            showPage(newPage: next)
-                        }else{
-                            // dont show next - check following question
-                            deleteAnswerFor(question: next)
-                            checkNext(current: next)
+                            showNext = true
                         }
                     case "blanks":
                         if next.includeIf?.ifValue ?? -99 == answer.fillBlankAnswer{
-                            next.previous = currentPage.index
-                            showPage(newPage: next)
-                        }else{
-                            // dont show next - check following question
-                            deleteAnswerFor(question: next)
-                            checkNext(current: next)
+                            showNext = true
                         }
                     case "multi":
                         if (answer.multipleChoiceAnswer ?? []).contains(next.includeIf?.ifValue ?? -99){
-                            next.previous = currentPage.index
-                            showPage(newPage: next)
-                        }else{
-                            // dont show next - check following question
-                            deleteAnswerFor(question: next)
-                            checkNext(current: next)
+                            showNext = true
                         }
                     default:
-                        next.previous = currentPage.index
-                        showPage(newPage: next)
+                        showNext = true
                     }
                 }else{
                     //next includeIf:ifIndex is not current index - show next
-                    next.previous = currentPage.index
-                    showPage(newPage: next)
+                    showNext = true
                 }
             }else{
                 //next does not hanve includeIf - show next
+                showNext = true
+            }
+            if showNext{
                 next.previous = currentPage.index
                 showPage(newPage: next)
+            }else{
+                // dont show next - check following question
+                deleteAnswerFor(question: next)
+                checkNext(current: next)
             }
         }else if current.index + 1 == theAssignment!.survey.questions.count{
             //next is last (footer) - dont check, show direct
