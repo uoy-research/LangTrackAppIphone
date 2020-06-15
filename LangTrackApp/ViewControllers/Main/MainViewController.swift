@@ -76,6 +76,7 @@ class MainViewController: UIViewController {
     var inTestMode = false
     let headerViewMaxHeight: CGFloat = 200
     let headerViewMinHeight: CGFloat = 0
+    var activeSurveyExists = false
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -150,6 +151,7 @@ class MainViewController: UIViewController {
                 setIdTokenListener()
             }
             fetchAssignmentsAndSetUserName()
+            self.checkIfActiveSurveyExists()
         }
     }
     
@@ -247,6 +249,25 @@ class MainViewController: UIViewController {
         }
     }
     
+    func checkIfActiveSurveyExists(){
+        activeSurveyExists = false
+        let now = Date()
+        for assignment in SurveyRepository.assignmentList{
+            let expiary = DateParser.getDate(dateString: assignment.expiry) ?? now
+            if assignment.dataset == nil{
+                if now < expiary{
+                    activeSurveyExists = true
+                    break
+                }
+            }
+        }
+        if !activeSurveyExists{
+            showHeaderView()
+        }else{
+            animateHeaderView()
+        }
+    }
+    
     func fetchAssignmentsAndSetUserName(){
         var username = Auth.auth().currentUser?.email
         username!.until("@")
@@ -265,6 +286,7 @@ class MainViewController: UIViewController {
                 SurveyRepository.getSurveys() { (assignments) in
                     if assignments != nil{
                         DispatchQueue.main.async {
+                            self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
                             self.setUserCharts()
                         }
@@ -306,8 +328,10 @@ class MainViewController: UIViewController {
                                       .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
             chartView.centerAttributedText = centerText
             
-            headerViewLabel.text = "Du har besvarat \(numberOfAnswered) av dina \(totalNumberOfSurveys) tilldelade enkäter."
-            if percent >= 90{
+            headerViewLabel.text = "\(translatedYouHaveAnswered) \(numberOfAnswered) \(translatedOfYour) \(totalNumberOfSurveys) \(translatedAssignedSurveys)"
+            if percent == 100{
+                headerViewEmojiLabel.text = "✨✨"
+            }else if percent >= 90{
                 headerViewEmojiLabel.text = "🌟"
             }else if percent >= 75{
                 headerViewEmojiLabel.text = "✌️"
@@ -351,27 +375,44 @@ class MainViewController: UIViewController {
         
     }
     func animateHeaderView(){
-        if headerViewHeightConstraint.constant < headerViewMaxHeight &&
-            headerViewHeightConstraint.constant > headerViewMinHeight{
-            
-            if headerViewHeightConstraint.constant < (headerViewMinHeight + (headerViewMaxHeight - headerViewMinHeight)) / 2{
+        if activeSurveyExists{
+            if headerViewHeightConstraint.constant > 0{
                 //close topView
                 UIView.animate(withDuration: 0.2, animations: {
                     self.headerViewHeightConstraint.constant = self.headerViewMinHeight
                     self.view.layoutIfNeeded()
-                }){ _ in
-                    
-                }
-            }else{
-                //expand topView
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
-                    self.view.layoutIfNeeded()
-                }){ _ in
-                    
+                })
+            }
+        }else{
+            if headerViewHeightConstraint.constant < headerViewMaxHeight &&
+                headerViewHeightConstraint.constant > headerViewMinHeight{
+                
+                if headerViewHeightConstraint.constant < (headerViewMinHeight + (headerViewMaxHeight - headerViewMinHeight)) / 2{
+                    //close topView
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.headerViewHeightConstraint.constant = self.headerViewMinHeight
+                        self.view.layoutIfNeeded()
+                    }){ _ in
+                        
+                    }
+                }else{
+                    //expand topView
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
+                        self.view.layoutIfNeeded()
+                    }){ _ in
+                        
+                    }
                 }
             }
         }
+    }
+    
+    func showHeaderView(){
+        UIView.animate(withDuration: 0.2, animations: {
+            self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
+            self.view.layoutIfNeeded()
+        })
     }
     
     @objc func clickOnHeader(){
@@ -442,6 +483,7 @@ class MainViewController: UIViewController {
                     if assignments != nil{
                         DispatchQueue.main.async {
                             //self.surveyList = self.sortSurveyList(theList: surveys!)
+                            self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
                             self.setUserCharts()
                         }
@@ -602,17 +644,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
      */
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y: CGFloat = scrollView.contentOffset.y
-        let newHeaderViewHeight: CGFloat = headerViewHeightConstraint.constant - y
-        
-        if newHeaderViewHeight > headerViewMaxHeight {
-            //
-            headerViewHeightConstraint.constant = headerViewMaxHeight
-        } else if newHeaderViewHeight < headerViewMinHeight {
-            headerViewHeightConstraint.constant = headerViewMinHeight
-        } else {
-            headerViewHeightConstraint.constant = newHeaderViewHeight
-            scrollView.contentOffset.y = 0 // block scroll view
+        if !activeSurveyExists{
+            let y: CGFloat = scrollView.contentOffset.y
+            let newHeaderViewHeight: CGFloat = headerViewHeightConstraint.constant - y
+            
+            if newHeaderViewHeight > headerViewMaxHeight {
+                //
+                headerViewHeightConstraint.constant = headerViewMaxHeight
+            } else if newHeaderViewHeight < headerViewMinHeight {
+                headerViewHeightConstraint.constant = headerViewMinHeight
+            } else {
+                headerViewHeightConstraint.constant = newHeaderViewHeight
+                scrollView.contentOffset.y = 0 // block scroll view
+            }
         }
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

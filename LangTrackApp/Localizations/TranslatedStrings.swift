@@ -49,3 +49,6 @@ let translatedInstructions = "Instructions".localized
 let translatedInstructionsText1 = "instructionsText1".localized
 let translatedDataHeader = "Data processing".localized
 let translatedDataProcessing = "dataProcessing1".localized
+let translatedYouHaveAnswered = "You have answered".localized
+let translatedOfYour = "of your".localized
+let translatedAssignedSurveys = "assigned surveys.".localized

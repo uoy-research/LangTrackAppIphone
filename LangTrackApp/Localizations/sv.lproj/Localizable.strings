@@ -35,6 +35,9 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Here it was empty" = "Här var det tomt…\nNär Humlabbet tilldelar dig en enkät kommer den att hamna här";
 "numberEnding" = "st";
 "No contact with server" = "Ingen kontakt med server";
+"You have answered" = "Du har besvarat";
+"of your" = "av dina";
+"assigned surveys." = "tilldelade enkäter.";
 
 // Contact
 "Contact" = "Kontakt";
