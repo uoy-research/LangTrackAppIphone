@@ -130,17 +130,14 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         }else if theURL.absoluteString == "reserch"{
             // mail to Henriette
             
-            let recipientEmail = "henriette.arndt@humlab.lu.se"//TODO: change mail
+            let recipientEmail = "henriette.arndt@humlab.lu.se"
             let subject = translatedSubject
-            //let body = translatedReserchBody
-
             // Show default mail composer
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
                 mail.setToRecipients([recipientEmail])
                 mail.setSubject(subject)
-                //mail.setMessageBody(body, isHTML: false)
 
                 present(mail, animated: true)
 

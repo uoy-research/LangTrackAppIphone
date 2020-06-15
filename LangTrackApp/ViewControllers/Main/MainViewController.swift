@@ -37,6 +37,7 @@
 
 import UIKit
 import Firebase
+import Charts
 
 extension Notification.Name {
 static let newNotification = Notification.Name("newNotification")
@@ -44,6 +45,11 @@ static let newNotification = Notification.Name("newNotification")
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var headerViewEmojiLabel: UILabel!
+    @IBOutlet weak var headerViewLabel: UILabel!
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var chartView: PieChartView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var tableviewContainer: UIView!
@@ -68,6 +74,9 @@ class MainViewController: UIViewController {
     var sideMenu : SideMenu?
     private var pullControl = UIRefreshControl()
     var inTestMode = false
+    let headerViewMaxHeight: CGFloat = 200
+    let headerViewMinHeight: CGFloat = 0
+    var activeSurveyExists = false
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -105,6 +114,10 @@ class MainViewController: UIViewController {
         if self.idTokenChangeListener == nil && Auth.auth().currentUser != nil{
             setIdTokenListener()
         }
+        //headerView.layer.cornerRadius = 10
+        headerView.backgroundColor = UIColor.init(named: "lta_gold")?.withAlphaComponent(0.2) ?? UIColor.white
+        let headerGesture = UITapGestureRecognizer(target: self, action: #selector(self.clickOnHeader))
+        headerView.addGestureRecognizer(headerGesture)
         
         //Menu
         let screenSize = UIScreen.main.bounds
@@ -138,6 +151,7 @@ class MainViewController: UIViewController {
                 setIdTokenListener()
             }
             fetchAssignmentsAndSetUserName()
+            self.checkIfActiveSurveyExists()
         }
     }
     
@@ -235,6 +249,25 @@ class MainViewController: UIViewController {
         }
     }
     
+    func checkIfActiveSurveyExists(){
+        activeSurveyExists = false
+        let now = Date()
+        for assignment in SurveyRepository.assignmentList{
+            let expiary = DateParser.getDate(dateString: assignment.expiry) ?? now
+            if assignment.dataset == nil{
+                if now < expiary{
+                    activeSurveyExists = true
+                    break
+                }
+            }
+        }
+        if !activeSurveyExists{
+            showHeaderView()
+        }else{
+            animateHeaderView()
+        }
+    }
+    
     func fetchAssignmentsAndSetUserName(){
         var username = Auth.auth().currentUser?.email
         username!.until("@")
@@ -244,6 +277,7 @@ class MainViewController: UIViewController {
         updateAssignments()
         sideMenu?.setInfo(name: SurveyRepository.theUser!.userName, listener: self)
         theTableView.reloadData()
+        setUserCharts()
     }
     
     func updateAssignments(){
@@ -252,7 +286,9 @@ class MainViewController: UIViewController {
                 SurveyRepository.getSurveys() { (assignments) in
                     if assignments != nil{
                         DispatchQueue.main.async {
+                            self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
+                            self.setUserCharts()
                         }
                     }else{
                         self.showServerErrorMessage()
@@ -275,6 +311,115 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             self.showToast(message: translatedNoContactWithServer, font: UIFont.systemFont(ofSize: 18))
         }
+    }
+    
+    func setUserCharts(){
+        let totalNumberOfSurveys = SurveyRepository.assignmentList.count
+        let numberOfAnswered = SurveyRepository.assignmentList.filter({$0.dataset != nil}).count
+        if numberOfAnswered != 0{
+            let percent = 100 * (Double(numberOfAnswered)/Double(totalNumberOfSurveys))
+            let percentRounded = Double(round(10*percent)/10)
+            
+            let centerText = NSMutableAttributedString(string: "\(percentRounded)%")
+            let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+            paragraphStyle.lineBreakMode = .byTruncatingTail
+            paragraphStyle.alignment = .center
+            centerText.setAttributes([.font : UIFont.systemFont(ofSize: 17, weight: .semibold),//UIFont(name: "HelveticaNeue-Light", size: 18)!,
+                                      .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
+            chartView.centerAttributedText = centerText
+            
+            headerViewLabel.text = "\(translatedYouHaveAnswered) \(numberOfAnswered) \(translatedOfYour) \(totalNumberOfSurveys) \(translatedAssignedSurveys)"
+            if percent == 100{
+                headerViewEmojiLabel.text = "✨✨"
+            }else if percent >= 90{
+                headerViewEmojiLabel.text = "🌟"
+            }else if percent >= 75{
+                headerViewEmojiLabel.text = "✌️"
+            }else if percent >= 60{
+                headerViewEmojiLabel.text = "👍"
+            }else if percent >= 50{
+                headerViewEmojiLabel.text = "🎈"
+            }else{
+                headerViewEmojiLabel.text = "😏"
+            }
+            
+        }
+        setChart(answered: Double(numberOfAnswered), unanswered: Double(totalNumberOfSurveys - numberOfAnswered), total: totalNumberOfSurveys)
+        
+        chartView.drawHoleEnabled = true
+        chartView.rotationAngle = -90
+        chartView.rotationEnabled = false
+        chartView.chartDescription?.enabled = false
+        chartView.isUserInteractionEnabled = false
+        
+    }
+    
+    func setChart(answered: Double, unanswered: Double, total: Int) {
+        
+        var dataEntries: [ChartDataEntry] = []
+        
+        let dataEntry1 = ChartDataEntry(x: answered, y: answered)
+        let dataEntry2 = ChartDataEntry(x: unanswered, y: unanswered)
+        dataEntries.append(dataEntry1)
+        dataEntries.append(dataEntry2)
+        
+        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "\(Int(answered)) av \(total) besvarade")
+        pieChartDataSet.drawValuesEnabled = false
+        pieChartDataSet.valueTextColor = UIColor.init(named: "lta_lightGrey") ?? UIColor.lightGray
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+        chartView.data = pieChartData
+        
+        let colors: [UIColor] = [UIColor.green, UIColor.lightGray]
+        
+        pieChartDataSet.colors = colors
+        
+    }
+    func animateHeaderView(){
+        if activeSurveyExists{
+            if headerViewHeightConstraint.constant > 0{
+                //close topView
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.headerViewHeightConstraint.constant = self.headerViewMinHeight
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }else{
+            if headerViewHeightConstraint.constant < headerViewMaxHeight &&
+                headerViewHeightConstraint.constant > headerViewMinHeight{
+                
+                if headerViewHeightConstraint.constant < (headerViewMinHeight + (headerViewMaxHeight - headerViewMinHeight)) / 2{
+                    //close topView
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.headerViewHeightConstraint.constant = self.headerViewMinHeight
+                        self.view.layoutIfNeeded()
+                    }){ _ in
+                        
+                    }
+                }else{
+                    //expand topView
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
+                        self.view.layoutIfNeeded()
+                    }){ _ in
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    func showHeaderView(){
+        UIView.animate(withDuration: 0.2, animations: {
+            self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @objc func clickOnHeader(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.headerViewHeightConstraint.constant = self.headerViewMinHeight
+            self.view.layoutIfNeeded()
+        })
     }
     
     //MARK: Menu
@@ -338,7 +483,9 @@ class MainViewController: UIViewController {
                     if assignments != nil{
                         DispatchQueue.main.async {
                             //self.surveyList = self.sortSurveyList(theList: surveys!)
+                            self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
+                            self.setUserCharts()
                         }
                     }else{
                         DispatchQueue.main.async {
@@ -392,8 +539,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //surveyList.count
-        SurveyRepository.assignmentList.count
+        return SurveyRepository.assignmentList.count
     }
+    
+    /*func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = ChartHeaderView()
+        headerView.layer.borderColor = UIColor.init(named: "lta_blue")?.cgColor ?? UIColor.blue.cgColor
+        headerView.layer.borderWidth = 2
+        headerView.layer.cornerRadius = 10
+        return headerView
+    }*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentAssignment = SurveyRepository.assignmentList[indexPath.row]
@@ -475,6 +636,39 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         
+    }
+    // MARK: - Scroll View
+    /*
+    let headerViewMaxHeight: CGFloat = 0
+    let headerViewMinHeight: CGFloat = -150
+     */
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !activeSurveyExists{
+            let y: CGFloat = scrollView.contentOffset.y
+            let newHeaderViewHeight: CGFloat = headerViewHeightConstraint.constant - y
+            
+            if newHeaderViewHeight > headerViewMaxHeight {
+                //
+                headerViewHeightConstraint.constant = headerViewMaxHeight
+            } else if newHeaderViewHeight < headerViewMinHeight {
+                headerViewHeightConstraint.constant = headerViewMinHeight
+            } else {
+                headerViewHeightConstraint.constant = newHeaderViewHeight
+                scrollView.contentOffset.y = 0 // block scroll view
+            }
+        }
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // stopped scrolling
+        animateHeaderView()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate{
+            // stopped scrolling
+            animateHeaderView()
+        }
     }
 }
 

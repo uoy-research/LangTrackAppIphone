@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 let attributeLtaBlueHeaderText = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold),
                                    NSAttributedString.Key.foregroundColor: UIColor(named: "lta_blue") ?? UIColor.blue ]
@@ -29,6 +30,7 @@ class SideMenu: UIViewController {
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var testView: UIView!
     @IBOutlet weak var versionInfoLabel: UILabel!
+    @IBOutlet weak var testViewBottomConstraint: NSLayoutConstraint!
     
     var listener: MenuListener?
 
@@ -49,14 +51,16 @@ class SideMenu: UIViewController {
     }
     
     func setTestView(userName: String){
-        if userName == "stephan" ||
+        if  userName == "stephan" ||
             userName == "josef" ||
             userName == "marianne" ||
             userName == "jonas" ||
             userName == "henriette"  {
+            testViewBottomConstraint.constant = 10
             testView.isHidden = false
         }else{
             testView.isHidden = true
+            testViewBottomConstraint.constant = -testView.frame.height
         }
     }
     
