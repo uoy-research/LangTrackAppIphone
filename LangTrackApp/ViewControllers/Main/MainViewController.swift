@@ -676,7 +676,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 extension MainViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
-        theTableView.reloadData()
+        self.checkIfActiveSurveyExists()
+        self.theTableView.reloadData()
+        self.setUserCharts()
         setBadge()
     }
 }
