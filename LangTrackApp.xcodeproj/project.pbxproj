@@ -72,6 +72,8 @@
 		F1BAF78E245C44A400621F7F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAF78D245C44A400621F7F /* LabelExtension.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
 		F1C886F4247BC98000AA64C0 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */; };
+		F1C8878D249744EF00AA64C0 /* ChartHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C8878C249744EE00AA64C0 /* ChartHeaderView.xib */; };
+		F1C8878F2497452000AA64C0 /* ChartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C8878E2497452000AA64C0 /* ChartHeaderView.swift */; };
 		F1CA5B8D245B11D00024450B /* applicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA5B8C245B11D00024450B /* applicationExtension.swift */; };
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
 		F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199C2424FEC10068F49E /* IncludeIf.swift */; };
@@ -180,6 +182,8 @@
 		F1BAF78D245C44A400621F7F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
 		F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		F1C8878C249744EE00AA64C0 /* ChartHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartHeaderView.xib; sourceTree = "<group>"; };
+		F1C8878E2497452000AA64C0 /* ChartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHeaderView.swift; sourceTree = "<group>"; };
 		F1CA5B8C245B11D00024450B /* applicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applicationExtension.swift; sourceTree = "<group>"; };
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		F1DB199C2424FEC10068F49E /* IncludeIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeIf.swift; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				F10B84BC23E47AD0003CAC76 /* SurveyTableViewCell.swift */,
 				F11499FA2414257F00DC988A /* CallToActionTableViewCell.swift */,
 				F18E2D3E2429066100B33E53 /* SideMenu.swift */,
+				F1C8878C249744EE00AA64C0 /* ChartHeaderView.xib */,
+				F1C8878E2497452000AA64C0 /* ChartHeaderView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -611,6 +617,7 @@
 				F10B84B423E46025003CAC76 /* Colors.xcassets in Resources */,
 				F16D557023E8238500DD92A1 /* GoogleService-Info.plist in Resources */,
 				F1399CDF243D0D9400545D47 /* SingleView.xib in Resources */,
+				F1C8878D249744EF00AA64C0 /* ChartHeaderView.xib in Resources */,
 				F1F7D1DC246FEE57003D881B /* Localizable.strings in Resources */,
 				F156587A23E2DD7600EC2796 /* Assets.xcassets in Resources */,
 				F156587823E2DD7500EC2796 /* Main.storyboard in Resources */,
@@ -712,6 +719,7 @@
 				F1F77720245B67B200B93D8D /* ContactViewController.swift in Sources */,
 				F18314182418EA0F0036A5D3 /* Assignment.swift in Sources */,
 				F183141A2418F1690036A5D3 /* Dataset.swift in Sources */,
+				F1C8878F2497452000AA64C0 /* ChartHeaderView.swift in Sources */,
 				F178752523E41639003D16D1 /* Survey.swift in Sources */,
 				F1576376242A3C6C003C5F59 /* MenuListener.swift in Sources */,
 				F1399CEB243DE7BF00545D47 /* OverviewOpenTableViewCell.swift in Sources */,

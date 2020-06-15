@@ -266,6 +266,19 @@ class SurveyViewController: UIViewController {
     
     func checkNext(current: Question){
         
+        /*
+         [
+            "includeIf": {
+                "ifIndex": 25,
+                "ifValue": 1
+            },
+            "includeIf": {
+                "ifIndex": 25,
+                "ifValue": 1
+            }
+         ]
+         */
+        
         if current.index + 1 < theAssignment!.survey.questions.count{
             let next = theAssignment!.survey.questions[current.index + 1]
             var showNext = false
