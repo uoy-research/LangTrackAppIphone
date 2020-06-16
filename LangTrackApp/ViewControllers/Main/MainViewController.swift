@@ -138,6 +138,7 @@ class MainViewController: UIViewController {
         sideMenu!.view.frame = sideMenuContainer.bounds
         sideMenu!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         sideMenu!.didMove(toParent: self)
+        animateHeaderView()
     }
     
     @objc func willEnterForeground() {
@@ -152,6 +153,7 @@ class MainViewController: UIViewController {
             if self.idTokenChangeListener == nil{
                 setIdTokenListener()
             }
+            
             fetchAssignmentsAndSetUserName()
             self.checkIfActiveSurveyExists()
         }
@@ -263,7 +265,12 @@ class MainViewController: UIViewController {
                 }
             }
         }
-        if !activeSurveyExists{
+
+        let index = IndexPath(row: 0, section: 0)
+        if theTableView.numberOfRows(inSection: 0) > 0{
+            theTableView.scrollToRow(at: index, at: .top, animated: false)
+        }
+        if !activeSurveyExists && !SurveyRepository.assignmentList.isEmpty{
             showHeaderView()
         }else{
             animateHeaderView()
@@ -377,7 +384,7 @@ class MainViewController: UIViewController {
         
     }
     func animateHeaderView(){
-        if activeSurveyExists{
+        if activeSurveyExists || SurveyRepository.assignmentList.isEmpty{
             if headerViewHeightConstraint.constant > 0{
                 //close topView
                 UIView.animate(withDuration: 0.2, animations: {
