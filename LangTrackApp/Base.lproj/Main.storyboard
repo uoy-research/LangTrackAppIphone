@@ -666,12 +666,6 @@
                             <constraint firstItem="wBf-HP-jeZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xsz-oZ-lAs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="vC9-bJ-PTC"/>
-                                <exclude reference="Pa5-oZ-pfA"/>
-                            </mask>
-                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="pIM-09-aQw" appends="YES" id="tHf-p3-HaO"/>
                         </connections>
