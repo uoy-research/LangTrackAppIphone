@@ -45,6 +45,7 @@ static let newNotification = Notification.Name("newNotification")
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var topViewDivider: UIView!
     @IBOutlet weak var headerViewEmojiLabel: UILabel!
     @IBOutlet weak var headerViewLabel: UILabel!
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
@@ -77,6 +78,7 @@ class MainViewController: UIViewController {
     let headerViewMaxHeight: CGFloat = 200
     let headerViewMinHeight: CGFloat = 0
     var activeSurveyExists = false
+    var topViewShadowIsShowing = false
     
     //static let newNotification = NSNotification.Name(rawValue: "newNotification")
     
@@ -330,7 +332,7 @@ class MainViewController: UIViewController {
             
             headerViewLabel.text = "\(translatedYouHaveAnswered) \(numberOfAnswered) \(translatedOfYour) \(totalNumberOfSurveys) \(translatedAssignedSurveys)"
             if percent == 100{
-                headerViewEmojiLabel.text = "✨✨"
+                headerViewEmojiLabel.text = "🌟🌟"
             }else if percent >= 90{
                 headerViewEmojiLabel.text = "🌟"
             }else if percent >= 75{
@@ -338,7 +340,7 @@ class MainViewController: UIViewController {
             }else if percent >= 60{
                 headerViewEmojiLabel.text = "👍"
             }else if percent >= 50{
-                headerViewEmojiLabel.text = "🎈"
+                headerViewEmojiLabel.text = "😊"
             }else{
                 headerViewEmojiLabel.text = "😏"
             }
@@ -369,7 +371,7 @@ class MainViewController: UIViewController {
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         chartView.data = pieChartData
         
-        let colors: [UIColor] = [UIColor.green, UIColor.lightGray]
+        let colors: [UIColor] = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
         
         pieChartDataSet.colors = colors
         
@@ -381,7 +383,9 @@ class MainViewController: UIViewController {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.headerViewHeightConstraint.constant = self.headerViewMinHeight
                     self.view.layoutIfNeeded()
-                })
+                }){ _ in
+                    self.setHeaderShadow()
+                }
             }
         }else{
             if headerViewHeightConstraint.constant < headerViewMaxHeight &&
@@ -393,7 +397,7 @@ class MainViewController: UIViewController {
                         self.headerViewHeightConstraint.constant = self.headerViewMinHeight
                         self.view.layoutIfNeeded()
                     }){ _ in
-                        
+                    self.setHeaderShadow()
                     }
                 }else{
                     //expand topView
@@ -401,7 +405,7 @@ class MainViewController: UIViewController {
                         self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
                         self.view.layoutIfNeeded()
                     }){ _ in
-                        
+                        self.setHeaderShadow()
                     }
                 }
             }
@@ -412,14 +416,18 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: 0.2, animations: {
             self.headerViewHeightConstraint.constant = self.headerViewMaxHeight
             self.view.layoutIfNeeded()
-        })
+        }){ _ in
+            self.setHeaderShadow()
+        }
     }
     
     @objc func clickOnHeader(){
         UIView.animate(withDuration: 0.3, animations: {
             self.headerViewHeightConstraint.constant = self.headerViewMinHeight
             self.view.layoutIfNeeded()
-        })
+        }){ _ in
+            self.setHeaderShadow()
+        }
     }
     
     //MARK: Menu
@@ -638,15 +646,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         
     }
     // MARK: - Scroll View
-    /*
-    let headerViewMaxHeight: CGFloat = 0
-    let headerViewMinHeight: CGFloat = -150
-     */
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !activeSurveyExists{
             let y: CGFloat = scrollView.contentOffset.y
             let newHeaderViewHeight: CGFloat = headerViewHeightConstraint.constant - y
+            setHeaderShadow()
             
             if newHeaderViewHeight > headerViewMaxHeight {
                 //
@@ -662,6 +667,25 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // stopped scrolling
         animateHeaderView()
+    }
+    
+    func setHeaderShadow(){
+        if headerViewHeightConstraint.constant > 0 &&
+            headerViewHeightConstraint.constant <= headerViewMaxHeight{
+            if !topViewShadowIsShowing{
+                topView.setTopHeaderViewShadow()
+                tableviewContainer.setBottomHeaderViewShadow()
+                topViewDivider.alpha = 0
+                topViewShadowIsShowing = true
+            }
+        }else{
+            if topViewShadowIsShowing{
+                topView.removeShadow()
+                tableviewContainer.removeShadow()
+                topViewDivider.alpha = 1
+                topViewShadowIsShowing = false
+            }
+        }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

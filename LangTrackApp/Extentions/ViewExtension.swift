@@ -33,6 +33,20 @@ extension UIView{
         self.layer.shadowOpacity = 0.55
     }
     
+    func setTopHeaderViewShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        self.layer.shadowRadius = 1.2
+        self.layer.shadowOpacity = 0.4
+    }
+    
+    func setBottomHeaderViewShadow(){
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: -2.5)
+        self.layer.shadowRadius = 1.2
+        self.layer.shadowOpacity = 0.25
+    }
+    
     func removeShadow(){
         self.layer.shadowColor = UIColor.clear.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
