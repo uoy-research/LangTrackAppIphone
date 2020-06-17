@@ -8,11 +8,15 @@
 
 import Foundation
 
-class Survey : Codable{
-    var id: String = ""
-    var date: Int64 = 0
-    var responded: Bool = false
+struct Survey : Codable{
+    var id: String = ""//TODO: remove
+    var name: String = ""
     var title: String = ""
-    var text: String = ""
     var questions = [Question]()
+    var respondeddate: String = ""
+    var published: String = ""
+    var expiry: String = ""
+    var answer = [Int:Answer]()
+    var updatedAt = ""
+    var createdAt = ""
 }

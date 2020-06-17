@@ -9,16 +9,19 @@
 import Foundation
 
 class Question : Codable {
-    var type: Int = 99
+    var type: String = Type.header.rawValue
     var id: String = ""
-    var previous: Int = 0
+    var previous: Int? = 0
     var index: Int = 0
-    var next: Int = 0
+    var next: Int? = 0
     var title: String = ""
     var text: String = ""
     var description: String = ""
-    var likertScale: [String]? = nil
+    var likertMax: String = ""
+    var likertMin: String = ""
     var fillBlanksChoises: [String]? = nil
-    var miltipleChoisesAnswers: [String]? = nil
+    var multipleChoisesAnswers: [String]? = nil
     var singleMultipleAnswers: [String]? = nil
+    var skip: SkipLogic? = nil
+    var includeIf: IncludeIf? = nil
 }
