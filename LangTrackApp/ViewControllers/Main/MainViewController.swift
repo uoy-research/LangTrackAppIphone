@@ -146,6 +146,7 @@ class MainViewController: UIViewController {
        updateAssignments()
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
             performSegue(withIdentifier: "login", sender: nil)
@@ -155,6 +156,7 @@ class MainViewController: UIViewController {
             }
             
             fetchAssignmentsAndSetUserName()
+            print("checkIfActiveSurveyExists viewDidAppear")
             self.checkIfActiveSurveyExists()
         }
     }
@@ -295,6 +297,7 @@ class MainViewController: UIViewController {
                 SurveyRepository.getSurveys() { (assignments) in
                     if assignments != nil{
                         DispatchQueue.main.async {
+                            print("checkIfActiveSurveyExists updateAssignments")
                             self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
                             self.setUserCharts()
@@ -325,35 +328,45 @@ class MainViewController: UIViewController {
     func setUserCharts(){
         let totalNumberOfSurveys = SurveyRepository.assignmentList.count
         let numberOfAnswered = SurveyRepository.assignmentList.filter({$0.dataset != nil}).count
+        
+        var colors: [UIColor] = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        var percent: Double = 0
+        var percentRounded : Double = 0
         if numberOfAnswered != 0{
-            let percent = 100 * (Double(numberOfAnswered)/Double(totalNumberOfSurveys))
-            let percentRounded = Double(round(10*percent)/10)
-            
-            let centerText = NSMutableAttributedString(string: "\(percentRounded)%")
-            let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-            paragraphStyle.lineBreakMode = .byTruncatingTail
-            paragraphStyle.alignment = .center
-            centerText.setAttributes([.font : UIFont.systemFont(ofSize: 17, weight: .semibold),//UIFont(name: "HelveticaNeue-Light", size: 18)!,
-                                      .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
-            chartView.centerAttributedText = centerText
-            
-            headerViewLabel.text = "\(translatedYouHaveAnswered) \(numberOfAnswered) \(translatedOfYour) \(totalNumberOfSurveys) \(translatedAssignedSurveys)"
-            if percent == 100{
-                headerViewEmojiLabel.text = "🌟🌟"
-            }else if percent >= 90{
-                headerViewEmojiLabel.text = "🌟"
-            }else if percent >= 75{
-                headerViewEmojiLabel.text = "✌️"
-            }else if percent >= 60{
-                headerViewEmojiLabel.text = "👍"
-            }else if percent >= 50{
-                headerViewEmojiLabel.text = "😊"
-            }else{
-                headerViewEmojiLabel.text = "😏"
-            }
-            
+            percent = 100 * (Double(numberOfAnswered)/Double(totalNumberOfSurveys))
+            percentRounded = Double(round(10*percent)/10)
         }
-        setChart(answered: Double(numberOfAnswered), unanswered: Double(totalNumberOfSurveys - numberOfAnswered), total: totalNumberOfSurveys)
+        
+        let centerText = NSMutableAttributedString(string: "\(percentRounded)%")
+        let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        paragraphStyle.alignment = .center
+        centerText.setAttributes([.font : UIFont.systemFont(ofSize: 17, weight: .semibold),//UIFont(name: "HelveticaNeue-Light", size: 18)!,
+            .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
+        chartView.centerAttributedText = centerText
+        
+        headerViewLabel.text = "\(translatedYouHaveAnswered) \(numberOfAnswered) \(translatedOfYour) \(totalNumberOfSurveys) \(translatedAssignedSurveys)"
+        
+        
+        if percent == 100{
+            headerViewEmojiLabel.text = "🌟🌟"
+            colors = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        }else if percent >= 80{
+            headerViewEmojiLabel.text = "🌟"
+            colors = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        }else if percent >= 50{
+            headerViewEmojiLabel.text = "✌️"
+            colors = [UIColor.init(named: "lta_yellow") ?? UIColor.yellow, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        }else if percent >= 25{
+            headerViewEmojiLabel.text = "👍"
+            colors = [UIColor.init(named: "lta_brown") ?? UIColor.brown, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        }else{
+            headerViewEmojiLabel.text = "😏"
+            colors = [UIColor.init(named: "lta_grey") ?? UIColor.gray, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        }
+        
+        
+        setChart(answered: Double(numberOfAnswered), unanswered: Double(totalNumberOfSurveys - numberOfAnswered), total: totalNumberOfSurveys, colors: colors)
         
         chartView.drawHoleEnabled = true
         chartView.rotationAngle = -90
@@ -363,7 +376,7 @@ class MainViewController: UIViewController {
         
     }
     
-    func setChart(answered: Double, unanswered: Double, total: Int) {
+    func setChart(answered: Double, unanswered: Double, total: Int, colors: [UIColor]) {
         
         var dataEntries: [ChartDataEntry] = []
         
@@ -378,7 +391,7 @@ class MainViewController: UIViewController {
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         chartView.data = pieChartData
         
-        let colors: [UIColor] = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        //let colors: [UIColor] = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
         
         pieChartDataSet.colors = colors
         
@@ -499,6 +512,7 @@ class MainViewController: UIViewController {
                         DispatchQueue.main.async {
                             //self.surveyList = self.sortSurveyList(theList: surveys!)
                             self.checkIfActiveSurveyExists()
+                            print("checkIfActiveSurveyExists refreshListData")
                             self.theTableView.reloadData()
                             self.setUserCharts()
                         }
@@ -707,6 +721,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 extension MainViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
+        print("checkIfActiveSurveyExists CellTimerListener")
         self.checkIfActiveSurveyExists()
         self.theTableView.reloadData()
         self.setUserCharts()

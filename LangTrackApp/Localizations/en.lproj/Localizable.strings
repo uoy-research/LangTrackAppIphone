@@ -53,13 +53,15 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Lund University" = "Lund University";
 
 //about
-"aboutText1" = "We developed the Lang-Track-App to study when, where, and how often language learners are in contact with different foreign languages in everyday life. This crucial to improving our understanding of the challenges of language learning outside of classrooms.\n\nThe project is a collaboration between the Lund University Centre for Languages and Literature and Lund University Humanities Lab.";
+"aboutText1" = "We developed the Lang-Track-App to study when, where, and how often language learners are in contact with different foreign languages in everyday life. This is crucial to improving our understanding of the challenges of language learning outside of classrooms.\n\nThe project is a collaboration between the Lund University Centre for Languages and Literature and Lund University Humanities Lab.";
 "MarianneInfo" = "Professor of Psycholinguistics, Centre for Languages and Literature";
 "JonasInfo" = "Professor of French Linguistics, Centre for Languages and Literature";
 "HenrietteInfo" = "Postdoctoral Research Fellow, LU Humanities Lab";
 "JosefInfo" = "Systems Developer, LU Humanities Lab";
 "StephanInfo" = "Systems Developer, LU Humanities Lab";
 "Team" = "Team";
+"Funded by" = "Funded by";
+"founder image" = "stiftelsen_wallenberg_en";
 
 //Instructions
 "Instructions" = "Instructions";
