@@ -49,9 +49,10 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
     
     func setAboutText(){
 //        let theHeader = "Project description"
-//        let finalString = NSMutableAttributedString(string: "\(theHeader)\n\n", attributes: attributeLtaBlueHeaderText)
+        let finalString = NSMutableAttributedString(string: "\(translatedAboutText1)\n\n", attributes: attributeLtaBlueText)
+        finalString.append(NSAttributedString(string: "\(translatedFundedBy)\n", attributes: attributeSmallText))
         
-        let finalString = NSAttributedString(string: translatedAboutText1, attributes: attributeLtaBlueText)
+        //let finalString = NSAttributedString(string: translatedAboutText1, attributes: attributeLtaBlueText)
 //        let finalString.append(attrText)
         
 //        let foundingsText = "FUNDINGS"
@@ -59,12 +60,12 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
 //        finalString.append(attrFounding)
         
         //image
-//        let image1Attachment = NSTextAttachment()
-//        image1Attachment.image = UIImage(named: "stiftelsen_wallenberg.png")
-//        let image1String = NSMutableAttributedString(attachment: image1Attachment)
-//        let myRange = NSRange(location: 0, length: image1String.length)
-//        image1String.addAttributes([NSAttributedString.Key.link: URL(string: "https://maw.wallenberg.org/startsida")!], range: myRange)
-//        finalString.append(image1String)
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = UIImage(named: "\(translatedFounderImage).png")
+        let image1String = NSMutableAttributedString(attachment: image1Attachment)
+        let myRange = NSRange(location: 0, length: image1String.length)
+        image1String.addAttributes([NSAttributedString.Key.link: URL(string: "https://maw.wallenberg.org/startsida")!], range: myRange)
+        finalString.append(image1String)
         
         aboutTextView.attributedText = finalString
     }

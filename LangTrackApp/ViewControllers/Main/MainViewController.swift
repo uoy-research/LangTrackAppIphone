@@ -155,6 +155,7 @@ class MainViewController: UIViewController {
             }
             
             fetchAssignmentsAndSetUserName()
+            print("checkIfActiveSurveyExists viewDidAppear")
             self.checkIfActiveSurveyExists()
         }
     }
@@ -295,6 +296,7 @@ class MainViewController: UIViewController {
                 SurveyRepository.getSurveys() { (assignments) in
                     if assignments != nil{
                         DispatchQueue.main.async {
+                            print("checkIfActiveSurveyExists updateAssignments")
                             self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
                             self.setUserCharts()
@@ -499,6 +501,7 @@ class MainViewController: UIViewController {
                         DispatchQueue.main.async {
                             //self.surveyList = self.sortSurveyList(theList: surveys!)
                             self.checkIfActiveSurveyExists()
+                            print("checkIfActiveSurveyExists refreshListData")
                             self.theTableView.reloadData()
                             self.setUserCharts()
                         }
@@ -707,6 +710,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 extension MainViewController: CellTimerListener{
     func timerExpiered() {
         print("ViewController: CellTimerListener timerExpiered")
+        print("checkIfActiveSurveyExists CellTimerListener")
         self.checkIfActiveSurveyExists()
         self.theTableView.reloadData()
         self.setUserCharts()
