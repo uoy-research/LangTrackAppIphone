@@ -52,13 +52,6 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
         let finalString = NSMutableAttributedString(string: "\(translatedAboutText1)\n\n", attributes: attributeLtaBlueText)
         finalString.append(NSAttributedString(string: "\(translatedFundedBy)\n", attributes: attributeSmallText))
         
-        //let finalString = NSAttributedString(string: translatedAboutText1, attributes: attributeLtaBlueText)
-//        let finalString.append(attrText)
-        
-//        let foundingsText = "FUNDINGS"
-//        let attrFounding = NSAttributedString(string: "\(foundingsText)\n", attributes: attributeSmallText)
-//        finalString.append(attrFounding)
-        
         //image
         let image1Attachment = NSTextAttachment()
         image1Attachment.image = UIImage(named: "\(translatedFounderImage).png")
