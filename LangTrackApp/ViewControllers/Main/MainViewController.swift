@@ -348,20 +348,20 @@ class MainViewController: UIViewController {
         headerViewLabel.text = "\(translatedYouHaveAnswered) \(numberOfAnswered) \(translatedOfYour) \(totalNumberOfSurveys) \(translatedAssignedSurveys)"
         
         
-        if percent == 100{
-            headerViewEmojiLabel.text = "🌟🌟"
-            colors = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
-        }else if percent >= 80{
+        if percent >= 90{
             headerViewEmojiLabel.text = "🌟"
             colors = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
+        }else if percent >= 80{
+            headerViewEmojiLabel.text = "😁"
+            colors = [UIColor.init(named: "lta_green") ?? UIColor.green, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
         }else if percent >= 50{
-            headerViewEmojiLabel.text = "✌️"
+            headerViewEmojiLabel.text = "👍"
             colors = [UIColor.init(named: "lta_yellow") ?? UIColor.yellow, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
         }else if percent >= 25{
-            headerViewEmojiLabel.text = "👍"
+            headerViewEmojiLabel.text = "😏"
             colors = [UIColor.init(named: "lta_brown") ?? UIColor.brown, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
         }else{
-            headerViewEmojiLabel.text = "😏"
+            headerViewEmojiLabel.text = "😬"
             colors = [UIColor.init(named: "lta_grey") ?? UIColor.gray, UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray]
         }
         
