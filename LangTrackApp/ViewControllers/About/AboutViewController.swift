@@ -57,7 +57,7 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
         image1Attachment.image = UIImage(named: "\(translatedFounderImage).png")
         let image1String = NSMutableAttributedString(attachment: image1Attachment)
         let myRange = NSRange(location: 0, length: image1String.length)
-        image1String.addAttributes([NSAttributedString.Key.link: URL(string: "https://maw.wallenberg.org/startsida")!], range: myRange)
+        image1String.addAttributes([NSAttributedString.Key.link: URL(string: translatedFounderAddress)!], range: myRange)
         finalString.append(image1String)
         
         aboutTextView.attributedText = finalString

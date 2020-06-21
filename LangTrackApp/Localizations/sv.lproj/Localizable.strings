@@ -49,7 +49,9 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Links" = "Länkar";
 "Lang-Track-App project" = "Lang-Track-App";
 "Humanities Lab" = "Humanistlaboratoriet";
+"Lund University Humanities Lab" = "Humanistlaboratoriet Lunds Universitet";
 "Lund University" = "Lunds Universitet";
+"https://maw.wallenberg.org/en" = "https://maw.wallenberg.org";
 
 //about
 "aboutText1" = "Vi har utvecklat Lang-Track-App för att utforska när, var och hur ofta människor har kontakt med främmade språk i vardagen. Detta är viktigt för att bättre förstå utmaningarna för språkinlärning utanför klassrummet.\n\nProjektet är ett samarbete mellan Språk- och Litteraturcentrum och Lunds Universitets Humanistlaboratorium.";
