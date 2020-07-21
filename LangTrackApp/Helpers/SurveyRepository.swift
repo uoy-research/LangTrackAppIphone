@@ -144,6 +144,7 @@ struct SurveyRepository {
     static func apiIsAlive(completionHandler: @escaping (_ result: Bool) -> Void){
         let pingUrl = "\(ltaUrl)ping"
         let request = NSMutableURLRequest(url: URL(string: pingUrl)!)
+        request.setValue(idToken, forHTTPHeaderField: "token")
         let session = URLSession.shared
         request.httpMethod = "GET"
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in

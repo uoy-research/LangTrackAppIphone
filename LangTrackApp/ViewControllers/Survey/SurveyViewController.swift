@@ -222,6 +222,10 @@ class SurveyViewController: UIViewController {
     
     func skipIsExecuted(current: Question) -> Question?{
         if let skip = current.skip{
+            // skip if ifChosen is -1 regardless of answer...
+            if skip.ifChosen == -1 {
+                return theAssignment?.survey.questions.first(where: { $0.index == skip.goto})
+            }
             if let answerObj = answer.first(where: { $0.value.index == current.index}){
                 let answer = answerObj.value
                 switch current.type {
