@@ -15,6 +15,7 @@ class OverviewLikertTableViewCell: UITableViewCell {
     @IBOutlet weak var likert2: UIView!
     @IBOutlet weak var likert3: UIView!
     @IBOutlet weak var likert4: UIView!
+    @IBOutlet weak var likertNA: UIView!
     @IBOutlet weak var likertTextLabel: UILabel!
     @IBOutlet weak var likertMinLabel: UILabel!
     @IBOutlet weak var likertMaxLabel: UILabel!
@@ -30,16 +31,19 @@ class OverviewLikertTableViewCell: UITableViewCell {
         likert2.layer.cornerRadius = likert2.frame.width / 2
         likert3.layer.cornerRadius = likert3.frame.width / 2
         likert4.layer.cornerRadius = likert4.frame.width / 2
+        likertNA.layer.cornerRadius = likertNA.frame.width / 2
         likert0.layer.borderWidth = 0.5
         likert1.layer.borderWidth = 0.5
         likert2.layer.borderWidth = 0.5
         likert3.layer.borderWidth = 0.5
         likert4.layer.borderWidth = 0.5
+        likertNA.layer.borderWidth = 0.5
         likert0.backgroundColor = UIColor.white
         likert1.backgroundColor = UIColor.white
         likert2.backgroundColor = UIColor.white
         likert3.backgroundColor = UIColor.white
         likert4.backgroundColor = UIColor.white
+        likertNA.backgroundColor = UIColor.white
     }
     
     func setValues(item: OverviewListItem?){
@@ -57,6 +61,7 @@ class OverviewLikertTableViewCell: UITableViewCell {
         likert2.backgroundColor = UIColor.white
         likert3.backgroundColor = UIColor.white
         likert4.backgroundColor = UIColor.white
+        likertNA.backgroundColor = UIColor.white
     }
     
     func setLikertScale(){
@@ -78,6 +83,9 @@ class OverviewLikertTableViewCell: UITableViewCell {
                 case 4:
                     setAllUnmarked()
                     likert4.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                case 5:
+                    setAllUnmarked()
+                    likertNA.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
                 default:
                     setAllUnmarked()
                 }

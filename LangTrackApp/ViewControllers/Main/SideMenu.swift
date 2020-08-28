@@ -52,6 +52,7 @@ class SideMenu: UIViewController {
     
     func setTestView(userName: String){
         if  userName == "stephan" ||
+            userName == "stephandroid" ||
             userName == "josef" ||
             userName == "marianne" ||
             userName == "jonas" ||
