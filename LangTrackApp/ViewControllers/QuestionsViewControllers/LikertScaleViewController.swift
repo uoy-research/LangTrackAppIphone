@@ -55,6 +55,7 @@ class LikertScaleViewController: UIViewController {
                 }
             }
         }
+        self.view.layoutIfNeeded()
     }
     
     func setSelected(selected: Int){

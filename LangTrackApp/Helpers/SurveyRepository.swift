@@ -99,11 +99,17 @@ struct SurveyRepository {
                     if let theUrl = theUrl{
                         if theUrl != ""{
                             let answerUrl = "\(theUrl)users/\(userId)/assignments/\(selectedAssignment!.id)/datasets"
-                            AF.request(answerUrl,
+                            let req = AF.request(answerUrl,
                                        method: .post,
                                        parameters: theBody,
                                        encoder: JSONParameterEncoder.default,
-                                       headers: headers).response { response in
+                                       headers: headers)
+                            /*
+                             //print out request
+                            req.cURLDescription { (curl) in
+                               print("CURL \(curl)")
+                            }*/
+                            req.response { response in
                             }
                         }
                     }
