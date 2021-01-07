@@ -19,6 +19,9 @@ struct SurveyRepository {
     //static let theUrl = "https://www.dropbox.com/s/qmvskzi4ejtg5ij/play_survey_json.txt?dl=1"
     //static let mockUrl = "https://e3777de6-509b-46a9-a996-ea2708cc0192.mock.pstmn.io/"
     //static let ltaUrl = "http://ht-lang-track.ht.lu.se/api/"
+    //url on Firebase: "https://lta.ht.lu.se/api/"
+    //stagingUrl on Firebase: "https://lta-staging.ht.lu.se/api/"
+    
     
     static var idToken = ""
     static var deviceToken = ""{
@@ -38,15 +41,46 @@ struct SurveyRepository {
     static var selectedAssignment: Assignment?
     static let tempuserId = "u123"
     static var userId = ""
-    static var ref: DatabaseReference!
+    //static var ref: DatabaseReference!
     static let realtimeRef = Database.database().reference()
+    static var useStagingServer = false
     
     static func setIdToken(token: String){
         self.idToken = token
     }
     
+    static func emptyAssignmentsList(){
+        assignmentList = []
+    }
+    
+    static func setStagingServer(isActive: Bool){
+        useStagingServer = isActive
+        //selectedAssignment = nil
+        //assignmentList = []
+    }
+    
     static func getUrl(completionhandler: @escaping (_ result: String?) -> Void){
+        if useStagingServer {
+            self.getStagingUrl { (theStagingUrl) in
+                completionhandler(theStagingUrl)
+                print("using staging server")
+            }
+        }else{
+            self.getActiveUrl { (theUrl) in
+                completionhandler(theUrl)
+                print("using active server")
+            }
+        }
+    }
+    
+    static func getActiveUrl(completionhandler: @escaping (_ result: String?) -> Void){
         realtimeRef.child("url").observeSingleEvent(of: .value, with: {(snapshot) in
+            completionhandler(snapshot.value as? String ?? "")
+        })
+    }
+    
+    static func getStagingUrl(completionhandler: @escaping (_ result: String?) -> Void){
+        realtimeRef.child("stagingUrl").observeSingleEvent(of: .value, with: {(snapshot) in
             completionhandler(snapshot.value as? String ?? "")
         })
     }

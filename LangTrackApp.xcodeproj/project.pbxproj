@@ -970,7 +970,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.lu.LangTrackApp;
 				PRODUCT_NAME = "Lang Track App";
 				SWIFT_VERSION = 5.0;
@@ -993,7 +993,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.lu.LangTrackApp;
 				PRODUCT_NAME = "Lang Track App";
 				SWIFT_VERSION = 5.0;

@@ -20,17 +20,10 @@
  
  nytt repository
 */
-/*TODO:
- *Hämta telefonens tidszoon och spara i settings för appen
- skicka med token från firebase i header /refreshtoken
- *skapa survey som Json och läs in som objekt
- *lägga json fil någonstans och hämta med http GET
- *FIXA iTunes connect!!!!!
- Koppla push och hantera i appen
- 
- länk till filen på dropbox: https://www.dropbox.com/s/2w7cnliiow0st3d/survey_json.txt?dl=1
- survey = enkät
- answer = enkätsvar
+/* Pågående version, text till uppdateringen(1.0.7):
+ Stöd för både LTR & RTL
+ Nytt språk: Arabiska
+ Stöd för testserver
  
  om ändrad AppleID eller bundleID: pod deintegrate -> pod install -> Starta om med ny workspace
  */
@@ -291,13 +284,22 @@ class MainViewController: UIViewController {
         setUserCharts()
     }
     
+    func useStagingServer(staging: Bool){
+        SurveyRepository.setStagingServer(isActive: staging)
+        SurveyRepository.emptyAssignmentsList()
+        SurveyRepository.postDeviceToken()
+        self.theTableView.reloadData()
+        updateAssignments()
+        self.setUserCharts()
+        self.animateHeaderView()
+    }
+    
     func updateAssignments(){
         SurveyRepository.apiIsAlive { (alive) in
             if alive {
                 SurveyRepository.getSurveys() { (assignments) in
                     if assignments != nil{
                         DispatchQueue.main.async {
-                            print("checkIfActiveSurveyExists updateAssignments")
                             self.checkIfActiveSurveyExists()
                             self.theTableView.reloadData()
                             self.setUserCharts()
@@ -731,6 +733,10 @@ extension MainViewController: CellTimerListener{
 
 //MARK:- MenuListener
 extension MainViewController: MenuListener{
+    func setStagingServer(to: Bool) {
+        useStagingServer(staging: to)
+    }
+    
     func setTestMode(to: Bool) {
         self.inTestMode = to
     }

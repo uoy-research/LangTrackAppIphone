@@ -11,4 +11,5 @@ import Foundation
 protocol MenuListener{
     func logOutSelected()
     func setTestMode(to: Bool)
+    func setStagingServer(to: Bool)
 }
