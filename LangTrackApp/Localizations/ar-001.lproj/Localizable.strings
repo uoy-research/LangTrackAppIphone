@@ -12,38 +12,40 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 //Main
 
 //Login
-"Info" = "Info";
-"The Lang Track App is an app developed by" = "The Lang Track App is an app developed by Lund University Humanities Lab for research purposes.\n\nLog in with the username and password assigned to you by Lund University Humanities Lab";
-"Login error" = "Login error";
-"Invalid username or password" = "Invalid username or password";
-"Incorrect entry" = "Incorrect entry";
-"Please enter your username and password and try again" = "Please enter your username and password and try again";
+"Info" = "المعلومات";
+"The Lang Track App is an app developed by" = "لانغ تراك هو تطبيق طوره مختبر جامعة لوند للإنسانيات لأغراض البحث
+. أدخل باسم المستخدم، وكلمة السر المعطاة لك من قبل مختبر الإنسانيات بجامعة لوند.";
+"Login error" = "خطأ بالإدخال";
+"Invalid username or password" = "اسم المستخدم أو كلمة السر غير صحيحة";
+"Incorrect entry" = "إدخال غير صحيح";
+"Please enter your username and password and try again" = "من فضلك أدخل اسم المستخدم، وكلمة السر وحاول ثانية.";
 
 // Menu
-"Log out" = "Log out";
-"Do you want to log out?" = "Do you want to log out?";
-"Cancel" = "Cancel";
-"Time left:" = "Time left:";
+"Log out" = "خروج";
+"Do you want to log out?" = "هل تريد الخروج";
+"Cancel" = "إلغاء";
+"Time left:" = "الوقت المتبقي:";
 "and" = "and";
-"minutes" = "minutes";
-"minute" = "minute";
-"hours" = "hours";
-"hour" = "hour";
-"Unanswered" = "Unanswered";
-"Answered" = "Answered";
+"minutes" = "الدقائق";
+"minute" = "الدقائق";
+"hours" = "الساعات";
+"hour" = "الساعات";
+"Unanswered" = "لم تتم الإجابة";
+"Answered" = "تمت الإجابة";
 
 // main
-"Here it was empty" = "There's nothing here...\nWhen Humlab assigns you a survey, you will see it here.";
+"Here it was empty" = "لايوجد أي شيء هنا،
+عندما يكلفك مختبر الإنسانيات باستبيان، ستراه هنا.";
 "numberEnding" = "";
 "No contact with server" = "No contact with server";
-"You have answered" = "You have answered";
-"of your" = "of your";
-"assigned surveys." = "assigned surveys.";
+"You have answered" = "أجبت عن";
+"of your" = "";
+"assigned surveys." = "من الأسئلة المكلف بالإجابة عنها";
 
 // Contact
-"Contact" = "Contact";
-"contact text 1" = "If you are experiencing any technical issues, please contact Stephan Björck.";
-"contact text 4" = "If you have questions or comments about the content of the survey, please email Henriette Arndt.";
+"Contact" = "اتصل";
+"contact text 1" = "إن كنت تواجه أي صعوبات تقنية، من فضلك يمكنك التواصل مع  البريد الإلكتروني.";
+"contact text 4" = "إن كانت لديك أسئلة أو تعليقات عن محتوى الاستبيان، من فضل أرسل  البريد الإلكتروني.";
 "tech mail subject" = "Concerning Lang-Track-App";
 "No Email Client popup title" = "No Email Client";
 "No Email Client popup text" = "E-mail does not seem to be possible. Click on the link to the Humanities Lab below and contact that way instead.";
@@ -54,19 +56,20 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Lund University" = "Lund University";
 
 //about
-"aboutText1" = "We developed the Lang-Track-App to study when, where, and how often language learners are in contact with different foreign languages in everyday life. This is crucial to improving our understanding of the challenges of language learning outside of classrooms.\n\nThe project is a collaboration between the Lund University Centre for Languages and Literature and Lund University Humanities Lab.";
+"aboutText1" = "لقد طورنا تطبيق لانغ-تراك لدراسة متى، واين، وكم عدد المرات التي يتواصل بها متعلمو اللغات باللغات الأجنبية المختلفة في حياتهم اليومية. وهذا أمر حيوي جداً لتحسين فهمنا للتحديات التي يواجهها متعلمو اللغات خارج قاعة الدرس.
+المشروع هو ثمرة تعاون بين مركز جامعة لوند للغات والأدب، ومختبر جامعة لوند للإنسانيات.";
 "MarianneInfo" = "Professor of Psycholinguistics, Centre for Languages and Literature";
 "JonasInfo" = "Professor of French Linguistics, Centre for Languages and Literature";
 "HenrietteInfo" = "Postdoctoral Research Fellow, LU Humanities Lab";
 "JosefInfo" = "Systems Developer, LU Humanities Lab";
 "StephanInfo" = "Systems Developer, LU Humanities Lab";
-"Team" = "Team";
-"Funded by" = "Funded by";
+"Team" = "الفريق";
+"Funded by" = "التمويل";
 "founder image" = "stiftelsen_wallenberg_en";
 "https://maw.wallenberg.org/en" = "https://maw.wallenberg.org/en";
 
 //Instructions
-"Instructions" = "Instructions";
-"instructionsText1" = "We will ask you to complete brief surveys in this app a few times per day. You will receive a push notification whenever there is a new survey. Make sure you keep your phone nearby and the notification sounds turned on!\n\nIt’s important that you answer each survey as soon as possible. If you don’t answer a survey, it will automatically expire after 60 minutes.";
-"Data processing" = "Data processing";
-"dataProcessing1" = "In addition to your survey responses, the app will automatically record the date and time when you opened each survey and when you submitted your answers. The app will not record any other data, e.g. about your location.\n\nYour data will be compiled and analyzed by the project team. No one else will have access to your answers. When we report the results of the project, all information will be anonymized.";
+"Instructions" = "التعليمات";
+"instructionsText1" = "سنطلب منك اكمال استبيانات قصيرة في هذا التطبيق كل يوم. ستتلقى تنبيهاً فورياً كلما كان هناك استبيان جديد. تأكد أن تحتفظ بهاتفك قريباً منك، وتشغيل نغمات الإشعارات. من المهم أن تجيب على كل استبيان بأسرع ما يمكن. إلم تجب على الاستبيان، فسيلغى تلقائياً بعد 60 دقيقة.";
+"Data processing" = "معالجة البيانات";
+"dataProcessing1" = "بالإضافة إلى استجاباتك على الاستبيان، سيسجل التطبيق تلقائياً تاريخ وزمن فتحك لكل استبيان، ومتى قدمت إجاباتك. وسيسجل التطبيق بيانات أخرى، على سبيل المثال: موقعك. سيجمع فريق المشروع بيانتك ويحللها. لن يتمكن أي شخص آخر من الوصول إلى أجاباتك. وعندما سنسلم نتائج المشروع، ستكون كل المعلومات بدون أسماء.";
