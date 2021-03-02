@@ -18,7 +18,7 @@
 "3YR-aa-9yK.text" = "-";
 
 /* Class = "UILabel"; text = "Answered"; ObjectID = "3dF-hm-jiz"; */
-"3dF-hm-jiz.text" = "عدد الأسئلة";
+"3dF-hm-jiz.text" = "تمت الإجابة";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "5n9-8Z-4rO"; */
 "5n9-8Z-4rO.text" = ":";
@@ -192,7 +192,7 @@
 "c9w-eu-TBZ.text" = "_____";
 
 /* Class = "UILabel"; text = "timmar"; ObjectID = "cIE-W1-jID"; */
-"cIE-W1-jID.text" = "timmar";
+"cIE-W1-jID.text" = "ساعات";
 
 /* Class = "UILabel"; text = "Fill In The Blank"; ObjectID = "dCv-sV-tB8"; */
 "dCv-sV-tB8.text" = "Fill In The Blank";
@@ -201,7 +201,7 @@
 "ddg-Lo-lTd.text" = "منتهي";
 
 /* Class = "UILabel"; text = "minuter"; ObjectID = "eKp-us-TRq"; */
-"eKp-us-TRq.text" = "minuter";
+"eKp-us-TRq.text" = "الدقائق";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "eMd-0B-AqQ"; */
 "eMd-0B-AqQ.text" = "Label";

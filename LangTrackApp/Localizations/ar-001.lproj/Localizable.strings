@@ -38,9 +38,9 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 عندما يكلفك مختبر الإنسانيات باستبيان، ستراه هنا.";
 "numberEnding" = "";
 "No contact with server" = "No contact with server";
-"You have answered" = "أجبت عن";
-"of your" = "";
-"assigned surveys." = "من الأسئلة المكلف بالإجابة عنها";
+"You have answered" = " لقد أجبت على";
+"of your" = " من ";
+"assigned surveys." = "استطلاعًا ";
 
 // Contact
 "Contact" = "اتصل";
@@ -49,7 +49,7 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "tech mail subject" = "Concerning Lang-Track-App";
 "No Email Client popup title" = "No Email Client";
 "No Email Client popup text" = "E-mail does not seem to be possible. Click on the link to the Humanities Lab below and contact that way instead.";
-"Links" = "Links";
+"Links" = "الروابط";
 "Lang-Track-App project" = "Lang-Track-App project";
 "Humanities Lab" = "Humanities Lab";
 "Lund University Humanities Lab" = "Lund University Humanities Lab";

@@ -490,6 +490,7 @@ class MainViewController: UIViewController {
             //dest.theSurvey = SurveyRepository.selectedAssignment?.survey//selectedSurvey
             dest.theAssignment = SurveyRepository.selectedAssignment
             dest.theUser = SurveyRepository.theUser
+            SurveyRepository.surveyOpened()
         }else if segue.identifier == "login"{
             let dest = segue.destination as! LoginViewController
             dest.modalPresentationStyle = .fullScreen

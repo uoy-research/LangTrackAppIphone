@@ -12,7 +12,7 @@ import Foundation
 struct DateParser {
   static let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.locale = Locale.current
+    formatter.locale = Locale.init(identifier: "en")//Locale.current
     formatter.timeZone = TimeZone(identifier: "UTC")
     return formatter
   }()
