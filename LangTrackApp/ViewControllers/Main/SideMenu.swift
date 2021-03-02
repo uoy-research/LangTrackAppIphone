@@ -32,6 +32,8 @@ class SideMenu: UIViewController {
     @IBOutlet weak var versionInfoLabel: UILabel!
     @IBOutlet weak var testViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var testViewDivider: UIView!
+    @IBOutlet weak var serverSwitch: UISwitch!
+    @IBOutlet weak var testingSwitch: UISwitch!
     
     var listener: MenuListener?
 

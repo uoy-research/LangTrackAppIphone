@@ -62,13 +62,13 @@ struct SurveyRepository {
     static func getUrl(completionhandler: @escaping (_ result: String?) -> Void){
         if useStagingServer {
             self.getStagingUrl { (theStagingUrl) in
+                print("using staging server: \(theStagingUrl ?? "noValue")")
                 completionhandler(theStagingUrl)
-                print("using staging server")
             }
         }else{
             self.getActiveUrl { (theUrl) in
+                print("using active server \(theUrl ?? "noValue")")
                 completionhandler(theUrl)
-                print("using active server")
             }
         }
     }
@@ -275,7 +275,6 @@ struct SurveyRepository {
         getUrl { (theUrl) in
             if let theUrl = theUrl{
                 if theUrl != ""{
-                    print("getUrl theUrl: \(theUrl)")
                     print("getSurveys, userId: \(userId)")
                     if userId != ""{
                         //http://ht-lang-track.ht.lu.se/api/users/alicia/assignments

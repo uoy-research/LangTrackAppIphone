@@ -764,6 +764,10 @@ extension MainViewController: MenuListener{
                         self.performSegue(withIdentifier: "login", sender: nil)
                         SurveyRepository.assignmentList = []
                         self.theTableView.reloadData()
+                        self.sideMenu?.serverSwitch.isOn = false
+                        SurveyRepository.setStagingServer(isActive: false)
+                        self.sideMenu?.testingSwitch.isOn = false
+                        self.inTestMode = false
                         // Remove the token ID listenter.
                         guard let tokenListener = self.idTokenChangeListener else { return }
                         Auth.auth().removeStateDidChangeListener(tokenListener)
