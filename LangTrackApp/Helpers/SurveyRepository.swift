@@ -153,34 +153,33 @@ struct SurveyRepository {
         }
     }
     
-    static func surveyOpened(timeInUtc: String){
+    static func surveyOpened(){
         
-        let param = [
+        /*let param = [
             "openedAt": timeInUtc
-        ]
+        ]*/
         if selectedAssignment != nil{
             if selectedAssignment!.id != ""{
                 getUrl { (theUrl) in
                     if let theUrl = theUrl{
                         if theUrl != ""{
-                            let deviceTokenUrl = "\(theUrl)assignments/\(selectedAssignment!.id)/opened"//TODO: set correct url
+                            //https://lta.ht.lu.se/api/assignments/(selectedAssignment!.id)/open
+                            let deviceTokenUrl = "\(theUrl)assignments/\(selectedAssignment!.id)/open"
                             let request = NSMutableURLRequest(url: URL(string: deviceTokenUrl)!)
                             request.setValue("application/json", forHTTPHeaderField: "Accept")
                             request.setValue(idToken, forHTTPHeaderField: "token")
                             
-                            do {
+                            /*do {
                                 request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
                             } catch let error {
                                 print(error.localizedDescription)
-                            }
+                            }*/
                             
                             let session = URLSession.shared
-                            request.httpMethod = "PUT"
+                            request.httpMethod = "POST"
                             
-                            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                            request.addValue("application/json", forHTTPHeaderField: "Accept")
-                            /**
-                             the params are json, please check with the server if it requires form data then change the content type e.g. request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type"*/
+                            //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                            //request.addValue("application/json", forHTTPHeaderField: "Accept")
                             
                             let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                                 if(error != nil){

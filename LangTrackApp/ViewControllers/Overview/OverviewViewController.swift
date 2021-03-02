@@ -37,9 +37,12 @@ class OverviewViewController: UIViewController {
         
         topViewTitleLabel.text = theAssignment?.survey.title
         if theAssignment != nil{
-            topViewPublishedLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.published)!)
+            //DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
+            //topViewPublishedLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.published)!)
+            topViewPublishedLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: theAssignment!.published)!)
             if theAssignment!.dataset != nil{
-                topViewAnsweredLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
+                //topViewAnsweredLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
+                topViewAnsweredLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
             }
         }
     }
