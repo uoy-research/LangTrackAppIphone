@@ -45,7 +45,7 @@ class CallToActionTableViewCell: UITableViewCell {
             let now = Date()
             let expiary = DateParser.getDate(dateString: theAssignment!.expiry) ?? now
             let millisecondsLeft = expiary.timeIntervalSince(now)//now.distance(to: expiary)
-                expiryLabel.text = "\(translatedTimeLeft) \(TimeInterval().stringFromSecondTimeInterval(time: theAssignment!.timeLeftToExpiryInMilli() / 1000))"
+                expiryLabel.text = "\(translatedTimeLeft) \(TimeInterval().stringFromSecondTimeInterval(time: theAssignment!.timeLeftToExpiryInMilli() / 1000 ))"
                 if millisecondsLeft <= 0{
                     listener?.timerExpiered()
                 }

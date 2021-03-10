@@ -30,6 +30,8 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "minute" = "الدقائق";
 "hours" = "الساعات";
 "hour" = "الساعات";
+"day" = "يوم";
+"days" = "أيام";
 "Unanswered" = "لم تتم الإجابة";
 "Answered" = "تمت الإجابة";
 
