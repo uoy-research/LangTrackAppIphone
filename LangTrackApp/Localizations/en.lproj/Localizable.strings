@@ -29,6 +29,8 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "minute" = "minute";
 "hours" = "hours";
 "hour" = "hour";
+"day" = "day";
+"days" = "days";
 "Unanswered" = "Unanswered";
 "Answered" = "Answered";
 

@@ -22,12 +22,14 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Log out" = "Logga ut";
 "Do you want to log out?" = "Vill du logga ut?";
 "Cancel" = "Avbryt";
-"Time left:" = "Tid kvar";
+"Time left:" = "Tid kvar:";
 "and" = "och";
 "minutes" = "minuter";
 "minute" = "minut";
 "hours" = "timmar";
 "hour" = "timme";
+"day" = "dag";
+"days" = "dagar";
 "Unanswered" = "Obesvarad";
 "Answered" = "Besvarad";
 

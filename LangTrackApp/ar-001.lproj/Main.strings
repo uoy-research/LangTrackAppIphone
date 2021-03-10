@@ -276,7 +276,7 @@
 "tIR-57-dKU.text" = "Likert scale";
 
 /* Class = "UILabel"; text = "Survey to answer"; ObjectID = "uZY-DP-nOO"; */
-"uZY-DP-nOO.text" = "Survey to answer";
+"uZY-DP-nOO.text" = "استبيان للإجابة";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "w7x-B8-pvH"; */
 "w7x-B8-pvH.normalTitle" = "سابق";
