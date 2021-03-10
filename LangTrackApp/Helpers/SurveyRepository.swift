@@ -231,9 +231,11 @@ struct SurveyRepository {
             getUrl { (theUrl) in
                 if let theUrl = theUrl{
                     if theUrl != ""{
+                        let version = UIApplication.appVersion ?? "noVersionNumber"
                         let param = [
                             "timezone": localTimeZoneIdentifier,
-                            "deviceToken": deviceToken
+                            "deviceToken": deviceToken,
+                            "versionNumber": version
                         ]
                         
                         let deviceTokenUrl = "\(theUrl)users/\(userId)"
