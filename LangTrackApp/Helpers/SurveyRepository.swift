@@ -235,7 +235,8 @@ struct SurveyRepository {
                         let param = [
                             "timezone": localTimeZoneIdentifier,
                             "deviceToken": deviceToken,
-                            "versionNumber": version
+                            "versionNumber": version,
+                            "os": "iOS"
                         ]
                         
                         let deviceTokenUrl = "\(theUrl)users/\(userId)"
