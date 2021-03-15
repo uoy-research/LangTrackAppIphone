@@ -110,6 +110,8 @@ struct SurveyRepository {
                     body.intValue = answer.singleMultipleAnswer
                 case "blanks":
                     body.intValue = answer.fillBlankAnswer
+                case Type.sliderScale.rawValue:
+                    body.intValue = answer.sliderScaleAnswer
                 case "multi":
                     body.multiValue = answer.multipleChoiceAnswer
                 case "open":
@@ -538,6 +540,16 @@ struct SurveyRepository {
                                             }
                                         }
                                         switch type {
+                                        case Type.sliderScale.rawValue:
+                                            tempAnswers.append(Answer(type: Type.sliderScale.rawValue,
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: nil,
+                                                                      sliderScaleAnswer: intValue))
                                         case "likert":
                                             tempAnswers.append(Answer(type: "likert",
                                                                       index: index,

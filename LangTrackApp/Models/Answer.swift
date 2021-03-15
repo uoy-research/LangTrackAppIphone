@@ -17,6 +17,7 @@ class Answer : Codable{
     var singleMultipleAnswer: Int? = nil
     var openEndedAnswer: String? = nil
     var timeDurationAnswer: Int? = nil // in seconds
+    var sliderScaleAnswer: Int? = nil
     
     init(type: String,
         index: Int,
@@ -25,7 +26,8 @@ class Answer : Codable{
          multipleChoiceAnswer: [Int]? = nil,
          singleMultipleAnswer: Int? = nil,
          openEndedAnswer: String? = nil,
-         timeDurationAnswer: Int? = nil) {
+         timeDurationAnswer: Int? = nil,
+         sliderScaleAnswer: Int? = nil) {
         self.type = type
         self.index = index
         self.likertAnswer = likertAnswer
@@ -34,15 +36,17 @@ class Answer : Codable{
         self.singleMultipleAnswer = singleMultipleAnswer
         self.openEndedAnswer = openEndedAnswer
         self.timeDurationAnswer = timeDurationAnswer
+        self.sliderScaleAnswer = sliderScaleAnswer
     }
     
     func isEmpty() -> Bool{
         if (likertAnswer == nil &&
-            fillBlankAnswer == nil &&
-            multipleChoiceAnswer == nil &&
-            singleMultipleAnswer == nil &&
-            openEndedAnswer == nil &&
-            timeDurationAnswer == nil){
+                fillBlankAnswer == nil &&
+                multipleChoiceAnswer == nil &&
+                singleMultipleAnswer == nil &&
+                openEndedAnswer == nil &&
+                timeDurationAnswer == nil &&
+                sliderScaleAnswer == nil){
             return true
         }else {
             return false

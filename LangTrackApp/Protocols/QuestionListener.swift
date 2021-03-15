@@ -20,4 +20,5 @@ protocol QuestionListener{
     func setOpenEndedAnswer(text: String)
     func setFillBlankAnswer(selected: Int)
     func setTimeDurationAnswer(selected: Int)
+    func setSliderAnswer(selected: Int, naButton: Bool)
 }

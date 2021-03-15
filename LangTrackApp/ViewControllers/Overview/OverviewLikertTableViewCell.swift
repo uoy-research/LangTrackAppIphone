@@ -62,12 +62,6 @@ class OverviewLikertTableViewCell: UITableViewCell {
     }
     
     func setAllUnmarked(){
-        /*likert0.backgroundColor = UIColor.white
-        likert1.backgroundColor = UIColor.white
-        likert2.backgroundColor = UIColor.white
-        likert3.backgroundColor = UIColor.white
-        likert4.backgroundColor = UIColor.white
-        likertNA.backgroundColor = UIColor.white*/
         likertButton0.isSelected = false
         likertButton1.isSelected = false
         likertButton2.isSelected = false
@@ -80,75 +74,55 @@ class OverviewLikertTableViewCell: UITableViewCell {
         if answer != nil{
             if answer!.likertAnswer != nil{
                 switch answer!.likertAnswer! {
-                /*case 0:
-                    setAllUnmarked()
-                    likert0.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                case 0:
+                    likertButton0.isSelected = true
+                    likertButton1.isSelected = false
+                    likertButton2.isSelected = false
+                    likertButton3.isSelected = false
+                    likertButton4.isSelected = false
+                    likertButtonNA.isSelected = false
                 case 1:
-                    setAllUnmarked()
-                    likert1.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                    likertButton0.isSelected = false
+                    likertButton1.isSelected = true
+                    likertButton2.isSelected = false
+                    likertButton3.isSelected = false
+                    likertButton4.isSelected = false
+                    likertButtonNA.isSelected = false
                 case 2:
-                    setAllUnmarked()
-                    likert2.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                    likertButton0.isSelected = false
+                    likertButton1.isSelected = false
+                    likertButton2.isSelected = true
+                    likertButton3.isSelected = false
+                    likertButton4.isSelected = false
+                    likertButtonNA.isSelected = false
                 case 3:
-                    setAllUnmarked()
-                    likert3.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                    likertButton0.isSelected = false
+                    likertButton1.isSelected = false
+                    likertButton2.isSelected = false
+                    likertButton3.isSelected = true
+                    likertButton4.isSelected = false
+                    likertButtonNA.isSelected = false
                 case 4:
-                    setAllUnmarked()
-                    likert4.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                    likertButton0.isSelected = false
+                    likertButton1.isSelected = false
+                    likertButton2.isSelected = false
+                    likertButton3.isSelected = false
+                    likertButton4.isSelected = true
+                    likertButtonNA.isSelected = false
                 case 5:
-                    setAllUnmarked()
-                    likertNA.backgroundColor = UIColor(named: "lta_blue") ?? UIColor.blue
+                    likertButton0.isSelected = false
+                    likertButton1.isSelected = false
+                    likertButton2.isSelected = false
+                    likertButton3.isSelected = false
+                    likertButton4.isSelected = false
+                    likertButtonNA.isSelected = true
                 default:
-                    setAllUnmarked()*/
-                    case 0:
-                        likertButton0.isSelected = true
-                        likertButton1.isSelected = false
-                        likertButton2.isSelected = false
-                        likertButton3.isSelected = false
-                        likertButton4.isSelected = false
-                        likertButtonNA.isSelected = false
-                    case 1:
-                        likertButton0.isSelected = false
-                        likertButton1.isSelected = true
-                        likertButton2.isSelected = false
-                        likertButton3.isSelected = false
-                        likertButton4.isSelected = false
-                        likertButtonNA.isSelected = false
-                    case 2:
-                        likertButton0.isSelected = false
-                        likertButton1.isSelected = false
-                        likertButton2.isSelected = true
-                        likertButton3.isSelected = false
-                        likertButton4.isSelected = false
-                        likertButtonNA.isSelected = false
-                    case 3:
-                        likertButton0.isSelected = false
-                        likertButton1.isSelected = false
-                        likertButton2.isSelected = false
-                        likertButton3.isSelected = true
-                        likertButton4.isSelected = false
-                        likertButtonNA.isSelected = false
-                    case 4:
-                        likertButton0.isSelected = false
-                        likertButton1.isSelected = false
-                        likertButton2.isSelected = false
-                        likertButton3.isSelected = false
-                        likertButton4.isSelected = true
-                        likertButtonNA.isSelected = false
-                    case 5:
-                        likertButton0.isSelected = false
-                        likertButton1.isSelected = false
-                        likertButton2.isSelected = false
-                        likertButton3.isSelected = false
-                        likertButton4.isSelected = false
-                        likertButtonNA.isSelected = true
-                    default:
-                        likertButton0.isSelected = false
-                        likertButton1.isSelected = false
-                        likertButton2.isSelected = false
-                        likertButton3.isSelected = false
-                        likertButton4.isSelected = false
-                        likertButtonNA.isSelected = false
+                    likertButton0.isSelected = false
+                    likertButton1.isSelected = false
+                    likertButton2.isSelected = false
+                    likertButton3.isSelected = false
+                    likertButton4.isSelected = false
+                    likertButtonNA.isSelected = false
                 }
             }else{
                 setAllUnmarked()
