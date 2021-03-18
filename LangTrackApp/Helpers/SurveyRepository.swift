@@ -157,9 +157,6 @@ struct SurveyRepository {
     
     static func surveyOpened(){
         
-        /*let param = [
-            "openedAt": timeInUtc
-        ]*/
         if selectedAssignment != nil{
             if selectedAssignment!.id != ""{
                 getUrl { (theUrl) in
@@ -171,17 +168,8 @@ struct SurveyRepository {
                             request.setValue("application/json", forHTTPHeaderField: "Accept")
                             request.setValue(idToken, forHTTPHeaderField: "token")
                             
-                            /*do {
-                                request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
-                            } catch let error {
-                                print(error.localizedDescription)
-                            }*/
-                            
                             let session = URLSession.shared
                             request.httpMethod = "POST"
-                            
-                            //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                            //request.addValue("application/json", forHTTPHeaderField: "Accept")
                             
                             let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                                 if(error != nil){
@@ -189,7 +177,7 @@ struct SurveyRepository {
                                     return
                                 }else{
                                     if let httpResponse = response as? HTTPURLResponse {
-                                        print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                                        print("surveyOpened response statusCode: \(httpResponse.statusCode)")
                                     }
                                 }
                             })

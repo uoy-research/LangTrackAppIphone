@@ -12,17 +12,18 @@ class SliderScaleViewController: UIViewController {
 
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: NextButton!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var sliderTextLabel: UILabel!
     @IBOutlet weak var theIcon: UIImageView!
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var naButton: LikertRadioButton!
     @IBOutlet weak var theSlider: UISlider!
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
     
     var listener: QuestionListener?
     var theQuestion = Question()
     var theAnswer: Answer?
-    var savedTempAnswer = 0
+    var savedTempAnswer = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,6 @@ class SliderScaleViewController: UIViewController {
         nextButton.layer.cornerRadius = 8
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
-        maxLabel.text = " "
         theSlider.addTarget(self, action: #selector(sliderDidEndSliding), for: [.touchUpInside, .touchUpOutside])
     }
 
@@ -40,16 +40,18 @@ class SliderScaleViewController: UIViewController {
     
     func setInfo(question: Question){
         self.theQuestion = question
-        descriptionLabel.text = theQuestion.text
-        savedTempAnswer = theAnswer?.sliderScaleAnswer ?? 0
+        minLabel.text = question.likertMin
+        maxLabel.text = question.likertMax
+        sliderTextLabel.text = theQuestion.text
+        savedTempAnswer = theAnswer?.sliderScaleAnswer ?? 50
         if savedTempAnswer < 0 || savedTempAnswer > 100{
             naButton.isSelected = true
-            theSlider.value = Float(0)
-            maxLabel.text = " "
+            theSlider.value = Float(50)
+            valueLabel.text = "50"
         }else{
             naButton.isSelected = false
             theSlider.value = Float(savedTempAnswer)
-            maxLabel.text = "\(savedTempAnswer)"
+            valueLabel.text = "\(savedTempAnswer)"
         }
     }
     
@@ -60,21 +62,22 @@ class SliderScaleViewController: UIViewController {
     func setNa(selected: Bool){
         if selected{
             theSlider.value = 0
-            maxLabel.text = " "
+            valueLabel.text = " "
             theSlider.isEnabled = false
         }else{
             theSlider.value = Float(savedTempAnswer)
             if savedTempAnswer > -1 && savedTempAnswer < 100{
-                maxLabel.text = "\(savedTempAnswer)"
+                valueLabel.text = "\(savedTempAnswer)"
             }else{
-                maxLabel.text = " "
+                theSlider.value = Float(50)
+                valueLabel.text = "50"
             }
             theSlider.isEnabled = true
         }
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        maxLabel.text = "\(Int(sender.value))"
+        valueLabel.text = "\(Int(sender.value))"
         savedTempAnswer = Int(sender.value)
     }
     
