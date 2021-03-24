@@ -44,14 +44,16 @@ class SliderScaleViewController: UIViewController {
         maxLabel.text = question.likertMax
         sliderTextLabel.text = theQuestion.text
         savedTempAnswer = theAnswer?.sliderScaleAnswer ?? 50
-        if savedTempAnswer < 0 || savedTempAnswer > 100{
-            naButton.isSelected = true
-            theSlider.value = Float(50)
-            valueLabel.text = "50"
-        }else{
+        if savedTempAnswer > -1 && savedTempAnswer < 101{
             naButton.isSelected = false
             theSlider.value = Float(savedTempAnswer)
             valueLabel.text = "\(savedTempAnswer)"
+            theSlider.isEnabled = true
+        }else{
+            naButton.isSelected = true
+            theSlider.value = Float(0)
+            valueLabel.text = " "
+            theSlider.isEnabled = false
         }
     }
     
