@@ -151,6 +151,13 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.selectionStyle = .none
             }
             return cell
+        case Type.sliderScale.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "slider", for: indexPath)
+            if let cell = cell as? OverviewSliderTableViewCell{
+                cell.setValues(item: listObject)
+                cell.selectionStyle = .none
+            }
+            return cell
         case Type.footer.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "likert", for: indexPath)
             if let cell = cell as? OverviewLikertTableViewCell{

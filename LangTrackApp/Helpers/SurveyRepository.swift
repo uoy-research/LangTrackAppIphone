@@ -110,6 +110,8 @@ struct SurveyRepository {
                     body.intValue = answer.singleMultipleAnswer
                 case "blanks":
                     body.intValue = answer.fillBlankAnswer
+                case Type.sliderScale.rawValue:
+                    body.intValue = answer.sliderScaleAnswer
                 case "multi":
                     body.multiValue = answer.multipleChoiceAnswer
                 case "open":
@@ -155,9 +157,6 @@ struct SurveyRepository {
     
     static func surveyOpened(){
         
-        /*let param = [
-            "openedAt": timeInUtc
-        ]*/
         if selectedAssignment != nil{
             if selectedAssignment!.id != ""{
                 getUrl { (theUrl) in
@@ -169,17 +168,8 @@ struct SurveyRepository {
                             request.setValue("application/json", forHTTPHeaderField: "Accept")
                             request.setValue(idToken, forHTTPHeaderField: "token")
                             
-                            /*do {
-                                request.httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
-                            } catch let error {
-                                print(error.localizedDescription)
-                            }*/
-                            
                             let session = URLSession.shared
                             request.httpMethod = "POST"
-                            
-                            //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                            //request.addValue("application/json", forHTTPHeaderField: "Accept")
                             
                             let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
                                 if(error != nil){
@@ -187,7 +177,7 @@ struct SurveyRepository {
                                     return
                                 }else{
                                     if let httpResponse = response as? HTTPURLResponse {
-                                        print("postAnswer response statusCode: \(httpResponse.statusCode)")
+                                        print("surveyOpened response statusCode: \(httpResponse.statusCode)")
                                     }
                                 }
                             })
@@ -538,6 +528,16 @@ struct SurveyRepository {
                                             }
                                         }
                                         switch type {
+                                        case Type.sliderScale.rawValue:
+                                            tempAnswers.append(Answer(type: Type.sliderScale.rawValue,
+                                                                      index: index,
+                                                                      likertAnswer: nil,
+                                                                      fillBlankAnswer: nil,
+                                                                      multipleChoiceAnswer: nil,
+                                                                      singleMultipleAnswer: nil,
+                                                                      openEndedAnswer: nil,
+                                                                      timeDurationAnswer: nil,
+                                                                      sliderScaleAnswer: intValue))
                                         case "likert":
                                             tempAnswers.append(Answer(type: "likert",
                                                                       index: index,
