@@ -8,6 +8,8 @@
 
 import Foundation
 
+let translatedNext = "next".localized
+let translatedPrevious = "previous".localized
 let translatedInfo = "Info".localized
 let translatedDevelopedBy = "The Lang Track App is an app developed by".localized
 let translatedErrorLogin = "Login error".localized

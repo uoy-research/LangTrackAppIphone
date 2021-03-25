@@ -9,7 +9,7 @@
 "14z-ZG-jJh.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "1s7-LP-7JH"; */
-"1s7-LP-7JH.normalTitle" = "سابق";
+"1s7-LP-7JH.normalTitle" = "التالي";
 
 /* Class = "UILabel"; text = "Lang-Track-App"; ObjectID = "38C-8R-DMu"; */
 "38C-8R-DMu.text" = "Lang-Track-App";
@@ -93,7 +93,7 @@
 "Kak-EI-0N0.text" = "Version 0.9";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "Kpw-J1-1Gs"; */
-"Kpw-J1-1Gs.normalTitle" = "سابق";
+"Kpw-J1-1Gs.normalTitle" = "التالي";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "L9W-xI-PjE"; */
 "L9W-xI-PjE.text" = "3";
@@ -207,7 +207,7 @@
 "eMd-0B-AqQ.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "eNh-k7-bAJ"; */
-"eNh-k7-bAJ.normalTitle" = "سابق";
+"eNh-k7-bAJ.normalTitle" = "التالي";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ePr-KY-St8"; */
 "ePr-KY-St8.normalTitle" = "موافق/إرسال";
@@ -261,7 +261,7 @@
 "pci-sV-XuJ.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "qmh-Gk-RIJ"; */
-"qmh-Gk-RIJ.normalTitle" = "سابق";
+"qmh-Gk-RIJ.normalTitle" = "التالي";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "rKY-KD-z7c"; */
 "rKY-KD-z7c.text" = "3";
@@ -279,7 +279,7 @@
 "uZY-DP-nOO.text" = "استبيان للإجابة";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "w7x-B8-pvH"; */
-"w7x-B8-pvH.normalTitle" = "سابق";
+"w7x-B8-pvH.normalTitle" = "التالي";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "w9K-HB-bjd"; */
 "w9K-HB-bjd.text" = "Label";

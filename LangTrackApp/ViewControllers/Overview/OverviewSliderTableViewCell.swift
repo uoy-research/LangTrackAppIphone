@@ -12,8 +12,10 @@ class OverviewSliderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var sliderTextLabel: UILabel!
     @IBOutlet weak var theSlider: UISlider!
-    @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var naButton: LikertRadioButton!
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
+    @IBOutlet weak var sliderLabel: UILabel!
     
     var question: Question?
     var answer : Answer?
@@ -27,6 +29,9 @@ class OverviewSliderTableViewCell: UITableViewCell {
         self.question = item?.question
         self.answer = item?.answer
         self.sliderTextLabel.text = question?.text ?? ""
+        
+        minLabel.text = question?.likertMin
+        maxLabel.text = question?.likertMax
         
         let theSliderAnswer = self.answer?.sliderScaleAnswer ?? 0
         if theSliderAnswer == -1{

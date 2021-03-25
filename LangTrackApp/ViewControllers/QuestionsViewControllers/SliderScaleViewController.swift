@@ -32,6 +32,8 @@ class SliderScaleViewController: UIViewController {
         theIcon.clipsToBounds = false
         theIcon.setSmallViewShadow()
         theSlider.addTarget(self, action: #selector(sliderDidEndSliding), for: [.touchUpInside, .touchUpOutside])
+        previousButton.setTitle(translatedPrevious, for: .normal)
+        nextButton.setTitle(translatedNext, for: .normal)
     }
 
     @objc func sliderDidEndSliding() {
