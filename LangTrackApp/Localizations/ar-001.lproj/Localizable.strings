@@ -11,6 +11,10 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 
 //Main
 
+//questions
+"next" = "التالي";
+"previous" = "سابق";
+
 //Login
 "Info" = "المعلومات";
 "The Lang Track App is an app developed by" = "لانغ تراك هو تطبيق طوره مختبر جامعة لوند للإنسانيات لأغراض البحث
