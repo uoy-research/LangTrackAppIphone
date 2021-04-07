@@ -51,6 +51,7 @@ class SliderScaleViewController: UIViewController {
             theSlider.value = Float(savedTempAnswer)
             valueLabel.text = "\(savedTempAnswer)"
             theSlider.isEnabled = true
+            self.listener?.setSliderAnswer(selected: savedTempAnswer, naButton: false)
         }else{
             naButton.isSelected = true
             theSlider.value = Float(0)
