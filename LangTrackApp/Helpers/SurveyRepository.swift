@@ -218,6 +218,8 @@ struct SurveyRepository {
     
     static func postDeviceToken(){
         if userId != "" && deviceToken != ""{
+            let vNumber = UIDevice.current.systemVersion
+            print("vNumber: \(vNumber)")
             getUrl { (theUrl) in
                 if let theUrl = theUrl{
                     if theUrl != ""{
@@ -226,7 +228,7 @@ struct SurveyRepository {
                             "timezone": localTimeZoneIdentifier,
                             "deviceToken": deviceToken,
                             "versionNumber": version,
-                            "os": "iOS"
+                            "os": "iOS \(vNumber)"
                         ]
                         
                         let deviceTokenUrl = "\(theUrl)users/\(userId)"
