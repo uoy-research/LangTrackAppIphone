@@ -56,6 +56,14 @@ class SideMenu: UIViewController {
     }
     
     func setTestView(userName: String){
+        
+        /*
+        Adding userName for team members
+         will let them
+         * switch between staging server and production server
+         * using app in testMode -> open all surveys as active
+         */
+        
         if  userName == "stephan" ||
             userName == "stephandroid" ||
             userName == "josef" ||
