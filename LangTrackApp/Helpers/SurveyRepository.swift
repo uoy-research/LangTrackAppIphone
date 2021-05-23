@@ -60,6 +60,10 @@ struct SurveyRepository {
     }
     
     static func getUrl(completionhandler: @escaping (_ result: String?) -> Void){
+        /*
+         Getting the correct url from firebase realtime - prodUrl or stagingUrl
+         */
+        
         if useStagingServer {
             self.getStagingUrl { (theStagingUrl) in
                 print("using staging server: \(theStagingUrl ?? "noValue")")
