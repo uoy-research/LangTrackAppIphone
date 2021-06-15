@@ -91,10 +91,10 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         attrText1.addAttributes([NSAttributedString.Key.link: URL(string: "https://portal.research.lu.se/portal/en/projects/the-langtrackapp-studying-exposure-to-and-use-of-a-new-language-using-smartphone-technology(4e734940-981f-4dd0-841a-eb6ac760af0c).html")!], range: myRange)
         finalString.append(attrText1)
         
-        let linkText2 = "\(translatedHumanitiesLab)\n\n"
+        let linkText2 = "\(translatedLundUniversityHumanitiesLab)\n\n"
         let attrText2 = NSMutableAttributedString(string: linkText2, attributes: attributeLtaBlueText)
         let myRange2 = NSRange(location: 0, length: attrText2.length)
-        attrText2.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.humlab.lu.se/en/")!], range: myRange2)
+        attrText2.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.humlab.lu.se")!], range: myRange2)
         finalString.append(attrText2)
         
         let linkText3 = translatedLundUniversity

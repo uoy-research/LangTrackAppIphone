@@ -18,7 +18,7 @@
 "3YR-aa-9yK.text" = "-";
 
 /* Class = "UILabel"; text = "Besvarad:"; ObjectID = "3dF-hm-jiz"; */
-"3dF-hm-jiz.text" = "Besvarad:";
+"3dF-hm-jiz.text" = "Besvarad";
 
 /* Class = "UILabel"; text = ":"; ObjectID = "5n9-8Z-4rO"; */
 "5n9-8Z-4rO.text" = ":";
@@ -75,7 +75,7 @@
 "JbZ-nB-WXU.text" = "4";
 
 /* Class = "UILabel"; text = "Antal frågor:"; ObjectID = "JqM-rM-xzY"; */
-"JqM-rM-xzY.text" = "Antal frågor:";
+"JqM-rM-xzY.text" = "Antal frågor";
 
 /* Class = "UILabel"; text = "Ange dina inloggningsuppgifter"; ObjectID = "JuE-8c-e4f"; */
 "JuE-8c-e4f.text" = "Ange dina inloggningsuppgifter";
@@ -114,7 +114,7 @@
 "Rot-W8-jHt.text" = "3";
 
 /* Class = "UILabel"; text = "Publicerad:"; ObjectID = "SK1-0R-RzW"; */
-"SK1-0R-RzW.text" = "Publicerad:";
+"SK1-0R-RzW.text" = "Publicerad";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Sbv-ja-mw9"; */
 "Sbv-ja-mw9.text" = "Label";
@@ -144,7 +144,7 @@
 "XWC-H8-tbc.text" = "-";
 
 /* Class = "UILabel"; text = "Publicerad:"; ObjectID = "XgO-Nj-9n0"; */
-"XgO-Nj-9n0.text" = "Publicerad:";
+"XgO-Nj-9n0.text" = "Publicerad";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Y4A-Mg-mXj"; */
 "Y4A-Mg-mXj.text" = "Label";
@@ -231,7 +231,7 @@
 "l3X-Hz-zrI.text" = "Humanistlaboratoriet";
 
 /* Class = "UILabel"; text = "Antal frågor:"; ObjectID = "m1j-uz-0xa"; */
-"m1j-uz-0xa.text" = "Antal frågor:";
+"m1j-uz-0xa.text" = "Antal frågor";
 
 /* Class = "UILabel"; text = "Test mode"; ObjectID = "nfY-tV-m2n"; */
 "nfY-tV-m2n.text" = "Test mode";

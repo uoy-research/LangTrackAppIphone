@@ -31,11 +31,16 @@ class SideMenu: UIViewController {
     @IBOutlet weak var testView: UIView!
     @IBOutlet weak var versionInfoLabel: UILabel!
     @IBOutlet weak var testViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var testViewDivider: UIView!
+    @IBOutlet weak var serverSwitch: UISwitch!
+    @IBOutlet weak var testingSwitch: UISwitch!
     
     var listener: MenuListener?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        testViewDivider.layer.cornerRadius = 1
 
         menuBackground.layer.cornerRadius = 12
         menuBackground.layer.borderWidth = 2
@@ -51,7 +56,16 @@ class SideMenu: UIViewController {
     }
     
     func setTestView(userName: String){
+        
+        /*
+        Adding userName for team members
+         will let them
+         * switch between staging server and production server
+         * using app in testMode -> open all surveys as active
+         */
+        
         if  userName == "stephan" ||
+            userName == "stephandroid" ||
             userName == "josef" ||
             userName == "marianne" ||
             userName == "jonas" ||
@@ -75,5 +89,9 @@ class SideMenu: UIViewController {
     
     @IBAction func testingSwitch(_ sender: UISwitch) {
         listener?.setTestMode(to: sender.isOn)
+    }
+    
+    @IBAction func serverSwitch(_ sender: UISwitch) {
+        listener?.setStagingServer(to: sender.isOn)
     }
 }

@@ -118,12 +118,23 @@ extension TimeDurationViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 35)
         if pickerView.tag == 0{
-            view.frame = CGRect(x: 0, y: 0, width: Int(hourwidth), height: 45)
+            view.frame = CGRect(x: 0, y: 0, width: Int(hourwidth - 20), height: 45)
             view.textAlignment = .right
+            /*if  view.effectiveUserInterfaceLayoutDirection == .rightToLeft {
+                view.textAlignment = .left
+            }else{
+                view.textAlignment = .right
+            }*/
             view.text = hours[row]
         }else{
-            view.frame = CGRect(x: 0, y: 0, width: Int(minutewidth), height: 45)
+            view.frame = CGRect(x: 20, y: 0, width: Int(minutewidth - 20), height: 45)
             view.textAlignment = .left
+            /*if  view.effectiveUserInterfaceLayoutDirection == .rightToLeft {
+                view.sizeToFit()
+                view.textAlignment = .right
+            }else{
+                view.textAlignment = .left
+            }*/
             view.text = minutes[row]
         }
         return view

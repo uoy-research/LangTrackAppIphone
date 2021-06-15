@@ -72,6 +72,9 @@
 		F1BAF78E245C44A400621F7F /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAF78D245C44A400621F7F /* LabelExtension.swift */; };
 		F1BAFD042420B6260047E9E5 /* AnswerBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BAFD032420B6260047E9E5 /* AnswerBody.swift */; };
 		F1C886F4247BC98000AA64C0 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */; };
+		F1C9CA8325FE3B550098B5C0 /* SliderScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C9CA8225FE3B550098B5C0 /* SliderScaleViewController.swift */; };
+		F1C9CA8825FE41840098B5C0 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C9CA8725FE41840098B5C0 /* DoubleExtension.swift */; };
+		F1C9CA8D25FF4F4B0098B5C0 /* OverviewSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C9CA8C25FF4F4B0098B5C0 /* OverviewSliderTableViewCell.swift */; };
 		F1CA5B8D245B11D00024450B /* applicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA5B8C245B11D00024450B /* applicationExtension.swift */; };
 		F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB19952424B8A60068F49E /* OverviewViewController.swift */; };
 		F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB199C2424FEC10068F49E /* IncludeIf.swift */; };
@@ -177,9 +180,15 @@
 		F18E2D3E2429066100B33E53 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		F1963208240922AE00A0D8D2 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		F198D7AB23F548AE008B85AA /* SkipLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipLogic.swift; sourceTree = "<group>"; };
+		F1B0A57D2542AA790054CB54 /* ar-001 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-001"; path = "ar-001.lproj/Main.strings"; sourceTree = "<group>"; };
+		F1B0A57E2542AA790054CB54 /* ar-001 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-001"; path = "ar-001.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F1B0A57F2542AA7A0054CB54 /* ar-001 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ar-001"; path = "ar-001.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F1BAF78D245C44A400621F7F /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		F1BAFD032420B6260047E9E5 /* AnswerBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBody.swift; sourceTree = "<group>"; };
 		F1C886F3247BC98000AA64C0 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		F1C9CA8225FE3B550098B5C0 /* SliderScaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderScaleViewController.swift; sourceTree = "<group>"; };
+		F1C9CA8725FE41840098B5C0 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		F1C9CA8C25FF4F4B0098B5C0 /* OverviewSliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSliderTableViewCell.swift; sourceTree = "<group>"; };
 		F1CA5B8C245B11D00024450B /* applicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applicationExtension.swift; sourceTree = "<group>"; };
 		F1DB19952424B8A60068F49E /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		F1DB199C2424FEC10068F49E /* IncludeIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeIf.swift; sourceTree = "<group>"; };
@@ -261,6 +270,7 @@
 				F11499FC241575DA00DC988A /* TimeIntervalExtension.swift */,
 				F1CA5B8C245B11D00024450B /* applicationExtension.swift */,
 				F1BAF78D245C44A400621F7F /* LabelExtension.swift */,
+				F1C9CA8725FE41840098B5C0 /* DoubleExtension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -403,6 +413,7 @@
 				F17F3485243757AC00CD64BB /* SingleItemTableViewCell.swift */,
 				F17F348D243A51E400CD64BB /* MultiItemTableViewCell.swift */,
 				F13AED2C243B1EED0070EF26 /* TimeDurationViewController.swift */,
+				F1C9CA8225FE3B550098B5C0 /* SliderScaleViewController.swift */,
 			);
 			path = QuestionsViewControllers;
 			sourceTree = "<group>";
@@ -466,6 +477,7 @@
 				F1399CE8243DDD6E00545D47 /* OverviewBlanksTableViewCell.swift */,
 				F1399CEA243DE7BF00545D47 /* OverviewOpenTableViewCell.swift */,
 				F102725124460EEF00203711 /* OverviewHeaderTableViewCell.swift */,
+				F1C9CA8C25FF4F4B0098B5C0 /* OverviewSliderTableViewCell.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -588,6 +600,7 @@
 				en,
 				Base,
 				sv,
+				"ar-001",
 			);
 			mainGroup = F156586423E2DD7500EC2796;
 			productRefGroup = F156586E23E2DD7500EC2796 /* Products */;
@@ -719,6 +732,7 @@
 				F10B84BD23E47AD0003CAC76 /* SurveyTableViewCell.swift in Sources */,
 				F11499F8240E8D8200DC988A /* TextViewExtension.swift in Sources */,
 				F1CA5B8D245B11D00024450B /* applicationExtension.swift in Sources */,
+				F1C9CA8D25FF4F4B0098B5C0 /* OverviewSliderTableViewCell.swift in Sources */,
 				F17F348E243A51E400CD64BB /* MultiItemTableViewCell.swift in Sources */,
 				F11007DF240D0B9E0097A6A4 /* Answer.swift in Sources */,
 				F156587523E2DD7500EC2796 /* MainViewController.swift in Sources */,
@@ -751,6 +765,7 @@
 				F156587323E2DD7500EC2796 /* SceneDelegate.swift in Sources */,
 				F1399CDB243CACA700545D47 /* OverviewDurationTableViewCell.swift in Sources */,
 				F1F7D1E1246FEEDC003D881B /* TranslatedStrings.swift in Sources */,
+				F1C9CA8325FE3B550098B5C0 /* SliderScaleViewController.swift in Sources */,
 				F102725224460EEF00203711 /* OverviewHeaderTableViewCell.swift in Sources */,
 				F15658AD23E33E0C00EC2796 /* SingleMultipleAnswersViewController.swift in Sources */,
 				F1DB19962424B8A60068F49E /* OverviewViewController.swift in Sources */,
@@ -758,6 +773,7 @@
 				F13AED2D243B1EED0070EF26 /* TimeDurationViewController.swift in Sources */,
 				F1DB199F24275D810068F49E /* NextButton.swift in Sources */,
 				F15658AB23E33DF900EC2796 /* MultipleChoiceViewController.swift in Sources */,
+				F1C9CA8825FE41840098B5C0 /* DoubleExtension.swift in Sources */,
 				F178752323E4160E003D16D1 /* Type.swift in Sources */,
 				F1DB199D2424FEC10068F49E /* IncludeIf.swift in Sources */,
 				F17F34882439A99900CD64BB /* SelfSizedTableView.swift in Sources */,
@@ -807,6 +823,7 @@
 			children = (
 				F156587723E2DD7500EC2796 /* Base */,
 				F128D855246FE81E009E3EB9 /* sv */,
+				F1B0A57D2542AA790054CB54 /* ar-001 */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -816,6 +833,7 @@
 			children = (
 				F156587C23E2DD7600EC2796 /* Base */,
 				F128D856246FE81E009E3EB9 /* sv */,
+				F1B0A57E2542AA790054CB54 /* ar-001 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -825,6 +843,7 @@
 			children = (
 				F1F7D1DD246FEE57003D881B /* sv */,
 				F1F7D1DF246FEE8B003D881B /* en */,
+				F1B0A57F2542AA7A0054CB54 /* ar-001 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -955,7 +974,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LangTrackApp/LangTrackApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 3CY4P3X5YK;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -963,7 +982,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.lu.LangTrackApp;
 				PRODUCT_NAME = "Lang Track App";
 				SWIFT_VERSION = 5.0;
@@ -978,7 +997,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LangTrackApp/LangTrackApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 3CY4P3X5YK;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -986,7 +1005,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.lu.LangTrackApp;
 				PRODUCT_NAME = "Lang Track App";
 				SWIFT_VERSION = 5.0;

@@ -1,0 +1,81 @@
+
+
+/*
+Localizable.strings (English)
+LangTrackApp
+ 
+Created by Stephan Björck on 2020-05-16.
+Copyright © 2020 Stephan Björck. All rights reserved.
+*/
+
+
+//Main
+
+//questions
+"next" = "التالي";
+"previous" = "سابق";
+
+//Login
+"Info" = "المعلومات";
+"The Lang Track App is an app developed by" = "لانغ تراك هو تطبيق طوره مختبر جامعة لوند للإنسانيات لأغراض البحث
+. أدخل باسم المستخدم، وكلمة السر المعطاة لك من قبل مختبر الإنسانيات بجامعة لوند.";
+"Login error" = "خطأ بالإدخال";
+"Invalid username or password" = "اسم المستخدم أو كلمة السر غير صحيحة";
+"Incorrect entry" = "إدخال غير صحيح";
+"Please enter your username and password and try again" = "من فضلك أدخل اسم المستخدم، وكلمة السر وحاول ثانية.";
+
+// Menu
+"Log out" = "خروج";
+"Do you want to log out?" = "هل تريد الخروج";
+"Cancel" = "إلغاء";
+"Time left:" = "الوقت المتبقي:";
+"and" = "and";
+"minutes" = "الدقائق";
+"minute" = "الدقائق";
+"hours" = "الساعات";
+"hour" = "الساعات";
+"day" = "يوم";
+"days" = "أيام";
+"Unanswered" = "لم تتم الإجابة";
+"Answered" = "تمت الإجابة";
+
+// main
+"Here it was empty" = "لايوجد أي شيء هنا،
+عندما يكلفك مختبر الإنسانيات باستبيان، ستراه هنا.";
+"numberEnding" = "";
+"No contact with server" = "No contact with server";
+"You have answered" = " لقد أجبت على";
+"of your" = " من ";
+"assigned surveys." = "استطلاعًا ";
+
+// Contact
+"Contact" = "اتصل";
+"contact text 1" = "إن كنت تواجه أي صعوبات تقنية، من فضلك يمكنك التواصل مع  البريد الإلكتروني.";
+"contact text 4" = "إن كانت لديك أسئلة أو تعليقات عن محتوى الاستبيان، من فضل أرسل  البريد الإلكتروني.";
+"tech mail subject" = "Concerning Lang-Track-App";
+"No Email Client popup title" = "No Email Client";
+"No Email Client popup text" = "E-mail does not seem to be possible. Click on the link to the Humanities Lab below and contact that way instead.";
+"Links" = "الروابط";
+"Lang-Track-App project" = "Lang-Track-App project";
+"Humanities Lab" = "Humanities Lab";
+"Lund University Humanities Lab" = "Lund University Humanities Lab";
+"Lund University" = "Lund University";
+
+//about
+"aboutText1" = "لقد طورنا تطبيق لانغ-تراك لدراسة متى، واين، وكم عدد المرات التي يتواصل بها متعلمو اللغات باللغات الأجنبية المختلفة في حياتهم اليومية. وهذا أمر حيوي جداً لتحسين فهمنا للتحديات التي يواجهها متعلمو اللغات خارج قاعة الدرس.
+المشروع هو ثمرة تعاون بين مركز جامعة لوند للغات والأدب، ومختبر جامعة لوند للإنسانيات.";
+"MarianneInfo" = "Professor of Psycholinguistics, Centre for Languages and Literature";
+"JonasInfo" = "Professor of French Linguistics, Centre for Languages and Literature";
+"HenrietteInfo" = "Postdoctoral Research Fellow, LU Humanities Lab";
+"JosefInfo" = "Systems Developer, LU Humanities Lab";
+"StephanInfo" = "Systems Developer, LU Humanities Lab";
+"Team" = "الفريق";
+"Funded by" = "التمويل";
+"founder image" = "stiftelsen_wallenberg_en";
+"https://maw.wallenberg.org/en" = "https://maw.wallenberg.org/en";
+
+//Instructions
+"Instructions" = "التعليمات";
+"instructionsText1" = "سنطلب منك اكمال استبيانات قصيرة في هذا التطبيق كل يوم. ستتلقى تنبيهاً فورياً كلما كان هناك استبيان جديد. تأكد أن تحتفظ بهاتفك قريباً منك، وتشغيل نغمات الإشعارات. من المهم أن تجيب على كل استبيان بأسرع ما يمكن. إلم تجب على الاستبيان، فسيلغى تلقائياً بعد 60 دقيقة.";
+"Data processing" = "معالجة البيانات";
+"dataProcessing1" = "بالإضافة إلى استجاباتك على الاستبيان، سيسجل التطبيق تلقائياً تاريخ وزمن فتحك لكل استبيان، ومتى قدمت إجاباتك. وسيسجل التطبيق بيانات أخرى، على سبيل المثال: موقعك. سيجمع فريق المشروع بيانتك ويحللها. لن يتمكن أي شخص آخر من الوصول إلى أجاباتك. وعندما سنسلم نتائج المشروع، ستكون كل المعلومات بدون أسماء.";

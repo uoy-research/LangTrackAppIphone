@@ -37,9 +37,12 @@ class OverviewViewController: UIViewController {
         
         topViewTitleLabel.text = theAssignment?.survey.title
         if theAssignment != nil{
-            topViewPublishedLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.published)!)
+            //DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
+            //topViewPublishedLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.published)!)
+            topViewPublishedLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: theAssignment!.published)!)
             if theAssignment!.dataset != nil{
-                topViewAnsweredLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
+                //topViewAnsweredLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
+                topViewAnsweredLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: theAssignment!.dataset!.createdAt)!)
             }
         }
     }
@@ -144,6 +147,13 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
         case Type.fillInTheBlank.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: "blanks", for: indexPath)
             if let cell = cell as? OverviewBlanksTableViewCell{
+                cell.setValues(item: listObject)
+                cell.selectionStyle = .none
+            }
+            return cell
+        case Type.sliderScale.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "slider", for: indexPath)
+            if let cell = cell as? OverviewSliderTableViewCell{
                 cell.setValues(item: listObject)
                 cell.selectionStyle = .none
             }

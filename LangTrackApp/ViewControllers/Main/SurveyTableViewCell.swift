@@ -30,8 +30,8 @@ class SurveyTableViewCell: UITableViewCell {
     func setSurveyInfo(assignment: Assignment)  {
         answeredIndicator.layer.cornerRadius = 5
         surveyTitle.text = assignment.survey.title
-        dateLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: assignment.published)!)
-        //dateLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
+        //dateLabel.text = DateParser.getLocalTime(date: DateParser.getDate(dateString: assignment.published)!)
+        dateLabel.text = DateParser.displayString(for: DateParser.getDate(dateString: assignment.published)!)
         if assignment.dataset == nil{
             answeredLabel.text = translatedUnanswered
             answeredIndicator.backgroundColor = UIColor.init(named: "lta_light_grey") ?? UIColor.lightGray

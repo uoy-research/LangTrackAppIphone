@@ -8,6 +8,8 @@
 
 import Foundation
 
+let translatedNext = "next".localized
+let translatedPrevious = "previous".localized
 let translatedInfo = "Info".localized
 let translatedDevelopedBy = "The Lang Track App is an app developed by".localized
 let translatedErrorLogin = "Login error".localized
@@ -23,6 +25,8 @@ let translatedMinutes = "minutes".localized
 let translatedMinute = "minute".localized
 let translatedHours = "hours".localized
 let translatedHour = "hour".localized
+let translatedDay = "day".localized
+let translatedDays = "days".localized
 let translatedUnanswered = "Unanswered".localized
 let translatedAnswered = "Answered".localized
 let translatedHereItWasEmpty = "Here it was empty".localized
@@ -36,6 +40,7 @@ let translatedCantSendEmailPopupText = "No Email Client popup text".localized
 let translatedLinks = "Links".localized
 let translatedLangTrackAppProject = "Lang-Track-App project".localized
 let translatedHumanitiesLab = "Humanities Lab".localized
+let translatedLundUniversityHumanitiesLab = "Lund University Humanities Lab".localized
 let translatedLundUniversity = "Lund University".localized
 let translatedNoContactWithServer = "No contact with server".localized
 let translatedAboutText1 = "aboutText1".localized
@@ -52,3 +57,6 @@ let translatedDataProcessing = "dataProcessing1".localized
 let translatedYouHaveAnswered = "You have answered".localized
 let translatedOfYour = "of your".localized
 let translatedAssignedSurveys = "assigned surveys.".localized
+let translatedFundedBy = "Funded by".localized
+let translatedFounderImage = "founder image".localized
+let translatedFounderAddress = "https://maw.wallenberg.org/en".localized

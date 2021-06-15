@@ -11,6 +11,10 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 
 //Main
 
+//questions
+"next" = "Next";
+"previous" = "Previous";
+
 //Login
 "Info" = "Info";
 "The Lang Track App is an app developed by" = "The Lang Track App is an app developed by Lund University Humanities Lab for research purposes.\n\nLog in with the username and password assigned to you by Lund University Humanities Lab";
@@ -29,6 +33,8 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "minute" = "minute";
 "hours" = "hours";
 "hour" = "hour";
+"day" = "day";
+"days" = "days";
 "Unanswered" = "Unanswered";
 "Answered" = "Answered";
 
@@ -50,16 +56,20 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "Links" = "Links";
 "Lang-Track-App project" = "Lang-Track-App project";
 "Humanities Lab" = "Humanities Lab";
+"Lund University Humanities Lab" = "Lund University Humanities Lab";
 "Lund University" = "Lund University";
 
 //about
-"aboutText1" = "We developed the Lang-Track-App to study when, where, and how often language learners are in contact with different foreign languages in everyday life. This crucial to improving our understanding of the challenges of language learning outside of classrooms.\n\nThe project is a collaboration between the Lund University Centre for Languages and Literature and Lund University Humanities Lab.";
+"aboutText1" = "We developed the Lang-Track-App to study when, where, and how often language learners are in contact with different foreign languages in everyday life. This is crucial to improving our understanding of the challenges of language learning outside of classrooms.\n\nThe project is a collaboration between the Lund University Centre for Languages and Literature and Lund University Humanities Lab.";
 "MarianneInfo" = "Professor of Psycholinguistics, Centre for Languages and Literature";
 "JonasInfo" = "Professor of French Linguistics, Centre for Languages and Literature";
 "HenrietteInfo" = "Postdoctoral Research Fellow, LU Humanities Lab";
 "JosefInfo" = "Systems Developer, LU Humanities Lab";
 "StephanInfo" = "Systems Developer, LU Humanities Lab";
 "Team" = "Team";
+"Funded by" = "Funded by";
+"founder image" = "stiftelsen_wallenberg_en";
+"https://maw.wallenberg.org/en" = "https://maw.wallenberg.org/en";
 
 //Instructions
 "Instructions" = "Instructions";

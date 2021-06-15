@@ -40,7 +40,7 @@ class OverviewDurationTableViewCell: UITableViewCell {
             if answeredHour == 1{
                 answerTextLabel.text = "\(answeredHour) \(translatedHour)"
             }else{
-                answerTextLabel.text = "\(answeredHour) \(translatedMinutes)"
+                answerTextLabel.text = "\(answeredHour) \(translatedHours)"
             }
         }else{
             if answeredHour == 0{
