@@ -1,4 +1,4 @@
-# LTA apps readme 
+# LTA apps
 This readme is about the iOS and Android apps and a little about firebase
 
 ## Apps
