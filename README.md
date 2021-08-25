@@ -1,5 +1,3 @@
-# LangTrackAppIphone
-
 # LTA apps readme 
 This readme is about the iOS and Android apps and a little about firebase
 
