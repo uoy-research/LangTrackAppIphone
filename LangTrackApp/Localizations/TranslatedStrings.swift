@@ -60,3 +60,4 @@ let translatedAssignedSurveys = "assigned surveys.".localized
 let translatedFundedBy = "Funded by".localized
 let translatedFounderImage = "founder image".localized
 let translatedFounderAddress = "https://maw.wallenberg.org/en".localized
+let translatedSurveyExpired = "Survey expired".localized
