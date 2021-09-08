@@ -47,6 +47,7 @@ Copyright © 2020 Stephan Björck. All rights reserved.
 "You have answered" = " لقد أجبت على";
 "of your" = " من ";
 "assigned surveys." = "استطلاعًا ";
+"Survey expired" = "انتهت صلاحية الاستطلاع";
 
 // Contact
 "Contact" = "اتصل";
