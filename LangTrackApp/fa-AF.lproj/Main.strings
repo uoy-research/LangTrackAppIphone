@@ -156,7 +156,7 @@
 "TgD-fw-Wio.text" = "پرسشنامۀ پاسخ گفته شده";
 
 /* Class = "UILabel"; text = "Humanistlaboratoriet"; ObjectID = "Tjz-Uh-RzL"; */
-"Tjz-Uh-RzL.text" = "Humanistlaboratoriet";
+"Tjz-Uh-RzL.text" = "آزمایشگاۀ علوم انسانی";
 
 /* Class = "UIButton"; normalTitle = "About"; ObjectID = "U3A-IQ-9UK"; */
 "U3A-IQ-9UK.normalTitle" = "در مورد";
@@ -204,7 +204,7 @@
 "Zaf-fj-Yty.text" = " namn";
 
 /* Class = "UILabel"; text = "Humanities Lab"; ObjectID = "aAF-P2-oxc"; */
-"aAF-P2-oxc.text" = "Humanities Lab";
+"aAF-P2-oxc.text" = "آزمایشگاۀ علوم انسانی";
 
 /* Class = "UILabel"; text = "N/A"; ObjectID = "bXa-GB-NDM"; */
 "bXa-GB-NDM.text" = "N/A";
@@ -273,7 +273,7 @@
 "ka1-96-HVq.normalTitle" = "?";
 
 /* Class = "UILabel"; text = "Humanities Lab"; ObjectID = "l3X-Hz-zrI"; */
-"l3X-Hz-zrI.text" = "Humanities Lab";
+"l3X-Hz-zrI.text" = "آزمایشگاۀ علوم انسانی";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "ltz-pa-Bs7"; */
 "ltz-pa-Bs7.text" = "1";

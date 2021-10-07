@@ -44,6 +44,7 @@ Copyright © 2021 Stephan Björck. All rights reserved.
 عندما يكلفك مختبر الإنسانيات باستبيان، ستراه هنا.";
 "numberEnding" = "";
 "No contact with server" = "No contact with server";
+"You have answered-formate" = "لقد أجبت على %d من %d من الاستبيانات المخصصة لك.";
 "You have answered" = " لقد أجبت على";
 "of your" = " من ";
 "assigned surveys." = "استطلاعًا ";
