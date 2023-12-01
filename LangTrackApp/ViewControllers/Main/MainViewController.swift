@@ -387,7 +387,7 @@ class MainViewController: UIViewController {
         chartView.drawHoleEnabled = true
         chartView.rotationAngle = -90
         chartView.rotationEnabled = false
-        chartView.chartDescription?.enabled = false
+        chartView.chartDescription.enabled = false
         chartView.isUserInteractionEnabled = false
         
     }

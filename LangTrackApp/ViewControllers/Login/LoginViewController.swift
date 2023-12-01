@@ -86,7 +86,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }else{
             activityIndicator.startAnimating()
-            let userEmail = "\(username!)@humlablu.com"
+            let userEmail = "\(username!)@york.ac.uk"
             
             Auth.auth().signIn(withEmail: userEmail, password: password!) { (result, error) in
                 if error == nil{

@@ -11,8 +11,6 @@ import SwiftyJSON
 import Alamofire
 import Firebase
 
-
-
 struct SurveyRepository {
     
     
@@ -81,12 +79,12 @@ struct SurveyRepository {
     }
     
     static func checkDeviceToken(completionhandler: @escaping (_ result: String?) -> Void){
-        InstanceID.instanceID().instanceID { (result, error) in
+        Messaging.messaging().token { (result, error) in
             if let error = error {
                 print("Error fetching remote instance ID: \(error)")
                 completionhandler(nil)
             } else if let result = result {
-                completionhandler(result.token)
+                completionhandler(result)
             }
         }
     }

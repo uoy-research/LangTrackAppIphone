@@ -101,7 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        let fcmToken = fcmToken ?? ""
         print("Firebase registration token: \(fcmToken)")
 
         let dataDict:[String: String] = ["token": fcmToken]
