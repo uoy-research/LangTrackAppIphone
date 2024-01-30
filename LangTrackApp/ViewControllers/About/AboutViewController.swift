@@ -53,12 +53,14 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
         finalString.append(NSAttributedString(string: "\(translatedFundedBy)\n", attributes: attributeSmallText))
         
         //image
+        /*
         let image1Attachment = NSTextAttachment()
         image1Attachment.image = UIImage(named: "\(translatedFounderImage).png")
         let image1String = NSMutableAttributedString(attachment: image1Attachment)
         let myRange = NSRange(location: 0, length: image1String.length)
         image1String.addAttributes([NSAttributedString.Key.link: URL(string: translatedFounderAddress)!], range: myRange)
         finalString.append(image1String)
+         */
         
         aboutTextView.attributedText = finalString
     }
@@ -68,27 +70,27 @@ class AboutViewController: UIViewController, UIScrollViewDelegate {
         let finalString = NSMutableAttributedString(string: "\(translatedTeam)\n\n", attributes: attributeLtaBlueHeaderText)
         
         
-        let thename1 = "Marianne Gullberg"
+        let thename1 = "Zoe Handley"
         finalString.append(NSAttributedString(string: thename1, attributes: attributeLtaRedHeaderText))
         let theDescription1 = ", \(translatedMarianneInfo)\n"
         finalString.append(NSAttributedString(string: theDescription1, attributes: attributeLtaBlueText))
         
-        let thename2 = "Jonas Granfeldt"
+        let thename2 = "Clare Wright"
         finalString.append(NSAttributedString(string: thename2, attributes: attributeLtaRedHeaderText))
         let theDescription2 = ", \(translatedJonasInfo)\n"
         finalString.append(NSAttributedString(string: theDescription2, attributes: attributeLtaBlueText))
         
-        let thename3 = "Henriette Arndt"
+        let thename3 = "Philip Harrison"
         finalString.append(NSAttributedString(string: thename3, attributes: attributeLtaRedHeaderText))
         let theDescription3 = ", \(translatedHenrietteInfo)\n"
         finalString.append(NSAttributedString(string: theDescription3, attributes: attributeLtaBlueText))
         
-        let thename4 = "Josef Granqvist"
+        let thename4 = "Stuart Lacy"
         finalString.append(NSAttributedString(string: thename4, attributes: attributeLtaRedHeaderText))
         let theDescription4 = ", \(translatedJosefInfo)\n"
         finalString.append(NSAttributedString(string: theDescription4, attributes: attributeLtaBlueText))
         
-        let thename5 = "Stephan Björck"
+        let thename5 = "Viktor Czyzewski"
         finalString.append(NSAttributedString(string: thename5, attributes: attributeLtaRedHeaderText))
         let theDescription5 = ", \(translatedStephanInfo)\n"
         finalString.append(NSAttributedString(string: theDescription5, attributes: attributeLtaBlueText))

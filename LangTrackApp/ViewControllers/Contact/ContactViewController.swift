@@ -58,7 +58,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         let attrcontactInfoText = NSMutableAttributedString(string: contactInfoText, attributes: attributeLtaBlueText)
         finalString.append(attrcontactInfoText)
         
-        let reserchLink = "stephan.bjorck@humlab.lu.se"
+        let reserchLink = "ispeak-project@york.ac.uk"
         let myreserchRange = NSRange(location: 0, length: reserchLink.count)
         let attrreserchText2 = NSMutableAttributedString(string: reserchLink, attributes: attributeLtaBlueText)
         attrreserchText2.addAttribute(NSAttributedString.Key.link,
@@ -66,17 +66,19 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
                                       range: myreserchRange)
         finalString.append(attrreserchText2)
         
+        /*
         let techText3 = "\n\n\(translatedTechText1)\n"
         let attrtechText3 = NSMutableAttributedString(string: techText3, attributes: attributeLtaBlueText)
         finalString.append(attrtechText3)
         
-        let techLink = "henriette.arndt@humlab.lu.se"
+        let techLink = "ispeak-project@york.ac.uk"
         let mytechRange = NSRange(location: 0, length: techLink.count)
         let attrtechText2 = NSMutableAttributedString(string: techLink, attributes: attributeLtaBlueText)
         attrtechText2.addAttribute(NSAttributedString.Key.link,
                                       value: "reserch",
                                       range: mytechRange)
         finalString.append(attrtechText2)
+        */
         
         contactsTextView.attributedText = finalString
     }
@@ -91,16 +93,16 @@ class ContactViewController: UIViewController, UIScrollViewDelegate, UITextViewD
         attrText1.addAttributes([NSAttributedString.Key.link: URL(string: "https://portal.research.lu.se/portal/en/projects/the-langtrackapp-studying-exposure-to-and-use-of-a-new-language-using-smartphone-technology(4e734940-981f-4dd0-841a-eb6ac760af0c).html")!], range: myRange)
         finalString.append(attrText1)
         
-        let linkText2 = "\(translatedLundUniversityHumanitiesLab)\n\n"
+        let linkText2 = "\(translatedHumanitiesLab)\n\n"
         let attrText2 = NSMutableAttributedString(string: linkText2, attributes: attributeLtaBlueText)
         let myRange2 = NSRange(location: 0, length: attrText2.length)
-        attrText2.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.humlab.lu.se")!], range: myRange2)
+        attrText2.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.york.ac.uk/education/research/casle")!], range: myRange2)
         finalString.append(attrText2)
         
         let linkText3 = translatedLundUniversity
         let attrText3 = NSMutableAttributedString(string: linkText3, attributes: attributeLtaBlueText)
         let myRange3 = NSRange(location: 0, length: attrText3.length)
-        attrText3.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.lu.se/")!], range: myRange3)
+        attrText3.addAttributes([NSAttributedString.Key.link: URL(string: "https://www.york.ac.uk/")!], range: myRange3)
         finalString.append(attrText3)
         
         linksTextView.attributedText = finalString
