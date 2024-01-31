@@ -606,7 +606,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "iSpeak App" */;
+			buildConfigurationList = F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "iSpeak" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1148,7 +1148,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "iSpeak App" */ = {
+		F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "iSpeak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F156589523E2DD7600EC2796 /* Debug */,
