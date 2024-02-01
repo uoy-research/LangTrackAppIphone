@@ -144,7 +144,7 @@
 		F1532DAF23EABA4D00171355 /* SurveyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyRepository.swift; sourceTree = "<group>"; };
 		F1532DB123EAC67C00171355 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		F1532DB323EB10B400171355 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		F156586D23E2DD7500EC2796 /* Lang Track App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lang Track App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F156586D23E2DD7500EC2796 /* iSpeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSpeak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F156587023E2DD7500EC2796 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F156587223E2DD7500EC2796 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F156587423E2DD7500EC2796 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 		F156586E23E2DD7500EC2796 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F156586D23E2DD7500EC2796 /* Lang Track App.app */,
+				F156586D23E2DD7500EC2796 /* iSpeak.app */,
 				F156588323E2DD7600EC2796 /* LangTrackAppTests.xctest */,
 				F156588E23E2DD7600EC2796 /* LangTrackAppUITests.xctest */,
 			);
@@ -523,9 +523,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F156586C23E2DD7500EC2796 /* LangTrackApp */ = {
+		F156586C23E2DD7500EC2796 /* iSpeak */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F156589723E2DD7600EC2796 /* Build configuration list for PBXNativeTarget "LangTrackApp" */;
+			buildConfigurationList = F156589723E2DD7600EC2796 /* Build configuration list for PBXNativeTarget "iSpeak" */;
 			buildPhases = (
 				C65D8557258763EC3647D477 /* [CP] Check Pods Manifest.lock */,
 				F156586923E2DD7500EC2796 /* Sources */,
@@ -536,9 +536,9 @@
 			);
 			dependencies = (
 			);
-			name = LangTrackApp;
+			name = iSpeak;
 			productName = LangTrackApp;
-			productReference = F156586D23E2DD7500EC2796 /* Lang Track App.app */;
+			productReference = F156586D23E2DD7500EC2796 /* iSpeak.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F156588223E2DD7600EC2796 /* LangTrackAppTests */ = {
@@ -606,7 +606,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "LangTrackApp" */;
+			buildConfigurationList = F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "iSpeak" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -624,7 +624,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F156586C23E2DD7500EC2796 /* LangTrackApp */,
+				F156586C23E2DD7500EC2796 /* iSpeak */,
 				F156588223E2DD7600EC2796 /* LangTrackAppTests */,
 				F156588D23E2DD7600EC2796 /* LangTrackAppUITests */,
 			);
@@ -825,12 +825,12 @@
 /* Begin PBXTargetDependency section */
 		F156588523E2DD7600EC2796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F156586C23E2DD7500EC2796 /* LangTrackApp */;
+			target = F156586C23E2DD7500EC2796 /* iSpeak */;
 			targetProxy = F156588423E2DD7600EC2796 /* PBXContainerItemProxy */;
 		};
 		F156589023E2DD7600EC2796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F156586C23E2DD7500EC2796 /* LangTrackApp */;
+			target = F156586C23E2DD7500EC2796 /* iSpeak */;
 			targetProxy = F156588F23E2DD7600EC2796 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1005,18 +1005,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LangTrackApp/LangTrackApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = EPUUTTNVZS;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EPUUTTNVZS;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iSpeak;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.ac.york.langtrackapp;
-				PRODUCT_NAME = "Lang Track App";
+				PRODUCT_NAME = iSpeak;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "iSpeak Provisioning App Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1028,18 +1034,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LangTrackApp/LangTrackApp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = EPUUTTNVZS;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EPUUTTNVZS;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iSpeak;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.ac.york.langtrackapp;
-				PRODUCT_NAME = "Lang Track App";
+				PRODUCT_NAME = iSpeak;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "iSpeak Provisioning App Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1136,7 +1148,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "LangTrackApp" */ = {
+		F156586823E2DD7500EC2796 /* Build configuration list for PBXProject "iSpeak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F156589523E2DD7600EC2796 /* Debug */,
@@ -1145,7 +1157,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F156589723E2DD7600EC2796 /* Build configuration list for PBXNativeTarget "LangTrackApp" */ = {
+		F156589723E2DD7600EC2796 /* Build configuration list for PBXNativeTarget "iSpeak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F156589823E2DD7600EC2796 /* Debug */,
