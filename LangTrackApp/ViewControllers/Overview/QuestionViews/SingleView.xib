@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SingleView" customModule="Lang_Track_App" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SingleView" customModule="iSpeak" customModuleProvider="target">
             <connections>
                 <outlet property="checkBoxView" destination="4r2-Ot-vGw" id="eI7-Oe-V0k"/>
                 <outlet property="choiceLabel" destination="xFc-5Z-HRd" id="0K3-lp-BKB"/>

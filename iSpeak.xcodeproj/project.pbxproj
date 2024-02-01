@@ -591,7 +591,7 @@
 				);
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1500;
-				ORGANIZATIONNAME = "Stephan Björck";
+				ORGANIZATIONNAME = "University of York";
 				TargetAttributes = {
 					F156586C23E2DD7500EC2796 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -1008,7 +1008,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EPUUTTNVZS;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
@@ -1037,7 +1037,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EPUUTTNVZS;
 				INFOPLIST_FILE = LangTrackApp/Info.plist;
