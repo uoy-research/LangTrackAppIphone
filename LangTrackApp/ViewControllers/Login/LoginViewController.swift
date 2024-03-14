@@ -5,6 +5,8 @@
 //  Created by Stephan Björck on 2020-02-03.
 //  Copyright © 2020 Stephan Björck. All rights reserved.
 //
+//  Modified by Viktor Czyżewski
+//
 
 import UIKit
 import Firebase
